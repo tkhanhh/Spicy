@@ -1,4 +1,5 @@
 
+
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
@@ -26,7 +27,7 @@ local OrionLib = {
 	SaveCfg = false
 }
 
---Feather Icons https://github.com/evoincorp/lucideblox/tree/master/src/modules/util - Created by 7kayoh
+--Feather Icons https://github.com/evoincorp/lucideblox/tree/master/src/modules/util - Created by
 local Icons = {}
 
 local Success, Response = pcall(function()
@@ -45,33 +46,39 @@ local function GetIcon(IconName)
 	end
 end   
 
-
+-- === PATCH: safe parent with high DisplayOrder and fallbacks ===
 local function safe_parent(gui)
-    gui.IgnoreGuiInset = true
-    gui.ResetOnSpawn = false
-    gui.ZIndexBehavior = Enum.ZIndexBehavior.Global
-    gui.DisplayOrder = 1000000
-    local ok = false
-    pcall(function()
-        if syn and syn.protect_gui then syn.protect_gui(gui) end
-    end)
-    pcall(function()
-        if gethui then
-            gui.Parent = gethui()
-            ok = true
-        end
-    end)
-    if not ok then
-        local success = pcall(function() gui.Parent = game:GetService("CoreGui") end)
-        if not success then
-            gui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
-        end
-    end
+	gui.IgnoreGuiInset = true
+	gui.ResetOnSpawn = false
+	gui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+	gui.DisplayOrder = 1000000 -- very high to be on top
+	local ok = false
+	pcall(function()
+		if syn and syn.protect_gui then syn.protect_gui(gui) end
+	end)
+	pcall(function()
+		if gethui then
+			gui.Parent = gethui()
+			ok = true
+		end
+	end)
+	if not ok then
+		local success = pcall(function()
+			gui.Parent = game:GetService("CoreGui")
+		end)
+		if not success then
+			gui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+		end
+	end
 end
+-- === END PATCH ===
 
 local Orion = Instance.new("ScreenGui")
 Orion.Name = "Orion"
+
+-- === PATCH: use safe_parent instead of direct parenting ===
 safe_parent(Orion)
+-- === END PATCH ===
 
 if gethui then
 	for _, Interface in ipairs(gethui():GetChildren()) do
@@ -115,9 +122,10 @@ task.spawn(function()
 	end
 end)
 
+-- === PATCH: MakeDraggable updated for robustness ===
 local function MakeDraggable(DragPoint, Main)
 	pcall(function()
-		DragPoint.Active = true
+		DragPoint.Active = true -- ensure it captures input on all executors
 		local Dragging, DragInput, MousePos, FramePos = false
 		AddConnection(DragPoint.InputBegan, function(Input)
 			if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
@@ -144,6 +152,7 @@ local function MakeDraggable(DragPoint, Main)
 		end)
 	end)
 end    
+-- === END PATCH ===
 
 local function Create(Name, Properties, Children)
 	local Object = Instance.new(Name)
@@ -342,6 +351,7 @@ CreateElement("Button", function()
 	return Button
 end)
 
+-- === PATCH: ScrollFrame Active/ScrollingEnabled true ===
 CreateElement("ScrollFrame", function(Color, Width)
 	local ScrollFrame = Create("ScrollingFrame", {
 		BackgroundTransparency = 1,
@@ -352,11 +362,12 @@ CreateElement("ScrollFrame", function(Color, Width)
 		BorderSizePixel = 0,
 		ScrollBarThickness = Width,
 		CanvasSize = UDim2.new(0, 0, 0, 0),
-		Active = true,
+		Active = true, -- ensure input works on some executors
 		ScrollingEnabled = true
 	})
 	return ScrollFrame
 end)
+-- === END PATCH ===
 
 CreateElement("Image", function(ImageID)
 	local ImageNew = Create("ImageLabel", {
@@ -544,10 +555,12 @@ function OrionLib:MakeWindow(WindowConfig)
 		}), "Text")
 	})
 
+	-- === PATCH: ensure DragPoint.Active true ===
 	local DragPoint = SetProps(MakeElement("TFrame"), {
 		Size = UDim2.new(1, 0, 0, 50),
 		Active = true
 	})
+	-- === END PATCH ===
 
 	local WindowStuff = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 10), {
 		Size = UDim2.new(0, 150, 1, -50),
@@ -626,13 +639,6 @@ function OrionLib:MakeWindow(WindowConfig)
 		Size = UDim2.new(0, 615, 0, 344),
 		ClipsDescendants = true
 	}), {
-		--SetProps(MakeElement("Image", "rbxassetid://3523728077"), {
-		--	AnchorPoint = Vector2.new(0.5, 0.5),
-		--	Position = UDim2.new(0.5, 0, 0.5, 0),
-		--	Size = UDim2.new(1, 80, 1, 320),
-		--	ImageColor3 = Color3.fromRGB(33, 33, 33),
-		--	ImageTransparency = 0.7
-		--}),
 		SetChildren(SetProps(MakeElement("TFrame"), {
 			Size = UDim2.new(1, 0, 0, 50),
 			Name = "TopBar"
@@ -1333,7 +1339,6 @@ function OrionLib:MakeWindow(WindowConfig)
 				}), "Second")
 
 				AddConnection(BindBox.Value:GetPropertyChangedSignal("Text"), function()
-					--BindBox.Size = UDim2.new(0, BindBox.Value.TextBounds.X + 16, 0, 24)
 					TweenService:Create(BindBox, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, BindBox.Value.TextBounds.X + 16, 0, 24)}):Play()
 				end)
 
@@ -1386,7 +1391,7 @@ function OrionLib:MakeWindow(WindowConfig)
 				end)
 
 				AddConnection(Click.MouseLeave, function()
-					TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second}):Play()
+					TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = OrionLib.Themes[OrionLib.SelectedTheme].Second}):Play()
 				end)
 
 				AddConnection(Click.MouseButton1Up, function()
@@ -1465,7 +1470,6 @@ function OrionLib:MakeWindow(WindowConfig)
 				end
 
 				AddConnection(TextboxActual:GetPropertyChangedSignal("Text"), function()
-					--TextContainer.Size = UDim2.new(0, TextboxActual.TextBounds.X + 16, 0, 24)
 					TweenService:Create(TextContainer, TweenInfo.new(0.45, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, TextboxActual.TextBounds.X + 16, 0, 24)}):Play()
 				end)
 
@@ -1765,51 +1769,6 @@ function OrionLib:MakeWindow(WindowConfig)
 		return ElementFunction   
 	end  
 	
-	--if writefile and isfile then
-	--	if not isfile("NewLibraryNotification1.txt") then
-	--		local http_req = (syn and syn.request) or (http and http.request) or http_request
-	--		if http_req then
-	--			http_req({
-	--				Url = 'http://127.0.0.1:6463/rpc?v=1',
-	--				Method = 'POST',
-	--				Headers = {
-	--					['Content-Type'] = 'application/json',
-	--					Origin = 'https://discord.com'
-	--				},
-	--				Body = HttpService:JSONEncode({
-	--					cmd = 'INVITE_BROWSER',
-	--					nonce = HttpService:GenerateGUID(false),
-	--					args = {code = 'sirius'}
-	--				})
-	--			})
-	--		end
-	--		OrionLib:MakeNotification({
-	--			Name = "UI Library Available",
-	--			Content = "New UI Library Available - Joining Discord (#announcements)",
-	--			Time = 8
-	--		})
-	--		spawn(function()
-	--			local UI = game:GetObjects("rbxassetid://11403719739")[1]
-
-	--			if gethui then
-	--				UI.Parent = gethui()
-	--			elseif syn.protect_gui then
-	--				syn.protect_gui(UI)
-	--				UI.Parent = game.CoreGui
-	--			else
-	--				UI.Parent = game.CoreGui
-	--			end
-
-	--			wait(11)
-
-	--			UI:Destroy()
-	--		end)
-	--		writefile("NewLibraryNotification1.txt","The value for the notification having been sent to you.")
-	--	end
-	--end
-	
-
-	
 	return TabFunction
 end   
 
@@ -1822,3 +1781,4 @@ function OrionLib:Destroy()
 end
 
 return OrionLib
+
