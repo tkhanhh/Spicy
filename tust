@@ -1,3 +1,1824 @@
--- This file was protected using Luraph Obfuscator v14.4.1 [https://lura.ph/]
 
-return({ks=function(x,t,z,N)N=(function(...)return(...)();end);if not t[3862]then z=x:ls(z,t);else z=x:Gs(t,z);end;return N,z;end,Ps=string.pack,us=bit32.countrz,Q=function(x,x,t)x=(t[0x43a5]);return x;end,x=function(x,x,t)t=(x[8359]);return t;end,V=function(x,x)x[27]=nil;x[0X01C]=nil;(x)[29]=(nil);x[30]=(nil);end,m=string.unpack,i=coroutine.wrap,M=function(x,t,z)t=(4+(x.fs((x.us(x.O[4]+x.O[4]+x.O[0B1000])))));z[0X25Da]=t;return t;end,cs=function(x,t,z,N)if z<=0B10101110 then t=x:ms(t,N);else t=N[0B1][0X2A]();end;return t;end,T=bit32.rshift,zm=function(x,x,t)return{x-t[0X1][17]};end,I=function(x,t,z,N)while true do if N==0x77 then(t)[0B1111]=setfenv;if not z[7455]then N=(2151994959+((x.vs(x.O[0B11],x.O[0X1],x.O[0X4]))+x.O[1]-z[17317]-x.O[0X04]));(z)[0x1D1f]=(N);else N=x:B(z,N);end;elseif N==0B11_01010 then(t)[16]=x.e;if not z[0x4_7f2]then N=(-0x52aF7__512+((z[29627]==x.O[0B1001__]and x.O[0x2]or z[0X55de])-x.O[8]-z[17317]+x.O[0x6]));(z)[18418]=N;else N=z[18418];end;elseif N==65 then(t)[17]=9007199254740992;if not(not z[1705])then N=x:N(N,z);else N=-0X44Fdb7e2+(((x.os(z[21982],x.O[0x8],z[21982]))-x.O[0B11]<=x.O[0X9]and x.O[2]or z[21982])+z[0X73BB]);(z)[1705]=N;end;elseif N==0X2c then t[18]=(type);if not(not z[0X1F_F4__])then N=x:u(N,z);else N=0B0011011+(x.us((x.Cs((x.Ys(z[29627],(z[17317])))-z[0x73bB],(z[0X43a5__])))));(z)[8180]=(N);end;continue;elseif N==0x1b then(t)[0b10011]=function(v,e,q)local g={t};v=(v or 0X1);q=(q or#e);if(q-v+1)>0x1f3_d_ then return g[0B1_][0XD](e,q,v);else return g[1][0xb](e,v,q);end;end;if not(not z[19139])then N=x:C(N,z);else N=62+(x.us(z[0X6A9]+z[17317]-z[0x20C0]+z[7455]));(z)[19139]=N;end;continue;else if N==0B11_1110 then t[0B1_0100]=x.gs;if not z[28998]then(z)[0x17ed]=0x1b+(x.O[5]-N+x.O[0B1_1]-x.O[7]~=x.O[0b11]and z[18418]or x.O[0B110]);z[0X1868]=0B1111101+(x.us((x.os((x.Bs(N~=z[17317]and x.O[0B1001]or z[0X66c__c],(z[0X43A5]))),x.O[0x1],z[0X73BB]))));N=-3192151410+(((x.Ys(x.O[0x1]+z[0X4Ac3],(z[29627])))>=z[29627]and x.O[0X4]or x.O[3])+x.O[4]);z[28998]=(N);else N=x:Y(z,N);end;else if N==5 then x:g(t);break;end;end;end;end;(t)[0B1011_0]=x.xs;(t)[0X17]=nil;t[0X18]=(nil);N=(0X22);while true do if N<34 then t[0X18]=x.c;break;else if not(N>25)then else N=x:y(t,z,N);end;end;end;t[0x19]=x.F;t[0X1a]=nil;return N;end,Im=function(x,t,z,N,v,e,q,g,Y)if v==0 then if t[0X1_][26]then x:Ym(q,g,e,t);else(N)[g]=t[0x1][0B100000][q];end;elseif v==0x7 then x:gm(q,Y,g);elseif v==0x1 then if z~=0X71 then Y[g]=g+q;end;elseif z~=0xCE then x:xm(z,t);else if v==0B100_ then Y[g]=(g-q);else if v~=0b10 then else x:ym(g,t,N,q);end;end;end;end,Fs=function(x,x,t,z,N,v)if v==0B101111 then v=0x42;else if v~=66 then else if z[1][0x6]==z[0X2]then while-0B11011%z[0X1][0X2a__]do return{z[0x1][0X29]},v;end;z[0x1][0B100010]=z[0x1][0B10110];else if not(t)then(z[0B1][32])[N]=(x);else z[1][32][N]=({[0B0]=x});end;end;return 0X630A,v;end;end;return nil,v;end,qm=function(x,t,z,N,v,e,q,g,Y,w)repeat if e==0X72 then q,e=x:dm(Y,e,q);continue;elseif e==0X29 then e=(116);z=Y[1][0x29]();continue;else if e==0x74_ then g=Y[0X1][0B101001]();break;end;end;until false;N=nil;w=nil;t=(nil);v=nil;return z,w,N,e,t,v,g,q;end,Ts=function(x,t)local z,N=(115);repeat N,z=x:is(t,z);if N==0XCb_94 then continue;else if N~=39113 then else break;end;end;until false;end,G=unpack,os=bit32.bxor,tm=function(x,x,t,z,N)t=0x2C;z,x=N[0X1][0X0015]('\60i8',N[0X1][29],N[1][27]);if N[0X1][0X5_]~=N[1][0X22]then else local v=(0x35);repeat if v==53 then v=0X10;(N[0B1])[0X001E]=(-(0X25%0X053));continue;else if v==0X10 then return t,{},x,z;end;end;until false;end;return t,nil,x,z;end,Zs=bit32.bnot,U=bit32,g=function(x,t)t[0B10101]=x.m;end,Dm=function(x,t)local z,N,v;for e=0X3e,186,0x12 do z,N,v=x:am(N,t,v,e);if z~=nil then return{x.G(z)};end;end;return nil;end,am=function(x,x,t,z,N)if N==0X3E then x,z=t[1][0b10101]('<\z d',t[1][0X1D],t[0B1][0x1b]);(t[0X1])[27]=z;else if N==80 then return{x},x,z;end;end;return nil,x,z;end,Qs=bit32.lrotate,jm=function(x,t)t[0x28]=(function()local z,N,v,e={t,t[0b1]},0x0,0B1,(3);repeat if e<6 then e=(6);if z[0b1_][0X24]~=z[0B010]then else if-0Xda>-0x3f then x:em(z);end;end;else if e>0B11 then N,v=x:Fm(N,z,v);break;end;end;until false;return N;end);t[0B00101001]=nil;(t)[42]=(nil);end,a=string.char,P=function(x,x,t)(t)[0X10__]=(nil);(t)[17]=nil;(t)[18]=(nil);t[0x1_3]=(nil);t[20]=nil;t[0X15]=(nil);x=0X77;return x;end,hs=function(x,x,t,z,N)N=(4);z=x[0B1][35](t);return N,z;end,L=table.move,mm=function(x,x)x=(0B11_0__00);return x;end,Us=function(x,t,z,N,v)local e,q;z=0X2;repeat if z<0B111_101 and z>0X4 then for g=0x1,t,0B00_1 do e[g]=v[0b1][0x2E]();end;for g=0B1,#v[0b1][0X10],0X3 do(v[0b1][16][g])[v[0B1][0X1_0][g+0x1]]=(e[v[0x1__][16][g+0X2]]);end;z=(0X56);elseif z>0b111101 and z<0x79 then if N then local N=(0B1011_0);while true do if N<0X7D then(v[0X1][0X25])[5]=(v[0X1][0b100000]);N=125;continue;else if not(N>0X16)then else(v[0X1][0x25])[0X2]=(e);break;end;end;end;end;q=e[v[0X1][0b00101000]()];z=(0X3d);if v[1][0x26]~=v[0X1][0X25]then x:Ts(v);end;continue;else if z<0B100 then t=v[1][0B101__000]()-0X24__42;z=0B1__111001;continue;else if z>0X56 then z,e=x:hs(v,t,e,z);continue;elseif z>2 and z<0X13 then z=(0B10011);v[0X1][0X10]=v[0B01][0X23](t*3);continue;else if not(z<86 and z>0X13)then else x:Es(v);break;end;end;end;end;until false;return z,{q},t;end,n=string,es=function(x,x)x[0B1][0x01__6],x[1][22]=x[1][0X24],0Xb6;end,j=getfenv,Nm=function(x,x,t,z,N,v,e)if N<=2 then(x[0b1][16])[t+3]=(v);return 0x2156_,N;else if not(N<=0X50)then N=2;x[0B1][16][t+2]=(z);return 59581,N;else(x[1][16])[t+1]=e;N=(111);end;end;return nil,N;end,h=bit32.countrz,Mm=function(x,x,t,z)(x)[z]=z+t;end,N=function(x,x,t)x=(t[1705]);return x;end,Bs=bit32.lshift,Rm=function(x,x,t,z,N)x=(0B10010);(N[1][0X10])[t+0X1]=z;return x;end,zs=function(x,x,t)(t[0X1])[0X20]=(nil);x=54;return x;end,ym=function(x,x,t,z,N)local v;for e=18,0X15,0X3__ do if e<0b1010__1 then v=#t[0b1][0B10000];continue;else if e>0x12 then t[0x1][0X10][v+0X1]=z;t[0X1][16][v+0x2]=x;end;end;end;t[0X1][0x10][v+0B11]=N;end,c=error,z=table,ys=(function(x)local t,z,N,v=({});v,N=x:k(N,t,v);local e;v,e=x:J(e,v,t,N);e=x:v(N,t,e);e=x:f(e,N,t);e=x:P(e,t);e=x:I(t,N,e);x:V(t);e=x:p(t,e,v,N);e=x:Am(N,t,e);x:jm(t);local q,g;e,g,q=x:Ss(g,N,q,t,e);v=(nil);v,e,g=x:_s(v,g,q,t,e,N);e=x:Ks(e,N,t);z,e,v=x:qs(t,e,q,N,g,v);if z~=nil then return x.G(z);end;end),D=tostring,f=function(x,t,z,N)N[0B1_10__1]=nil;(N)[0Xe]=(nil);t=0x4;repeat if t==0X4_ then(N)[11]=unpack;N[12]=x.Ps;if not(not z[0X43a5])then t=x:Q(t,z);else t=(-363941475+(x.Qs((x.Bs((x.Qs(x.O[0X5],(t))),(t)))>=x.O[0x7]and x.O[0x6]or x.O[0X3],(z[0X73BB]))));(z)[0X04_3a5]=(t);end;else if t==19 then t=x:Z(z,N,t);continue;else if t~=0x56 then else N[0XE]={};break;end;end;end;until false;(N)[0B1111]=nil;return t;end,gm=function(x,x,t,z)(t)[z]=x;end,Om=function(x,x,t)(t[1])[27]=(x);end,em=function(x,x)(x[1])[0B110]=(x[0X1][0X21]);end,_s=function(x,t,z,N,v,e,q)t=(nil);e=91;while true do if e==0X5B then z,e=x:ks(q,e,z);continue;elseif e==0x7e then t=N();if not q[31613]then(q)[1720]=-251535148+((x.Zs((x.os(q[17317],q[0X00152f]))))-q[0X4Ac3]<x.O[7]and q[1296]or x.O[0B1001]);e=(-12582843+(x.Bs((x.fs(q[8384]-q[15315]+q[3862])),(q[0X43a5]))));(q)[31613]=(e);else e=q[31613];end;else if e==0X45__ then v[37][0B1111]=x.T;break;end;end;end;return t,e,z;end,d=function(x,t,z)t=(-4131530248+((x.Zs(x.O[0X5]))-z[29627]+x.O[0X9]+x.O[7]));(z)[21982]=t;return t;end,sm=function(x,x,t,z,N,v,e)if z<176 then v=N[0X01][0X22]();e=N[0X1][34]();else if not(z>0X38)then else for z=t-t%0X1,v do(x)[z]=e;end;end;end;return v,e;end,Bm=function(x,x,t,z)(t)[x]=x-z;end,o=function(x,x,t)t=x[0X20C0];return t;end,is=function(x,t,z)if z<0x73 then t[0X1][0x10]=x.e;return 0X98C9,z;else if z>0X36__ then z=x:zs(z,t);return 52116,z;end;end;return nil,z;end,xs=string.byte,gs=string.match,Ym=function(x,t,z,N,v)local e=v[0X1][0X20][t];v=nil;for t=67,0B1001_1101,0X2D do if not(t>67)then v=x:Cm(v,e);continue;else if t==0B1001__1101 then e[v+0b10]=(z);else(e)[v+1]=N;continue;end;end;end;e[v+0X3]=(8);end,Pm=function(x,x,t,z)z[x+0b10]=(t);(z)[x+3]=0B1011;end,H=function(x,t,z,N)(N)[0X001F]=x.j;N[32]=nil;if not t[32284]then z=-0X43F+(x.Cs((x.vs(t[0X47F2],x.O[0B11],x.O[0X5]))+t[26316]>t[15217]and t[9690]or t[0X20A7],(t[0X1F_f4])));(t)[0X7e1c_]=z;else z=(t[0X7E1C]);end;return z;end,W=function(x,t,z,N)(t)[27]=0X1;(t)[28]=select;if not z[0x3B71]then N=(0X1Cfdb8__4B+((x.Bs(z[28998],(z[0X1f__F4])))+z[21982]-z[0X1D1F]-x.O[0x2__]));z[15217]=N;else N=(z[15217]);end;return N;end,Es=function(x,x)(x[1])[0X0017]=nil;end,pm=function(x,x,t,z,N)N=(73);x[0x1][0x10][t+2]=z;return N;end,q=function(x,x,t)x=(t[0X55De]);return x;end,Z=function(x,t,z,N)z[0B001101]=(function(v,e,q)local g=({z});if not(q>e)then else return;end;local z=(e-q+0X1);if z>=8 then return v[q],v[q+0b1],v[q+0X2],v[q+0x3],v[q+4],v[q+0B101],v[q+0B110],v[q+0x07],g[0X1][0Xd](v,e,q+8);elseif z>=0B111 then return v[q],v[q+0B1],v[q+0X2],v[q+3],v[q+4],v[q+0B101],v[q+0X6],g[0x1][0xd](v,e,q+0X7);elseif z>=6 then return v[q],v[q+0B1],v[q+0X2],v[q+0B11_],v[q+0b010__0],v[q+0x5],g[0X1][0Xd](v,e,q+0x6_);elseif z>=0B1__01 then return v[q],v[q+0B1],v[q+0X2],v[q+0X3],v[q+0B100],g[0X1][0XD](v,e,q+0B101);else if z>=0X4 then return v[q],v[q+0X1],v[q+0x2],v[q+0B11],g[0X1][13](v,e,q+4);elseif z>=0X3 then return v[q],v[q+0B1],v[q+2],g[0b1][0xd](v,e,q+0X3);else if z>=0x2 then return v[q],v[q+0X1],g[0b1][13](v,e,q+0B10);else return v[q],g[0X1][0XD](v,e,q+0B1);end;end;end;end);if not(not t[8384])then N=x:o(t,N);else N=-2478072356+(x.Qs((x.fs((x.os(x.O[0x3],x.O[0X5]))))-x.O[0x6__],(t[0X43a5])));t[0x20c0]=N;end;return N;end,Fm=function(x,t,z,N)repeat local v,e=(0X5D);repeat if not(v>23)then t=x:cm(e,N,t);break;else if v~=0X18 then v=x:mm(v);continue;else e=z[0X1][0X16](z[0x1][0X1d],z[1][27],z[1][0X1B]);v=0x17;continue;end;end;until false;N*=0B10000000;(z[0x1])[27]=z[0b1][0X1b]+0X1;until e<0X80;return t,N;end,S=bit32.bor,km=function(x,x,t)(t)[7]=(x);end,bm=function(x,t)(t)[0X27]=x.i;end,vs=bit32.band,O={33542,1157478401,1040122783,2152028632,2412432526,1940958602,1997460330,553728119,251535245},Js=function(x,t,z)z=-0x3DFf0398+(x.Ns(((x.us(t[0x6a9]))>=t[31613]and t[0X1868]or t[0X3b71_])+x.O[0b11]));(t)[0x100__1]=(z);return z;end,um=function(x,t,z,N,v,e,q,g,Y,w,_,H,m,S,R,Q,E,d,M)local a;for F=0B110010__0,0X9f,0X3b do t,M,E,Y=x:om(M,F,H,g,t,Y,z,E);end;g=(H-E)/0x8;(e)[w]=(M);d=(z-t)/8;v=(0XCE);for z=0X0067__,216,0x71 do if z>0b1100111 then Q[w]=m;else if z<0Xd8 then(N)[w]=g;_[w]=d;continue;end;end;end;if E==0x0 then if not(R[0x1][0X001a])then(S)[w]=R[1][0B1__00000__][g];else _,m=nil;m,_=x:fm(R,m,g,_,q);x:Pm(m,w,_);end;elseif E==0X7 then N[w]=(g);elseif E==1 then(N)[w]=w+g;else if E==0B100 then x:Bm(w,N,g);else if E~=0X2 then else e=(#R[1][0B10000]);if v~=206 then else H=(0B1010000);repeat a,H=x:Nm(R,e,w,H,g,S);if a==59581 then continue;else if a==0X002156 then break;end;end;until false;end;end;end;end;return M,E,t,Y,d,v;end,Vm=function(x,x,t)t=#x;return t;end,b=setmetatable,v=function(x,t,z,N)z[0X008]=nil;z[0X9]=(nil);N=(68);repeat if N~=0B10001__00_ then z[0X8]=x.b;z[0x009]=4503599627370496;break;else(z)[7]=x.D;if not t[0X5__5dE]then N=x:d(N,t);else N=x:q(N,t);end;end;until false;z[10]=x.A;(z)[0b1011]=(nil);(z)[0Xc]=(nil);return N;end,Lm=function(x,t,z,N,v)local e;if v<65 then x:Om(N,t);return 21499,N,v,z;else if not(v>0B10__1100)then else v,e,N,z=x:tm(N,v,z,t);if e~=nil then return{x.G(e)},N,v,z;end;end;end;return nil,N,v,z;end,Em=function(x,x,t,z,N)x=0B10__00111;N=t[1][35](z);return x,N;end,C=function(x,x,t)x=t[0X004_Ac3];return x;end,Cs=bit32.rrotate,Ss=function(x,t,z,N,v,e)v[0B10__1011]=(nil);(v)[0b10_1100]=(nil);e=0X021;repeat if e>0X0_C then v[0X29]=function()local q,g={v};local Y=q[0X1][0X28]();if not(Y>=q[0B1][0b1001])then else g=x:zm(Y,q);return x.G(g);end;return Y;end;if not(not z[15315])then e=x:im(e,z);else e=0X13+((x.os((x.us(z[0X66Cc]>x.O[5]and x.O[0x3]or x.O[9])),z[0X2144]))-z[715]);(z)[15315]=(e);end;else if not(e<0X21)then else x:Tm(v);x:hm();break;end;end;until false;(v)[0X2D]=(function(z,q,g)local Y={v,v[2],v[0xa]};local w=(z[0X3]);local _,H,m,S,R,Q,E,d=z[0X6],z[0B111],z[0X9],z[0X5],z[0B100__0_],z[0XB],z[0x4],(z[0B10]);g=nil;g=function(...)local M,a=Y[0X1][0X23](w),0X1;local w,F=Y[1][0X2B](...);local p,b,J,W,C,V,A,y,T=0X1,0X00,0B1,(Y[1][0x01F]());local f,l,G,X=Y[0x1][3](function()repeat local c=(S[J]);if c>=0B1__11101 then if c>=91 then if c>=106 then if c<0x7_2 then if c>=110 then if c>=0X70 then if c~=113 then(M)[E[J]]=S;else(M)[E[J]]=M[m[J]];end;else if c==0X006f then M[E[J]][Q[J]]=M[m[J]];else local i=m[J];M[i]=M[i](M[i+0x1]);p=i;end;end;else if c<108 then if c~=0x6B then if M[E[J]]==M[m[J]]then J=(H[J]);end;else if not(V)then else for i,K in V do if not(i>=0B1)then else(K)[0X2]=K;K[0B11]=(M[i]);(K)[1]=0b11;V[i]=nil;end;end;end;return true,H[J],0X0__;end;else if c==0b11__01101 then(M)[m[J]]=({});else M[H[J]]=(M[E[J]][d[J]]);end;end;end;else if c<0B1110110 then if c>=0b1110100 then if c~=0x75__ then local i=E[J];p=(i+H[J]-0X1);(M[i])(Y[1][0X13](i+0B1,M,p));p=i-0x1;else M[H[J]]=M[E[J]]%M[m[J]];end;else if c~=0X7__3 then if d[J]<M[H[J]]then J=(E[J]);end;else y=({[0x5]=T,[0X2]=A,[3]=C,[1]=y});local i=(E[J]);T=M[i+0B10__]+0X0;A=(M[i+1]+0B0__);C=(M[i]-T);J=(H[J]);end;end;else if not(c<0x78)then if c==0X79 then local i,K=E[J],H[J];p=i+K-0B1;if not(V)then else for D,u in V do if not(D>=1)then else(u)[0X2]=(u);u[3]=M[D];u[0B1]=0X3;(V)[D]=nil;end;end;end;return true,i,K;else M[m[J]]=M[H[J]]*R[J];end;else if c==0b1110111 then(M)[m[J]]=W[R[J]];else local i,K,D,u,P=(32);while true do if i>0B100000 then D=(4503599627370495);i=(-373+(Y[0x1_][37][0Xa]((i==i and c or i)+i+c,i,i)));elseif i<0x20 then u*=D;break;elseif i<0x52 and i>9 then K=-2.680487927E9;u=0X0;i=-4294967213+((Y[1][0B100101][9](c-i+i))+c);end;end;D=Y[0X1][0B100101];local s,I;i=0x3d;while true do if i==0B111101 then I=(14);D=D[I];I=(Y[0B1][0x025]);i=(52+((Y[0X1][0x25][0Xa](i+c,c,c))-c-i));continue;elseif i~=0B001111000 then else P=0X6;break;end;end;I=I[P];local o;P=Y[0X1][0x25];i=0X00F;while true do if i<34 and i>0Xf then o=0B1011;break;elseif i>25 then P=P[s];s=Y[1][37];i=(-0B01011101+((Y[0X1][0b100101][9](c+i+i))==i and c or c));elseif not(i<0X19)then else s=(0X0_0e);i=(0X9+(Y[0x1][0X25][0b1__11](c-i-i+i)));continue;end;end;s=(s[o]);o=(c);s=s(o);o=(S[J]);s=s<=o;if not(s)then else s=c;end;i=(0B1001001);while true do if i>0b10100 then if not(not s)then else s=(S[J]);end;i=(-4294967275+(Y[0X1_][37][8]((Y[0X1][0X25][9]((Y[0B1][0X25][15](c-c,(0X9))))),c,c)));else o=S[J];break;end;end;s-=o;o=S[J];i=0B0_1001001;while true do if i==0x49 then s-=o;i=0B1110000+((Y[0X1][0X25][0xC](i+c,c))-i-i);elseif i==0X1_4 then o=(0Xd);break;end;end;P=P(s,o);i=0B11_001;while true do if i~=0x24 then s=(0b0);i=(0XB3+((Y[0X1][0X25][0b1110__](c-c,(i)))-c-i));continue;else I=I(P,s);break;end;end;P=(c);I-=P;i=0X35;while true do if i==53 then P=Y[0b1][0B100101__];i=-0X66+((i-i<i and i or i)-i<i and c or i);continue;elseif i==0X10 then s=(16);i=-0B1010111+(((Y[0X1][37][0xD](i,(i)))-c<=c and c or i)+c);continue;elseif i~=0X00__2F_ then else P=(P[s]);break;end;end;i=(0xd);while true do if i<=13 then if i==8 then o='\u{0F}\0\x00\0\u{000}\x00\u{00}\0';P=P(s,o);i=(0B111111+((Y[1][0x25][0xd]((Y[0X1][0X25][0B1100](i+c,i)),(i)))<=i and c or i));continue;else s='\<i8';i=(0X8+(((Y[0x1][0X25][9]((Y[0x1][0b0100_101][7](i))))==i and i or c)-c));continue;end;else if i~=0B1000111 then K+=u;break;else D=D(I,P);u+=D;i=122+(Y[0X1][0X25][0Xf]((Y[0B1][0B100101][0X6]((Y[0B1][0B1001_0_1][15](c~=i and i or i,(0B1__01))),(0X8))),(0B10101)));end;end;end;(S)[J]=K;K=M;u=(m[J]);D=Q[J];i=0X028;while true do if i==40 then I=M;i=0B1100111_+(Y[0B001][0x25][0Xe]((Y[0X1][0x25][0Xd]((Y[0B1][0X25][7]((Y[1][0B100__101][11](i)))),(12))),(0x01d)));continue;elseif i==0X67 then P=E[J];I=I[P];D+=I;i=(-0X007__4+((Y[1][37][7]((i>i and c or i)+c))+c));elseif i~=26 then else(K)[u]=(D);break;end;end;end;end;end;end;else if not(c>=98)then if not(c>=0b1011110)then if not(c>=0B101110_0)then M[E[J]]=M[m[J]]==Q[J];else if c~=0X5D then local i,K,D=m[J],w-b-0X1,(0B0);if K<0X000 then K=(-1);end;for w=i,i+K do M[w]=(F[a+D]);D+=0X1;end;p=i+K;else(M)[E[J]]=Q[J];end;end;else if not(c>=0B1100000)then if c==0b1011111 then local w=H[J];local i=(M[w]);local K=E[J];(Y[2])(M,w+1,p,K+0X1,i);else local w=E[J];local i,K,D=C();if i then(M)[w+0B001]=K;(M)[w+0b0010]=(D);J=m[J];end;end;else if c==97 then local w,i,K,D,u,P,s=(21);while true do if w==0x15 then i=0B10001;w=(120+((Y[0B1][0b100101][0B1111__](w<H[J]and w or H[J],H[J]))-w+H[J]));elseif w==0X70 then D=0x0;w=(0Xf+(Y[0X1][0B10010__1][7](w-H[J]-w-H[J])));elseif w==0Xf then u=4503599627370495;w=(0X5+(Y[1][0B10__0101][0X8]((Y[0x1][0b00100101][0B1000]((Y[0X1][0B100101][0b1100](w,c,c)),w,w))+w,H[J])));elseif w==0X22 then D*=u;w=25+(Y[1][0B100101][0X7]((Y[0X1][0B100101][0X9_]((Y[0X1][0X25][0XF](w,H[J]))))-c));continue;elseif w==0x19 then u=(Y[0X1][0X25]);w=(-2+((((Y[0B1][0X25][0xC_](w))<=w and w or w)==c and w or w)+H[J]));elseif w==0B100100 then P=15;break;end;end;w=40;while true do if w==40 then u=u[P];w=(-0X7b+((Y[0X1][0X25][7]((Y[0X1][0B01__00101][0XF](w,H[J]))))+c+c));elseif w==103 then P=Y[0x1][0b100101];w=0B11011+((Y[0x1][37][0B111](w-H[J]))-H[J]-H[J]);continue;elseif w==0X1A then s=0B1000;w=-0X001fcf+((Y[0X001][0b100101][0XE]((Y[0x1__][0X25][11](w)),H[J]))-c+c);continue;elseif w==49 then P=(P[s]);break;end;end;s=(c);local I=H[J];s+=I;w=0X7e;while true do if w<0X7__e then K=(H[J]);break;elseif w>0B01000101 then I=H[J];w=-49070+((Y[0X1][0X25_][0Xe]((Y[1][0X25][7]((Y[0B1][0X25][0B0011_01](w,H[J])))),H[J]))-H[J]);continue;end;end;P=P(s,I,K);s=(H[J]);P+=s;s=(H[J]);P+=s;s=(H[J]);u=u(P,s);P=(H[J]);u+=P;w=0X4c__;while true do if not(w>=0B100__1100)then P=H[J];break;else P=(S[J]);u+=P;w=-4294967364+((Y[0B1][37][0X09]((Y[1][0B100101][0X8](w,c))))+c+w);continue;end;end;u=(u<P);w=0X1A;while true do if w<0X1A then i+=D;break;elseif w>0B1011 and w<0B110001 then if u then u=(S[J]);end;w=-8655+(Y[0X1][37][0XD]((c<c and H[J]or w)+c+H[J],(w)));continue;elseif w>0x1A and w<92 then if not u then u=S[J];end;w=-0X2Ff__FFA4+(Y[1][37][0XD]((Y[0x1][37][0X9](c-c))+c,H[J]));elseif w>0X31 then D+=u;w=-0xB2_+(((Y[0x1][0B100101_][13](w==w and c or c,H[J]))<=w and w or w)+c);end;end;S[J]=(i);w=(90);while true do if w==0x5a then i=d[J];w=0b1110001+(Y[1][0B100101][0xe]((Y[0x1][37][0Xd]((Y[1][37][0Xd](c,H[J]))==H[J]and w or w,H[J])),H[J]));continue;elseif w==0X71 then D=(M);w=(-0X44+(Y[1][0x25][0XC](w+H[J]+H[J]+w,c)));continue;elseif w==0B011100 then u=(H[J]);w=(0X3E+((w-w~=w and H[J]or c)-w+w));continue;elseif w~=0B1001011 then else D=(D[u]);break;end;end;w=(0X7D);while true do if w~=0B1111101 then if i then I=E[J];J=(I);end;break;else i=(i<D);w=(84+(((Y[0x1_][37][0X7__](w))-w~=w and c or c)-w));continue;end;end;else M[m[J]]=not M[H[J]];end;end;end;else if not(c>=0X66)then if not(c>=0X64)then if c~=99 then p=m[J];M[p]=M[p]();else(M)[H[J]]=m;end;else if c~=0X65 then J=(H[J]);else(M)[E[J]]=(M[m[J]]<M[H[J]]);end;end;else if c<0X68__ then if c~=0B0011001_11 then p=E[J];(M[p])();p-=0X1;else M[H[J]]=M[m[J]]^M[E[J]];end;else if c~=0X69 then if not(not(Q[J]<M[m[J]]))then else J=(E[J]);end;else M[m[J]]=M;end;end;end;end;end;else if c>=0X4_c then if not(c>=0X53)then if c>=0X4F then if not(c<0X51)then if c~=82 then local w,i,K,D,u,P,s=0x6,0X70__;while true do if i<0B1_110000 and i>0B1111_ then s=(0x8);break;elseif i>0X22 then K=0B0;i=(-603979768+((Y[1][0B100101][13]((Y[1][0X25][7]((Y[0X1__][0X25][14](c,H[J])))),H[J]))+H[J]));elseif i<0X22 then P=4503599627370495;K*=P;P=(Y[0x01][0X25]);i=-0X2bCf+((Y[0b1][0x25][0X0E]((Y[0B01][0X25_][10](i,c,i))-H[J],H[J]))-i);continue;end;end;i=(0X2f);while true do if i==0B101111__ then P=(P[s]);i=(-4294967175+(Y[1][37][0X9]((Y[0X1][0X25][0x9]((Y[0x1][0X25][9](i+H[J])))))));elseif i==0B1000010 then s=(Y[0B1][37]);i=50+((Y[1][0B1001__01][0Xf]((Y[1][37][0xF](c,H[J]))-i,H[J]))~=H[J]and H[J]or i);elseif i==57 then D=(0Xa);i=(0x4+(((Y[0X1][0B1001_01][0B01100](c,H[J],i))+H[J]==i and H[J]or H[J])+i));elseif i==68 then s=s[D];D=(Y[1][0B100101_]);break;end;end;i=0X6e;while true do if i>110 then w=S[J];i=(-4294965994+((Y[0x1][0X25][0XE]((Y[1][0X25][0X9](H[J])),H[J]))-i-c));continue;elseif i<0B1101110 then u=H[J];break;elseif not(i>0X50 and i<0b11__10101__)then else D=(D[w]);i=(-0X05DFfFEAE+(Y[0X1][37][0X9]((Y[0X001][37][0XD_](c,H[J]))+i+i)));continue;end;end;local I=-0b11010111;i=0X2D;while true do if i==0X2d then D=D(w,u);w=H[J];i=0Xe+(Y[0B1][0X25][0B100_0]((Y[0X1][0x25][0B111](i+i-i))));continue;elseif i==40 then D=(D<=w);i=(0x5f+(Y[0X1][0X025_][0b1100]((i>=H[J]and c or i)+H[J]+H[J],i)));continue;elseif i==103 then if D then D=c;end;i=(0X81_+((Y[0B1][0B10010__1][0Xf]((Y[0X1][0x25][0B1110](i-i,H[J])),H[J]))-i));continue;elseif i==0x001a then if not D then D=(c);end;i=(0x17+(Y[0B1][0X25][0Xa]((Y[0X1][37][10]((Y[0X1][37][0XB](i+i)),i,i)),i,i)));continue;elseif i~=0X31 then else w=(c);break;end;end;i=37;while true do if i==0X25 then D=(D~=w);i=-2717908891+((Y[0x1][37][0B1101](c-c==i and i or c,H[J]))-i);elseif i==0X40 then if not(D)then else D=S[J];end;i=0Xfa+((Y[1][37][0x00C](H[J]))-i-c-c);continue;elseif i~=0b11111 then else if not(not D)then else D=(c);end;break;end;end;w=(c);D+=w;w=c;i=(0B1111);while true do if i==0B1111 then s=s(D,w);i=(0B1101011+(i-H[J]-i-c+i));elseif i==0x22 then D=S[J];break;end;end;s+=D;i=(36);while true do if i<0X3_3 then D=(S[J]);i=(44+((Y[1][0b100101][0B1101]((Y[0x1][0b0100101][0B111__1](c,H[J]))-H[J],H[J]))==c and H[J]or H[J]));continue;elseif not(i>36)then else w=(S[J]);P=P(s,D,w);break;end;end;s=S[J];P-=s;K+=P;I+=K;(S)[J]=(I);i=(0X40);while true do if i>64 then I=I[K];break;elseif i<0b1000000 then K=(H[J]);i=(0B1111001_+((Y[1][37][0X8](i+H[J]-H[J],i))-H[J]));continue;elseif i>0x1F and i<0X72 then I=(M);i=-40+(Y[0X1][0B100101][0Xa](((i<=i and i or i)>H[J]and c or i)<H[J]and c or i,H[J]));continue;end;end;K=R[J];I=(I~=K);if I then i=nil;u=0X75;while true do if u==0X75 then u=80;i=(m[J]);continue;elseif u~=0X50 then else J=(i);break;end;end;end;else local w=q[E[J]];M[m[J]]=w[2][w[0B1]][M[H[J]]];end;else if c==0X50 then(M)[H[J]]=d[J]-R[J];else M[E[J]]=M[m[J]]+M[H[J]];end;end;else if not(c>=0X4d)then M[E[J]]=#M[H[J]];else if c==0B1001110 then local w=(H[J]);(M)[w]=M[w](M[w+0B1],M[w+0B010]);p=w;else M[E[J]]=(d[J]+Q[J]);end;end;end;else if c>=87 then if c<0X59 then if c==0B1__011000 then local w=m[J];local i=(M[w]);local K=(E[J]);Y[0X2](M,w+0X1,w+H[J],K+0B1,i);else local w,i=m[J],M[E[J]];M[w+1]=i;(M)[w]=i[Q[J]];end;else if c~=0b1011010 then else for w=0X1,H[J]do(M)[w]=(F[w]);end;end;end;else if c<0x55 then if c==0X54 then(q[H[J]])[d[J]]=(R[J]);else(M)[m[J]]=(Y[0B1][0B100101][E[J]]);end;else if c==0x56 then M[H[J]]=d[J]-M[E[J]];else(M)[m[J]]=R[J]~=Q[J];end;end;end;end;else if not(c<0b10__001_00__)then if c>=0B1001000 then if c>=0B10_01010 then if c==0X4B then M[E[J]]=(M[H[J]]<=M[m[J]]);else M[H[J]]=(Y[0X3](M[E[J]],d[J]));end;else if c~=0B1001001 then M[H[J]][M[E[J]]]=(d[J]);else local w=E[J];(M[w])(M[w+0X1]);p=(w-0x001);end;end;else if not(c>=0X46)then if c==0X45 then local w=q[m[J]];w[0B10][w[0B1]]=Q[J];else local w=E[J];if not(V)then else for i,K in V do if i>=w then K[0X2]=(K);(K)[0X3]=M[i];(K)[0B1]=0b11;(V)[i]=(nil);end;end;end;end;else if c~=0X47__ then M[E[J]]=nil;else(M)[E[J]]=(d[J]*M[H[J]]);end;end;end;else if not(c>=0X4__0)then if c>=62 then if c==63 then local w=false;C+=T;if T<=0 then w=(C>=A);else w=C<=A;end;if w then M[E[J]+0X3]=(C);J=(H[J]);end;else local w=(q[E[J]]);(w[0x2][w[1]])[M[m[J]]]=(M[H[J]]);end;else(M)[E[J]]=(M[H[J]][M[m[J]]]);end;else if c<66 then if c==0X41 then M[E[J]]=(F[a]);else local w=H[J];(M[w])(M[w+0X1],M[w+0X2]);p=w-0X1;end;else if c==67 then(M)[H[J]]=M[E[J]]*M[m[J]];else(M)[m[J]]=M[H[J]]-M[E[J]];end;end;end;end;end;end;elseif not(c<0b11110)then if not(c<0X2_d)then if not(c<0b11010__1)then if c<57 then if not(c>=0B110111)then if c~=54 then M[m[J]]=M[H[J]]>R[J];else M[m[J]]=(Y[0B11](M[H[J]],M[E[J]]));end;else if c~=0x38 then(q[E[J]])[M[H[J]]]=M[m[J]];else if not(not(M[H[J]]<=M[E[J]]))then else J=m[J];end;end;end;else if c<0X3B then if c~=0X3a then if not M[E[J]]then J=(H[J]);end;else local w=m[J];p=(w+H[J]-0x1);M[w]=M[w](Y[0B1][19](w+0x1,M,p));p=w;end;else if c~=60 then M[H[J]]=(d[J]..M[E[J]]);else local w=E[J];M[w]=M[w](Y[1][0B10011](w+0X1,M,p));p=w;end;end;end;else if c>=0X31 then if c>=0X33 then if c==0X34 then(M)[E[J]]=(d[J]^M[H[J]]);else if not(M[E[J]]<M[m[J]])then J=(H[J]);end;end;else if c~=0X032 then if not(V)then else for w,i in V do if w>=0X1 then(i)[0b10]=i;i[0B11]=(M[w]);(i)[0X1]=0B11;(V)[w]=(nil);end;end;end;local w=(E[J]);return false,w,w;else local w=(E[J]);M[w](Y[1][0x13](w+0X1,M,p));p=(w-0x1);end;end;else if c<0B1__01_111 then if c==0b101110 then if not(V)then else for w,i in V do if not(w>=1)then else i[0x2]=i;(i)[0B11]=M[w];(i)[0X001]=0X3;(V)[w]=nil;end;end;end;return;else M[H[J]]=(H);end;else if c~=0X30 then if not(M[m[J]])then else J=(H[J]);end;else if not(M[H[J]]<R[J])then else J=m[J];end;end;end;end;end;else if not(c<0X25)then if c>=0X29 then if not(c>=0x2b)then if c==42 then if M[H[J]]==M[E[J]]then else J=m[J];end;else M[E[J]]=d[J]<=Q[J];end;else if c==0X2c then if not(V)then else for w,i in V do if w>=0X1 then(i)[0x2]=(i);(i)[3]=M[w];(i)[1]=(0B1_1);(V)[w]=(nil);end;end;end;local w=(E[J]);p=(w+0x001);return true,w,0X2;else(Y[0x1][37])[m[J]]=(M[E[J]]);end;end;else if c<0x27 then if c==0X26 then C=y[0B11];A=(y[0B10]);T=(y[5]);y=y[0X1];else M[H[J]]=M[E[J]]/M[m[J]];end;else if c==0x28 then if not(V)then else for w,i in V do if w>=0x1 then(i)[0X2]=i;(i)[3]=M[w];(i)[0X1]=0X3;V[w]=(nil);end;end;end;return false,E[J],p;else if M[E[J]]~=Q[J]then else J=m[J];end;end;end;end;else if not(c<0B100001)then if c<35 then if c~=0X22 then M[m[J]][M[E[J]]]=M[H[J]];else local w,i,K,D,u,P=(0X32);while true do if w==0X0032 then u=(-0xcFFcC);w=-4294967205+((Y[0B1][0b100101][0X8]((Y[1][0B100__101][0X9](H[J])),w,H[J]))+H[J]+w);elseif w==105 then i=(0);P=4503599627370495;break;end;end;local s;w=(0X1);while true do if w==0x1 then i*=P;w=(122+((w<=w and H[J]or w)-H[J]-H[J]+w));continue;elseif w==0x6C then P=Y[1][0x25];w=-17+(((Y[0B1][37][0B1010](w))>c and w or w)-w+w);continue;elseif w==91 then K=(0X6);w=0X6F+((Y[0B1][0B0100101][11](w))+w+w>w and H[J]or w);elseif w==0B1111__110 then P=(P[K]);w=0xb0+((w+w>=w and c or w)-H[J]-w);elseif w==69 then K=(Y[0x1][37]);s=(0x7);break;end;end;w=(0x70);while true do if w==0B1110000 then K=K[s];w=(-112+(((Y[0B1][37][7](w-w))~=c and H[J]or w)+w));elseif w==0x00f then s=(H[J]);w=(6+((Y[0X1][0X25][7]((Y[0x1][0x25][6]((Y[0X1][0x25][12](w,w)),(w)))))+w));continue;elseif w==0b100010 then D=c;break;end;end;w=(86);while true do if not(w>0b11110_1)then D=(H[J]);w=59+((Y[0X1][37][0X0_0a]((w~=w and H[J]or c)+w,w,w))<=H[J]and w or w);else if not(w>0x5__6)then s-=D;w=(0X39+(Y[0x1][0x25][11]((Y[0X1][0b10_0101][0X7](w>H[J]and c or w))+w)));continue;else s=s==D;break;end;end;end;w=0X31;while true do if w>0X31 then s+=D;break;elseif not(w<92)then else if s then s=(H[J]);end;if not s then s=(S[J]);end;D=(H[J]);w=0X3a+((Y[0X1__][0X25][0XD](H[J]+c-H[J],H[J]))~=w and c or c);end;end;K=K(s);s=H[J];w=(0X58);while true do if w==0B10110__00 then P=P(K,s);w=-1+((c>w and w or H[J])-c-w~=c and w or H[J]);continue;elseif w==0X057 then K=(c);P+=K;w=-0b11_01+((w-c==w and c or w)-w+w);elseif w==0B100_1010 then K=c;w=(-4294967234+(Y[0B01][0x25][0x9]((Y[0B1__][0B100101][0X7]((Y[1][0X25][0B111](H[J]))>c and H[J]or H[J])))));continue;elseif w==0B100001 then P-=K;w=0X1A__+((Y[0X1][0B10__0101][0B1011](c-w~=c and c or w))-H[J]);continue;elseif w==0X0C then K=(H[J]);w=(0B101101__1+(Y[0X1][0x25][11]((Y[0X1][0X25][0XB]((Y[0X1][37][0X8](w-w,H[J])))))));elseif w~=0X7b then else P+=K;break;end;end;i+=P;w=0X1e;while true do if w>0X32 then if w>0X5f then if w==0x69_ then K=(E[J]);w=(5+(Y[0b1][0x25__][0Xa]((Y[1][0B0100101][0XC](w))-w==c and w or H[J],H[J],c)));else S[J]=(u);w=(-0x65+((Y[0X1][0x25][10]((Y[0x1][0B100101][0B1101](H[J],H[J]))-H[J],w,c))~=c and w or w));end;else if w~=0x5F then P=P[K];w=-0B110001+((w<H[J]and H[J]or H[J])-w+w==w and w or w);continue;else i=H[J];w=0X19+(Y[0B1][0X025][0X7__]((w+w>w and c or w)+c));end;end;else if not(w>0B11)then if w<0x003 then u=M;w=61+(Y[0B1][0X025][0Xc](((Y[0X1][0X25][13](H[J],(w)))==w and w or c)-w));continue;else K=M;break;end;else if w~=0x1e then P=M;w=(-4294967190+(Y[1][37][0X6]((w>c and c or H[J])+H[J]-w,H[J])));continue;else u+=i;w=(-0x7dFF9B+(Y[0x1][0X25][0XD]((Y[0B1__][0x25][0B1010](w+H[J]-w,c,w)),H[J])));continue;end;end;end;end;s=m[J];w=(0B11_1000);while true do if not(w<0X38)then K=(K[s]);P*=K;w=-1966025+(Y[0X1][0b1__00101][13]((Y[1][0B100_101__][10](w-c-H[J],H[J])),H[J]));else u[i]=P;break;end;end;end;else if c==0x24 then if V then for w,S in V do if not(w>=0b1)then else S[0B10]=(S);S[3]=M[w];S[1]=(0X3);V[w]=nil;end;end;end;local w=H[J];return false,w,w+E[J]-0B10;else(M)[m[J]]=(M[H[J]]+R[J]);end;end;else if not(c<0x001f)then if c~=0X20 then(M[H[J]])[d[J]]=R[J];else M[H[J]]=(R[J]%d[J]);end;else if not(V)then else for w,S in V do if w>=0B1_ then(S)[2]=(S);S[0x3__]=(M[w]);(S)[1]=0X3;(V)[w]=nil;end;end;end;return true,E[J],1;end;end;end;end;else if c<15 then if c<0x7 then if not(c>=0x3)then if not(c<0x1)then if c~=2 then local w=q[E[J]];w[0B10_][w[0x1]]=M[H[J]];else M[m[J]]=(M[H[J]]%R[J]);end;else if not(not(M[H[J]]<=R[J]))then else J=m[J];end;end;else if not(c>=0B101_)then if c~=0X4 then M[E[J]]=M[H[J]]/d[J];else local w=Q[J];local S=w[0X1];local i=#S;local K=i>0X0 and{};local D=Y[0B01][0x2d](w,K);(Y[1][0B1111])(D,W);M[E[J]]=(D);if not(K)then else for W=0X1,i do D=S[W];w=(D[0X2]);local S=(D[0X1]);if w==0X0 then if not V then V={};end;local i=(V[S]);if not i then i=({[0B1]=S,[0B10]=M});(V)[S]=i;end;(K)[W-1]=(i);elseif w==0B1 then K[W-0b1]=M[S];else K[W-0x1]=q[S];end;end;end;end;else if c~=0x6 then(M)[H[J]]=M[m[J]]~=R[J];else(M)[E[J]]=(-M[H[J]]);end;end;end;else if c<11 then if not(c<9)then if c==0B1010 then(M)[m[J]]=R[J]>Q[J];else M[m[J]]=(Q[J]+M[E[J]]);end;else if c==0X8 then(M)[E[J]]=(M[m[J]]..M[H[J]]);else(M)[H[J]]=Y[1][0B100011](E[J]);end;end;else if c<0B1101 then if c~=0X0c then(M)[m[J]]=(E);else M[H[J]]=(M[m[J]]~=M[E[J]]);end;else if c==0Xe then local w,S=E[J],m[J];if S~=0X0 then p=w+S-1;end;local W,i,K=(H[J]);if S==0B1 then i,K=Y[0X1][0X2B](M[w]());else i,K=Y[0X1][0X002B](M[w](Y[0X1][19](w+1,M,p)));end;if W==0X1 then p=(w-0B1);else if W~=0 then i=w+W-0X2;p=(i+1);else i=i+w-0B1;p=(i);end;S=0;for W=w,i do S+=1;M[W]=K[S];end;end;else if not(not(d[J]<=M[H[J]]))then else J=E[J];end;end;end;end;end;else if not(c>=0X16)then if not(c<0X0012)then if c>=20 then if c~=0B10101 then(M)[H[J]]=(M[m[J]]-R[J]);else local w=(q[m[J]]);(M)[E[J]]=(w[0X2][w[0B1]]);end;else if c~=19 then if not(not(M[H[J]]<d[J]))then else J=(E[J]);end;else(M)[m[J]]=M[E[J]]..Q[J];end;end;else if c<0X10 then M[H[J]]=(q[m[J]][R[J]]);else if c==0x11 then(M)[m[J]]=(M[E[J]]>=M[H[J]]);else for w=H[J],E[J]do M[w]=nil;end;end;end;end;else if not(c>=26)then if c>=0B11000_ then if c==0b11001__ then(q[H[J]])[d[J]]=M[E[J]];else(M)[E[J]]=(q[H[J]]);end;else if c==0X17 then local w=(q[E[J]]);M[m[J]]=w[2][w[1]][Q[J]];else M[E[J]]=(q[m[J]][M[H[J]]]);end;end;else if not(c<0B1110__0)then if c==0X1D then b=E[J];for q=0B1,b do M[q]=(F[q]);end;a=b+0X1;else if M[H[J]]~=R[J]then J=(m[J]);end;end;else if c~=0X1b then M[m[J]]=(z);else y={[0X5]=T,[0X2]=A,[0X3]=C,[0X1]=y};p=(m[J]);local z=Y[1][0x27](function(...)Y[0B1][0X2c]();for q,w in...do(Y[0x1][0X2C])(true,q,w);end;end);z(M[p],M[p+1],M[p+0x2]);C=(z);J=(E[J]);end;end;end;end;end;end;J+=1;until false;end);if not(f)then if V then for z,q in V do if not(z>=0B1)then else q[0X2]=q;(q)[0X3]=(M[z]);(q)[0X1]=0X3_;(V)[z]=(nil);end;end;end;if Y[1][0x012](l)=='string'then if not(Y[0X1__][20](l,":\u{28}%\u{0064}\z\43)\91\58\r\n]"))then Y[1][24](l,0X0);else(Y[0b1][0X18])("\76ur\x61\z p\z\104\32\83c\114\z \u{69}p\z\116:"..(_[J]or'\40in\116e\114n\97l\41').."\z  : "..Y[0X1][0X7](l),0X0);end;else(Y[1][24])(l,0);end;else if l then if X==0b1 then return M[G]();else return M[G](Y[1][0X13](G+0X1,M,p));end;elseif G then return Y[1][0B10011](G,M,X);end;end;end;return g;end);(v)[0B1011_10]=function()local z,q,g,Y,w,_,H,m,S,R,Q,E,d={v};Q,S,q,_,R,d,Y,g,w,m,E,H=x:Gm(R,m,S,H,w,Q,_,E,Y,g,z,d);if q~=nil then return x.G(q);end;E=x:ns(d,z,m,H,g,E,w,Y,_,Q,R,S);q=x:as(S);return x.G(q);end;N=function()local z,q,g,Y,w=({v,v[0X1]});w,Y,q,g=x:Ds(z,g,w,Y);if q~=nil then return x.G(q);end;local v;q,v=x:js(w,g,v,z);if q~=nil then return x.G(q);end;Y,q,v=x:Us(v,Y,w,z);return x.G(q);end;t=nil;return e,t,N;end,Gm=function(x,t,z,N,v,e,q,g,Y,w,_,H,m)_=nil;w=nil;e=(nil);g=(nil);v=nil;z=nil;N=nil;t=(nil);q=nil;Y=nil;m=nil;local S=0XD;repeat if S==13 then S=(8);_=H[0X1][40]()-0X16_81c;else if S==8 then S,w=x:Em(S,H,_,w);continue;elseif S==0x47 then S=0X7A;e=H[0X1][35](_);elseif S==0x07A then S=0B10001;g=H[0X1][0B1000_11](_);elseif S==17 then v,S=x:Um(v,_,S,H);continue;elseif S==0x3c then z,S=x:Sm(z,S);else if S==0X6b__ then S,N,t=x:lm(N,H,_,S,t);continue;else if S==0X4E then q=H[0X1][0B100011](_);Y=(1);m=H[0X1][35](_);break;end;end;end;end;until false;if H[1][0X22]~=N then else return q,N,{},g,t,m,w,_,e,z,Y,v;end;return q,N,nil,g,t,m,w,_,e,z,Y,v;end,nm=function(x,t,z,N)(z)[0B100100]=function()local v,e=({z});e=x:rm(v);return x.G(e);end;if not t[0X7535]then(t)[0X510]=(-4294803377+(x.Qs((t[8384]-t[7455]<t[6248]and t[0X2__cB]or t[18418])-t[0x7e_1c],(t[29627]))));t[5423]=0B100+(x.us((x.us(t[6125]~=x.O[0x4__]and t[15217]or x.O[0X5]))<=x.O[0X9]and t[0X73BB]or t[29627]));N=-6597+((x.os((x.Cs(t[0X1868]+t[0X20C0],(t[0X79AE]))),t[0X73BB]))-t[7455]);t[0x7535]=N;else N=(t[30005]);end;return N;end,im=function(x,x,t)x=t[0x3BD3];return x;end,Os=function(x,t,z,N,v)local e;for q=0x38,0x0_0B0,0X78 do t,e=x:sm(N,v,q,z,t,e);end;return t;end,Jm=function(x,x,t,z,N,v,e)e=N[0X1][0x29_]();v=(nil);t=nil;x=nil;z=(0X072__);return e,x,t,z,v;end,as=function(x,x)return{x};end,Ks=function(x,t,z,N)N[0x25][0x7]=x.fs;(N[0B100__101])[13]=x.Cs;t=0x38;while true do if t>55 then(N[0X0025])[11]=x.h;N[0X2_5][0X6]=x.E;if not z[0x1aB__7]then t=0x7c+((x.Ys(z[0X20C0]-x.O[0X2_]+z[28998],(z[0X79AE])))-z[0X1__7eD]);z[6839]=(t);else t=z[6839];end;else if not(t<56)then else(N[0X0025])[0b1001]=x.U.bnot;(N[0X25])[8]=x.A;break;end;end;end;N[0B100101][0xa]=x.S;return t;end,X=function(x,x,t,z)(t[0x005])[x]=z(x);end,R=function(x,x,t)x=t[9690];return x;end,e=nil,js=function(x,t,z,N,v)local e;if v[1][0b1110]~=v[0b1][0X2E_]then else local q=0X76;repeat e,q=x:As(v,q);if e~=nil then return{x.G(e)},N;end;until false;end;if t~=v[0x1][0x1E_]then else local q=(0X6);while true do if q==0X6 then q=45;if not(0Xd0%-41)then else return{},N;end;else if q==0X2d then v[0X1][0b00101110]=(v[1][0X16]>=0XCd);break;end;end;end;end;v[0X1][26]=(t);for q=0X1,z,1 do local g,Y,w=(0B1__100);while true do if g<0X7b then Y=(nil);g=0X7B;continue;else w=v[0X1][33]();break;end;end;if v[0X1][0X16]==z then while true do for z=0X14,0B11011010,107 do if z>0x14 then return{},N;else if not(z<0X7F)then else x:es(v);end;end;end;end;end;if not(w>0X35)then if not(w<0B110101)then Y=v[1][0X24]();else Y=v[0B1][33]()==0X1;end;else Y=x:cs(Y,w,v);end;g=(0B101111);while true do e,g=x:Fs(Y,t,v,q,g);if e==25354 then break;else if e~=nil then return{x.G(e)},N;end;end;end;end;N=nil;return nil,N;end,lm=function(x,t,z,N,v,e)v=0X4E;t={nil,x.e,nil,x.e,nil,nil,x.e,x.e,x.e,nil,x.e};e=z[0B0__1][0B100011](N);return v,t,e;end,Um=function(x,x,t,z,N)z=0X3c;x=N[0B1][0b100011](t);return x,z;end,rs=function(x,x,t,z)local N=x[1][0X28]();if not(x[0X01][0x17][N])then local v,e;for q=0b1010110,0x107_,0X3B do if q==263 then(z)[t]=(e);elseif q==0x91 then e={[1]=v-v%1,[0X2]=N%0X4};elseif q==0X56 then v=N/4;continue;else if q~=204 then else(x[0X1][23])[N]=e;continue;end;end;end;else z[t]=(x[0X1][0B10111][N]);end;end,w=function(x,x,t,z)if x>0xf then if x~=0X22 then x=(15);z=t[0b1][0X16](t[0B1][0B11101],t[0X1][0b11011],t[1][0B11011]);else return z,{z},x;end;else x=34;t[0B1][0x1b]=(t[1][0B11011]+1);return z,0Xf04B,x;end;return z,nil,x;end,u=function(x,x,t)x=t[0X1FF4];return x;end,Y=function(x,x,t)t=x[0X7146];return t;end,_=function(x,t,z)t=(-640431823+((t>t and x.O[1]or x.O[0B11__0])-x.O[0B11]+x.O[0b100]-x.O[0X5]));(z)[0X66Cc]=(t);return t;end,hm=function(x)end,om=function(x,t,z,N,v,e,q,g,Y)if z<0B10011111 then q=x:vm(v,q);else if z>100 then Y,t,e=x:Qm(Y,e,q,g,t,N,v);end;end;return e,t,Y,q;end,ls=function(x,t,z)t=(155+((((x.fs(z[0X73Bb]))<z[6248]and z[0X6a9]or x.O[0X5])==z[8384]and x.O[0X4]or z[0X4ac3])-t));(z)[0Xf16]=t;return t;end,rm=function(x,t)local z,N,v,e=(0X41_);while true do N,e,z,v=x:Lm(t,v,e,z);if N==21499 then break;else if N~=nil then return{x.G(N)};end;end;end;return{v};end,fs=bit32.countlz,Qm=function(x,x,t,z,N,v,e,q)t=(N%0X8);x=e%8;v=((q-z)/8);return x,v,t;end,wm=function(x,t,z,N,v)local e,q,g=0B1100000;while true do e,q,g=x:Hm(N,e,v,g,z,t);if q==0X11F9 then break;else if q==0X7c82 then continue;end;end;end;end,t=function(...)(...)[...]=nil;end,Xm=function(x,t,z,N,v)local e,q;for g=0X73,544,0B1010100__ do if g==0XC7 then q=x:Vm(e,q);elseif g==367 then(e)[q+0X2]=t;elseif g==451 then e[q+3]=(0X2);break;else if g==0X73 then e=(N[1][0X2_0][v]);else if g==283 then x:Wm(q,z,e);continue;end;end;end;end;end,Gs=function(x,x,t)t=x[0XF16];return t;end,vm=function(x,x,t)t=(x%0X8);return t;end,r=pcall,Am=function(x,t,z,N)(z)[0B10000__1]=nil;(z)[0X22]=(nil);z[0X23]=nil;(z)[0b100100]=(nil);(z)[0B100101]=nil;N=(0X6A);repeat if N<0X41 and N>0x2C then(z)[0X25]={};break;elseif N>0B1000__001 then N=x:H(t,N,z);continue;elseif N<62 and N>27 then(z)[0X23]=(x.z.create);if not t[31150]then N=0B1110+(((x.os(t[7455]))<t[1705]and t[0X7E1C]or t[15217])-t[15217]+t[29627]);(t)[0X79Ae]=N;else N=t[0x79Ae];end;else if N<0x6A and N>0X03e__ then(z)[0x21]=function()local v,e,q,g={z},(112);while true do g,q,e=x:w(e,v,g);if q==0xF04B then continue;else if q~=nil then return x.G(q);end;end;end;end;(z)[34]=(function()local v,e,q,g={z};for Y=0B011110__10,0B10011100,0X5 do if Y==0X7F then if v[0X1][33]==v[0B01][9]then else e=x:s(v,g,q);if e~=nil then return x.G(e);end;end;break;else if Y==0X7a then q,g=v[0X1][0X15]("<I4",v[1][29],v[0X1][27]);continue;end;end;end;end);if not t[0X2__CB]then N=(-0x103fFE_1+(x.Ns((x.Bs((x.Bs(t[6125]>t[1705]and t[0X7E1C]or t[28998],(t[0x73bb_]))),(t[28998]))),t[29627])));(t)[715]=N;else N=t[715];end;else if N<0B101100 then N=x:nm(t,z,N);continue;end;end;end;until false;(z)[0X26]=(nil);(z)[0X27_]=nil;N=(0b1011110);repeat if N>37 then z[0X26]=(function()local v,e=({z});e=x:Dm(v);if e~=nil then return x.G(e);end;end);if not t[16578]then t[0x939]=(-4294967153+(x.Ns((x.us(x.O[0X2]<x.O[0X9]and t[17317]or x.O[0X09]))-t[0X7E1__c])));(t)[0x2144]=(-4294967246+(x.Zs(t[29627]+t[8384]-t[15217]-t[0X25Da])));N=0X34+((x.vs((x.vs(t[0x55de]+t[0X20_A7],x.O[0x5])),t[0x73bB]))-t[0x79AE]);t[16578]=(N);else N=t[16578];end;continue;else if not(N<0B1011110)then else x:bm(z);break;end;end;until false;return N;end,Sm=function(x,x,t)t=(0X6B);x={};return x,t;end,Zm=function(x,x,t,z,N)if t==0x1d then t=(88);x=#N;return 0xBCac,x,t;else if t~=0X58 then else(N)[x+0X1_]=z;return 4123,x,t;end;end;return nil,x,t;end,_m=function(x,t,z,N,v)for e=0X55,335,125 do if e>210 then(z)[2]=N;elseif e>0X55 and e<335 then z[0x9__]=(v);continue;else if not(e<0XD2)then else x:km(t,z);continue;end;end;end;end,s=function(x,x,t,z)local N=(0X47__);while true do if N<0B11_1101__0 then N=(0X7A);(x[0b1])[0B11011]=(t);continue;else if not(N>0x47)then else return{z};end;end;end;return nil;end,Km=function(x,x,t,z,N)t[0X4]=(x);(t)[0b101]=(N);z=(0X65);return z;end,l=bit32.band,dm=function(x,x,t,z)t=0X29;z=x[0B001__][0X29]();return z,t;end,ds=function(x,x,t)x=t[4097];return x;end,Cm=function(x,x,t)x=(#t);return x;end,ms=function(x,x,t)x=t[0x1][0B100110]();return x;end,Ns=bit32.bor,F=string.gsub,Tm=function(x,x)x[0B101010]=(function()local t,z,N={x},(74);repeat if z==74 then z=(0X21);N=t[0X1][0X28]();else(t[0X1])[0X1b]=(t[1][0X1B]+N);break;end;until false;return t[1][0B100](t[0B1][29],t[0X1][0b11011]-N,t[0X01_][0b11011]-0B1);end);x[0B101011]=function(...)local t={x};local z=t[0x1][0X1_c]('#',...);if z==0X0 then return z,t[0X1][0Xe];end;return z,{...};end;(x)[0b1011__00]=coroutine.yield;end,qs=function(x,t,z,N,v,e,q)t[0X25][0X10]=(x.n.unpack);z=0X48;while true do if z>0b111010 then(t[37])[0xE__]=x.U.lshift;if not v[14506]then z=-2489+(x.Cs((x.vs(x.O[0B11]-v[0X6A9]~=v[18418]and v[2361]or v[6248])),(v[8180])));v[0x38aA]=(z);else z=(v[14506]);end;elseif z<72 and z>7 then q=t[45](q,t[1])(N,x.t,t[0x6],e,t[38],t[33],t[34],x.O,t[0X1E],t[0B101101__]);return{t[0x2D](q,t[0B1_])},z,q;else if not(z<0X3a)then else t[0B100101][0X00C]=x.l;if not(not v[4097])then z=x:ds(z,v);else z=x:Js(v,z);end;continue;end;end;end;return nil,z,q;end,Wm=function(x,x,t,z)(z)[x+0B1]=t;end,Hm=function(x,t,z,N,v,e,q)if z==96 then z=(63);v=#t[0b1][0X10];elseif z==0x3f then z=x:Rm(z,v,e,t);return z,31874,v;elseif z==0X12 then z=x:pm(t,v,q,z);return z,0x7c82,v;else if z==0X49 then t[0B1][0X10][v+3]=(N);return z,4601,v;end;end;return z,nil,v;end,J=function(x,t,z,N,v)t=(0B1100011);while true do if t==0B1__100011 then(N)[3]=x.r;if not v[26316]then t=x:_(t,v);else t=x:K(t,v);end;continue;elseif t==102 then N[0B100]=x.n.sub;z=x.a;if not v[29627]then t=-0X6__53+(x.vs((x.Qs((x.os(x.O[0X3]))>=x.O[8]and v[26316]or v[0X66CC],(0B100)))));(v)[0X73bb]=t;else t=v[0X73Bb];end;else if t==13 then(N)[5]=({});break;end;end;end;(N)[0x6__]=(function(...)return(...)[...];end);N[0X7]=(nil);return z,t;end,fm=function(x,t,z,N,v,e)local q;v=(t[1][0B100000][N]);z=(nil);t=0B0111__01__;while true do q,z,t=x:Zm(z,t,e,v);if q==4123 then break;else if q==0XBcAc then continue;end;end;end;return z,v;end,bs=function(x)return{};end,xm=function(x,x,t)t[0B1][18],t[0x1][45]=0b1011_0001-0B10_010011 or x,x;end,Ds=function(x,x,t,z,N)t=nil;N=(0b10);while true do if not(N>=0x79)then(x[0X1])[0x17]={};N=0B001111_0__01;else t=(x[0x1][40]()-44849);break;end;end;if x[1][0B1110__]==x[0b1][0X24]then local v=(95);while true do if v>=95 then while x[0X1][38]do return z,N,{},t;end;v=(0B0_0_110010);else x[1][0X2A],x[0X1][0X29]=0B1__000110,x[0B1][0X13];break;end;end;end;z=nil;N=(0X4C);while true do if N==0x4C then x[0x1][0X20]=x[0B1][35](t);N=0B111011;continue;else if N==59 then z=x[0X1][0X21]()~=0B0;break;end;end;end;return z,N,nil,t;end,Ys=bit32.rshift,E=bit32.lrotate,y=function(x,t,z,N)t[23]=x.e;if not(not z[0X20A7])then N=x:x(z,N);else N=(-6+(x.fs((x.fs((x.Ns((x.Ns(z[8180],x.O[2],z[7455])),z[0X7_3bb])))))));(z)[8359]=(N);end;return N;end,B=function(x,x,t)t=x[7455];return t;end,ts=function(x,x,t)if x<153 then return 32700,t;else if x>0B1001111 then t+=0x1_;return 22507,t;end;end;return nil,t;end,A=bit32.bxor,Ls=function(x,t,z,N)local v,e,q;for g=0x4F,308,0x4B do if g==79 then else if g==154 then e=N[0X1][0X22]();continue;else if g==0XE5 then q=(e/0B10);else if g~=0X130 then else if e%0X2~=0b0 then t=x:Os(t,N,z,q);else z[t]=q-q%0B1;end;break;end;end;end;end;end;for z=0X004F,0X1_04,0x4A do v,t=x:ts(z,t);if v==22507 then break;else if v==32700 then continue;end;end;end;return t;end,K=function(x,x,t)x=t[0X6_6__cC];return x;end,k=function(x,t,z,N)t={};z[0X1]={};(z)[2]=x.L;(z)[0B11]=(nil);z[4]=nil;N=(nil);(z)[0X5]=nil;return N,t;end,cm=function(x,x,t,z)z+=((x>0X7f and x-128 or x)*t);return z;end,As=function(x,t,z)local N;if z==118 then z=93;t[0X1][0X28]=0Xe6;else if z==0B10111_01 then N=x:bs();return{x.G(N)},z;end;end;return nil,z;end,p=function(x,t,z,N,v)z=0x19;while true do if z<51 and z>25 then z=x:W(t,v,z);elseif z>0B100_100 then for e=0X0,0Xff do x:X(e,t,N);end;(t)[0X1d]=(function(N)local e={t[0X19],t};N=e[1](N,'z','!!\33\33\33');return e[0x1](N,'.\u{002E}\.\46.',e[0B1_0__][0X8]({},{__index=function(N,q)local g,Y,w,_,H=e[0B10][22](q,1,5);local m=(H-0X21)+(_-0b1__0000__1)*0X55+(w-33)*7225+(Y-33)*0x95EeD+(g-33)*52200625;w=e[2][0XC](">\073\x34",m);(N)[q]=w;return w;end}));end)(t[0X4]([=[LPH}Q/D]Db7&H'FDYT2@<>peCh:cj7`u!WFE2)5B?L<Ob5lH;;ZHdtzb5t(8b5t%7b5l8!!E.)ACs)i]2$j6_z!6YC8b5tCAb5l;"!bki@!!!":S9igRb5kVd"E\p.AZc"5zn3>(t<EdQHEm"Z)F_tT!Em"JSb5ljjz!!"]=XoJG%!!!!a5W&fIz!!(1G?XI5PABP*gF*1s8!IDoi:!3T[>-7i*!!%P3a["#M9ZmKQ>-7i*z!'n^.+Njt3DK'#oCWccG=uDuRz!!(1JAp&!$FD5Z2XoJG%!!(qq5g'Nr-m`CS.9ehB$=0e7z!"_E=!G0FU86X1;DT`&XXoJG%!!!!A5g'FTDf0]7@V'T'"a"0^Ch:cj6-B:%b5tICb5l(q!H^1'z!!!#%z!!"i@b5juR!EmSMAoD^,@<AXPz!!!#%z!!$t'XoJI;FXe["6-B:Ob6DuqG@tK/b5kPb!HZEbB$13M2$<mZz!3Q;%zn3G.u<*HF)z0R5q,!`iLJ!cV>Gz!!#SUb5ktn!Gfj[Am-/Sb620ZCh:co9QbAaE+mDqEQ\Dl>0@1Y?Xn"l@psJ^z!!##Eb5f]eG?W/k8Qs:E?XInnF*)G:DJ.,r@VKp?1<T]%b5urmXoJG%!$Vl-6-B=B>0?qVb5k$h!WW3#z2$X*]z!6YC2b5kSc!`rRK!Ct<7Dd(<bC!-Qu>0@1;@np0"FC\q*!^U#5#]t!+FE2)5B<D47!!$COlTiVo<m(VTH$!UT$NL/,zb5lmkz!!)LSb5t@@b5uE^b5l.s!I$C%z!!!#B#&.srATDn9"*.slb5lA$!CFs1@BKS1!!%Orh*B-a0f8q2z!!'/%!!#JiEjS-U#%qd]FCT"-"E%dqFKPTD!2,"?a$Hj.!.Y8])q70s#'+-rF(KI:#AeF!FCB9&XoJI;q`&EM6-BCD@;TSY!!!#/&uMBhb620ZCilf[z!#.]A#'>-0AT)2(#A7UiAn>k'b6;6[D09[<"`7[i@qa$e/jIM_?XIYgABP<e?Z'G!Bl7HmGch#HJEsM/k<[8p?XIks@]f\2!2FhQcp>hYE+<<mCp!a<TX^11i'GNeE6AH%F(f9"FNXhp?Y!kob6)g.@N5ElE$014FEMVA+EM+9An>k'-t[U>@ruF'DC@+i/h%o`ATW'8DBL6H-n[,).3N2>A1SjEATVd#FCB9"@VfU(HQZN:-$(89+?^i"/hS8p/0K9^?XIMbA7^!.4WnBKFCo*%Fsnak/hSS%+FP[f+Nk+.Ddd0tFE2)5B?LO$ATVNqDK`/_!'lMZ?fjX3&c_n3zb6N'.DffE0AZc"5z2*f=h?XIo#E+R4>=`8G'+A?od+D#G6Bl\-0D.RU,+CoD%F!,@=F<GXIE,]`9F<GC<@:UL!EZf1:@:XG$EbTE(/0K%JATD?oDfTD3H#IgJ@<,p%F`(VsCh4`2D]j1DAKXZhEa`p#-Z^CX9Me8e:/>4s:f]kU<CKh6+DkOsEc3S5z!!&ZX2<Y#?z!6YC]b62ZjFD.fW!!#9S6XW3_z!!#h\b5le0!d7bj!D1H<?XIbjGKU2!F)to5FKPTDz#XHQ;@rH6p@<B]b'ac'++<VdL+<W6f>?_FA+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+>,o*-nd&$/hSb//hSb!+<VdL+>,9!/1`8(-mL#b5X6q/+<VdL+<VdL+<VdL+<VdL+<VdL+=J]^+<W3g-mL#a-71uC5X6YB-n$`%0/"_%-mKr_,9nE]-nd&"/1`Cr+<VdL/2&Y)-8#WJ+<VdL+<VdL+<VdL+<VdL+<W<e+>+s*5X7S"5X7R\/0H&f-mh2E5UIg)-71')5X7S"5UI^(.P*2)/hSb//hSV"5X7R_/g)8f,;'<G+<VdL+<VdL+<VdL+<VdL.PDns-9sg]5X7S".Nfi^,qL/]+=\cd-9sg]5X6YB-n6c#+<VdL+<VdL+<VdL+>,2p-mL#d.R66G.Nfi`/.*LB+<VdL+<VdL+<VdL+<Vm[+>5uF5X7S".Ng2f-m1&f-8-u&0-_bi-9sg]-7C3+5X7S"5X7S"5X7RZ.P*2)/hSb-0.&qL5X7S"5X6_?/gUiI+<VdL+<VdL+<VdL+<VmO+<s-:5X7Ra00gg+/gDYp0.8A(/2&J(0/"e+/hAY(.R66a5X7S"5X7S"5UAZ\5X7S"5X7RZ/gEVH5X7S"-8$De$6UH6+<VdL+<VdL+<Vd[+<W!r5X7S"5X7R_,sW[t.OHJl-9sg]5U.p/5X7S"0-qns/1!PH5X7S"5UA'K5UIm1+<W3d/1rP-+<W-[5X7RZ+=[^@+<VdL+<VdL+<VdO+<W9`5X7S"5X7S"5X7Rc-n$B,5X7S",;()]+<W3^5X6PZ5UIs'/g`hK5X7R]/1r/45X7Rf-9sgB-pU$_-7CMu-mgJf0.[GQ+<VdL+<VdL-nc\c+=KK%-71#c5X7R]0.\4s5U.[B5X7Rc+<VdL+<VdL,="LI/1*V/+>5uF5X7Rc,pO^$5X7S"-m0WT+<W.!5X7S"-7gGh/g)bR+<VdL+<VdL0-DA^0.\>55X6Y@-nd4u5X7Rf+=09<5UJ`]5U\6-+<VdX-9sgE/h/M(+<Vsq5Umm!+=09<5X7S",p4<Q+<VdL-pU$E-n6i%/gVhs$6UH6+<VdL+<W<j00hcL/0H&`-9sg@/0H&X00h05/1Mu35X7RZ-9sgB,:+`d,sWe,+>5uF5X7S"-8$Dc5X7RZ-9sg]-7's'5X7S"5UJ$8-n7J8,75P9+<VdL+<VsV/g`h.+>,!+5X6P:00hcf5U@aB5X6YL/g)8Z/2&D"0.JLq+>,;o5X7S"5X7S"5X6kM-7CK",sX^?.OIDG5U[j*/hSb//1)Sk5VEHe+<VdL+<Vdl,q^Mk+>,!+5X6YG+<VdL0.&qL5X7S"5X7S"5X7S"5X6Y]5U.p1,sX^\5X7S"5X7R]/0H&`5X7S"5X7S"5X7S"0.]@R5X7RZ/g`%T+<VdL+<VdL-718i,p4fe.NfiV+>5uF5U\6-+=np+5X7S"-8-c#0/"t'-m1/i5X7S"5X7S"5X7S"5X7R_+<W3^5X7S"5X7S"-7g8f5X6YG00gp=$6UH6+<VdL+>+ri,=!Y"00hcf5U[a)5X7S"5X6tF+<VdL.O@>F5X7S"5UJ*75UIU),:jri-9sg]5X7RZ+>+lg,pk8r,="LZ5Umm!+=]WA-8-hq.LI:@+<VdL+<VdZ-8-tr5X7S"5X7Rc+<VdV-9sgB/hA>75UIm1+<VdL/1;f0,pklB5X7S"5X7R_/h/Cp+>5uF5X7S"5X7R]/0H&X+<VdQ5X7S"/hRJR+<VdL+<Vdl.Ng>i5X7S"5X7S"-m0WT+<VdL/g)8Z-pU$_5X7S"5U[`t+<VdL+>,,l,pklB5X7S"5X7S"5X6YE/0H&f0.n_>,p4<Q00hcK+>,;S+<VdL+<VdL+<Wp!+>,!+5X7S"5UJ*++<VdL+<VdL+<VdL/h\P:5X6eO-9sg]5X7S"-7g8j.Olu%+<VdL/hAJ#-7CJm5X6P:,sWq&+=ocC,p4``$6UH6+<VdL+<VdL+=8W^00hcf5X7Ra+<VdL+<VdL+<VdL+<VdL+<VdL/gEVH5X7S"5X6eO,sX^\5X6_K5X7S"5X6Y=/0u\s+<VdL+<W9`5U@O(,75P9+<VdL+<VdL+<VdL0-D`05X7S",9S*O+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL,sWe0/0bKE+<VdL+<VdL+<VdL+=JW\/g`hK5X6eA+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<s,u/hA4S+<VdL+<VdL+<VdL+<VdZ-8$Dl-9sg]/0H&X+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<W't-8$ho$6UH6+<VdL+<VdL+<VdL+<VdO/g)bm5X6eA00hcU+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<Vd[5UJ*7-jh(>+<VdL+<VdL+<VdL+<VdL+<W9i+<Vmo,q^;d5UJ$5,:jr[+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL00hcR/h[PS+<VdL+<VdL+<VdL+<VdL+<VdL+=\c^+<s,t/g)bh-pU$_5X6VK/0H&X+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+>5uF/1rCZ+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL0/"Fj,sWe.+=]WA5X7S"5X6_?-pT(3/g)8Z+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<Vmo5V+$+$6UH6+<VdL+<VdL+<VdL+<VdL+<VdL+<VdO.Ng>j5X6PH+=KK?5X6YK.R66a5X7S"5UA$*.PECs+<VdL+<VdL+<VdL+<VdL+=\ur,q:Mo5X6kC0+&gE+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<Wp!+>+s*5X6VH+=o/g/jMZe5X7S"5X7Rc/gWbJ5X7R\+>,!+5X6eA,=!S./g`h5/1Mbg5X6YK+=[^@+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<W<[+=\^'5X7R\/0H&X.OZW/5X7R]/g)B(5X7S".Nfs$5X6V<-pU$I+=o,f+<W=&5X7Ra+=IR>+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL5U.m(/gEVH5X7S"-7CDt+<VdL+<VdL+<VdL+<VdL+<VdL+<W9f.OZSi5X7S"5UJ*9-jh(>+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdR-nZVb+>,;n5X7S"5X7S"5X7S"5X7S"5X7S"5X7S"5X7S"5X7S"5X6_M+=JWF+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<VdL+<W3[0.JRs+<VdL+<W9h/1`>'/1`>'/hSb/+<VdL+<VdL+<W3g,74c#+<VdL+<Ve4>qIW8$6UH6+<VdL+Njms@;]W!$$U<.CNFH'@qEgg@W-1$ARTJZ!!'h7s8UtBb5k\f"_D^pDfX#(@X)g3XoJGe#fP]M6-B[HDf0Z.G][;7H#R>tz!!"]<2&lSrz!6YRfASbpfFKPTD!!!#sT0P79z!!!#%z!!$t(27*>`z!6YUWDfor>CjN5az!'``l!DkY';GW8Os8W,%z!!)N'XoJHp_U_fT6-BXC?Ys@r@<>peCh:cmE+*6lb62<g@</LN!._(S#1c)C!!!!qb.>PXb7&#pFDYT2@<>peCh:coF(96)E-/5_zpl@\`"Cc7eFNXeo?Y+6##%(_I@;Kb_!!%O&;G$4@20l\3+TMKB!3Q;%i:5>iiBbWf,H_"Hz0LMuC!!'53NU9"h"onXRs8W-!b6MB]Bl7HmGch#HJ5\[Nk!?-M!!"\j!,t4]"TSN&zb62EkDIhEkUsK8_A-E,KA-E,CA-E.e$<N3,K`hQ""UtW$"W[a`"XP07"W[dI!!!!"&HJ$B"jmH`"U3!NA-E.=##Do=N=OnN0.d>VA-E,O,>E[k#qn.>JHTKe"j$j"70V'@A-E,_(^2c#Ad(&["_7c?,o?e["_Ip40k:Fk,o?ec"_Ip<=_%[>,o?e["_Ip404Y4i0/"=L/7\nf"`[7Z"Yg1'"`\+%"`\C5!HgX2"Z0`n"Z7N)J-6l;?%<&P(^4ISE><<oE?0155Qq<[,@uB.4X4fo"AK^:FWk9!"U/mWK`Q<]"U.U;"a-%1A-E,?E?0H2EA`FNF[-*69c+%V"`ZDJ"`Ztb!HgX2"\fg;FTlbRI0FURK`Q<]"U.U;"a'ug9mm1b?%i<%5Qq<c(^5$cEF!trEE.\nF[-*69c+%V"`[Oje,a(`"nr$N4Tu^6"U-1h"]Y_<"][*a"U0Y^A-E,_(^3nCAd)1)A-E,G=p5'5(^1WXE=Ep7%h8:<'i"o9!Fu?;'c7)p"`XttkQ5#n/HKAc"W^>A"U/?U"W\E`,mA8t/N"%Jp]^b0"U,nV*@2d\,m>S3"Z6Hq"Z7B4"U-Ip"Z6I'%6Z!^7Ap5]'J66a,s!me4V&!h!At\t758<V"U/lT<F$+Ep]bI9"_B!%"\lH,0,4XVA-E-"(^3V;E=Gno,@.5KAJ?_p!<irZ9a*W_77A$s9lsnL"`IoT"VC_7!!!@;"^+iZ!C\Fp3Lp0N[a>8`"CqZ>W<?`8"oTM`]c?\NR07%("_DMs#\B)%De32XG@cR:J-Bk&>m3\$AXEL:AR5*8A-E-B+0Ydm$XFk4$EsnD*tXM?"a=PI"ebs-"U4)mDe32XG@ei'p]YSI>m5F`J-k-?De35%!Fu?;O90?3>m5F`n-*B>^^Oe*!b;H<"a=ON"NUU^AR,I`AY9.8#&e'Y>p"Run,\p[A-E-B+34\;%UC0L#(R+f+.*20$"%3H"_DMS$>"I#AR,I`AUk$4$u]]_"a=PI"_DMS%;"/qDe34B"(VQ=>p%DqQj3e=A]P.M!cMXUKE5Te"b6eY?!RUb"^SV@De33[+5d=l#$i>'#1s"/!Fu?;>p&hCkQP66^]V@Q"a=ON!CUH%"m?//AR/R`i!];g>p&hH\,oqXcj&tG>p$!MTF"mGQj/ocklbN#"\<QC>m5F`(hIOY!G1a'De33[+2A,s"cNIm"U.n0"U,'H>m4LUL][>R>p%DoVup<Ip]fp`"a=M`Ch*\Q^]\Re?!SNpQjI%?J-^Z7"a=ON%>Y+)AR,I`AWR8.!Fu?;>p$9Sn-fJEAZuI(")haV>p"RtJ-lI(A`*i1A-E-B+7KBj%0^ren-*B>n-`f_!Fu?;>p$QY(^5+pcjB1HDe34:"(VQ=>p%,lW!-HKO9=DG>ou&!"U0*](r->oAR0Tb"_CPA"U/0R=MP5K+4p_C"^N38L^F<0AY9F8"E.jW"a=PI"_DMc$Y?gQDe32XG@_VR!Fu?;J-Kq'>m5F`kR*+RDe32XG@ftGa9-?l?*"*<"U2+4De33[+&K`^"a=OV"+UbtAR,I`Aafk7D!21:O9KQ6?!SO[^^=?h.$t0D+-6lG!aQme\..U&A-E-JD!2+8a9$9k?!SP6#G;P-A-E-B++OI7$=+a`"b6g]G@d-KU]G!0"^N4s#H.o6+,Bse#[JON!k8UAG@d-Ni!++2>m5F`n-(1M"U/0RW!'=2"a=OF%#>(*AR/R`\,l@2qu^I5"V(M4zQdGu)"_7c?OTf8!"n`%-`>7hVM$?0J27Wm$"U,'=>m1BK"_@iI%:o]*"]Z!K"^R5kA-E,?(^4IS%LltQ49\^o(^41gA-E,G(^3nC(^41K@U0.2A-E,?(^4IS@V#]H(^4a[%Lm7Y49]"r+Y?\'(^3nC(^41uA-E,?(^4IS@V#]H(^4a[%Lm7Y49]"r+Y?^i"(VQ='c7+&"_)l`/NnN1M$,J["VG8K"U-4V"Wq7Y"Uu:PI2*S&K`M?dK`M>XA-E,O(^5m""V)!$!<kRhIB`lb"U,'='a4aX"W[aV%35mn"U,&V"U,>P"Uu1`"VjF9"U,&H"a'uXFTp7qA-E,O(^5<k@XSD7A-E,?@YFgd"W.E&!<irBN<+H7"U0;t/TlmNA-E-b+Y@gW(^5$s(^5<gA-E,?@XSC`(^5To"V(uq!<kRhFaXJu%2B]`K`R,5A-E.8!F5jL0lmL-Vu^0-%0[RP'a8%]"Z0`n"h=Xu"]`kMA-E,S56VLt!b;H<"XXBV!Fu?;"`5gpJ-9-]2;eOA"[/db>m3XtEs4FV!C$`FOTAtr"b6_]"]aI^>m4N4!F5k?Mudu'<IH#BFTiTcFTl5s"VhjXI0F)."iLI&"auU;A-E,O(^5$c@W_jP!]^F,bQDAZ"U/?u"fMH-"[sMS"Z6H1"U1h*>m3(h(^3&bA-E,Lz"<A4#)$'<U"d&mt"U0_bA-E.5)&h<=PmeB3"XTQ;A-E,O+^IfB(+!6T4^D?)%h4m,AKb>RM$.>m"V!UX76MkiVu[>j9hdbq<NlN64]PKN4]Pc@A-E,O?mPs[E?u@q"(VQ="XXBV"YKr^f`>Ue"U/ll("!+o"U,'L/L;tZ%G1ff!aPse'hecoVu^0-73Q1F"XQ[c!\GuK/MJaX/VjO/A-E.A!HSE%'c7*#"`Y8/Vu^0-25gO]"[+.m,m@Oa"U,V\++OLY!Fu?;*@dHY,sc&F"U/l\,mA0,"XOZgYQ6Rk"U,?="U,WWJ-6;b(^1pJA-E.'!Fu?;,nCI#"!&l=!@<C"A-E-&56Wp$!Fu?;<>HTT<<t0.,tH;`<E18D0NA0SL]dm$<@(=L"U,VX"]Y_G'jUu_9k@=""U.ma<@)Hl"U,'L'd^m$A-E-D56W@:!Fu?;"XXBV"`Z+/).WmS,nCHp"!&lH!@=oNA-E.8!F5jT%86pWW!cl72.Ub3,nBtU!!!0o"Z:S-!<B@N"Y!sc"X.C["W:hS"XOZgQiR@F"XV,#8#7-3!u4uC"W_E0":ZA7'cd<c"U,u."W\U],m>k2%@@/J4rjeA(^2JpE@!IG8Hg[HA-E,G4V]OP0a0-7z"(2;S!<BUU"[QZ&"Z^)s"[rq2J,og."[rH&"U,&V"U,VX"XO=a"XO=)"U,&M"UtWP*<cUO,m>;r"U1h*>m2MTA-E,?(^2KK%h8"1"^F1o"Zur?Vu^0-2$n=--%0:J'nm,(56W>\A-E,W4Zu4C.O7G!A-E,Dz"#0t5!<Cm$"n;Y)"U4,lA-E.q!A?S>20_97"?cj;"?jj-A-E-e"C!08(HDX^).WmSVu^0-/V!t0"W^HN"U-c.4fABE"+UM;(M![QobMCE[1kKC4b*Y=0a0]d*)D(f,\.&^/K>(i$o_]#"[*POW!tmHYQ?sN6Tm:5A-E,?0a0]d"6^1_78Fpm4[VY$/7\nf"Yg0D%2]6p"`Y8/Vu^0-2;eRB"[+.m,m>T>-*RUTA-E,G:F.:r(^2JpE>:?FA-E.p!F5jt2,4;Y2)M642)/VF"U,_H%0^2M"U,_H'a8%]"fMH-"WaZFA-E,o"pHk9*2`gf">OEj"h4nF"[0p8>m3YC3\:LE(^2c#E>:X,!Fu?;QN:V#"UY50!!!'@)$$\`"Z^)s"YjNk"g%hVeH`Jq+_1`[,p=9<,nC00!@8m0'd7)k"Vk2E"U/``"XOZ_-mrO/"W]`8*<e/$*<lKD!!!$$!79'rq#Y(1"n;Y)"U,>:/[,;,"DB@nW<$N5"V!dU/N!X7!];!C7BcgoA-E,?EA\1/ECCmVA-E,G69Qn`"0_hi'gbVP!Fu?;9`qU$9c\IaYQ=uJ4UhR79bdhO>o`rV"U.2&"U0kp(UY1S*.S0*%A<e=A-E,W:F.k%EA]$qA-E,?E>8pFA-E-e"DA5V;.Kh6/7\nf>Vd*(*+T3V*D[tE"`Z[OB4M/L%0A,c!YkboYQAHP2(^q$"U0DZBGFK'A-E,?E@!1?0a0.f!Fu?;'j:bEVu^0-*In8u"XP^1"U,A9z!4^AZR/ph%"XOuh,qTWZp]oFP>m3)33ZSA=(^233(^2KK%kX^bfE#7]4Tu<A,m?%-%2B]`%5et+'`hhK"U/``"b6_]"XVe/>m2f3F9N*_(^1?P*X)u^(^1?X!<iWA(^1?h(^1Wh(^1ojA-E-!A-E.M)&h<Hh$s\j!!!!(!eC@e<G_mW!5Hka&S)%K$"O2CobV2q"cWooD%-X`%gC#Z%2]6h*?bk,YlSA="Vj]7'bqr.Vu[Vl%2E;^"U,VO"`Onf"W\U,%2AnS"U,VO"],XF"W\U,%2BTg"o&-.(^1p#+Uo/$%gB0@&S)%K"`Xtd"Yg/q*=i<%*?bk,'c7)h7q;c,'b:JH":Z1O*??:4'k_%\"Wq7Y"U+l+!!!*)K`Q;rU!NrP=p5'=!<iW1/d2EL&gR>Xobe!F"U+u.!!!!"*!!Uu"ec03"U1;!A-E.-*H/Umh&;+TA-E,_:F/G(6R=$Q,pc8cB-ekO"CqZ>%3ZH,*=i=P":ZLh*B@X6"YDtC"W\E`/Hp,72$ItG4U#gO73r3c9q_`$"U,nW"gA.V%g=@-+Vc"i"9fe\(^22hD(PnpE>:@)!Fu?;*=i<5%3ZH,*=i=h#7Vgk*?>Xoa9PLO"U-JC"U,n`"YBmt*An"?,s<Vd"U,>Y'ce;*"jdG_+Vc"<%gA='T`em0"W\E`/Hp,72$ItG4ZR$V"XQnI"W\E`/Hp,72$ItG4U#gO70RZW:"]SY"U,'L,t0[d"U.%""b6V*:'CeQ+XJET(^2JpE?-n_4XE5pE@"'$!Fu?;*=i<U%3ZH,*=i;boDrJ+"U/ll>m4\C"U/llAHd'"D$=fg"U/llD$=o*FTlb2I0C*$D$:CQ70PdW2*DHRJ,q5e"U2O?A-E-2F]D.)6:FU+:'Cea%g@Ia/O0IC*>er3"`YP?aT>uV"Z9$Y"[*A"J,q5s"U-J$,paQK"YBmt*B!'^A-E,?E@"TgE@"loE@#0"DI!DLE@#1Q!b;H<<=]8c"B>^R<F$+=fE<K+?!RUD,t.u""Z8FR"b6W?!b;H<%3ZH,*=i=@"q;^j*?>XoE.J($"U0ba"9f5<D&!3p%gD_0%2]6p,p=!D*=i<M%3ZH,*=i=(!Y$:f*V9GE"U,'L,s;S<"[rT7,u"P_,upoFA-E,?E@!aOE@"$WE@"<_E@"V\"CqZ>"V(uQ"V(])"ZurG4V%^H!H2KP"XQ;`2)QO'/W^6D"YD;:"o&-V%gA=$2'E\d"YKr^%3ZH,*=i=0!=^1e*TmH6"U,&>*CU,o"Z8FR"b6V*5Qq><"^M9`MudGm"V:Y6!!!-*K`O?-!<BLW"n<mL"U4-:A-E/0!bLa#m/jO63<edOBk.ANo`@kl"U/f2!X85u%jgE?(M![Qm/h+f"qC5,Cq']Zr;mKUW!7qX%je.Y04Y4i"XXBVVu^0-h#c[>Cq']Z:LjV4i=KN'"U/4`*2Nb:'4_7MXTD0"]`PkK'&WkS"doF&"U,'LN<9%["_Ir:!l54S"U3!o56]jEYoR?Y"U/llh#[b"`<,-&"`E,t"T`-;"U.@!jT=*EC?5NQ!f8:8"U3uh%jfj1.:`Sc"`]e.[/pMOXTH0;"`C^L"gnCOq#_J;!Fu?;YpM-c!X0`X"U48p%jfj5_&-\d"h>R:"l06(A-E.u!Y6Sjq'BPT"U-4V"[rmq"JH=i#@muAi!`lpjT5Sq--ZM1!ac*7"\&[?!X0OV!l5B!$!d_B!X3So!PJO<D8cP[!Fu?;"`\D(!X3SG!n@@N!F5lb!c2BN"e?`TjVme,`>ipK*46j$$7NRt]b^i!"U,'Hh#[c9![$V,a9:<#+.rkC#2K>&W!6oiA-E,?EKpX>!It;Y"dK2J!aPu#"/l6+"f2;%A-E-n'lsPD!sKDCjT5TpjT5Sh;iLl2!Fu?;"`]M(`;tr#+G^/V#R+.l!u5og"U2R@:IVqu"`_3W7>1ae]`P,5"`_3WK`UrOBS?Ia\HZRJ"U/f:!X8N(%jfj5m/g#d"cs-u"n_otA-E.u!_rn&p^IPk!p'K^!F5lr!hfm@"l04`?FL!4!hTR*"U,'LN<7o;"_Iqo!pK_r"U,'LeH+b5m/dLr*VBJM^]Y,F!c7W8%>=n#L]\(eA-E,W=R?.n"\&[g!X0P)!mq@*"C22E!rN(0"U/0po`G'nnGt<A!X8*:A-E,?D3Y2,*=aCo!g*gM"oSKGA-E,?E@q+j"`aJAK`_Kuo`C*T6t?H)T`\g/"bd$h-.iJ$!^cheK`d\J>m5oao`@kl"fMc6"oSL"A-E.8!F5lb!p'K"kQVL`!c3r%%J9d=GRaTQ%je._A7PiI"`EE'"fMV3jT=NFVu^0-m/m:hEs:A$m/g#d"n_p--.iIq!`/1bm/f[d"U/0po`G'nr;n-JjT6T9"U,'9TbjO-YnCRN"oSK5-)_$q$Y0DEaV-lBbl[D:A-E-j")O>+r;m.B/WBi9ED;]#+_1`[SHE]<"V%:1Ckr>p![VplN<:nG"U,'Lo`CZd"`]4uV#r#c"cWTfEMW\q!sN[u"-isfA-E.o!Fu?;W=LumXTF=fA-E,?EK($r!X30>V#m%hA-E,?.j_;""``W*[0$Re"gnHC"uuj@"/uc@"U3-QCmY54bl],s"2tAA)e9*UN!3tP!mLeG'P%@N4W"A$!X30>r;t@JA-E,C3<e4?\IrEV"b?q>"mlB-$=j;DT*&U-"U-4V"_%T<XTGd/"9l17!Fu?;3WoW"!X3;W!X5hK3<dA'i<Wrt"U-4V"U/nb!mLcMAd-E\$"O2ChZ7d%h#bh&Co@CEeH0QK!Y'Y_>m9$cn,cl!jT;@]>m9Ts4CeU!]`K\*'$UKo$tKMFJcPuX[0$SP[0*N5e,j.a"U/nr!Mol%EP2CT!sM-t[0%R_"U,&V"U-@Y"dK/nD4Lb4$"O2C"WO9?lia-eCrchj1'@c_"0DYKSHG\jCh*\QoE%5\h#b%gA-E,?EQ&"(!X30>blS&g/^4>+(^8Fk*=`h/!Wcg8"U/lth#\<."m#e+%Mde$!Fu?;"`Z-]!Z`*]o`?-D($u(P"$$P0!\n3h"U/moblS&g`<+Qkh#_D[!=d9T5Qq=3"9laGX8ui8"igXS"U27;3<f'WaUMba"n_pmm/lYVYQeA:o`F4V:'Cgg!Y6U0"6BSNjT=fNm/deEkQ0cH6KJ:9!pp%"-0PBk!Y"/lm/l/H3<eLG0k:Fk,o?gA!o3oO"l07A!c3r&%IF3--.i=m!Y6U@!K7%i"U1e*A-E,?E@n!gXTE=C":^_%>m7V;*=a*d!m(^$V#ghm#%Rl@m/deEQk%4HA-E,??AAgJ!o*ri"U,'9$,$D>$=j;D[/r8:!mLcMERb,u!jr(BcjGm@Ymb.H"fVYi"l06R%:fVG"`]M(XTP*r5Qq;pEP2FE!sN\("/Q)'EKpX.".]NZ"U,'L]`O`,"`]e0V#t^J"U4As>m8a[Vu^0-h#b4qEs9ei"`B;%"U/oE!gNikEV0C(!sNS-!sJjJ]`O`,"`]4uV$!4gA-E,?DM8/r"`aJBN<9?(jT:\L>\"!A"`]4uXTP*r5Qq=A"C22U!gE^r"U,MA"oSK+EW#rm!sN\p!f[:mA-E,?-3XPVE@n!h"``&oXTJ`HSH6,#]`W(9%E/EchusSZ#$hDW"!p"9!sQ(7#gEFY!s)p9"hb"Sa9E*m")O>*%35p1V#pa/"U3rl3<c5]M#q2k"c!:8r;m/-!Fu?;"`]e.blS&g`<+Qk"`DQd"T`-;"k<ZjciFU#!\0TOeH51?A-E.E"%p'3N<9?(<P8J<EK((>!sNSU!sK9I"U,'L[0)BjaTH&W"hb!]o`;H&N<;\t!jr-<"!b2U0XUua[0)3f4CeU!"`]M'r;m.7"oSM`!b;H<r;mKUYQfjeA-E,?EKpR4!X3SG!keX=DRBNL!Fu?;]`N#[!tEoaC:s\V!oX2k"U4f13<cMeM$7Dn"U-4V"ePg+"U-b#"oSK+Ad/,7bQVM\"U/llblS&g[0"k["`DQd"Y!sc"jI*bTEYkM![55Y`<$3_IDl6kEO>km!c_`S"k<Zj?k'dN8D":"!X3S/!S%5TEO>l(!X3Jl!X/aI-/AV+EO>l0!X3Jt!X6OE.Z"D\!`<J3"U/bN!X/aE]`JAV!c26RS,m.("U/nZ!n@@k!^Hnm"`]e.`<$3_[0"SS"`D9\"mc8#"U1t9A-E,?EK($Z!sN9?N<>CNA-E-q"@!'T",mY!"U2R@.es8(!r!(5"U,'LN<6Kh"_IqG!iuE5"U2:8!p'L1"LS:tm/lANm/dC:"RQ9P!dOA>hurEKGl7^%"Q]]0K`d,6!Fu?;K`b-L!rW3!!dKD$cij"C:PAn)",-gYK`eOa"`]4u[0!-1A-E/0!Y6U0#NZ"^"U48p%jgE?!Fu?;jT7d1!pp'9%12+tjT;@]>m9TsZjCdWh#[a1'r;!9ERb)d!sN]3!NcG-7Kp1%.:`Sc"XXBVV#tP$!=]2_/YrOQ7KoUj<+H.9"WO9?T)f*B"U3ug4gb@)!nRT/]`JAP#@muA"`]e.[0$SPXTQ6="`C^M"hb"SfEMeo$Ym?W[0,k,A-E,?ERb*'!sN\P"2t?G7Kq$="WP,Wfa7$cB[%7)%'0nK"U,'L/aWTCELd1(!X3T*!rW0@%NXp<LC-$Fm/fC\"U,'LPl^gb"`a2:K`_Krr;m-'A-E-j")Q<b%K->XLC/_;cNdta"YCPpr;m.7"oSN&!b;H<U]W:;!X8#oA-E,?EK(%u!X30>r;s/2A-E.E!dN5sO:KeB!n@@V#6f+t!jr)_%:fVG"XXBV,o?gA!oF2B"l06]%V,_Ho`As^"V(D3%jeFaK`_i3YQfd`:]1@n!eg^e-"qu7&cDe0!i-/`"oSKOA-E,?-3XRO!F5lb!p'K"O9H*\!c7''%;]PY"nr=6"U,'LN<82C"_Ir"!qun0"U1G.8=^-R#NlD("U0DZDq+s'"4[KiYQhK;J-9f@"2tAm")MYY"+UMmeH=%u"`\t@"'K.<"hb"SkQ/'n`<0qL#IOZY")On?[0+q]Crcae"(YpG"k<]?"U,'LIFSE'EQnUA!sN\8"6BX8"$d"nS,m.("U/nZ"5O%_ELd3n"4[K="U,'LIFSE'EQ&%9!sN\8"6BW$A-E.u!?^e?p]T[Z+6X.."Q]Y+a:7nIT`em0"m#b,L^*VWjT-I5#fm22!?]r'p]T[Z+.ro7"Q]Y+O:CsfjT-Im$MXbc!?[sAp]PSI"U.%P<E03>>m4eUL]n6)CsW7nOTT+t"U/c)!<qQc+-6NE"m#b,O9G=]MudGm"[,#V!OVsA!Gn,(%E/?aQiRZ@!GikfaT5oU"m#b,kQpqdjT-IU#l"Pa!?_(Ep]T[Z+34c`"Q]Y+L^j+^jT-HZ%ep1g!?])_p]Qf_A-E-r!Go7H%6Zk6!K@,F!Go7K%@mN9L]S#K4e2VE!Mog5TE5Rj!b;H<SH<VX"UtWTeH)KJ"`^(7XTFmkA-E,?G;[/;4`%n<%=eRe"[u.%YQG>7Ck)d#]E2UI"[,#n!R1Yq!Gps%%G_&$a8ugX!b;H<r;g`U!=c%0"9jJ\=p,"g!gNh'a9)mA!Fu?;%9`o=-#DKD%4uDc#7[1(A-E,?@]]\8"\&['!X0O>!m_'64`,%YD"%Q:I;DF`J-9-]K`SO^A-E.u!?\fXp]Lb;m/[@oD=mo5X8ui8"g%fAO9Z4X4fnae!OVrEcj($8"(VQ="^^'o]`Z1`A-E-B4nSmT!oF#="oSLh$=j;D"`]M'SHC0["bd$^EO>k%!sN.f!sSW)+^Kd(!Fu?;"`Z,R!sN[=Plh20jT:tT"`]4uV#r#c"cWV>$=j;DK`b'R"c*D%K`h8T"`^@>K`_Kuo`C*TPlkj4"V$[sA-E,?D>aM>Qi_4!!rW3!![1kB!rW0D?0)+kEW#ol!sN];!f[;I")PIN%<Q+a"kX4ijT=NFh[!uY!o3q8#%Rl@"`]M'blS&\"jI,C%qGhI4TGH^!!i]6%1s`u)'&^Qcik:t"U,KK"U,3C"U4!.(]>A.'a5EX%2BB_J-,sH"UtVf"U+u.!!!!#M#db[U!NrH=Tns4>SRDG-j:@!'dp*dN>i+5"U,#/z!5$S]R/ph%"d&gr"U,&^"U,'L9iV@/"]Yk>"U3-l7bo0b!X3R<<<Zi3"W'0&<LEku"U1V$"9gZo!<`Qh63IH\Bk.AN\,oq>/XQWG"Z7T$"U.d,"YEDY"U,'4"U,'R%2]OjQj4'$A-E,?G81r0D!2*="`Y8'Ch*\Q+p8'D5@ap$+(PNY$NL/,!!!"ncijSU"U,eI"UtW?'a5%^"U2"@8t?:=*X?3Z"Tn`)z_9`@J!Fu?;M#h,j"U-Ua/[Z<Ir>3-XJ-9-]/Jhq$"fMH-"YE;V"U-K#/Ia!</M/\;"YCm."U-1d'rV-Z1p@$-,u5g=7q;c,.:`Sc(G@?D-Y*Aa*EiUM9K<7s6"C-&2e3'q,sj18"Yg04/L)jG!A-.4!\G^@/L;\E/Z8\4A-E,_'G[PI,rDh-,pai`%4r87Vu\ai'rV-b67k'*A-E,Bz!!'7M"Z^)s"YjNk"URBs'bOs["UuUY/Jhq$"UnoF"ml=D]cE@OOoY[h%0^>I%0[:H*<B[S"U,eJ"o&@/"UtVu%0ZoP%0`[2>m1rH9EcH8!F5jT(NT`p!rr<$!!!#!cik"l"U,3C"U+p;"U,&H"UtWP'a4aX"W\$h"XO=],m=<["U,>P"YBlf%4q_n"W\%f"U4i5!JLs$(Bsj>!!!'`PlUm$cik:t"U,KK"U3]f$2#(9(BJ%M"U,_H%1O-X'rV.="Wd(6>m2NgA-E.p!F5jt2,4;Y20_"*"9E$:"Z9(-/JT*+2$It74bsMP"[t:D"U-c.22DAm:G".5(^2coA-E,g%ODQ!(^2JpE@!ICA-E/3$=*fu/PZHQ/U/kO$l'T_2$It?4\oSl"U/lT4dZ=W"[t:D"U-bZ/M.,\"YC#\!!!!$"VDIL'A0i@:u7ta5=]<=/dQF^5CfIdBV\2_59R.VPDe)057',*%T_lX5Ce%@\d`D#5=.smhb[>25;;0ebP);!5;d\8%"U9,X2'f=CrX$dAtmYL>h]gW=(?l].hYDo)mJ<'aK>LC!!!"L6bpkKrO2k\c-$Au!p,EG]%e"&z!!":[XoJG%!!'f=^rlt_b%oc!O1WR?6`Wq\P/L6<!3Q;%z6GUbP#AB#7b.W_)fE7tn$U4\p5FeQC?A@9AXoJG%!!'f5^rlli#"RcCXoJG%!!%OL^odY;z._s42HG`Sph9-2j4FXFjT3sS21-huBz!'%csz!!(rlb6]YHlU5n,@9&Gmz!!#'qb6BOa"8h#VXoJG%!!!!a^rm3f0?0?TN:ng247oD;OfeZaz<5>X:z!&VL7#R,u%1ZmR">K[0fh[3$Kb6mff/XW>-7$cP#XoJG%!!!!S^odY;z,/DA*58$pPMouVN%s.P[(YbABe6nLQabHquz!&hX9#.-Yl(ktu4!ao<:z!!#^.XoJG%!!!!j^odY;z4M],E^STbg&j!/qzJ9&HK"S,MKO37`l\'&pe^<7*.)0b(a.-R,mh.jM?bFP9Kb6pW`R9M*o&nQhZZ*"',zBu$kOz!"crh!`^PLz!.[STXoJG%!!!!T^rm+A4o`+d+A:'h,6,grone&\`sEd#bWmu-h;,46z!%>Xcz!!!kOXoJG%!!!!=^odY;!!!"L5etPH9<LrgLW^0f=APd:?2_0TDJZ'3+3P0WkS]Tpbb'W@r>h@hlaFtF(>/*e7)2/0b-8kZXoJG%!!!!M^odY;z:r'46z!):83z!5MUMb6>-Gj,iZ2z!!$6=XoJG%!!%hm^odY;z0u0plz^hgfh1G^gC1GeX;XoJG%!!!!_^rm&Q?dD7MaJ6TOb69J*-K4+1(ToT95jK,M9+)mT7>!:c8Im77@(/;4XoJG%!!!!5^odY;z0Yjgkz^g4aYz!!!#7XoJG%!!!!)^odY;!!!#'G/16\zJ6'Igz!!"mlb6l[f/]Y8bJArOfb6:3fPuSp/z!.[DOXoJG%!!%OD^odY;z2o*TN?C$8e*J,6?N,auUs(CAhF@C>-b67_X;qB+u>AAI_]%V-#WQPPdXK[??!NTk9z!.[YVb7ir'QQ)DS%H7CGB(TajrQ!k.CWcc%T<8.o!!!"L6,:YI%l97Q_TN7D6ONutT*L-lb85BXB]iW3%qeY)"fP]G3tl+b/$WeC1p-fYz8&28-z!%u'iz!8qe2XoJG%!!!"%^odY;zn@u++zJ5O,*"i42Ek7+Qoz!'.j<%h@+R!HH7I%ai;:+&BO@*!+4d`'BFiMQQpZz+Mc/.@r$-fY2VhEW-]K,#K!_dh4M<DXoJG%!!%Ob^odY;!!!"L9YegU9a&CuJX"=`GKkEl;J&EIb6`oK?'E]'`MHA5z!'k,2b6?H9#Bcca#cVUHpi#u0DQWs>z-G[e1(<ar^@d\,^b7FU4faV-R9dS3OlSF%XGch#Hz6boi)zJ5a7dz!'jW$XoJG%z!3Q;%!!!!a>enMqAAC+%2O:%.Xbl+,d==o<::/1R6-\23M@ns*R>f&ii3!%[z4i"4I'WssbHA'&9z!2*`8XoJG%!!)5:^odY;!!!#/JAA;fz+Dnosz!!%PbXoJG%!!(Ap^odY;!!!!qGJL?]z+FLu-z!.[\WXoJG%!!%P$^bn%Ms8W-!s8T5%zTQn8Tz!.[_XXoJG%!!!"F^rm()K]XVp#aV,cUrs1L-UhG"-F7hX3&Y]Xz!'j`'XoJG%!!"^'^rm;cC"S/;85Ou^Figb7?td$m#gh(Y]S?>?V60du!!!"<I_`)dz5\\$:z!)S0\21GT*s8W-!s2u!D\WGJHZp4DDWkRX*\KR-5XoJG%!!(r(^odY;!!!!a=hq0?z^fS=SzJB,PmXoJG%!!%OE^odY;!!!!AEkngXzOEeRDz!!#d0b6,5Y3m/&5IAlaYeY-^XFC=q^J3pC=z:ia@Sz!'keEb6O9$bBWfgHEN^)R@0J2WP>S9z@!KJiz^o#sRb6El@#p2j"XoJG%!!"-`^odY;!!!";d6Oi7z&:;3qz!!$$7XoJG%!!!"@^odY;!!!"lE58UVzE.Pg-z!-!>$XoJG%!!&[$^odY;!!!#'KYX_jzW.Daez!8qY.XoJG%!!!")^odY;!!!"lCV[(QzTR">Uz!2tOcb5sJSXoJG%!!)M.^rlljE":LAXoJG%!!&[.^odY;!!!!a@DL%kqpgnm^h\oeC]=A6s8W-!XoJG%!!)M;^odY;!!!"LFMP$ZzJ:kY?z!5O6&XoJG%!!$td^odY;!!!#7?GO_kEqmC0--!n8>Ko#Aj8]/Zs8W,B$Q;XuU3C<KV=k&eXoJG%!!#99^odY;!!!!a<5?Zd8`/5DPrc^:QAGA=]upV7Gu:3VFKPTD!!!!1KYX_jzTQ\,o#o$cQ\OSUQkkqR`zJ9J`2z!!)5tXoJG%!!#8_^odY;!!!"4J\\Dgz!)p\V%?:=C6<Hp[c>^Y1:LUC+z5Z5D#z!!%/WXoJG%!!!!p^odY;!!!!YK#"Mhz!)gVU#q3E.)g,KR*/;WIrJD\l#NZ=/dS(#*nUPu0$d=*Q.@=B_0dLS>b74E9&i&$$1g'<B%aFmRz!8rIE2>I4Os8W-!s#&fhs8W-!s8T5%zJ6Kakz!!$WHXoJG%!!(qo^odY;!!!!AAAG>Jz0SR<Fz!0DfJXoJG%!!(r%^odY;!!!!aJ\\Dgz"gC88$>I$E2n1mHSNs0t(?ilH>GSYS9?36978\iW?HSd-A7Mje%%?$m1XY=S-Xq^BdB3HL!!!"DJ\\Dgz!-5lXz!*FlhXoJG%!!!"(^odY;!!!"L:r'46zG_Nr9z!'kV@XoJG%!!(qu^odY;z@_f,Hz3/#)Mz!)S<`b6C)T(P<:AXoJG%!!$t\^rm!c:Bi'nAun&:$FG0G(kts##T7!Pz!!#*rXoJG%!!#iD^odY;!!!!qGegH^z5Z#8>$1@aL*j=1"%b@c_zY^4*fz!&/]6Y.,O,lVY1+^WR38Gq@;9fe%+>E9-2CrmDO7b6='b8M/Z!z!5N?b2&QAns8W-!s2th:;+J.jD9Sc%$tV`-z!"aIlXoJG%!!(qc^odY;z;8B=7zOESF_$d/t&_?Ol$<[#NPXoJG%!!%O<^odY;!!!!9L;9qlz0R^a>z!,utoXoJG%!!!#G^TIP:!!!!1J\\Dgz!(ao.z!.\auXoJG%!!!!Y5ct(e!!!#7GJL?]z?uWp)"ot>^9N@+Uz!2,%]XoJG%!!$tj^odY;!!!"lJ\]GHWGfN1;=:)l&9:;83h/YZ$6;pM3/_ba.E_kBT*ahdz!5NHeb6BLEB8(9UXoJG%!!#9!^odY;!!!#gEkngXz&9bjlz!.\:hXoJG%!!%7q^odY;!!!!AK##P42]JY;XoJG%!!$DU^rm"+$Ke<mU7Ws=z!:Y9Lb6BUGYs%lhb633Yf3,6Vz5Z,>"z!-!;#XoJG%!!)M:^rlmu,NcVK2.-@_s8W-!s/l>%!!!"<Ktshkz+FV&.z!!$TGXoJG%!!%Oq^odY;!!!"L;S^H_UG4qNI^:\sH8D](z0Q=hN#q>]l7F=I4e#0>Kz^iI66&FGcs+=TI!Q.WM`)U-8,;Q^!"z6,9W'z#_Be7&t::'&:]Hr[<"8U$\,.nXV`^oz!8r@Bb6lf-$$X&qXD0uIXoJG%!!'f]^bm#0s8W-!s8T5%z&:VEtz!.]I4XoJG%!!%h*^rldu-HcbpJ2.0'&L;SaDQWs>!!!!a>JRBAz!+`mJz!'l1PXoJG%!!)M8^odY;!!!"LB#(PLz&;%^#z!,.)%XoJG%!!(Z&^odY;!!!"L:Vb-XpKclr`949'z:ijFTz!2*r>b7&e&^5uf^[.ne3TQ[K_bfn;Tbj<*Iz!(_[Vb7;?_>l+kjC)n667Y<pmXoJG%!!!!`^odY;!!!#GJAA;fzTOkpAz!!$rQb6b<(VIjLVU?<Q?%^^B<(7S;g$k,mq3/r!^z!3h*k2-'YUs8W-!s#'3Cs8W-!s8T5%zOF+dGz!+9BRXoJG%!!!!]5ct(e!!!!aE54?%s8W-!s8W,%z!!n:oXoJG%!!#i7^odY;!!!#'J\]G@a+hf@#2I)C%s7e</,J>d2m*,\!!!!QG/16\zpjp6($P(5-4am6?1&LD;b6M,#8(Y%CC!-Z^;@>$>XoJG%!!'fA^odY;!!!#GF25s-jfNM//O+68-ES.DXq;6X&XP2h^WR7'?O6-72Os5U3</"2/ni4L'!;37!!!"<FMP$Zzk^pUQz!:Y0I2';hts8W-!s2tcD=QX85nZh8u!]Ag6s8W-!s8T5%z^i7)lz!.]4-XoJG%!!%OP^odY;zG/,uW\c;^0s8W,%z!+:,gXoJG%!!)M2^odY;!!!"LB>CYMzd!rj6z!-!8"XoJG%!!"-f^odY;!!!#GI))lbz+EtW(z!76).XoJG%!!&C=^odY;!!!#7<ktj<z!.r"hz!2+kXXoJG%!!'N^^brn+s8W-!s8T5%zd!*:.z!'khFXoJG%!!#9;^odY;zA3d9tzJ8E$(z!'kbDXoJG%!!'f3^odY;z9>I\1z0R(=8z!5NNgXoJG%!!$DH^odY;!!!"lFhl0/8__i=Kc/^T["@uQb71<DXA;N#VXl82;JZZBz!8qb1XoJG%!!#8o^odY;z7DQ&+z\:VN>%q2m($]lLj^[8c#03p#rXoJG%!!$tZ^odY;!!!!)JAB>8=pfpL(C:=AQK#%Iz."]7;z!6Bc-b6Y,m@Dql#kJFA%z&:hR>#]iIK@)'W$oWA/o!!!#'JAA;fz@"#hnz!5MLJXoJG%!!#8a^odY;!!!!aJ&&2ez&;@pC%4i5=JgQh[aOu:W_a)BPf6tJ(-,]`;5%Lerzi-rJEz!#U:&b5j?#z!6Bf.XoJG%!!%OX^rllSSRl$.z!8r(:2(8M)s8W-!s/l>%!!!"lEPS^Wzi.SnKz!.[p3b6`LZ<<V"!h[WXDjG*^7s8W-!XoJG%!!&[4^rm@Ze9`t0kh84@Kk&NBVOYdLK!#(Rz7)5r*zJ9/L`@.=3rs8W-!XoJG%!!&sO^odY;z9#/UZF&kh9MVg&0D+--BB/PPFs8W-!s8T5%zJ7-0qz!!$EBXoJG%!!"F"^odY;!!!!a?GN]DzJ:GA;z!)S9_XoJG%!!#8r^rm=>`?"2LGVKq;MC+3X%6beGb7?\&?(lg&>/5_TCg<%=Ffk]Ez=2:s=zLkNRHz!8r:@b6=6<%"_ulz!.\CkXoJG%!!!"G^odY;!!!!1L;:t:poLG_>_]B]z:iX:Rz!+9KUXoJG%!!()j^odY;!!!"4K>=VizJ60Ohz!%krNXoJG%!!'6B^odY;!!!!aDSXF/cNV`:4Nd042\*,M'&i'%5@^5,!dD,V&J5Te&J9T/XoJG%!!"Et^odY;!!!!AA&,5Izi.8\HAnGXeAnKW/XoJG%!!(At^rm*>A8MTu=HbM25mb^=ltEEUY8",>zi,HK7z!!%G_XoJG%!!&[&^odY;!!!!A@DL%h@q0Uab7IKV$nDX.^Erf*.aTIXmZFXPz?u*R$&Lq#D>&=R_)jh+k%idVFI>To]rr<#us8W,%z!75c%XoJG%!!!:V^odY;z7_l/,z^h1Bbz!.[VUXoJG%!!(r-^ue1lcikS'"U,cS"U,KK"U2"A+.Wj(!Fu?;!Fu?;"`OVk,p/caTEYR="XPH:huq[F,qT9(,p0>nGQgP?,mAK%TE,eo!=drh"f)/."V!Pd#7U]E"U,&IJ-$/`/d2C^"onW'zzz^&S-5z%0-A.'*&"4E<-%>!X8u3^X*/[!Fu?;nH!/("mH%u"U+p;"U-b8"U-b*+SZ's/Hl;8+8>p4!<kpr28o`8fDuEbG9qbD-#D37,pdC&$RHfC#pgI""U,&^"U3ul0Vo>_'HJe0"T`-;"T`-;"U/iK2)QJc!g!Ed$T/)F+1MCI">qb7"Z7CK!LOE%7KkXQ`rQ@'%L!RV,pcqF"U.I$*IhT'"Vk2E"Wo`.'orB+"U,,<zzz!!!!*!!!!1!!!"]!<<*D!!!!A!rr<F!rr<M!!!!A!!!"^!<<*$!!!!A!rr<&JH:,u`6\[5A-E-VA-E-NA-E-f!b;H<!Fu?;/M.,0/K`%=n,t<p"U-J"fE<<#7KkB7$Z,#2%9Q[H'a7/4'a7&1($Gj?'b)6q"U,?="U,WWkQVKQ!BC;u-Y*Aa"YKr^!Fu?;"Ucmc/K_J*\-=N:"U-J"\-2:(/M.,0/K^&UQj<jb"YI\%Crc_O#$=qA'a7/4'`hhK"U.@!(!$Jq'b,fsA-E,OCrc\fPQ<cJ'pJ`0"U4Q?0T?=F%gE=?zzz!!!<*!!!Q1!!"GJ!!!'#!!#ms!!#ms!!#ms!!"ML!!"AH!!"JKzZ-WXlA-E,KA-E,CA-E.%$?4f7Kan,o"U-bn"U-b*TEO`e"`OW&2'7n^E&B3N"Z7CS"K2D+7KkXa=p5'5G9(?;CsW5(%0ct^,t$c&,mA0,"WauO\-<rW0a/RFA-E,A"onW'zzzHiO-H$NL/,%0-A.!<<*"*<6'>'EA+5,ldoF!!)-2"kb/3"U3:!A-E.Y,\.&^cin@<!R1WKGLZ`@#Lrika9C)p_$jiX"dg$1"ml>p!aQ!&!O)W2"oSIQ$tKMFeH'J_eH)$F>m9$bi#>r*jT3m4:'Cfo"`MolblIuleH)lTJHKEd"k<Wi(tAZ6#$hDg!RM$V"m#d3#$hE"!@9eW!<o_JA-E,?GNAkP#NYu&a9CZ+p]k(.m/cte>m9m%jT/*["i(pmjT40<YmY(G"T`-;"k<Z+"U3EX*sg3teH.<+"k<Yr\,iN3"\&[G!X3em!Jgrn$uEugblN>->m8aZ"`DQc"jI&iL]jXm"aAJtYQ8*A"U3ugC`)77W!6N2m/a-i>m9m%R1!O/"oSI<\-Ms5r;ga0*rQ,L#B0PAo`=^d+/fG."8)[:W#ae#TaPB7"o&=."bd"03opAGcin@L!Smds!Fu?;QjI%%o`556m/[CX!?[+#L`6('A-E.5!c6Ku*P_n]V#mIpWW<5+[0"/LA-E.e!Gog\eH)$<>m9$b^_pD]jT311A-E-m!H7W3m/[B7o`9RIo`8m=#PA,j!GqNPo`<GXA-E-->m62h/NW8""jdEkm/c;L;.Kh6!Fu?;"`OXq!n@>oE:=+_!\FQZeH-i6!LOf07Kq<DW!)De"bd#V"C21j!iQ6-"dK/"$"O2CjT-HR!iQP3GO5E]#42G-\-MC%f`G[f"f29:hueB2DOgh4J-'Y[!qcQtGF\f.!SJ&q"U,&>*Mif@1'O3M"`]e.SH>VhD"n2T^^!r;!i5tW$=j;Dp]k(.K`\1T>m62hp]k(.Ple/o>m6c#!Fu?;/NWh2"jdEkr;lQl"aBnG0VJV["U3ugCrceA!Or>>"ml?;(0q+:!Vcn*"oSJ2"(VQ=PlbdC"dK/a#@.M(!r*"+"f29W!b;H<!Fu?;"`OXq!n@>on/SY:eH.<+"k<YrfF7Np"\&[G!X3Jt!<q9[+,C'8'a8gC!O)U0%E8DP"i)/mK`Zr0K`X@")he?I!XS`*r;jG6A-E,;A-E.0)%+=aJ/ASQ"iUQ,**i`e!XUO!!X7Kg>m81Ka;fBB!lY5[![GYcJ.Dek]`JA1)K3Rr]`PkK/Hl<k!["'W\-iI0"hb!)!GpBjm/a^%Ds[Se!Ta>(W!D5`"aB>70^SmW)#Xbt'4_7MPla\a"e>^2ciqYpV#kK.#1WaB$tKMFJ-U#;!UTmkGP(um#5&"5a9D5;\I`9T"U0,K!MBJg#@.Le!X3K?!<n;eA-E,;A-E,?E!=bneH-hc*V]]d!\FQZeH-iF'8RD-7Kq<D^^!r+!gNh]!X&\'!gNgP"U,&t"cWSP![@l.!gNh'YT2a*^^!r+!gNiG#%Rl@r;g^Or;j\<>m5o`^]n'JN<6m">m6Jpq$gj<"f28c"U,&t"cWRe"9jbdPlbds(\IgE#?R/lPl`]D"f29c!^HnmPlbd;$2">[!Fu?;p]k(.N<8;K>m6Jp/NWP*"jdEko`=F\m/\;j#.Oj@GP)!0!O)f7"oSJD!b;H<,s(,g"lKH#jT40<J-U#;!Smd5#@muAQiUIrh#WlD>m9<jeH&DK"i(pmeH*nq"aAJt0UDfN"U+p;"U,'K"k<\)![$>.kQKE;/Hl=.![$V;\/tlD"k<\1!?Zgnn-&srjT0l9jT02-#NZ!J!GpBjjT2jrDrh#U!SmbuW!DMg"aB&/0]rLJ"U1h/>m:0-,s(,g"c*1tjT40<h#SUZ#5AE,GNAiZjT007jT.SV"U,'Rr;hEQr;g_j!rW/u!Gp+'r;h]UDuB_0!ItDnblRJ<_$FQT"XQ5.!<n8[DuB_0!<m]G!ItB0"(VQ="`Eu6"n_mXTEk,jJ-'Z^!UTmkGP(tjo`8kGo`=O`>m:0-f`bmi"iUKaL]kKo`;q'R%c@PA#B.9V`<#u>A-E/8!BZAQr;jD7DuB_0!<m]G!AOHQC`**Orrcj9"T`-;"U,:a!X7*U+,CcD!n@?("U3EX+7L&=$O'!'eH4P-C`(t/L^.2hPllgI>m9TrL^.2ho`7p#"U3fcDs[Se!ItDnblQo,"aB>7L^*5ICrceI!S7Ea"U4Gt"9l17"V)QL!X1=_SH8t=SH>Gbmfd5*"XQ4c!<n8[DqtHE!<m]'!ItC1!Go7Nh#Z=4CtJjG!OrAQh#Z%,eH$bj#Nu9C!b;H<!Fu?;"Uii^"k<YrW#W;eeH.<+"k<YrQjUV@"\&[G!Wcg8"gAJ:`<++&#rr16#/CmX"iUNL0?!tra:qn``<)\PG/XO%!lY3c`<,61"Ui!F"i)$p`<*^S]`Kbh"hasZa9'^!"\&[/!g3Tf"f29c!^Hnmi!*Hj9q;?%YT2I"^^!r3!hBC]!<`S.!hBBX"U,'LPl[EWV#kK."s(Ja=/>tp!YPV>[/u[!A-E,?GNAj]#3>l%a9CZ+Qk!C*m/aa+A-E.0"`Nc/jT,O/m/aElm/_%E"ml>q%:fVG"a>Y%TE4N`>m62h"`B"q"fDW:"U0D]Dp8=5!<m]'!Jgs9!Gog\h#WlQ>m9<jf*>gi"h4bB"m#d[#@.N#!Vcn*"n_nX!F5m-!V$J,"U4As>m5o`n,cl!N<1Ceo`56*"CqZ>jT00ojT1GD>m9TrO9&Vjo`</AA-E.P#?RGtSH@4?"9kn/SH;%["U-L^"T`-;"U/iKeH48&++ONF"9f1`!X7*U++OMceH.<+"k<YrL_l]n"\&[G!l,&O!Moj_$A&<^"gnE.!^HnmpB+q0"T`-;"U/iKeH48&+4pkg#Lrl-"U3EX+6XNf)$NJ5eH35i2$N@JO;qO0o`6X*eH#gqA-E-%>m:0-;?R/W!oO8g"cWQeGEi6V#IaqK"U+p;"U,&;eH,p)![$>-TE`pJ/Hl=.![$>-8C[bn"U3EX+7L5J&-YN,eH.mMhug@j"`Bk4"e>]VTEh"hJ-'Y[!pp#]&m(V*`;tJo>m7>3SH;Oi"oJF4"U+p;"U3EX@g*%d!["Wa\-1=`/Hl=.![$nAa:JME"k<YXGP)9H!VHJ0a9D5;\-?4Br;l*o>m5o`p]k(.N<6otA-E,_3rK'_hu[iq!VHHsGPqQ8!O)f7"bd!]DZ'S>J-'Zf!VHJc$=j;D!Fu?;"Uii^"k<Yrcks7qeH.<+"k<YrJ.]"&"\&[G!qcS1a9DMLp]k(.r;ii!>m5o`T+#66"o'!A"oSH*DY4#6o`6.j"Rlg'GPqQH!W<%8;#LF9!aPt`!g!Fg"cWT^!DWe%TET94!VHHsGPqQH!W<%8a9DMC`s-&X"T`-;"k<Za"U3EX+7L,G!S%6'"U3EX+/fjg'Epr0eH,nljTu+@!?[+#O:;A;h#X_\h#V?5"l034#@muA!Fu?;"`OXq!n@>ofG*f[eH.<+"k<Yri!?Op"\&[G!q65,"dK-@3qWLWTET9,!UTmkGP)!@!TX;m"U+p;"U,'K"k<\)!["oan-@JF/Hl=.![$>;ck?RP"k<[Q#&"25!N63."oSJ##$hCd![Tnp!<n8[Ds[Se!<m]7!ANmAC`)O?YQA)6o`;8u>m:0-YQA)6K`WP]m/[Cg$tKMFhu[iI!R1Yi!?[C;p]l<SDoDb%!<m\t!Jgs1!Gog\eH)$D>m9$bquUC4"T`-;"k<Za"U3EX+2Ai*"9i`JeH48&+2AgDeH.<+"k<Yrp_(pZ"\&[G!k8KL!SmtI!UTn0W!DMg"aBV?J-PZICkr/c!VHJ0clMc[L]VMf!UTpf$"O2C!Fu?;n/!P3(<$=]3<dA'YSLLJ`<$?!`<$5<)dNWd!k8_``<+![`<%:'!f.0eE!<oVn/?5a!keZK!\FQZ]`K;.$-4"g7KpI,/UuRW"eZ$;h#Z%,eH$bR#.Olf!?Zgn\/kfth#T4"&7bqJjT/*["eZ$;jT40<"aB&/YQ9diA-E,?DWLm&jT-HZ"R$-qGO5F8!UTo(;!e;)!aQ!&!D$K"r;l9d:'Ch!$tKMF!Fu?;eH04a"k<YrJ/44IeH.<+"k<YrO;Wiq"\&[G!X3e=!Jgs!!Gog\`<#HA>m8IR"`D9["lBi$"U4Z+>m9m%Vup</r;lZu>m5o`hZRHn"bZne"U2jGCqp(b!U(G'`<!pY"\Am:!A%ab"T`-;"U/iKeH48&+/fRO#1Wc,"U3EX+8?>e%0]3)eH/tX"U+p;"U3EX/Hl=.![#JkYQNDW/Hl=.!["'GQkBQl"k<[>!A4NZkQ4g3-)_M`"Z7T$"U-Jop^dnN""u50!Fu?;"`OXq!n@>ofH7=%eH.<+"k<YrYSDs3"\&[G!r2kr!<iW-A-E.e!\FQZeH-if%(HMl!\FQZeH-hc(&/4A7Kq<DjT\H`"U0)bhuW$C<tuI;(L71j.:`Sc"^)!4"a:F6!U'Sd%1S+)>m27%!Fu?;!Fu?;eH.<+"k<Yrn/h'%"`OXq!n@>on/gcueH.<+"k<YrkRQMh"\&[G!i66U!<iW1G9,TBkQ4g+*S:p/"YC`i"U,'R-/\gZ!b;H<S-*:*"mlIc`<E(Tr=q3'!SnT`#U%A$jVS#/"U3EX/Hl=.!["WWO9*l5/Hl=.!Zuq5n.,[l"k<\A$>cpe/\hTm`<!pYC'4^j!<irR`;p,t"haqm%9L4D/VjpC"jI'nA-E,;A-E,?$e5:^eH-iF)^*Z4/Hl=.![%1Sa:&5A"k<\>!<`SV$"=#@>m5(n"aqKN"0`#Y+.*5!"FVB-"NVX4+.rr("+;8A'HgOh"U+p;"U,'K"k<\)!["oikQfW>/Hl=.![!d=kRRhd"k<[f!La#m"kX&]`<!XQ^]@^EeH*Vi:'CgC!Fu?;I37)V5^aa,#07C)+6WmT&E*\$"U+p;"U,'K"k<\)![!dIn-@JF/Hl=.![#2u^^C<8"k<\L#MK1^V#c_["9kn.3WoVo!<mJ.!PJN]!Fu?;!Fu?;"`OXq!n@>oW#PLGeH.<+"k<YrL`GUo"\&[G!X2;X!<n&U"9k%kiW0/cSH5emA-E,;A-E,?$e5:^eH-i6'9E4uE!=bneH-i6'9EIL!\FQZeH-iN%]C*G7Kq<Dg^,/.Ka7]i"U,'K"k<\)![#c/YQiVZ/Hl=.![#JoL_9k\"k<[B!>PbA`;se2#VEgs=2b3Z!HJ;HeH#g`*Q8$_1'P>l"`]e.]`H%TA-E,;A-E.e!\FQZeH-hs&YK?Y!\FQZeH-hs#j<947Kq<DjU!$E"[IJXckeqNEF"8!"`\sM!<m@p!<qfkA-E.$$=j;D.t7R"zzz!6,$>!6>0@!6>0@!6>0@!;Z]r!;Z]r!;Z]r!;Z]r!#Yb:!"],1!9*tY!6,$>!6,$>!%.aH!#P\9!9F1\!&FTT!$;1@!;?Hn!'pSb!%@mJ!8mhW!5\a:!5nm<!5nm<!;6En!;6En!;6En!;6En!(6kg!(6kg!(6kg!(I"i!([.k!([.k!:0^d!:0^d!:0^d!:0^d!#bn=!#bn=!#u%?!#u%?!.Y+N!.Y+N!.k7P!.k7P!6,$>!6,$>!6,$>!6,$>!%%aI!%7mK!%7mK!%7mK!%7mK!!iW+!!iW+!!iW+!!iW+!20Am!*K:%!$M@C!"&c-!"8o/!"8o/!"8o/!)<Ur!)<Ur!)<Ur!)Nat!)Nat!$24B!$24B!%n?R!%n?R!%n?R!%n?R!7LoJ!,hi;!$)(?!'C;_!'C;_!9F1\!-S>B!;6Bm!+Z-2!+Z-2!+Z-2!+Z-2!;?Hn!.b+M!:p0j!9aF`!9sRb!9sRb!'gSc!'gSc!'gSc!'gSc!##A5!1*Zc!!WH(!"K&1!"]23!"]23!"]23!+Z-2!+l94!,)E6!,)E6!%n<Q!&O`W!&O`W!&O`W!'gSc!$hRF!'gSc!'gSc!)Was!3Q;%!+Gs/!6>3A!5np=!0RB`!7V&M!!!*$!!!*$!!!*$!,V`:!4i.1!$2.@!.Y+N!+5j.!1!Zd!4i43!4i43!5&@5!4i43!5np=!5np=!$D=C!$D=C!$D=C!$D=C!$VIE!$hUG!$VFD!$VFD!;Z]r!;Z]r!;lit!;lit!6>0@!6>0@!6>0@!6>0@!6P<B!6P<B!3H8%!8IPS!;HNo!:g-j!:g-j!:g-j!:g-j!;$9l!6"s=!9O7]!;c`r!;HQp!;Z]r!;Z]r!;Z]r!(m:m!(m:m!(m:m!(m:m!)*Fo!)*Fo!($_e!($_e!(6kg!(6kg!$hUG!$hUG!$hUG!%%aI!%%aI!%%aI!%%aI!4W%0!4i12!5&=4!5&=4!'gSc!'gSc!($_e!($_e!($_e!"/i.!"T)1!:Bge!"o>5!#,J7!#bn=!#bn=!#bn=!&+KT!%n?R!%n?R!)<Ur!)<Ur!8IST!8IST!8[_V!8[_V!8[_V!8[_V!8mkX!8mkX!(?qh!&XcW!.b.N!!!*$!"&f.!"8r0!"8r0!"K)2!"8r0!$24B!$24B!$24B!$D@D!$D@D!!33%!!33%!!33%!!33%!!WK)!!iW+!!iW+!!iW+!'gSc!%%^H!'gSc!'gSc!9+"Z!9O:^!9O:^!9O:^!9O:^!2T_s!*0+#!:'Ub!%%aI!%%aI!%%aI!%%aI!9sRb!9sRb!9sRb!9sRb!*B='!*TI)!*B='!*B='!65-@!,DT8!&O]V!,;Q8!,)E6!,)E6!8dhX!-eME!94%Z!)`ju!*0.$!+H!0!+Z-2!+Z-2!;us!!/U^V!2onu!*B='!*B='!*B='!*B='!$).A!1<if!"T)1!'C;_!'C;_!'UGa!$VFD!'UGa!'UGa!'UGa!(-hg!3-&"!"]/2!&O`W!&O`W!&alY!*o[,!4)\+!#u">!'1/]!'1/]!'1/]!,hr>!5/C5!9jI`!7V#L!7h/N!7h/N!7h/N!/1LT!6P<B!"T)1!$D=C!$D=C!1O&j!7q5O!!iT*!3lV+!8[_V!!rZ+!6P<B!6bHD!6tTF!7ClJ!7ClJ!7ClJ!7ClJ!6kTG!:Bjf!#,G6!%J$M!9""[!;$9l!#>S8!:'^e!!<9&!:'Ub!8%;P!87GR!8IST!8IST!9sRb!9sRb!:0^d!:0^d!!33%!!E?'!$)1B!##D6!!<6%!%A$N!$21A!8@JR!!iW+!!iW+!!iW+!!iW+!(R.l!%.gJ!8%8O!)Wk!!%n<Q!7q2N!+,j/!&XfX!"&]+!"Ju/!"Ju/!"Ju/!"o83!-JDE!'pYd!"&]+!/1OU!([.k!!E9%!"&]+!"&]+!"&]+!"&]+!!3-#!!iQ)!!iQ)!!iQ)!!iQ)!2Teu!*TF(!!N?&!"8i-!"8i-!"8i-!"8i-!"Ju/!"Ju/!#,D5!%7gI!3-#!!2KSp!6YKF!,M]:!7:cH!2]bs!29Jo!29Jo!3?2$!3?2$!3?2$!9XIb!-nVG!##>4!'gMa!%J!L!%\-N!%n9P!&+ER!&=QT!&O]V!&O]V!!NN+!/L[V!7h,M!3Q>&!3Q>&!3Q>&!3Q>&!&aiX!&suZ!'1,\!'1,\!$_XI!1*`e!3ZA&!+Gs/!0R?_!1X&i!1X&i!'(2_!29Mp!2TYq!)*Cn!)N[r!)N[r!)3Us!4;k.!7q2N!1X&i!1X&i!1j2k!1X&i!1X&i!29Jo!29Jo!.+kL!5ej<!1j/j!'UD`!(6hf!(6hf!(6hf!(6hf!!!##cik:t"U,KK"U,3C"U+p;"U+p;"U,&;,m>S:VuuMl,qT9(,p1bB+9b4<,n4#]"U,_Hr<aPU%=eK`8Hfh4/d2E4!dLg`]a4iKzzzz!!!!,!!!!,!!!!"!!!#3!WW55!WW55!WW55!WW3%K`QH!YL!GeA-E-FA-E->A-E-6A-E,;A-E,?E!7O6+34\K!@9<$"XP8C"<[k;"XOV.!<ioD<t,TB8HfP,/d2C^'a5$U,7V-e%06V9-Y*AaeK$UI(8VuS$31&+zzzz$NL/,%0-A.aoDDAzOoYO_OoYO_OoYO_OoYO_!`2/_Zd8k1A-E,cA-E,[A-E.p#"8t)$"O2C+(PNY"YKr^!Fu?;"`OVk,p2UWO9?k>"U-1oTEO`e,qT9(,p2U\TEYQh"XOTg"h4mCGEiD`"r/Vt$5ESP"U,WWn.HHF.Q8(qA-E.="![+Fob7Q6zzz!!!"B!WW4D!WW30!!!!7!!!![!<<*$"Te\gcirqAA-E/$"(VQ=i<*To"n2Ou"XUDTA-E,;A-E,?E!:prK`N:Z""8j(@g*$i!?^M-G_H/M"U0S\+0Yil"\&ZL!QYAH!L3p""YKr^p]k(.4[<9V7JI*n"\kBcA-E.P#?PbZq>g^&I;M^_"YXBi"`7!<"m?//D%1>uL^Y"dA-E,;A-E,?E!:prK`N:j"eZ'R!A+HYK`N:*!l+mA7KnJHp]k(.ASl&hO:]24=)Df3!<`RSHt3Ba"a<u!"]]Ah!EJ%^>m4M]A-E/8&m;UEh#f5>"n3340.d?!A-E,;A-E-j!A+HYK`N:Z#d=Db!A+HYK`N9O"5"Rs7KnJHjUD_(cl.Be2$KZSA-E,;A-E,?$\\TbK`N:b%G1f;!A+HYK`N9o!g!`m7KnJHp]=_)Pm<6KA-E,;A-E,?E!:prK`N:2#)EG:!A+HYK`N:b"/$;27KnJH*F]0U&6C.e"\AkD,nC1;*;fgj,m>B$"U4*2>m3*8A-E,K-ia5Izzz?iU0,?iU0,%0-A.%fcS0L]@DTBE/#4C&e56C]FG8C]FG8&-2b2&cht4&-2b2&-2b2FoVLBFoVLB&-2b2&-2b23<0$Z+ohTC3<0$ZFoVLBFoVLBGQ7^DGQ7^DD?'Y:D?'Y:Du]k<Du]k<qu?]s@K6B.@K6B.@K6B.?N:'+2ZNgX1&q:SE<#t=56(Z`0`V1RJH,ZM7K<Dg!<<*">Q=a(>Q=a(?iU0,?iU0,?iU0,A,lT0!sJ`8!2\$G).WmS&S)%K$"O2C!Fu?;%9`o=%06V9%2j[0%0\?f"cX9[jU81%!sel,zzzz!!3-#!*0.$!*B:&!*B:&!!7OZ!;OnET`ns1"doO)"U1"lA-E,;A-E,?$T/)F+!B2=2(\t82';Spp]1Of"Z<Rd"9mlk*C'c3"a:u[!@86chua.#*<d/qJ-$_lA-E,W/d2CZA-E,o@g*#n+/f58"9i`J2)QJS!U'YD/Hl;8+7K<X"pII"2$M5*'qbU&#@.KZ"`>=a"a;8c!Up.r"YBmq,m=<["U2[_'."qN46RV0,mYM3*BUJI*<d=2!Z_;P"U,'R*QS@(CtJe0YQS58,p-Y$"T`-;"U,8k"Z7C["n2WuE!8*V+5d=L"uRt9"Z7C#&[2<?7KkXYNWJ&?`<HKi*M<E:E>9c'DB/l]A-E,;A-E,?E!8*V+7KB:"U,8k"Z7Ck"8E!V/Hl;8+/f7N'a7&12'#Gb#H\.5)1Vc/"YKr^"a:];%_*-Q*=]4l>m2e`%NQPn49ZH+3<^-`A-E-t!BC;uH"7'^n,d8<PQHmHA-E,VA-E,?DB/laE?,c^A-E,?G9(?;D"%cP'dG#l!Balr"V"W="fq_X%0b)t>m1\M!Fu?;r;g_o"[*SSNrf"\Ht3Ba#9EjFzzz!!rW*!"&]+!)imu!2KYr!#Yb:!"],1!*'%"!3?5%!$qUF!#bh;!)Was!$hRF!29Mp!29Mp!%%^H!'^G`!%%[G!)Was!2KYr!2KYr!2KYr!2KYr!*9.#!&FTT!*B7%!,2E5!($Yc!*K=&!/COS!(R"h!)*Cn!1Erh!1Erh!0mNa!)<Lo!)N[r!1s5k!*'"!!)<Op!!3-#!1!Zd!1!Zd!1!Zd!)rpu!2'An!!@@,GlYq4"X.C["W:hS"VG8K"US]C"oTHTPofT>!Fu?;2.Hdn2'8Iqp]NH+"U-b*YQMrO"\&YQ%9`o="`4tX"\&Y9kQYtu"r1!G"U+p;"U-b8"U-b*O9*u:2(\t82'8IoO9,ST"Z8mT"YJgF+Vc:,E>9c'0a/j(A-E,?$T/)F+5dCn"9i`J2)QK6#:MH>"U-b*W!2r$2(\t82'81s8-MHd2$HJ*#9Ckfo)Tm)#U0BT*=uK[,oQmi/M/+\-("a>"XSp)A-E,A'EA+5zzzzQ2gmb%0-A.$ig8-!<<*"5QCca63$uc63$uc63$uc,6.]D(B=F8/cYkO=o\O&)?Bg<)?Bg<2ZNgX-3+#G+ohTC8cShkz;?-[s:]LIqz!=8b$cikS'"U,cS"U,KK"U,3C"U3-g+ghQ/*"?'T"U-L^"Tnr/zzzz!!';)!!!'#zWmCneA-E,KA-E,CA-E,;A-E,;A-E,?E!6sk+34\K!>R0i"Vi-3"<[k;"Vh1J"UtWI"UtVf"U1/(')_k($3LG3zzzz!!!B,!!!H.!!(=F!!!%&!3FNN"W.CP#rr.u&S)%K"Yg/i#@muA!Fu?;"`OVk,p/caYQcC*"U-1oYQMrO"\&YA"W.CPi!`Zr%0^VY"X!78"U3]c#L*_V'*SR?!!"t\!!"t\!!"t\!!"t\z!!!H.!!!N0!!&Mi!!!$$!4:)V).WmS&S)%K$"O2C"YKr^%9`o=+#sK6JH99b"f3.ZXTYa9!Fu?;"Ucmc/KaH_n,rn&/Hm^JO9>7\/M.,0/Ka`ghuj3Q"YBn%(&/:SCnMTp$j@@L]`\LY%4)`S"U+p;"U,uY"U.D,"U,):zzz!!!!m!<<*$!!!!m!<<*n!<<,R!!!!4!!!!8!!!"r!!!!"6i`P'"j%Zn"U2^\A-E.I)Is!TK`M\nJ/$BM080E1M'6C5"U0*mBQ\.<!d/>a"ateC'n$*n"U,'IFTm1;FY28K3<_;!)e9*U"Vh1]'fa;>*<B[S"U/iKm/cST+-6N-#42FC"U48o+7K<@"U.@!m/`%aq#LX&"`ZDb!N?Mg"dK,!#\4)B9jhN9R1s08"U0+X!S@R`!Gog\[/mrAD"%V1!>/iG"W\K-"LS8[A-E.U!Gm8g--ZI,TE;4r,s&F7"Z0`n"b?e02$Mq?A-E,;A-E,?E!>V0m/\<]&Wd._!A+HYm/\<-)MeJ!7Kr/[D2&)T!EJn"BPe'L"(VQ="`ZD:aWEMHD8?Wk"U-aa"XQSJ(!m%WD!1mg!Fu?;9f5Y<#R,EPfEG8kJ,r['"ZZ`\Ym+_B"T`-;"ml>#"U48o+4qIh"9i`Jm/cST+4qJ+"76+@"U48o+1N'$"pII"m/\Lk*<dH$cif%'Iq/]d!Fu?;m/^]#"ml=4a8t3%m/\dB"ml=4kS%>-7Kr/["a@oofEHs0Crcd6!K@+rn-+6*!Gm8g-(P'QTE9PS!Fu?;!Fu?;"`OY4!UTn0\/h4Hm/\dB"ml=4E.Af07Kr/[K`Tj-%F>pL"t*Q-!Pojg"U+p;"U,&;m/[CX!?_(CVuuDf/Hl=F!?Zh!YQb8#"ml>Y'KH>V!ne2s"U14p04b=7)e9*U!Fu?;"Uj\u"ml=4J-[:b!A+HYm/\;Z#bVCh!A+HYm/\<-$+LKL7Kr/[K`shdr<<FF22)(!!]^F<!<H^7"U/iKm/cST+4qU<#42FC"U48o+4psW*<en9m/a0qP5tgj"YKr^,s$GX"`\s5ZiO\@"T`-;"U/iKm/cST+/fI<#42FC"U48o+0ZRN*!Je8m/\LB(!m:6!1=]!#Dj+)"U.U$"\#TsA-E,;A-E,?E!>V0m/\<e&!-q]!A+HYm/\;r%#>K!7Kr/[[/lEkkQ.dd<>YnQ!Ug%F]`GMAT`Sa."`,hd"j%Ki"U4)l>m5o__%JDT!<jQU"U+p;"U48o@g*&'!?]r(YQG&J"ml?X!?]r(L]d#F/Hl=F!?]r8J/&5W"ml>Y&rZk!$O->/A-E,Z>m6Jof`Ygh"T`-;"U,;$!<qik+355e#42FC"U48o+.+.S#6dR#m/^L/a9K$^"`[gJ\Ii?U"_AMSD5eFa"U+p;"U48o/Hl=F!?^MIp]9a_/Hl=F!?]AmckQ^R"ml?0$#IZe7AKuq"U,'R[/nn`[/k)o!OVq3EO>hL!Ug&""U+p;"U,'K"ml?X!?^53p]Kma@g*&'!?^53fECRB/Hl=F!?])oJ0"k`"ml=:WWDc#"Z6f*TG@]T4b*`"CmYu$4`%&=4_\F1"T`-;"fMi(\/*m$kR;Xj!Sme4!@-D$TH48U"k<Y;&9$A*eH+2$/Hl=.!?]Yp^_-f?"k<W2D"%TSp]k(.4[j1[![ZV&cN+1Q2%2?*"a<,6$9`3U+$Bd:4Ttjs"U,&E,t5!>3<_iKA-E,;A-E,?E!>V0m/\;j%%mgl!A+HYm/\<U$cj1h7Kr/[,mbU="9j!$fEEjCa9=0n!Fu?;!Fu?;"`OY4!UTn0cjm8am/\dB"ml=4^^..W"\&[_!N?/I"U2F>09lPAM%*u!"T`-;"ml=B"U48o+-78Z#OMOD"U48o+0ZfR)?iS6m/c;X%h7.qfa0<;"gJ,>"U4)j(Ni1A#AA7r%,hV*"U+p;"U,&;m/[CX!?]r0GjPM`"U48o+7L0C'*Ui/m/^K0"bdH&&nD.L!Fu?;m/^]#"ml=4L_ucfm/\dB"ml=4p^sGG"\&[_!LXHOSHB%(A-E,;A-E/(!Fl9:m/\=()0c=("ml?X!?_(S@-mtH"U48o+,D$6*<en9m/_Y(!Sms.p]k(.K`R/6%h4m0U]G!0"T`-;"U/iKm/cST+/f^S#42FC"U48o++P>]$jB*(m/aa)h#RZ_p]k(.?',A&"U.mJ]`e!2V$JQa(Yo])A-E,?E!>V0m/\<U+,C$d!Fl9:m/\<U+0Yk7!A+HYm/\<E$A]B"7Kr/[Y6/'i!sR?iA-E,;A-E,?E!>V0m/\<M(&.mu!A+HYm/\<M'$q-m7Kr/[,rVk+"n)IP"Z<gkA-E,;A-E,?$gdrum/\<]&"j'm!A+HYm/\<E*4Qdg7Kr/[SH1%%!Sn'Q!DeCMSH2G%"f25#A-E,;A-E,?E!>V0m/\<=%"JWN!A+HYm/\=($J6-u7Kr/["b6WE!NcA+E>>k^V#a<p"lKqnXT:!WEIGM$"`^@>`;tVnA-E._#\4)B!Fu?;m/\dB"ml=4O;QmY"`OY4!UTn0O;OVpm/\dB"ml=4kRE%R"\&[_!JLo0%A4$:#qpu5"T`-;"U/iKm/cST+.sIT#42FC"U48o++P9>(^3A4m/aBs?3LK5A-E,?E!>V0m/\;r&Wd5$$gdrum/\;r&Z>g!!A+HYm/\<U'!MfK7Kr/[cN;5i"g&;d!b;H<!Fu?;"`OY4!UTn0kS`jp"Uj\u"ml=4kS^#rm/\dB"ml=4J-G-R"\&[_!Vcn."a.idA-E,;A-E,?$gdrum/\<-)5mW@E!>V0m/\<-)3>$h!A+HYm/\<]#k/E07Kr/["dK*O]aA=YAHdnlA-E,?GD-(M"bctnJ,t?)"`]4sIEr%,"U+p;"U,'K"ml?X!?ZguYQjIq/Hl=F!?]AiTF(il"ml?:!Z;.F"ViV#4[N^kAP6<?>\"!A,nD#H#F#TL,mDs,A-E,?'g6E5!BC=#faVHq"_A2R^]e9QA`*ar'eO8c6>^RV38"@=!Fu?;"`OY4!UTn0O9r,qm/\dB"ml=4kR31["\&[_!VZcC!<iXc"??Ws!Fu?;"`OY4!UTn0i"N=!m/\dB"ml=4fGMsP"\&[_!T*ot"U3Q[04b<?$Y0DE!Fu?;"`OY4!UTn0L^T"Bm/\dB"ml=4^_#EE"\&[_!=]VE"U,VE'b*qR'bp`Q"VhOW^]XfU"W`(K'ck*oA-E,;A-E,?E!>V0m/\;j'sIo0!A+HYm/\<E(@VV67Kr/[f*C@;"U0kd%h7G!`rRiQ!<pCFA-E.0#$hCt!UL)&"U/0B%Hmu+">=$aM$mht"dfEu"cWPf"(VQ="VjI+4CeU!K`Q#R!I[rb"cWQ/">c#<K`Qi1A-E,;A-E,?E!>V0m/\<U%*/J:!A+HYm/\;j+.s/K7Kr/[!Fu?;h#T2(#k/D((j=^9h#Z=4,M`BN$O(JQeH)lfDqtHE!S%3&"U3EW+,ClW*<en9eH,FM49^/'%:fVG!Fu?;"`OY4!UTn0a9dq/m/\dB"ml=4ckQ6f"\&[_!>YV8"XSg(3<^]PA-E,?'a5m067!?m!<iXCA-E/2#@muA!Fu?;"`OY4!UTn0fEpaEm/\dB"ml=4YRI0D"\&[_!<jcDfEFucJ,rBZ#\4)B!Fu?;"`OY4!UTn0YS?R3m/\dB"ml=4O<)CZ"\&[_!LO#c!<n_hhZmZq"T`-;"ml>#"U48o+0Z(8"76+@"U48o+34`7*X,":m/\LooaM(Q%h7/+i!(RL#(=5fA-E,W(^22l3<^`$#@muAf*>gi"Z9\!"oJQb"_Ha$A-E,;A-E,?E!>V0m/\<=#abh`!A+HYm/\<e'S%,+7Kr/[*In.o"X%(SK`T[,A-E-b%h7G!mgq.#"T`-;"U/iKm/cST+4(V(#42FC"U48o+8?qN'Epr0m/^(4"U+p;"U,'K"ml?X!?^M?TEaca/Hl=F!?]B%p^RHs"ml>-mK"'4'Er]'BQ\.,!d1"6A-E//"_7c?YlZRq"T`-;"U/iKm/cST+34ho#42FC"U48o+.s.3&d:`.m/cY__uU#F!Fu?;"`OY4!UTn0i#[s`m/\dB"ml=4p_L(K"\&[_!<nA^4\_OT3<`-V!Fu?;!Fu?;"`OY4!UTn0fG^Cem/\dB"ml=4O;I*n"\&[_!C\:Lci[!YkQ++H2,2^19`YD\U]G!0"T`-;"ml=B"U48o+7KQG"76+@"U48o+.+),&d:`.m/c#L!<k&DD!1mO70*QLX8ui8"oep?"U4Z+BPi5XA-E,;A-E/(!Fl9:m/\<e(SD!"!A+HYm/\<5)Q4,L7Kr/["aB>;BRO^4!dt5rK`Pk@!Gn,:K`M?sFc?D&A-E,?'fD6WK`OpP"o&=."cWPJ!=oX,"T`-;"T`-;"U/iKm/cST+-7+k"76+@"U48o+,CYn*X,":m/c)LL&mP?"iLXV"U+p;"U,'K"ml?X!?\6U\-;7#/Hl=F!?])cn-]Ch"ml?S!NuN@7;ZK.#P8@V%:fVGp]k(.?0hc+"U,sizzz!!!#Y!!!#Y!!!#Y!!!!0!!!!-!!!"I!!!#s!!!#u!!!#u!!!!B!!!!9!!!!a!!!#]!!!#]!!!#]!!!#A!!!#A!!!!^!!!!C!!!"E!!!#G!!!#i!!!#i!!!#i!!!#i!!!#O!!!#O!!!"!!!!!S!!!"4!!!#m!!!#m!!!#m!!!"n!!!"r!!!"t!!!"t!!!"t!!!#!!!!#!!!!#%!!!#%!!!"K!!!!i!!!"N!!!"L!!!"a!!!"!!!!"N!!!#$!!!"*!!!"8!!!#6!!!"2!!!")!!!#G!!!#G!!!#J!!!"=!!!"<!!!#\!!!"F!!!"=!!!"L!!!#Q!!!#Q!!!#Q!!!$!!!!"S!!!!c!!!"j!!!"j!!!!6!<<+`!!!"D!!!"j!!!"j!!!#Y!!!#Y!!!#Y!!!!T!<<+o!!!"%!!!#]!!!#]!!!!l!<<,$!!!"$!!!#%!!!#m!!!#m!!!"-!<<,/!!!!p!!!#g!!!#g!!!#g!!!#g!!!"E!<<,<!!!!g!!!"W!<<,A!!!!h!!!"a!<<,N!!!!g!!!"Z!!!"\!!!"\!!!"\!!!"\!!!"`!!!"`!!!"`!!!#6!<<,]!!!!f!!!"X!!!"X!!!"X!!!#J!<<,g!!!!k!!!#]!!!#]!!!#\!<<,r!!!"&!!!#3!!!#3!!!#3!!!#t!<<*'!<<+H!!!!.!WW3C!<<+7!!!#+!!!#+!!!"6!!!#g!!!!l!WW3Q!<<*l!!!"+!WW3X!<<+D!!!#g!!!#g!!!"=!WW3b!<<+A!!!"M!WW3m!<<+C!!!#e!!!#e!!!#e!!!#e!!!#g!!!"m!WW4.!<<+>!!!#:!WW48!<<+3!!!#N!WW4B!<<+?!!!#b!WW4M!<<+2z!<<*"!<<*"!<<*"!<<*+!rr=]!<<+3!!!"R!!!"R!!!"R!!!#1!!!#1!!!#1!!!#-!!!#-!!!!P!rr=o!<<+)!!!!d!rr>"!<<+2!!!#3!!!#3!!!"#!rr>+!<<*#!!!"D!!!"D!!!"D!!!"F!!!"H!!!"H!!!"H!!!"?!rr>9!<<*d!!!#[!!!#[!!!#[!!!#]!!!#]!!!#?!!!#?!!!#?!!!#K!!!#K!!!#5!!!#5!!!#u!!!#u!!!#u!!!#u!!!"m!rr>Z!<<+7!!!#:!rr>c!<<*d!!!"N!!!"N!!!"N!!!"N!!!"P!!!#V!rr>q!<<*q!!!#h!rr?$!<<+:!!!!""98E+!WW48!!!#O!!!#O!!!#O!!!"R!!!"R!!!"R!!!"R!!!#A!!!#A!!!#A!!!!D"98E<!WW3a!!!#Y!!!#Y!!!!V"98EG!WW48!!!!h"98EN!WW47!!!#K!!!#K!!!#K!!!#K!!!")"98EZ!WW4I!!!"9"98Ec!WW3r!!!"K"98Ej!WW3p!!!"h!!!"h!!!"h!!!"h!!!"a"98Eu!WW3n!!!"d!!!"d!!!"d!!!"j!!!#o!!!#o!!!#&"98F?!WW4;!!!#X"98FH!WW4+!!!#?!!!!.*!-EU+=&Wl-jgh('`a!9"YjNk"Y!sc"X.C["o/72"U-JoJ-RBg"$$N:+(PNY!Fu?;"`OWF<?L]2p]XYL"U.mJO9=tT<@n@X<?L]7TEYQh"]Z"8"U,&E"Vha]'t=JH!<E?-"Vh1U*=iUh)\F_D"lTSp"U-b9"U+p;"U.n9"U.mJ^]X?5"`OWF<?K!YJ-8k("U.mJcj$u\"\&YqO:OA%"s(2b>m3)3:'Cg3!A>`&!Fu?;"`OWF<?I#!J-6#`<<ZAEL]dDT<FZ19<?I#!p]=GI"U.mJW!/Om"\&YqfEVHU!R2.b&7#Gs,u+UI8Rqu.!Fu?;<@n@X<?I;-fE>2+"U.mJi!$%\"\&Yq`<7ds"jm?(/HrliA-E,;A-E-:@g*$9+2AE^!`^fU"]ZYC$Et'F7Kld>0BEZIMudGm"T`-;"U,96"]ZYk%JTu.E!96A+4(IY"B@#W"]ZY+&Wdq87KldD4+IS7%bM"f/M2Jh>m3@lA-E,g:'Cg>!Fu?;M?3na4U"C\2$GT9"T`-;"U,96"]ZXp)6a3C/Hl;X+.+"'"U.@!<>?>Sr<nto=#Di=E@"$WE@jm2F9ON*G;[GE2/J?f22hQH"U3-_H*n!E*s#mU"U/iK<E1-V%[[H#/Hl;X+0YsJ#mEd%<@-`-"U,8Uzzz!!!">!<<+?!<<+?!<<+?!<<*3!!!!1!!!!"!!!".!<<+/!<<+/!<<+1!<<+7!<<+9!<<+9!<<+A!<<*U!!!!S!!!#.!!!"3!!!!Z!!!#/!!!"@!<<+A!<<+F!!!!d!!!#/!!!"U!!!!r!!!#0!!!"N!<<+M!<<+M!<<,#!!!"+!!!#4!!!"L!<<+M!<<+M!<<*J!!!#@!!!"5!!!#-!!!!$:_c7r`R"c;A-E,[A-E,SA-E,G/d2C^/d2F'$"&B+eIqso"U,'K"XPH:G`W(T/Hl;(+1MEO!sM-t,mB;0"Utbu"UuPa"U+p;"U,'K"XPH:\-7rp,qT9(,p2%JO9GeW"XQE&"U,?;"UtWI"Uu1`"UtKC"U,'A"UuIh"Uuh>"UtKC"U-2("U-1o8@SjM/Hl;(+1MIK"U.@!-&i<D*InAB3<]j4(^1B4)HR@W"\Ak,-Y*Aa"V(M4zzz!"K)2!#>Y:!7CiI!"T&0!"T&0!/CRT!$M=B!#>P7!/LXU!"oA6!"oA6!#,M8!#,M8!#,M8!'(#Z!%7gI!/gjX!!J)Y=\W<)YL!FrA-E,SA-E,KA-E.E*)WOQ"T`-;"T`-;"U,8["XP8K"S`*'E!7O6+6Wfg!@9<$"XP7p"*au="XO='"V%+:<t,V[(L743$Oo?)"T`-;"U-L^"U,24zzz!!(.Az!!!H.!!!N0!!$j:!!!o;!!(^S!!(^S!!!$'!8#R$YleM?"fVT7"U1S%A-E,;A-E,?E!96A+!?XJ<@n@X<?Lu;p]1Of"][\pTF<tPCk)U&78H'0/NOmU'cG@%*ROmu"U+p;"U,&;<<ZAEVucYr<@n@X<?J.?p]Lb>"]\PEVu_t_<@n@X<?L-%cisYC"]aprEQA=&"7QI1,on:Jn/WhE"W&a2/Sq'g/N%A6"Vimj/M2JT(H!3jD"&H&J--TN*?Seq"Vkk#"UtVM%360M'cdI%*O#QoA-E,?/d2F'#=ZlT[/g;="U,'K"]\PEi!&<I<@n@X<?L-@n/hg'"]Z:RTE>W,Vu[oh"s%NQ"!&Cun.crY.Vp,q!Fu?;%9`o="Vh1UMubpB'ncTu"U,8Ezzz!!!!*!!!!E!!!!d!<<+Q!WW4R!WW4R!WW4T!WW4T!WW4P!WW57!!!"%!!!!X!!!!b!<<*$!!!"N!WW4P!WW3'KE6l0AW-WiYg<OkA-E,KA-E,CA-E.e*s2BXSH/b%"U-2("U-1okQC;W-"@)^,p.BA"ski)"XP8C"K2D+7Kk(AGPqi@!?D[[hua.#%0[2&TEbo0)1Vbt!Fu?;"YKr^-Y*Aa"U+l+zzz!4i.1!"/c,!##>4!)imu!!33+!3FNN+_1`[).WmS&S)%K$"O2C*I.et!Fu?;"`OVk,p0&fO9$XZ"U-1oYQMrO"\&YA"jI&O%G1ne%1S[E>m25rA-E.]!CZ#fK`_J`zzzz!!!!,!!!!.!!!!4!!!!?!!!!?!!!!"!W]:J"U0)ZTE,c<%H%<lD@HaMA-E,;A-E,?E!7O6+34\k"XP`("XP8C"<[k;"XOW4!MBZ,"W;gl%0\?f"UAQA"k=DBm0V#M"TeZ(!!<3$!"Ao.!-eMEz!!3?3!3FNN!Fu?;,qT9(,p+9!"9i`J,paWUTEZ\o"U-1o\-DF,"\&YA"a:EK!Q>EN%H%<lD@HaY4.lff"W;gl%0\?f"iV)feJ4o"#@muA"TeZ(!!<3$!"Ju/!-A5A!+l32!!3?3!5["cd/db]"j$dU"U2^CA-E,?'b)1_!A>Gs!Fu?;"`OVk,p0&fYQcC*"U-1oYQMrO"\&YA@C-%="T`-;"U/iK,paY[!K[=./Hl;(+*d8U"\&YA5Xc+c'k7CV"_IoI*>eqh"_IoI&S)%KB4M/LXVOX=!Sn4h/d2CZA-E,_@g*#^+8?$7#:1r*"XP8#!l+mA7Kk(I%g@Ig"\/.c'b)Wl'd$ri"U,>8zzz!!!<*!!!E-!!',%!!!r<!!!Z4!!'/&!!$=-!!$=-!!$C/!!$C/!!$C/!!$1)!!$U2!!"qX!!"8E!!',%!!!.1L]LXQ!3=HM+_1`[).WmS&S)%Kbnqk"&#C-EA-E,;A-E,?E!7O6+/f:'!@9<$"XP7p"3:]N7Kk(AZiL=>=B>q@"\Ak,"YKr^"U4r,zzz!5\^9z!"Ao.!"Ju/!3#qu!!*N/_9`>hG7?M8'a5<u%M]EV)\'mi#@muA[1YL]*/,:3A-E,?E!8*V+*b!o2(\t82'9=1Vum2m"Z:i3ciF:R!Fu?;"Ud0k2'7n]p]<<)"U-b*kQ?nK"\&YQ"a;8[#MK1]"YBmL"k<b[6j4#YA-E,?-3XPVD%-XX!<iW-A-E,?/d2CZA-E,?E!8*V+%Vb?2(\t82'9=2p]Ugj"Z6J@!H/E`A-E,A&-)\1:]UOr:]UOr:]UOr:]UOrzDu]k<%fcS0%0-A.VuQet*<6'>('"=7W;lnu:]UOr:]UOr:]UOr<WN1#<WN1#<WN1#<WN1#4TGH^,QIfEVuQet!CQqWcin,o"U/=F"U/%>"U,'L2*D*t"[0gH@AO^X%KU)D"U,9."\g(`\->YZ"U.UB\-&Z3"\&Yi@6"M9%T-a?"T`-;"\iJ1"\g)#"h4b2/Hl;P+.rhb!<kpr9a,_MQj:2'"9fM\%M]F3A-E/,!b;H<"\&Y9"Yg0$!Fu?;9k+>19co`:p]jMF"U.UB\,sGJ"\&Yi"\*>T"Yg0,4`#oW2*FgQ!LNs2A-E,;A-E-2/Hl;P+.*9-!_k6M"\g'Ei#`+l"\f.I"U1/!CmY;FJH7b7-!=a^"T`-;"\iJ1"\g(p$2=Wt/Hl;P+7LB1)$NJ5:"T\PKa8El&mYYm*DQbAGqU0AhZ76k"XRuP"!%P""XO=Yg]8_F!Fu?;!Fu?;"`OW>9cq.T^]mLb"U.UBn,o<s"\&Yi"aU=u"Yg0,_uVM+"j[3["U+p;"U,&;9a+65J.;8V9e?MP9crR4?j0"'9a,_e31(4X/]@u!%M^QA%L"-^)^W,t$6T<Kzzz!&+BQ!&+BQ!-/&>!"T&0!"Ju/!#,D5!$;1@!#P\9!##>4!%7gI!%7gI!%7gI!'(#Z!$_ID!#>P7!&+BQ!&+BQ!&+BQ!)ERp!%e0N!#GV8!&OZU!&OZU!&OZU!+Q!/!&jlX!#5J6!$D7A!%IsK!%\*M!%\*M!&OZU!&OZU!%n6O!%n6O!.b+M!(R"h!#kn<!%7gI!%7gI!0mNa!)ijt!#GV8!!*Z3b0U;,=p5)g!BC;uBk.AN"YKr^K``6a#iu3r3<^_6!b;H<!Fu?;"`OW&2':`ZYQcs:"U-b*n-4+@7KkXY(^2JpAd'b.=Tns0A-E,?E!8*V+1MKA"uRt9"Z7Bp"HWZg7KkXi49YllG9*%UH3=Bt*=`f)!Fu?;5</lf04Y4i4CeU!!Fu?;"Ud0k2'3+6"pJrL2)QH]O9@Em"U-b*p_D]l"\&YQ*B2UO`<$3e-%H1GCtJb7!Fu?;-#DcZ,onHW-%l;0"U-J1"U,,B!!!!#!!!!Q!rr<T!rr<V!rr=o!!!!]!rr<`!rr<5!!!!1!!!"m!<<*E!!!!8!!!"d!<<*X!rr<\!rr<Z!rr<Z!rr<`!rr<`!rr<a!!!!N!!!"e!<<*$H%c8!X3_"nA-E,SA-E,KA-E.m#SR(?N<TDo"U+p;"U,'K"XPH:kQB`P,qT9(,p0>na9Ml<"XO<h"Uu#E%1NKj!<io9/d2C^"onW'zzz6i[2ez%0-A.%KHJ/M#[MU!<iJBciq5dA-E.I!Fu?;YlSA="g&LOeIYFUA-E,g/Hl;0+6Wgr"9i`J/M/(."-<X;/Hl;0+4p^p!sM-t/O2`."mlW,!RLuZ'`eII'b;>3"Vh%A'btQ##n=ZT<tuH:"9g(PA-E,O5Qq;tA-E,CA-E,?/d2CZA-E,?$S;N6+8?#L"ta<g"YCfep]N0#"U-J"Vua[9"\&YI%9`o='l9NFbm4JsK`ci0*GhAN*?AsX#TWqV"U,VjKE3)@A-E,@'*&"4zzzX8i5#$NL/,%0-A.2?<dXD?9e<D?9e<Dup">Dup">EWQ4@EWQ4@F92FBF92FBEWQ4@EWQ4@zC'"A82#mUV+ohTC!<<*"7fWMh-ia5I2$![W"G?f3!K7%j!5d(dW<$N5"ebs-"U1:pA-E,;A-E,?$RGs&+*b:""`OVk,p.A^"=5W'"XP8c!ltTM7Kk(Y(^1?[1(BKO"\Ak,!Fu?;!Fu?;,qT9(,p/3Mp]i)s"U-1ohuo,F"\&YA4Y?mA!Fu?;"`OVk,p/K[kQE1`"U-1o\-9AD"\&YA"hXjFa92rg\.];T(^1WTA-E,?8HfP4(^1?P'bqH*C)%0e/d2FG(bi?6m0a()zzz!!!!*!!!!0!!!#:!!!!B!!!!7z!!!!P!!!!B!!!#8!!!"P!<<+Q!<<+Q!<<+Q!<<*&"UP5;!3FNN).WmS&S)%K$"O2C!Fu?;!Fu?;"`OV['d)WAQl#u7'a5<okQA=!'eKRm'd)'2Vum2m"Vh1X"UtW3"hbEM/d2ET!H=;ASK@q;zzzz!!!!,!!!!0!!!"M!<<*#K`M2BcipZWA-E.9"CqZ>T`em0"T`-;"U,8s"[*qMp]<T1"U.%2p]C3k"\&YY_>scCPmS6k"U3!KA-E,;A-E,?E!8Bf+-6Sd$U$'F"[*rPn,W\^"[*:sJ-*M."a:^&";Pb*!YqpB>m25jA-E-NA-E,;A-E,?E!8Bf+1M@8"?e=?"[*sS#.Od>7Kkpa<.G%[)?h*,a93f*fE*A'"C20_$3UMi,sVV;FCYOY*>eqpp]Ok+*<f"<'`hhK"T`-;"U/iK4Zsn>&XWbc/Hl;@+/g*6!sM-t4Tui0"_;-I"T`-;"[-?!"[*s3"o&-&E!8Bf+0Yq4"?e=?"[*s3!g!Wj7Kkpa<.G%3)?lB,V$G'E-#D38,lqN["lL,$"YIjt"9gY/5Qq=M!Fu?;"a:]K#GM5%"W\Tn'bpa["U1t.0,4XnA-E,;A-E,?$U"YV+34Jm#!FOA"[*rX%_rMW7KkpY(^1?P@LWKR3<cf"KE5Te"cWt6r?&-]`rT]S"UH"Hzzz!!!<*!!!E-!!%6E!!!r<!!!Z4!!%3D!!)Ki!!)Ki!!)Ki!!)Ki!!(jW!!"eT!!")@!!$s=!!#:b!!";F!!%!>!!#^n!!"\Q!!%BI!!(RO!!$R1!!#%[!!%'@!!%3C!!#:b!!%*A!!(XQ!!(^S!!(XQ!!(XQ!!(jW!!(jW!!&,]!!#dp!!$a7!!(RO!!(RO!!",A!!!-NFZi_)WR(elA-E,SA-E,KA-E.='g:Xi]c7&`"U+p;"U,'K"W\U*GaJ[U/Hl:u+0Yjg#6dR#*=Z0U"U1M!"U,#5zzz!!!!Mz!!!!.!!!!-!!!!"z!!N?&]=],0X5));(t)[0X1e]=(function(N)local e,q={t},0x50;repeat if q>=0X6__f then(e[0X1])[27]=(0X1);break;else e[0B1][29]=N;q=(0B1101111);continue;end;until false;end);break;else if z<36 then(t)[0b11010]=x.e;if not(not v[9690])then z=x:R(z,v);else z=x:M(z,v);end;continue;end;end;end;t[31]=nil;(t)[0X20]=nil;return z;end,ns=function(x,t,z,N,v,e,q,g,Y,w,_,H,m)if z[0b1][0X16]==z[0b1][14]then else x:_m(H,m,_,Y);end;for S=0B1000100_,0xF8,91 do if S==0X44 then m[0B1011]=(t);continue;else if S==0x9F then if z[0X1][0x2__a]==z[1][0X11]then else local S;S=x:Km(v,m,S,w);while true do if S==101 then S=0;(m)[0X8]=g;for R=0B1,e do local Q,E,d,M,a;Q,M,d,a,E=x:Jm(M,d,a,z,E,Q);local F,p,b,J;d,p,F,a,b,J,M,E=x:qm(b,d,F,J,a,E,M,z,p);local a,W;J,b,p,F,a,W=x:um(p,d,H,W,v,m,M,F,R,Y,Q,E,t,z,w,b,a,J);for w=40,0X4_5,0B11101 do if w==0X45 then if p==0B0 then if z[0X1][0X1A]then x:Xm(R,m,z,a);else _[R]=z[0X1][0x20][a];end;elseif p==0X7 then Y[R]=(a);else if p==0X1 then x:Mm(Y,a,R);else if p==0B100 then(Y)[R]=(R-a);else if p==2 then x:wm(R,_,z,a);end;end;end;end;else x:Im(z,W,g,F,m,J,R,v);end;end;end;elseif S==0 then m[0X3]=z[0B001][40]();S=95;continue;else if S==95 then m[0X6]=(N);break;end;end;end;end;break;end;end;end;for v=1,z[0X1][0X22](),0X1 do q=x:Ls(q,N,z);end;t=(nil);e=(nil);for N=0X52,0X8e,60 do if not(N>0B1010010)then t=z[0B1][0X28]();else e=z[0X1][35](t);end;end;m[0x1__]=e;for N=0B1,t,0X1 do x:rs(z,N,e);end;m[0XA]=z[0X1][0B10100_0]();return q;end}):ys()(...);
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+local HttpService = game:GetService("HttpService")
+
+local OrionLib = {
+	Elements = {},
+	ThemeObjects = {},
+	Connections = {},
+	Flags = {},
+	Themes = {
+		Default = {
+			Main = Color3.fromRGB(25, 25, 25),
+			Second = Color3.fromRGB(32, 32, 32),
+			Stroke = Color3.fromRGB(60, 60, 60),
+			Divider = Color3.fromRGB(60, 60, 60),
+			Text = Color3.fromRGB(240, 240, 240),
+			TextDark = Color3.fromRGB(150, 150, 150)
+		}
+	},
+	SelectedTheme = "Default",
+	Folder = nil,
+	SaveCfg = false
+}
+
+--Feather Icons https://github.com/evoincorp/lucideblox/tree/master/src/modules/util - Created by 7kayoh
+local Icons = {}
+
+local Success, Response = pcall(function()
+	Icons = HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/evoincorp/lucideblox/master/src/modules/util/icons.json")).icons
+end)
+
+if not Success then
+	warn("\nOrion Library - Failed to load Feather Icons. Error code: " .. Response .. "\n")
+end	
+
+local function GetIcon(IconName)
+	if Icons[IconName] ~= nil then
+		return Icons[IconName]
+	else
+		return nil
+	end
+end   
+
+
+local function safe_parent(gui)
+    gui.IgnoreGuiInset = true
+    gui.ResetOnSpawn = false
+    gui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+    gui.DisplayOrder = 1000000
+    local ok = false
+    pcall(function()
+        if syn and syn.protect_gui then syn.protect_gui(gui) end
+    end)
+    pcall(function()
+        if gethui then
+            gui.Parent = gethui()
+            ok = true
+        end
+    end)
+    if not ok then
+        local success = pcall(function() gui.Parent = game:GetService("CoreGui") end)
+        if not success then
+            gui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+        end
+    end
+end
+
+local Orion = Instance.new("ScreenGui")
+Orion.Name = "Orion"
+safe_parent(Orion)
+
+if gethui then
+	for _, Interface in ipairs(gethui():GetChildren()) do
+		if Interface.Name == Orion.Name and Interface ~= Orion then
+			Interface:Destroy()
+		end
+	end
+else
+	for _, Interface in ipairs(game.CoreGui:GetChildren()) do
+		if Interface.Name == Orion.Name and Interface ~= Orion then
+			Interface:Destroy()
+		end
+	end
+end
+
+function OrionLib:IsRunning()
+	if gethui then
+		return Orion.Parent == gethui()
+	else
+		return Orion.Parent == game:GetService("CoreGui")
+	end
+
+end
+
+local function AddConnection(Signal, Function)
+	if (not OrionLib:IsRunning()) then
+		return
+	end
+	local SignalConnect = Signal:Connect(Function)
+	table.insert(OrionLib.Connections, SignalConnect)
+	return SignalConnect
+end
+
+task.spawn(function()
+	while (OrionLib:IsRunning()) do
+		wait()
+	end
+
+	for _, Connection in next, OrionLib.Connections do
+		Connection:Disconnect()
+	end
+end)
+
+local function MakeDraggable(DragPoint, Main)
+	pcall(function()
+		DragPoint.Active = true
+		local Dragging, DragInput, MousePos, FramePos = false
+		AddConnection(DragPoint.InputBegan, function(Input)
+			if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+				Dragging = true
+				MousePos = Input.Position
+				FramePos = Main.Position
+			end
+		end)
+		AddConnection(UserInputService.InputEnded, function(Input)
+			if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+				Dragging = false
+			end
+		end)
+		AddConnection(DragPoint.InputChanged, function(Input)
+			if Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch then
+				DragInput = Input
+			end
+		end)
+		AddConnection(UserInputService.InputChanged, function(Input)
+			if Input == DragInput and Dragging then
+				local Delta = Input.Position - MousePos
+				Main.Position  = UDim2.new(FramePos.X.Scale,FramePos.X.Offset + Delta.X, FramePos.Y.Scale, FramePos.Y.Offset + Delta.Y)
+			end
+		end)
+	end)
+end    
+
+local function Create(Name, Properties, Children)
+	local Object = Instance.new(Name)
+	for i, v in next, Properties or {} do
+		Object[i] = v
+	end
+	for i, v in next, Children or {} do
+		v.Parent = Object
+	end
+	return Object
+end
+
+local function CreateElement(ElementName, ElementFunction)
+	OrionLib.Elements[ElementName] = function(...)
+		return ElementFunction(...)
+	end
+end
+
+local function MakeElement(ElementName, ...)
+	local NewElement = OrionLib.Elements[ElementName](...)
+	return NewElement
+end
+
+local function SetProps(Element, Props)
+	table.foreach(Props, function(Property, Value)
+		Element[Property] = Value
+	end)
+	return Element
+end
+
+local function SetChildren(Element, Children)
+	table.foreach(Children, function(_, Child)
+		Child.Parent = Element
+	end)
+	return Element
+end
+
+local function Round(Number, Factor)
+	local Result = math.floor(Number/Factor + (math.sign(Number) * 0.5)) * Factor
+	if Result < 0 then Result = Result + Factor end
+	return Result
+end
+
+local function ReturnProperty(Object)
+	if Object:IsA("Frame") or Object:IsA("TextButton") then
+		return "BackgroundColor3"
+	end 
+	if Object:IsA("ScrollingFrame") then
+		return "ScrollBarImageColor3"
+	end 
+	if Object:IsA("UIStroke") then
+		return "Color"
+	end 
+	if Object:IsA("TextLabel") or Object:IsA("TextBox") then
+		return "TextColor3"
+	end   
+	if Object:IsA("ImageLabel") or Object:IsA("ImageButton") then
+		return "ImageColor3"
+	end   
+end
+
+local function AddThemeObject(Object, Type)
+	if not OrionLib.ThemeObjects[Type] then
+		OrionLib.ThemeObjects[Type] = {}
+	end    
+	table.insert(OrionLib.ThemeObjects[Type], Object)
+	Object[ReturnProperty(Object)] = OrionLib.Themes[OrionLib.SelectedTheme][Type]
+	return Object
+end    
+
+local function SetTheme()
+	for Name, Type in pairs(OrionLib.ThemeObjects) do
+		for _, Object in pairs(Type) do
+			Object[ReturnProperty(Object)] = OrionLib.Themes[OrionLib.SelectedTheme][Name]
+		end    
+	end    
+end
+
+local function PackColor(Color)
+	return {R = Color.R * 255, G = Color.G * 255, B = Color.B * 255}
+end    
+
+local function UnpackColor(Color)
+	return Color3.fromRGB(Color.R, Color.G, Color.B)
+end
+
+local function LoadCfg(Config)
+	local Data = HttpService:JSONDecode(Config)
+	table.foreach(Data, function(a,b)
+		if OrionLib.Flags[a] then
+			spawn(function() 
+				if OrionLib.Flags[a].Type == "Colorpicker" then
+					OrionLib.Flags[a]:Set(UnpackColor(b))
+				else
+					OrionLib.Flags[a]:Set(b)
+				end    
+			end)
+		else
+			warn("Orion Library Config Loader - Could not find ", a ,b)
+		end
+	end)
+end
+
+local function SaveCfg(Name)
+	local Data = {}
+	for i,v in pairs(OrionLib.Flags) do
+		if v.Save then
+			if v.Type == "Colorpicker" then
+				Data[i] = PackColor(v.Value)
+			else
+				Data[i] = v.Value
+			end
+		end	
+	end
+	writefile(OrionLib.Folder .. "/" .. Name .. ".txt", tostring(HttpService:JSONEncode(Data)))
+end
+
+local WhitelistedMouse = {Enum.UserInputType.MouseButton1, Enum.UserInputType.MouseButton2,Enum.UserInputType.MouseButton3}
+local BlacklistedKeys = {Enum.KeyCode.Unknown,Enum.KeyCode.W,Enum.KeyCode.A,Enum.KeyCode.S,Enum.KeyCode.D,Enum.KeyCode.Up,Enum.KeyCode.Left,Enum.KeyCode.Down,Enum.KeyCode.Right,Enum.KeyCode.Slash,Enum.KeyCode.Tab,Enum.KeyCode.Backspace,Enum.KeyCode.Escape}
+
+local function CheckKey(Table, Key)
+	for _, v in next, Table do
+		if v == Key then
+			return true
+		end
+	end
+end
+
+CreateElement("Corner", function(Scale, Offset)
+	local Corner = Create("UICorner", {
+		CornerRadius = UDim.new(Scale or 0, Offset or 10)
+	})
+	return Corner
+end)
+
+CreateElement("Stroke", function(Color, Thickness)
+	local Stroke = Create("UIStroke", {
+		Color = Color or Color3.fromRGB(255, 255, 255),
+		Thickness = Thickness or 1
+	})
+	return Stroke
+end)
+
+CreateElement("List", function(Scale, Offset)
+	local List = Create("UIListLayout", {
+		SortOrder = Enum.SortOrder.LayoutOrder,
+		Padding = UDim.new(Scale or 0, Offset or 0)
+	})
+	return List
+end)
+
+CreateElement("Padding", function(Bottom, Left, Right, Top)
+	local Padding = Create("UIPadding", {
+		PaddingBottom = UDim.new(0, Bottom or 4),
+		PaddingLeft = UDim.new(0, Left or 4),
+		PaddingRight = UDim.new(0, Right or 4),
+		PaddingTop = UDim.new(0, Top or 4)
+	})
+	return Padding
+end)
+
+CreateElement("TFrame", function()
+	local TFrame = Create("Frame", {
+		BackgroundTransparency = 1
+	})
+	return TFrame
+end)
+
+CreateElement("Frame", function(Color)
+	local Frame = Create("Frame", {
+		BackgroundColor3 = Color or Color3.fromRGB(255, 255, 255),
+		BorderSizePixel = 0
+	})
+	return Frame
+end)
+
+CreateElement("RoundFrame", function(Color, Scale, Offset)
+	local Frame = Create("Frame", {
+		BackgroundColor3 = Color or Color3.fromRGB(255, 255, 255),
+		BorderSizePixel = 0
+	}, {
+		Create("UICorner", {
+			CornerRadius = UDim.new(Scale, Offset)
+		})
+	})
+	return Frame
+end)
+
+CreateElement("Button", function()
+	local Button = Create("TextButton", {
+		Text = "",
+		AutoButtonColor = false,
+		BackgroundTransparency = 1,
+		BorderSizePixel = 0
+	})
+	return Button
+end)
+
+CreateElement("ScrollFrame", function(Color, Width)
+	local ScrollFrame = Create("ScrollingFrame", {
+		BackgroundTransparency = 1,
+		MidImage = "rbxassetid://7445543667",
+		BottomImage = "rbxassetid://7445543667",
+		TopImage = "rbxassetid://7445543667",
+		ScrollBarImageColor3 = Color,
+		BorderSizePixel = 0,
+		ScrollBarThickness = Width,
+		CanvasSize = UDim2.new(0, 0, 0, 0),
+		Active = true,
+		ScrollingEnabled = true
+	})
+	return ScrollFrame
+end)
+
+CreateElement("Image", function(ImageID)
+	local ImageNew = Create("ImageLabel", {
+		Image = ImageID,
+		BackgroundTransparency = 1
+	})
+
+	if GetIcon(ImageID) ~= nil then
+		ImageNew.Image = GetIcon(ImageID)
+	end	
+
+	return ImageNew
+end)
+
+CreateElement("ImageButton", function(ImageID)
+	local Image = Create("ImageButton", {
+		Image = ImageID,
+		BackgroundTransparency = 1
+	})
+	return Image
+end)
+
+CreateElement("Label", function(Text, TextSize, Transparency)
+	local Label = Create("TextLabel", {
+		Text = Text or "",
+		TextColor3 = Color3.fromRGB(240, 240, 240),
+		TextTransparency = Transparency or 0,
+		TextSize = TextSize or 15,
+		Font = Enum.Font.Gotham,
+		RichText = true,
+		BackgroundTransparency = 1,
+		TextXAlignment = Enum.TextXAlignment.Left
+	})
+	return Label
+end)
+
+local NotificationHolder = SetProps(SetChildren(MakeElement("TFrame"), {
+	SetProps(MakeElement("List"), {
+		HorizontalAlignment = Enum.HorizontalAlignment.Center,
+		SortOrder = Enum.SortOrder.LayoutOrder,
+		VerticalAlignment = Enum.VerticalAlignment.Bottom,
+		Padding = UDim.new(0, 5)
+	})
+}), {
+	Position = UDim2.new(1, -25, 1, -25),
+	Size = UDim2.new(0, 300, 1, -25),
+	AnchorPoint = Vector2.new(1, 1),
+	Parent = Orion
+})
+
+function OrionLib:MakeNotification(NotificationConfig)
+	spawn(function()
+		NotificationConfig.Name = NotificationConfig.Name or "Notification"
+		NotificationConfig.Content = NotificationConfig.Content or "Test"
+		NotificationConfig.Image = NotificationConfig.Image or "rbxassetid://4384403532"
+		NotificationConfig.Time = NotificationConfig.Time or 15
+
+		local NotificationParent = SetProps(MakeElement("TFrame"), {
+			Size = UDim2.new(1, 0, 0, 0),
+			AutomaticSize = Enum.AutomaticSize.Y,
+			Parent = NotificationHolder
+		})
+
+		local NotificationFrame = SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(25, 25, 25), 0, 10), {
+			Parent = NotificationParent, 
+			Size = UDim2.new(1, 0, 0, 0),
+			Position = UDim2.new(1, -55, 0, 0),
+			BackgroundTransparency = 0,
+			AutomaticSize = Enum.AutomaticSize.Y
+		}), {
+			MakeElement("Stroke", Color3.fromRGB(93, 93, 93), 1.2),
+			MakeElement("Padding", 12, 12, 12, 12),
+			SetProps(MakeElement("Image", NotificationConfig.Image), {
+				Size = UDim2.new(0, 20, 0, 20),
+				ImageColor3 = Color3.fromRGB(240, 240, 240),
+				Name = "Icon"
+			}),
+			SetProps(MakeElement("Label", NotificationConfig.Name, 15), {
+				Size = UDim2.new(1, -30, 0, 20),
+				Position = UDim2.new(0, 30, 0, 0),
+				Font = Enum.Font.GothamBold,
+				Name = "Title"
+			}),
+			SetProps(MakeElement("Label", NotificationConfig.Content, 14), {
+				Size = UDim2.new(1, 0, 0, 0),
+				Position = UDim2.new(0, 0, 0, 25),
+				Font = Enum.Font.GothamSemibold,
+				Name = "Content",
+				AutomaticSize = Enum.AutomaticSize.Y,
+				TextColor3 = Color3.fromRGB(200, 200, 200),
+				TextWrapped = true
+			})
+		})
+
+		TweenService:Create(NotificationFrame, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Position = UDim2.new(0, 0, 0, 0)}):Play()
+
+		wait(NotificationConfig.Time - 0.88)
+		TweenService:Create(NotificationFrame.Icon, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
+		TweenService:Create(NotificationFrame, TweenInfo.new(0.8, Enum.EasingStyle.Quint), {BackgroundTransparency = 0.6}):Play()
+		wait(0.3)
+		TweenService:Create(NotificationFrame.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 0.9}):Play()
+		TweenService:Create(NotificationFrame.Title, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.4}):Play()
+		TweenService:Create(NotificationFrame.Content, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.5}):Play()
+		wait(0.05)
+
+		NotificationFrame:TweenPosition(UDim2.new(1, 20, 0, 0),'In','Quint',0.8,true)
+		wait(1.35)
+		NotificationFrame:Destroy()
+	end)
+end    
+
+function OrionLib:Init()
+	if OrionLib.SaveCfg then	
+		pcall(function()
+			if isfile(OrionLib.Folder .. "/" .. game.GameId .. ".txt") then
+				LoadCfg(readfile(OrionLib.Folder .. "/" .. game.GameId .. ".txt"))
+				OrionLib:MakeNotification({
+					Name = "Configuration",
+					Content = "Auto-loaded configuration for the game " .. game.GameId .. ".",
+					Time = 5
+				})
+			end
+		end)		
+	end	
+end	
+
+function OrionLib:MakeWindow(WindowConfig)
+	local FirstTab = true
+	local Minimized = false
+	local Loaded = false
+	local UIHidden = false
+
+	WindowConfig = WindowConfig or {}
+	WindowConfig.Name = WindowConfig.Name or "Chilli Hub"
+	WindowConfig.ConfigFolder = WindowConfig.ConfigFolder or WindowConfig.Name
+	WindowConfig.SaveConfig = WindowConfig.SaveConfig or false
+	WindowConfig.HidePremium = WindowConfig.HidePremium or false
+	if WindowConfig.IntroEnabled == nil then
+		WindowConfig.IntroEnabled = true
+	end
+	WindowConfig.IntroText = WindowConfig.IntroText or "Chilli Hub"
+	WindowConfig.CloseCallback = WindowConfig.CloseCallback or function() end
+	WindowConfig.ShowIcon = WindowConfig.ShowIcon or false
+	WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://8834748103"
+	WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://8834748103"
+	OrionLib.Folder = WindowConfig.ConfigFolder
+	OrionLib.SaveCfg = WindowConfig.SaveConfig
+
+	if WindowConfig.SaveConfig then
+		if not isfolder(WindowConfig.ConfigFolder) then
+			makefolder(WindowConfig.ConfigFolder)
+		end	
+	end
+
+	local TabHolder = AddThemeObject(SetChildren(SetProps(MakeElement("ScrollFrame", Color3.fromRGB(255, 255, 255), 4), {
+		Size = UDim2.new(1, 0, 1, -50)
+	}), {
+		MakeElement("List"),
+		MakeElement("Padding", 8, 0, 0, 8)
+	}), "Divider")
+
+	AddConnection(TabHolder.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+		TabHolder.CanvasSize = UDim2.new(0, 0, 0, TabHolder.UIListLayout.AbsoluteContentSize.Y + 16)
+	end)
+
+	local CloseBtn = SetChildren(SetProps(MakeElement("Button"), {
+		Size = UDim2.new(0.5, 0, 1, 0),
+		Position = UDim2.new(0.5, 0, 0, 0),
+		BackgroundTransparency = 1
+	}), {
+		AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://7072725342"), {
+			Position = UDim2.new(0, 9, 0, 6),
+			Size = UDim2.new(0, 18, 0, 18)
+		}), "Text")
+	})
+
+	local MinimizeBtn = SetChildren(SetProps(MakeElement("Button"), {
+		Size = UDim2.new(0.5, 0, 1, 0),
+		BackgroundTransparency = 1
+	}), {
+		AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://7072719338"), {
+			Position = UDim2.new(0, 9, 0, 6),
+			Size = UDim2.new(0, 18, 0, 18),
+			Name = "Ico"
+		}), "Text")
+	})
+
+	local DragPoint = SetProps(MakeElement("TFrame"), {
+		Size = UDim2.new(1, 0, 0, 50),
+		Active = true
+	})
+
+	local WindowStuff = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 10), {
+		Size = UDim2.new(0, 150, 1, -50),
+		Position = UDim2.new(0, 0, 0, 50)
+	}), {
+		AddThemeObject(SetProps(MakeElement("Frame"), {
+			Size = UDim2.new(1, 0, 0, 10),
+			Position = UDim2.new(0, 0, 0, 0)
+		}), "Second"), 
+		AddThemeObject(SetProps(MakeElement("Frame"), {
+			Size = UDim2.new(0, 10, 1, 0),
+			Position = UDim2.new(1, -10, 0, 0)
+		}), "Second"), 
+		AddThemeObject(SetProps(MakeElement("Frame"), {
+			Size = UDim2.new(0, 1, 1, 0),
+			Position = UDim2.new(1, -1, 0, 0)
+		}), "Stroke"), 
+		TabHolder,
+		SetChildren(SetProps(MakeElement("TFrame"), {
+			Size = UDim2.new(1, 0, 0, 50),
+			Position = UDim2.new(0, 0, 1, -50)
+		}), {
+			AddThemeObject(SetProps(MakeElement("Frame"), {
+				Size = UDim2.new(1, 0, 0, 1)
+			}), "Stroke"), 
+			AddThemeObject(SetChildren(SetProps(MakeElement("Frame"), {
+				AnchorPoint = Vector2.new(0, 0.5),
+				Size = UDim2.new(0, 32, 0, 32),
+				Position = UDim2.new(0, 10, 0.5, 0)
+			}), {
+				SetProps(MakeElement("Image", "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId .."&width=420&height=420&format=png"), {
+					Size = UDim2.new(1, 0, 1, 0)
+				}),
+				AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://4031889928"), {
+					Size = UDim2.new(1, 0, 1, 0),
+				}), "Second"),
+				MakeElement("Corner", 1)
+			}), "Divider"),
+			SetChildren(SetProps(MakeElement("TFrame"), {
+				AnchorPoint = Vector2.new(0, 0.5),
+				Size = UDim2.new(0, 32, 0, 32),
+				Position = UDim2.new(0, 10, 0.5, 0)
+			}), {
+				AddThemeObject(MakeElement("Stroke"), "Stroke"),
+				MakeElement("Corner", 1)
+			}),
+			AddThemeObject(SetProps(MakeElement("Label", LocalPlayer.DisplayName, WindowConfig.HidePremium and 14 or 13), {
+				Size = UDim2.new(1, -60, 0, 13),
+				Position = WindowConfig.HidePremium and UDim2.new(0, 50, 0, 19) or UDim2.new(0, 50, 0, 12),
+				Font = Enum.Font.GothamBold,
+				ClipsDescendants = true
+			}), "Text"),
+			AddThemeObject(SetProps(MakeElement("Label", "", 12), {
+				Size = UDim2.new(1, -60, 0, 12),
+				Position = UDim2.new(0, 50, 1, -25),
+				Visible = not WindowConfig.HidePremium
+			}), "TextDark")
+		}),
+	}), "Second")
+
+	local WindowName = AddThemeObject(SetProps(MakeElement("Label", WindowConfig.Name, 14), {
+		Size = UDim2.new(1, -30, 2, 0),
+		Position = UDim2.new(0, 25, 0, -24),
+		Font = Enum.Font.GothamBlack,
+		TextSize = 20
+	}), "Text")
+
+	local WindowTopBarLine = AddThemeObject(SetProps(MakeElement("Frame"), {
+		Size = UDim2.new(1, 0, 0, 1),
+		Position = UDim2.new(0, 0, 1, -1)
+	}), "Stroke")
+
+	local MainWindow = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 10), {
+		Parent = Orion,
+		Position = UDim2.new(0.5, -307, 0.5, -172),
+		Size = UDim2.new(0, 615, 0, 344),
+		ClipsDescendants = true
+	}), {
+		--SetProps(MakeElement("Image", "rbxassetid://3523728077"), {
+		--	AnchorPoint = Vector2.new(0.5, 0.5),
+		--	Position = UDim2.new(0.5, 0, 0.5, 0),
+		--	Size = UDim2.new(1, 80, 1, 320),
+		--	ImageColor3 = Color3.fromRGB(33, 33, 33),
+		--	ImageTransparency = 0.7
+		--}),
+		SetChildren(SetProps(MakeElement("TFrame"), {
+			Size = UDim2.new(1, 0, 0, 50),
+			Name = "TopBar"
+		}), {
+			WindowName,
+			WindowTopBarLine,
+			AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 7), {
+				Size = UDim2.new(0, 70, 0, 30),
+				Position = UDim2.new(1, -90, 0, 10)
+			}), {
+				AddThemeObject(MakeElement("Stroke"), "Stroke"),
+				AddThemeObject(SetProps(MakeElement("Frame"), {
+					Size = UDim2.new(0, 1, 1, 0),
+					Position = UDim2.new(0.5, 0, 0, 0)
+				}), "Stroke"), 
+				CloseBtn,
+				MinimizeBtn
+			}), "Second"), 
+		}),
+		DragPoint,
+		WindowStuff
+	}), "Main")
+
+	if WindowConfig.ShowIcon then
+		WindowName.Position = UDim2.new(0, 50, 0, -24)
+		local WindowIcon = SetProps(MakeElement("Image", WindowConfig.Icon), {
+			Size = UDim2.new(0, 20, 0, 20),
+			Position = UDim2.new(0, 25, 0, 15)
+		})
+		WindowIcon.Parent = MainWindow.TopBar
+	end	
+
+	MakeDraggable(DragPoint, MainWindow)
+
+	AddConnection(CloseBtn.MouseButton1Up, function()
+		MainWindow.Visible = false
+		UIHidden = true
+		OrionLib:MakeNotification({
+			Name = "Interface Hidden",
+			Content = "Tap Left Control to reopen the interface",
+			Time = 5
+		})
+		WindowConfig.CloseCallback()
+	end)
+
+	AddConnection(UserInputService.InputBegan, function(Input)
+		if Input.KeyCode == Enum.KeyCode.LeftControl and UIHidden then
+			MainWindow.Visible = true
+		end
+	end)
+
+	AddConnection(MinimizeBtn.MouseButton1Up, function()
+		if Minimized then
+			TweenService:Create(MainWindow, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, 615, 0, 344)}):Play()
+			MinimizeBtn.Ico.Image = "rbxassetid://7072719338"
+			wait(.02)
+			MainWindow.ClipsDescendants = false
+			WindowStuff.Visible = true
+			WindowTopBarLine.Visible = true
+		else
+			MainWindow.ClipsDescendants = true
+			WindowTopBarLine.Visible = false
+			MinimizeBtn.Ico.Image = "rbxassetid://7072720870"
+
+			TweenService:Create(MainWindow, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, WindowName.TextBounds.X + 140, 0, 50)}):Play()
+			wait(0.1)
+			WindowStuff.Visible = false	
+		end
+		Minimized = not Minimized    
+	end)
+
+	local function LoadSequence()
+		MainWindow.Visible = false
+		local LoadSequenceLogo = SetProps(MakeElement("Image", WindowConfig.IntroIcon), {
+			Parent = Orion,
+			AnchorPoint = Vector2.new(0.5, 0.5),
+			Position = UDim2.new(0.5, 0, 0.4, 0),
+			Size = UDim2.new(0, 28, 0, 28),
+			ImageColor3 = Color3.fromRGB(255, 255, 255),
+			ImageTransparency = 1
+		})
+
+		local LoadSequenceText = SetProps(MakeElement("Label", WindowConfig.IntroText, 14), {
+			Parent = Orion,
+			Size = UDim2.new(1, 0, 1, 0),
+			AnchorPoint = Vector2.new(0.5, 0.5),
+			Position = UDim2.new(0.5, 19, 0.5, 0),
+			TextXAlignment = Enum.TextXAlignment.Center,
+			Font = Enum.Font.GothamBold,
+			TextTransparency = 1
+		})
+
+		local LoadSequenceText2 = SetProps(MakeElement("Label", "by KhanhSky", 14), {
+			Parent = Orion,
+			Size = UDim2.new(1, 0, 1, 0),
+			AnchorPoint = Vector2.new(0.5, 0.5),
+			Position = UDim2.new(0.5, 19, 0.5, 20),
+			TextXAlignment = Enum.TextXAlignment.Center,
+			Font = Enum.Font.GothamBold,
+			TextTransparency = 1,
+			TextSize = 15
+		})
+
+
+		TweenService:Create(LoadSequenceLogo, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = 0, Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
+		wait(0.8)
+		TweenService:Create(LoadSequenceLogo, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, -(LoadSequenceText.TextBounds.X/2), 0.5, 0)}):Play()
+		wait(0.3)
+		TweenService:Create(LoadSequenceText, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
+		TweenService:Create(LoadSequenceText2, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
+		wait(2)
+		TweenService:Create(LoadSequenceText, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
+		MainWindow.Visible = true
+		LoadSequenceLogo:Destroy()
+		LoadSequenceText:Destroy()
+		LoadSequenceText2:Destroy()
+	end 
+
+	if WindowConfig.IntroEnabled then
+		LoadSequence()
+	end	
+
+	local TabFunction = {}
+	function TabFunction:MakeTab(TabConfig)
+		TabConfig = TabConfig or {}
+		TabConfig.Name = TabConfig.Name or "Tab"
+		TabConfig.Icon = TabConfig.Icon or ""
+		TabConfig.PremiumOnly = TabConfig.PremiumOnly or false
+
+		local TabFrame = SetChildren(SetProps(MakeElement("Button"), {
+			Size = UDim2.new(1, 0, 0, 30),
+			Parent = TabHolder
+		}), {
+			AddThemeObject(SetProps(MakeElement("Image", TabConfig.Icon), {
+				AnchorPoint = Vector2.new(0, 0.5),
+				Size = UDim2.new(0, 18, 0, 18),
+				Position = UDim2.new(0, 10, 0.5, 0),
+				ImageTransparency = 0.4,
+				Name = "Ico"
+			}), "Text"),
+			AddThemeObject(SetProps(MakeElement("Label", TabConfig.Name, 14), {
+				Size = UDim2.new(1, -35, 1, 0),
+				Position = UDim2.new(0, 35, 0, 0),
+				Font = Enum.Font.GothamSemibold,
+				TextTransparency = 0.4,
+				Name = "Title"
+			}), "Text")
+		})
+
+		if GetIcon(TabConfig.Icon) ~= nil then
+			TabFrame.Ico.Image = GetIcon(TabConfig.Icon)
+		end	
+
+		local Container = AddThemeObject(SetChildren(SetProps(MakeElement("ScrollFrame", Color3.fromRGB(255, 255, 255), 5), {
+			Size = UDim2.new(1, -150, 1, -50),
+			Position = UDim2.new(0, 150, 0, 50),
+			Parent = MainWindow,
+			Visible = false,
+			Name = "ItemContainer"
+		}), {
+			MakeElement("List", 0, 6),
+			MakeElement("Padding", 15, 10, 10, 15)
+		}), "Divider")
+
+		AddConnection(Container.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+			Container.CanvasSize = UDim2.new(0, 0, 0, Container.UIListLayout.AbsoluteContentSize.Y + 30)
+		end)
+
+		if FirstTab then
+			FirstTab = false
+			TabFrame.Ico.ImageTransparency = 0
+			TabFrame.Title.TextTransparency = 0
+			TabFrame.Title.Font = Enum.Font.GothamBlack
+			Container.Visible = true
+		end    
+
+		AddConnection(TabFrame.MouseButton1Click, function()
+			for _, Tab in next, TabHolder:GetChildren() do
+				if Tab:IsA("TextButton") then
+					Tab.Title.Font = Enum.Font.GothamSemibold
+					TweenService:Create(Tab.Ico, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0.4}):Play()
+					TweenService:Create(Tab.Title, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextTransparency = 0.4}):Play()
+				end    
+			end
+			for _, ItemContainer in next, MainWindow:GetChildren() do
+				if ItemContainer.Name == "ItemContainer" then
+					ItemContainer.Visible = false
+				end    
+			end  
+			TweenService:Create(TabFrame.Ico, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0}):Play()
+			TweenService:Create(TabFrame.Title, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
+			TabFrame.Title.Font = Enum.Font.GothamBlack
+			Container.Visible = true   
+		end)
+
+		local function GetElements(ItemParent)
+			local ElementFunction = {}
+			function ElementFunction:AddLabel(Text)
+				local LabelFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
+					Size = UDim2.new(1, 0, 0, 30),
+					BackgroundTransparency = 0.7,
+					Parent = ItemParent
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", Text, 15), {
+						Size = UDim2.new(1, -12, 1, 0),
+						Position = UDim2.new(0, 12, 0, 0),
+						Font = Enum.Font.GothamBold,
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke")
+				}), "Second")
+
+				local LabelFunction = {}
+				function LabelFunction:Set(ToChange)
+					LabelFrame.Content.Text = ToChange
+				end
+				return LabelFunction
+			end
+			function ElementFunction:AddParagraph(Text, Content)
+				Text = Text or "Text"
+				Content = Content or "Content"
+
+				local ParagraphFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
+					Size = UDim2.new(1, 0, 0, 30),
+					BackgroundTransparency = 0.7,
+					Parent = ItemParent
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", Text, 15), {
+						Size = UDim2.new(1, -12, 0, 14),
+						Position = UDim2.new(0, 12, 0, 10),
+						Font = Enum.Font.GothamBold,
+						Name = "Title"
+					}), "Text"),
+					AddThemeObject(SetProps(MakeElement("Label", "", 13), {
+						Size = UDim2.new(1, -24, 0, 0),
+						Position = UDim2.new(0, 12, 0, 26),
+						Font = Enum.Font.GothamSemibold,
+						Name = "Content",
+						TextWrapped = true
+					}), "TextDark"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke")
+				}), "Second")
+
+				AddConnection(ParagraphFrame.Content:GetPropertyChangedSignal("Text"), function()
+					ParagraphFrame.Content.Size = UDim2.new(1, -24, 0, ParagraphFrame.Content.TextBounds.Y)
+					ParagraphFrame.Size = UDim2.new(1, 0, 0, ParagraphFrame.Content.TextBounds.Y + 35)
+				end)
+
+				ParagraphFrame.Content.Text = Content
+
+				local ParagraphFunction = {}
+				function ParagraphFunction:Set(ToChange)
+					ParagraphFrame.Content.Text = ToChange
+				end
+				return ParagraphFunction
+			end    
+			function ElementFunction:AddButton(ButtonConfig)
+				ButtonConfig = ButtonConfig or {}
+				ButtonConfig.Name = ButtonConfig.Name or "Button"
+				ButtonConfig.Callback = ButtonConfig.Callback or function() end
+				ButtonConfig.Icon = ButtonConfig.Icon or "rbxassetid://3944703587"
+
+				local Button = {}
+
+				local Click = SetProps(MakeElement("Button"), {
+					Size = UDim2.new(1, 0, 1, 0)
+				})
+
+				local ButtonFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
+					Size = UDim2.new(1, 0, 0, 33),
+					Parent = ItemParent
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", ButtonConfig.Name, 15), {
+						Size = UDim2.new(1, -12, 1, 0),
+						Position = UDim2.new(0, 12, 0, 0),
+						Font = Enum.Font.GothamBold,
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(SetProps(MakeElement("Image", ButtonConfig.Icon), {
+						Size = UDim2.new(0, 20, 0, 20),
+						Position = UDim2.new(1, -30, 0, 7),
+					}), "TextDark"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					Click
+				}), "Second")
+
+				AddConnection(Click.MouseEnter, function()
+					TweenService:Create(ButtonFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
+				end)
+
+				AddConnection(Click.MouseLeave, function()
+					TweenService:Create(ButtonFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = OrionLib.Themes[OrionLib.SelectedTheme].Second}):Play()
+				end)
+
+				AddConnection(Click.MouseButton1Up, function()
+					TweenService:Create(ButtonFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
+					spawn(function()
+						ButtonConfig.Callback()
+					end)
+				end)
+
+				AddConnection(Click.MouseButton1Down, function()
+					TweenService:Create(ButtonFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 6)}):Play()
+				end)
+
+				function Button:Set(ButtonText)
+					ButtonFrame.Content.Text = ButtonText
+				end	
+
+				return Button
+			end    
+			function ElementFunction:AddToggle(ToggleConfig)
+				ToggleConfig = ToggleConfig or {}
+				ToggleConfig.Name = ToggleConfig.Name or "Toggle"
+				ToggleConfig.Default = ToggleConfig.Default or false
+				ToggleConfig.Callback = ToggleConfig.Callback or function() end
+				ToggleConfig.Color = ToggleConfig.Color or Color3.fromRGB(9, 99, 195)
+				ToggleConfig.Flag = ToggleConfig.Flag or nil
+				ToggleConfig.Save = ToggleConfig.Save or false
+
+				local Toggle = {Value = ToggleConfig.Default, Save = ToggleConfig.Save}
+
+				local Click = SetProps(MakeElement("Button"), {
+					Size = UDim2.new(1, 0, 1, 0)
+				})
+
+				local ToggleBox = SetChildren(SetProps(MakeElement("RoundFrame", ToggleConfig.Color, 0, 4), {
+					Size = UDim2.new(0, 24, 0, 24),
+					Position = UDim2.new(1, -24, 0.5, 0),
+					AnchorPoint = Vector2.new(0.5, 0.5)
+				}), {
+					SetProps(MakeElement("Stroke"), {
+						Color = ToggleConfig.Color,
+						Name = "Stroke",
+						Transparency = 0.5
+					}),
+					SetProps(MakeElement("Image", "rbxassetid://3944680095"), {
+						Size = UDim2.new(0, 20, 0, 20),
+						AnchorPoint = Vector2.new(0.5, 0.5),
+						Position = UDim2.new(0.5, 0, 0.5, 0),
+						ImageColor3 = Color3.fromRGB(255, 255, 255),
+						Name = "Ico"
+					}),
+				})
+
+				local ToggleFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
+					Size = UDim2.new(1, 0, 0, 38),
+					Parent = ItemParent
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", ToggleConfig.Name, 15), {
+						Size = UDim2.new(1, -12, 1, 0),
+						Position = UDim2.new(0, 12, 0, 0),
+						Font = Enum.Font.GothamBold,
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					ToggleBox,
+					Click
+				}), "Second")
+
+				function Toggle:Set(Value)
+					Toggle.Value = Value
+					TweenService:Create(ToggleBox, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Toggle.Value and ToggleConfig.Color or OrionLib.Themes.Default.Divider}):Play()
+					TweenService:Create(ToggleBox.Stroke, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Color = Toggle.Value and ToggleConfig.Color or OrionLib.Themes.Default.Stroke}):Play()
+					TweenService:Create(ToggleBox.Ico, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = Toggle.Value and 0 or 1, Size = Toggle.Value and UDim2.new(0, 20, 0, 20) or UDim2.new(0, 8, 0, 8)}):Play()
+					ToggleConfig.Callback(Toggle.Value)
+				end    
+
+				Toggle:Set(Toggle.Value)
+
+				AddConnection(Click.MouseEnter, function()
+					TweenService:Create(ToggleFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
+				end)
+
+				AddConnection(Click.MouseLeave, function()
+					TweenService:Create(ToggleFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = OrionLib.Themes[OrionLib.SelectedTheme].Second}):Play()
+				end)
+
+				AddConnection(Click.MouseButton1Up, function()
+					TweenService:Create(ToggleFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
+					SaveCfg(game.GameId)
+					Toggle:Set(not Toggle.Value)
+				end)
+
+				AddConnection(Click.MouseButton1Down, function()
+					TweenService:Create(ToggleFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 6)}):Play()
+				end)
+
+				if ToggleConfig.Flag then
+					OrionLib.Flags[ToggleConfig.Flag] = Toggle
+				end	
+				return Toggle
+			end  
+			function ElementFunction:AddSlider(SliderConfig)
+				SliderConfig = SliderConfig or {}
+				SliderConfig.Name = SliderConfig.Name or "Slider"
+				SliderConfig.Min = SliderConfig.Min or 0
+				SliderConfig.Max = SliderConfig.Max or 100
+				SliderConfig.Increment = SliderConfig.Increment or 1
+				SliderConfig.Default = SliderConfig.Default or 50
+				SliderConfig.Callback = SliderConfig.Callback or function() end
+				SliderConfig.ValueName = SliderConfig.ValueName or ""
+				SliderConfig.Color = SliderConfig.Color or Color3.fromRGB(9, 149, 98)
+				SliderConfig.Flag = SliderConfig.Flag or nil
+				SliderConfig.Save = SliderConfig.Save or false
+
+				local Slider = {Value = SliderConfig.Default, Save = SliderConfig.Save}
+				local Dragging = false
+
+				local SliderDrag = SetChildren(SetProps(MakeElement("RoundFrame", SliderConfig.Color, 0, 5), {
+					Size = UDim2.new(0, 0, 1, 0),
+					BackgroundTransparency = 0.3,
+					ClipsDescendants = true
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", "value", 13), {
+						Size = UDim2.new(1, -12, 0, 14),
+						Position = UDim2.new(0, 12, 0, 6),
+						Font = Enum.Font.GothamBold,
+						Name = "Value",
+						TextTransparency = 0
+					}), "Text")
+				})
+
+				local SliderBar = SetChildren(SetProps(MakeElement("RoundFrame", SliderConfig.Color, 0, 5), {
+					Size = UDim2.new(1, -24, 0, 26),
+					Position = UDim2.new(0, 12, 0, 30),
+					BackgroundTransparency = 0.9
+				}), {
+					SetProps(MakeElement("Stroke"), {
+						Color = SliderConfig.Color
+					}),
+					AddThemeObject(SetProps(MakeElement("Label", "value", 13), {
+						Size = UDim2.new(1, -12, 0, 14),
+						Position = UDim2.new(0, 12, 0, 6),
+						Font = Enum.Font.GothamBold,
+						Name = "Value",
+						TextTransparency = 0.8
+					}), "Text"),
+					SliderDrag
+				})
+
+				local SliderFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 4), {
+					Size = UDim2.new(1, 0, 0, 65),
+					Parent = ItemParent
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", SliderConfig.Name, 15), {
+						Size = UDim2.new(1, -12, 0, 14),
+						Position = UDim2.new(0, 12, 0, 10),
+						Font = Enum.Font.GothamBold,
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					SliderBar
+				}), "Second")
+
+				SliderBar.InputBegan:Connect(function(Input)
+					if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then 
+						Dragging = true 
+					end 
+				end)
+				SliderBar.InputEnded:Connect(function(Input) 
+					if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then 
+						Dragging = false 
+					end 
+				end)
+
+				UserInputService.InputChanged:Connect(function(Input)
+					if Dragging and Input.UserInputType == Enum.UserInputType.MouseMovement then 
+						local SizeScale = math.clamp((Input.Position.X - SliderBar.AbsolutePosition.X) / SliderBar.AbsoluteSize.X, 0, 1)
+						Slider:Set(SliderConfig.Min + ((SliderConfig.Max - SliderConfig.Min) * SizeScale)) 
+						SaveCfg(game.GameId)
+					end
+				end)
+
+				function Slider:Set(Value)
+					self.Value = math.clamp(Round(Value, SliderConfig.Increment), SliderConfig.Min, SliderConfig.Max)
+					TweenService:Create(SliderDrag,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.fromScale((self.Value - SliderConfig.Min) / (SliderConfig.Max - SliderConfig.Min), 1)}):Play()
+					SliderBar.Value.Text = tostring(self.Value) .. " " .. SliderConfig.ValueName
+					SliderDrag.Value.Text = tostring(self.Value) .. " " .. SliderConfig.ValueName
+					SliderConfig.Callback(self.Value)
+				end      
+
+				Slider:Set(Slider.Value)
+				if SliderConfig.Flag then				
+					OrionLib.Flags[SliderConfig.Flag] = Slider
+				end
+				return Slider
+			end  
+			function ElementFunction:AddDropdown(DropdownConfig)
+				DropdownConfig = DropdownConfig or {}
+				DropdownConfig.Name = DropdownConfig.Name or "Dropdown"
+				DropdownConfig.Options = DropdownConfig.Options or {}
+				DropdownConfig.Default = DropdownConfig.Default or ""
+				DropdownConfig.Callback = DropdownConfig.Callback or function() end
+				DropdownConfig.Flag = DropdownConfig.Flag or nil
+				DropdownConfig.Save = DropdownConfig.Save or false
+
+				local Dropdown = {Value = DropdownConfig.Default, Options = DropdownConfig.Options, Buttons = {}, Toggled = false, Type = "Dropdown", Save = DropdownConfig.Save}
+				local MaxElements = 5
+
+				if not table.find(Dropdown.Options, Dropdown.Value) then
+					Dropdown.Value = "..."
+				end
+
+				local DropdownList = MakeElement("List")
+
+				local DropdownContainer = AddThemeObject(SetProps(SetChildren(MakeElement("ScrollFrame", Color3.fromRGB(40, 40, 40), 4), {
+					DropdownList
+				}), {
+					Parent = ItemParent,
+					Position = UDim2.new(0, 0, 0, 38),
+					Size = UDim2.new(1, 0, 1, -38),
+					ClipsDescendants = true
+				}), "Divider")
+
+				local Click = SetProps(MakeElement("Button"), {
+					Size = UDim2.new(1, 0, 1, 0)
+				})
+
+				local DropdownFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
+					Size = UDim2.new(1, 0, 0, 38),
+					Parent = ItemParent,
+					ClipsDescendants = true
+				}), {
+					DropdownContainer,
+					SetProps(SetChildren(MakeElement("TFrame"), {
+						AddThemeObject(SetProps(MakeElement("Label", DropdownConfig.Name, 15), {
+							Size = UDim2.new(1, -12, 1, 0),
+							Position = UDim2.new(0, 12, 0, 0),
+							Font = Enum.Font.GothamBold,
+							Name = "Content"
+						}), "Text"),
+						AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://7072706796"), {
+							Size = UDim2.new(0, 20, 0, 20),
+							AnchorPoint = Vector2.new(0, 0.5),
+							Position = UDim2.new(1, -30, 0.5, 0),
+							ImageColor3 = Color3.fromRGB(240, 240, 240),
+							Name = "Ico"
+						}), "TextDark"),
+						AddThemeObject(SetProps(MakeElement("Label", "Selected", 13), {
+							Size = UDim2.new(1, -40, 1, 0),
+							Font = Enum.Font.Gotham,
+							Name = "Selected",
+							TextXAlignment = Enum.TextXAlignment.Right
+						}), "TextDark"),
+						AddThemeObject(SetProps(MakeElement("Frame"), {
+							Size = UDim2.new(1, 0, 0, 1),
+							Position = UDim2.new(0, 0, 1, -1),
+							Name = "Line",
+							Visible = false
+						}), "Stroke"), 
+						Click
+					}), {
+						Size = UDim2.new(1, 0, 0, 38),
+						ClipsDescendants = true,
+						Name = "F"
+					}),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					MakeElement("Corner")
+				}), "Second")
+
+				AddConnection(DropdownList:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+					DropdownContainer.CanvasSize = UDim2.new(0, 0, 0, DropdownList.AbsoluteContentSize.Y)
+				end)  
+
+				local function AddOptions(Options)
+					for _, Option in pairs(Options) do
+						local OptionBtn = AddThemeObject(SetProps(SetChildren(MakeElement("Button", Color3.fromRGB(40, 40, 40)), {
+							MakeElement("Corner", 0, 6),
+							AddThemeObject(SetProps(MakeElement("Label", Option, 13, 0.4), {
+								Position = UDim2.new(0, 8, 0, 0),
+								Size = UDim2.new(1, -8, 1, 0),
+								Name = "Title"
+							}), "Text")
+						}), {
+							Parent = DropdownContainer,
+							Size = UDim2.new(1, 0, 0, 28),
+							BackgroundTransparency = 1,
+							ClipsDescendants = true
+						}), "Divider")
+
+						AddConnection(OptionBtn.MouseButton1Click, function()
+							Dropdown:Set(Option)
+							SaveCfg(game.GameId)
+						end)
+
+						Dropdown.Buttons[Option] = OptionBtn
+					end
+				end	
+
+				local function copyTable(original)
+					local copy = {}
+					for key, value in pairs(original) do
+						copy[key] = value
+					end
+					return copy
+				end
+
+				function Dropdown:Refresh(Options, Delete)
+					if Delete then
+						for _,v in pairs(Dropdown.Buttons) do
+							v:Destroy()
+						end    
+						table.clear(Dropdown.Options)
+						table.clear(Dropdown.Buttons)
+					end
+					Dropdown.Options = copyTable(Options)
+					AddOptions(Dropdown.Options)
+				end  
+
+				function Dropdown:Title(Text)
+					DropdownFrame.F.Content.Text = Text
+				end
+
+				function Dropdown:Set(Value)
+					if not table.find(Dropdown.Options, Value) then
+						Dropdown.Value = "..."
+						DropdownFrame.F.Selected.Text = Dropdown.Value
+						for _, v in pairs(Dropdown.Buttons) do
+							TweenService:Create(v,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundTransparency = 1}):Play()
+							TweenService:Create(v.Title,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextTransparency = 0.4}):Play()
+						end	
+						return
+					end
+
+					Dropdown.Value = Value
+					DropdownFrame.F.Selected.Text = Dropdown.Value
+
+					for _, v in pairs(Dropdown.Buttons) do
+						TweenService:Create(v,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundTransparency = 1}):Play()
+						TweenService:Create(v.Title,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextTransparency = 0.4}):Play()
+					end	
+					TweenService:Create(Dropdown.Buttons[Value],TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundTransparency = 0}):Play()
+					TweenService:Create(Dropdown.Buttons[Value].Title,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextTransparency = 0}):Play()
+					return DropdownConfig.Callback(Dropdown.Value)
+				end
+
+				AddConnection(Click.MouseButton1Click, function()
+					Dropdown.Toggled = not Dropdown.Toggled
+					DropdownFrame.F.Line.Visible = Dropdown.Toggled
+					TweenService:Create(DropdownFrame.F.Ico,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Rotation = Dropdown.Toggled and 180 or 0}):Play()
+					if #Dropdown.Options > MaxElements then
+						TweenService:Create(DropdownFrame,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = Dropdown.Toggled and UDim2.new(1, 0, 0, 38 + (MaxElements * 28)) or UDim2.new(1, 0, 0, 38)}):Play()
+					else
+						TweenService:Create(DropdownFrame,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = Dropdown.Toggled and UDim2.new(1, 0, 0, DropdownList.AbsoluteContentSize.Y + 38) or UDim2.new(1, 0, 0, 38)}):Play()
+					end
+				end)
+
+				Dropdown:Refresh(Dropdown.Options, false)
+				Dropdown:Set(Dropdown.Value)
+				if DropdownConfig.Flag then				
+					OrionLib.Flags[DropdownConfig.Flag] = Dropdown
+				end
+				return Dropdown
+			end
+			function ElementFunction:AddBind(BindConfig)
+				BindConfig.Name = BindConfig.Name or "Bind"
+				BindConfig.Default = BindConfig.Default or Enum.KeyCode.Unknown
+				BindConfig.Hold = BindConfig.Hold or false
+				BindConfig.Callback = BindConfig.Callback or function() end
+				BindConfig.Flag = BindConfig.Flag or nil
+				BindConfig.Save = BindConfig.Save or false
+
+				local Bind = {Value, Binding = false, Type = "Bind", Save = BindConfig.Save}
+				local Holding = false
+
+				local Click = SetProps(MakeElement("Button"), {
+					Size = UDim2.new(1, 0, 1, 0)
+				})
+
+				local BindBox = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 4), {
+					Size = UDim2.new(0, 24, 0, 24),
+					Position = UDim2.new(1, -12, 0.5, 0),
+					AnchorPoint = Vector2.new(1, 0.5)
+				}), {
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					AddThemeObject(SetProps(MakeElement("Label", BindConfig.Name, 14), {
+						Size = UDim2.new(1, 0, 1, 0),
+						Font = Enum.Font.GothamBold,
+						TextXAlignment = Enum.TextXAlignment.Center,
+						Name = "Value"
+					}), "Text")
+				}), "Main")
+
+				local BindFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
+					Size = UDim2.new(1, 0, 0, 38),
+					Parent = ItemParent
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", BindConfig.Name, 15), {
+						Size = UDim2.new(1, -12, 1, 0),
+						Position = UDim2.new(0, 12, 0, 0),
+						Font = Enum.Font.GothamBold,
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					BindBox,
+					Click
+				}), "Second")
+
+				AddConnection(BindBox.Value:GetPropertyChangedSignal("Text"), function()
+					--BindBox.Size = UDim2.new(0, BindBox.Value.TextBounds.X + 16, 0, 24)
+					TweenService:Create(BindBox, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, BindBox.Value.TextBounds.X + 16, 0, 24)}):Play()
+				end)
+
+				AddConnection(Click.InputEnded, function(Input)
+					if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+						if Bind.Binding then return end
+						Bind.Binding = true
+						BindBox.Value.Text = ""
+					end
+				end)
+
+				AddConnection(UserInputService.InputBegan, function(Input)
+					if UserInputService:GetFocusedTextBox() then return end
+					if (Input.KeyCode.Name == Bind.Value or Input.UserInputType.Name == Bind.Value) and not Bind.Binding then
+						if BindConfig.Hold then
+							Holding = true
+							BindConfig.Callback(Holding)
+						else
+							BindConfig.Callback()
+						end
+					elseif Bind.Binding then
+						local Key
+						pcall(function()
+							if not CheckKey(BlacklistedKeys, Input.KeyCode) then
+								Key = Input.KeyCode
+							end
+						end)
+						pcall(function()
+							if CheckKey(WhitelistedMouse, Input.UserInputType) and not Key then
+								Key = Input.UserInputType
+							end
+						end)
+						Key = Key or Bind.Value
+						Bind:Set(Key)
+						SaveCfg(game.GameId)
+					end
+				end)
+
+				AddConnection(UserInputService.InputEnded, function(Input)
+					if Input.KeyCode.Name == Bind.Value or Input.UserInputType.Name == Bind.Value then
+						if BindConfig.Hold and Holding then
+							Holding = false
+							BindConfig.Callback(Holding)
+						end
+					end
+				end)
+
+				AddConnection(Click.MouseEnter, function()
+					TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
+				end)
+
+				AddConnection(Click.MouseLeave, function()
+					TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second}):Play()
+				end)
+
+				AddConnection(Click.MouseButton1Up, function()
+					TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
+				end)
+
+				AddConnection(Click.MouseButton1Down, function()
+					TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 6)}):Play()
+				end)
+
+				function Bind:Set(Key)
+					Bind.Binding = false
+					Bind.Value = Key or Bind.Value
+					Bind.Value = Bind.Value.Name or Bind.Value
+					BindBox.Value.Text = Bind.Value
+				end
+
+				Bind:Set(BindConfig.Default)
+				if BindConfig.Flag then				
+					OrionLib.Flags[BindConfig.Flag] = Bind
+				end
+				return Bind
+			end  
+			function ElementFunction:AddTextbox(TextboxConfig)
+				TextboxConfig = TextboxConfig or {}
+				TextboxConfig.Name = TextboxConfig.Name or "Textbox"
+				TextboxConfig.Default = TextboxConfig.Default or ""
+				TextboxConfig.TextDisappear = TextboxConfig.TextDisappear or false
+				TextboxConfig.Callback = TextboxConfig.Callback or function() end
+
+				local Textbox = {Value = TextboxConfig.Default, Options = TextboxConfig.Options, Type = "Textbox"}
+				
+				local Click = SetProps(MakeElement("Button"), {
+					Size = UDim2.new(1, 0, 1, 0)
+				})
+
+				local TextboxActual = AddThemeObject(Create("TextBox", {
+					Size = UDim2.new(1, 0, 1, 0),
+					BackgroundTransparency = 1,
+					TextColor3 = Color3.fromRGB(255, 255, 255),
+					PlaceholderColor3 = Color3.fromRGB(210,210,210),
+					PlaceholderText = "Input",
+					Font = Enum.Font.GothamSemibold,
+					TextXAlignment = Enum.TextXAlignment.Center,
+					TextSize = 14,
+					ClearTextOnFocus = false
+				}), "Text")
+
+				local TextContainer = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 4), {
+					Size = UDim2.new(0, 24, 0, 24),
+					Position = UDim2.new(1, -12, 0.5, 0),
+					AnchorPoint = Vector2.new(1, 0.5)
+				}), {
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					TextboxActual
+				}), "Main")
+
+
+				local TextboxFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
+					Size = UDim2.new(1, 0, 0, 38),
+					Parent = ItemParent
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", TextboxConfig.Name, 15), {
+						Size = UDim2.new(1, -12, 1, 0),
+						Position = UDim2.new(0, 12, 0, 0),
+						Font = Enum.Font.GothamBold,
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					TextContainer,
+					Click
+				}), "Second")
+
+				function Textbox:Title(Text)
+					TextboxFrame.Content.Text = Text
+				end
+
+				AddConnection(TextboxActual:GetPropertyChangedSignal("Text"), function()
+					--TextContainer.Size = UDim2.new(0, TextboxActual.TextBounds.X + 16, 0, 24)
+					TweenService:Create(TextContainer, TweenInfo.new(0.45, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, TextboxActual.TextBounds.X + 16, 0, 24)}):Play()
+				end)
+
+				AddConnection(TextboxActual.FocusLost, function()
+					TextboxConfig.Callback(TextboxActual.Text)
+					if TextboxConfig.TextDisappear then
+						TextboxActual.Text = ""
+					end	
+				end)
+
+				TextboxActual.Text = TextboxConfig.Default
+
+				AddConnection(Click.MouseEnter, function()
+					TweenService:Create(TextboxFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
+				end)
+
+				AddConnection(Click.MouseLeave, function()
+					TweenService:Create(TextboxFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = OrionLib.Themes[OrionLib.SelectedTheme].Second}):Play()
+				end)
+
+				AddConnection(Click.MouseButton1Up, function()
+					TweenService:Create(TextboxFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
+					TextboxActual:CaptureFocus()
+				end)
+
+				AddConnection(Click.MouseButton1Down, function()
+					TweenService:Create(TextboxFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 6)}):Play()
+				end)
+
+				return Textbox
+			end 
+			function ElementFunction:AddColorpicker(ColorpickerConfig)
+				ColorpickerConfig = ColorpickerConfig or {}
+				ColorpickerConfig.Name = ColorpickerConfig.Name or "Colorpicker"
+				ColorpickerConfig.Default = ColorpickerConfig.Default or Color3.fromRGB(255,255,255)
+				ColorpickerConfig.Callback = ColorpickerConfig.Callback or function() end
+				ColorpickerConfig.Flag = ColorpickerConfig.Flag or nil
+				ColorpickerConfig.Save = ColorpickerConfig.Save or false
+
+				local ColorH, ColorS, ColorV = 1, 1, 1
+				local Colorpicker = {Value = ColorpickerConfig.Default, Toggled = false, Type = "Colorpicker", Save = ColorpickerConfig.Save}
+
+				local ColorSelection = Create("ImageLabel", {
+					Size = UDim2.new(0, 18, 0, 18),
+					Position = UDim2.new(select(3, Color3.toHSV(Colorpicker.Value))),
+					ScaleType = Enum.ScaleType.Fit,
+					AnchorPoint = Vector2.new(0.5, 0.5),
+					BackgroundTransparency = 1,
+					Image = "http://www.roblox.com/asset/?id=4805639000"
+				})
+
+				local HueSelection = Create("ImageLabel", {
+					Size = UDim2.new(0, 18, 0, 18),
+					Position = UDim2.new(0.5, 0, 1 - select(1, Color3.toHSV(Colorpicker.Value))),
+					ScaleType = Enum.ScaleType.Fit,
+					AnchorPoint = Vector2.new(0.5, 0.5),
+					BackgroundTransparency = 1,
+					Image = "http://www.roblox.com/asset/?id=4805639000"
+				})
+
+				local Color = Create("ImageLabel", {
+					Size = UDim2.new(1, -25, 1, 0),
+					Visible = false,
+					Image = "rbxassetid://4155801252"
+				}, {
+					Create("UICorner", {CornerRadius = UDim.new(0, 5)}),
+					ColorSelection
+				})
+
+				local Hue = Create("Frame", {
+					Size = UDim2.new(0, 20, 1, 0),
+					Position = UDim2.new(1, -20, 0, 0),
+					Visible = false
+				}, {
+					Create("UIGradient", {Rotation = 270, Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)), ColorSequenceKeypoint.new(0.20, Color3.fromRGB(234, 255, 0)), ColorSequenceKeypoint.new(0.40, Color3.fromRGB(21, 255, 0)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(0, 255, 255)), ColorSequenceKeypoint.new(0.80, Color3.fromRGB(0, 17, 255)), ColorSequenceKeypoint.new(0.90, Color3.fromRGB(255, 0, 251)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 0, 4))},}),
+					Create("UICorner", {CornerRadius = UDim.new(0, 5)}),
+					HueSelection
+				})
+
+				local ColorpickerContainer = Create("Frame", {
+					Position = UDim2.new(0, 0, 0, 32),
+					Size = UDim2.new(1, 0, 1, -32),
+					BackgroundTransparency = 1,
+					ClipsDescendants = true
+				}, {
+					Hue,
+					Color,
+					Create("UIPadding", {
+						PaddingLeft = UDim.new(0, 35),
+						PaddingRight = UDim.new(0, 35),
+						PaddingBottom = UDim.new(0, 10),
+						PaddingTop = UDim.new(0, 17)
+					})
+				})
+
+				local Click = SetProps(MakeElement("Button"), {
+					Size = UDim2.new(1, 0, 1, 0)
+				})
+
+				local ColorpickerBox = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 4), {
+					Size = UDim2.new(0, 24, 0, 24),
+					Position = UDim2.new(1, -12, 0.5, 0),
+					AnchorPoint = Vector2.new(1, 0.5)
+				}), {
+					AddThemeObject(MakeElement("Stroke"), "Stroke")
+				}), "Main")
+
+				local ColorpickerFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
+					Size = UDim2.new(1, 0, 0, 38),
+					Parent = ItemParent
+				}), {
+					SetProps(SetChildren(MakeElement("TFrame"), {
+						AddThemeObject(SetProps(MakeElement("Label", ColorpickerConfig.Name, 15), {
+							Size = UDim2.new(1, -12, 1, 0),
+							Position = UDim2.new(0, 12, 0, 0),
+							Font = Enum.Font.GothamBold,
+							Name = "Content"
+						}), "Text"),
+						ColorpickerBox,
+						Click,
+						AddThemeObject(SetProps(MakeElement("Frame"), {
+							Size = UDim2.new(1, 0, 0, 1),
+							Position = UDim2.new(0, 0, 1, -1),
+							Name = "Line",
+							Visible = false
+						}), "Stroke"), 
+					}), {
+						Size = UDim2.new(1, 0, 0, 38),
+						ClipsDescendants = true,
+						Name = "F"
+					}),
+					ColorpickerContainer,
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+				}), "Second")
+
+				AddConnection(Click.MouseButton1Click, function()
+					Colorpicker.Toggled = not Colorpicker.Toggled
+					TweenService:Create(ColorpickerFrame,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = Colorpicker.Toggled and UDim2.new(1, 0, 0, 148) or UDim2.new(1, 0, 0, 38)}):Play()
+					Color.Visible = Colorpicker.Toggled
+					Hue.Visible = Colorpicker.Toggled
+					ColorpickerFrame.F.Line.Visible = Colorpicker.Toggled
+				end)
+
+				local function UpdateColorPicker()
+					ColorpickerBox.BackgroundColor3 = Color3.fromHSV(ColorH, ColorS, ColorV)
+					Color.BackgroundColor3 = Color3.fromHSV(ColorH, 1, 1)
+					Colorpicker:Set(ColorpickerBox.BackgroundColor3)
+					ColorpickerConfig.Callback(ColorpickerBox.BackgroundColor3)
+					SaveCfg(game.GameId)
+				end
+
+				ColorH = 1 - (math.clamp(HueSelection.AbsolutePosition.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) / Hue.AbsoluteSize.Y)
+				ColorS = (math.clamp(ColorSelection.AbsolutePosition.X - Color.AbsolutePosition.X, 0, Color.AbsoluteSize.X) / Color.AbsoluteSize.X)
+				ColorV = 1 - (math.clamp(ColorSelection.AbsolutePosition.Y - Color.AbsolutePosition.Y, 0, Color.AbsoluteSize.Y) / Color.AbsoluteSize.Y)
+
+				AddConnection(Color.InputBegan, function(input)
+					if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+						if ColorInput then
+							ColorInput:Disconnect()
+						end
+						ColorInput = AddConnection(RunService.RenderStepped, function()
+							local ColorX = (math.clamp(Mouse.X - Color.AbsolutePosition.X, 0, Color.AbsoluteSize.X) / Color.AbsoluteSize.X)
+							local ColorY = (math.clamp(Mouse.Y - Color.AbsolutePosition.Y, 0, Color.AbsoluteSize.Y) / Color.AbsoluteSize.Y)
+							ColorSelection.Position = UDim2.new(ColorX, 0, ColorY, 0)
+							ColorS = ColorX
+							ColorV = 1 - ColorY
+							UpdateColorPicker()
+						end)
+					end
+				end)
+
+				AddConnection(Color.InputEnded, function(input)
+					if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+						if ColorInput then
+							ColorInput:Disconnect()
+						end
+					end
+				end)
+
+				AddConnection(Hue.InputBegan, function(input)
+					if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+						if HueInput then
+							HueInput:Disconnect()
+						end;
+
+						HueInput = AddConnection(RunService.RenderStepped, function()
+							local HueY = (math.clamp(Mouse.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) / Hue.AbsoluteSize.Y)
+
+							HueSelection.Position = UDim2.new(0.5, 0, HueY, 0)
+							ColorH = 1 - HueY
+
+							UpdateColorPicker()
+						end)
+					end
+				end)
+
+				AddConnection(Hue.InputEnded, function(input)
+					if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+						if HueInput then
+							HueInput:Disconnect()
+						end
+					end
+				end)
+
+				function Colorpicker:Set(Value)
+					Colorpicker.Value = Value
+					ColorpickerBox.BackgroundColor3 = Colorpicker.Value
+					ColorpickerConfig.Callback(Colorpicker.Value)
+				end
+
+				Colorpicker:Set(Colorpicker.Value)
+				if ColorpickerConfig.Flag then				
+					OrionLib.Flags[ColorpickerConfig.Flag] = Colorpicker
+				end
+				return Colorpicker
+			end  
+			return ElementFunction   
+		end	
+
+		local ElementFunction = {}
+
+		function ElementFunction:AddSection(SectionConfig)
+			SectionConfig.Name = SectionConfig.Name or "Section"
+
+			local SectionFrame = SetChildren(SetProps(MakeElement("TFrame"), {
+				Size = UDim2.new(1, 0, 0, 26),
+				Parent = Container
+			}), {
+				AddThemeObject(SetProps(MakeElement("Label", SectionConfig.Name, 14), {
+					Size = UDim2.new(1, -12, 0, 16),
+					Position = UDim2.new(0, 0, 0, 3),
+					Font = Enum.Font.GothamSemibold
+				}), "TextDark"),
+				SetChildren(SetProps(MakeElement("TFrame"), {
+					AnchorPoint = Vector2.new(0, 0),
+					Size = UDim2.new(1, 0, 1, -24),
+					Position = UDim2.new(0, 0, 0, 23),
+					Name = "Holder"
+				}), {
+					MakeElement("List", 0, 6)
+				}),
+			})
+
+			AddConnection(SectionFrame.Holder.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+				SectionFrame.Size = UDim2.new(1, 0, 0, SectionFrame.Holder.UIListLayout.AbsoluteContentSize.Y + 31)
+				SectionFrame.Holder.Size = UDim2.new(1, 0, 0, SectionFrame.Holder.UIListLayout.AbsoluteContentSize.Y)
+			end)
+
+			local SectionFunction = {}
+			for i, v in next, GetElements(SectionFrame.Holder) do
+				SectionFunction[i] = v 
+			end
+			return SectionFunction
+		end	
+
+		for i, v in next, GetElements(Container) do
+			ElementFunction[i] = v 
+		end
+
+		if TabConfig.PremiumOnly then
+			for i, v in next, ElementFunction do
+				ElementFunction[i] = function() end
+			end    
+			Container:FindFirstChild("UIListLayout"):Destroy()
+			Container:FindFirstChild("UIPadding"):Destroy()
+			SetChildren(SetProps(MakeElement("TFrame"), {
+				Size = UDim2.new(1, 0, 1, 0),
+				Parent = ItemParent
+			}), {
+				AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://3610239960"), {
+					Size = UDim2.new(0, 18, 0, 18),
+					Position = UDim2.new(0, 15, 0, 15),
+					ImageTransparency = 0.4
+				}), "Text"),
+				AddThemeObject(SetProps(MakeElement("Label", "Unauthorised Access", 14), {
+					Size = UDim2.new(1, -38, 0, 14),
+					Position = UDim2.new(0, 38, 0, 18),
+					TextTransparency = 0.4
+				}), "Text"),
+				AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://4483345875"), {
+					Size = UDim2.new(0, 56, 0, 56),
+					Position = UDim2.new(0, 84, 0, 110),
+				}), "Text"),
+				AddThemeObject(SetProps(MakeElement("Label", "Premium Features", 14), {
+					Size = UDim2.new(1, -150, 0, 14),
+					Position = UDim2.new(0, 150, 0, 112),
+					Font = Enum.Font.GothamBold
+				}), "Text"),
+				AddThemeObject(SetProps(MakeElement("Label", "This part of the script is locked to Sirius Premium users. Purchase Premium in the Discord server (discord.gg/sirius)", 12), {
+					Size = UDim2.new(1, -200, 0, 14),
+					Position = UDim2.new(0, 150, 0, 138),
+					TextWrapped = true,
+					TextTransparency = 0.4
+				}), "Text")
+			})
+		end
+		return ElementFunction   
+	end  
+	
+	--if writefile and isfile then
+	--	if not isfile("NewLibraryNotification1.txt") then
+	--		local http_req = (syn and syn.request) or (http and http.request) or http_request
+	--		if http_req then
+	--			http_req({
+	--				Url = 'http://127.0.0.1:6463/rpc?v=1',
+	--				Method = 'POST',
+	--				Headers = {
+	--					['Content-Type'] = 'application/json',
+	--					Origin = 'https://discord.com'
+	--				},
+	--				Body = HttpService:JSONEncode({
+	--					cmd = 'INVITE_BROWSER',
+	--					nonce = HttpService:GenerateGUID(false),
+	--					args = {code = 'sirius'}
+	--				})
+	--			})
+	--		end
+	--		OrionLib:MakeNotification({
+	--			Name = "UI Library Available",
+	--			Content = "New UI Library Available - Joining Discord (#announcements)",
+	--			Time = 8
+	--		})
+	--		spawn(function()
+	--			local UI = game:GetObjects("rbxassetid://11403719739")[1]
+
+	--			if gethui then
+	--				UI.Parent = gethui()
+	--			elseif syn.protect_gui then
+	--				syn.protect_gui(UI)
+	--				UI.Parent = game.CoreGui
+	--			else
+	--				UI.Parent = game.CoreGui
+	--			end
+
+	--			wait(11)
+
+	--			UI:Destroy()
+	--		end)
+	--		writefile("NewLibraryNotification1.txt","The value for the notification having been sent to you.")
+	--	end
+	--end
+	
+
+	
+	return TabFunction
+end   
+
+function OrionLib:Switch()
+	Orion.Enabled = not Orion.Enabled
+end
+
+function OrionLib:Destroy()
+	Orion:Destroy()
+end
+
+return OrionLib
