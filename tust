@@ -139,8 +139,8 @@ function CircleClick(Button, X, Y)
 	end)
 end
 
-local KhanhSky = {}
-function KhanhSky:MakeNotify(NotifyConfig)
+local FlurioreLib = {}
+function FlurioreLib:MakeNotify(NotifyConfig)
 	local NotifyConfig = NotifyConfig or {}
 	NotifyConfig.Title = NotifyConfig.Title or "Hirimi Hub"
 	NotifyConfig.Description = NotifyConfig.Description or "Notification"
@@ -360,7 +360,7 @@ function KhanhSky:MakeNotify(NotifyConfig)
 	end)
 	return NotifyFunction
 end
-function KhanhSky:CreateGui(GuiConfig)
+function FlurioreLib:MakeGui(GuiConfig)
 	local GuiConfig = GuiConfig or {}
 	GuiConfig.NameHub = GuiConfig.NameHub or "Hirimi Hub"
 	GuiConfig.Description = GuiConfig.Description or "Comeback | developing by KhanhSky"
@@ -2207,4 +2207,4 @@ function KhanhSky:CreateGui(GuiConfig)
 	end
 	return Tabs
 end
-return KhanhSky
+return FlurioreLib
