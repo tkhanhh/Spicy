@@ -1,7 +1,7 @@
 
 --[[
     User Interface Library
-    Made by Lateez
+    Made by Late
 ]]
 --// Connections
 local GetService = game.GetService
@@ -407,63 +407,59 @@ function Library:CreateWindow(Settings: {
     exitBtn.MouseButton1Click:Connect(HideWindow)
 
     --// NEW: Properly structure the sidebar top bar with title and buttons
-    local topBar = Sidebar:FindFirstChild('Top')
+    local topBar = Sidebar and Sidebar:FindFirstChild('Top')
     if topBar then
+        -- dọn dẹp cũ
         for _, child in ipairs(topBar:GetChildren()) do
-            if
-                child.Name == 'Title'
-                or child.Name == 'WindowControls'
-                or child.Name == 'TopBarContainer'
-                or child.Name == 'TitleContainer'
-                or child.Name == 'ButtonContainer'
-            then
+            if child.Name == 'Title'
+            or child.Name == 'WindowControls'
+            or child.Name == 'TopBarContainer'
+            or child.Name == 'TitleContainer'
+            or child.Name == 'ButtonContainer' then
                 child:Destroy()
             end
         end
-
+    
         local topBarContainer = Instance.new('Frame')
         topBarContainer.Name = 'TopBarContainer'
         topBarContainer.Size = UDim2.new(1, 0, 1, 0)
-        topBarContainer.Position = UDim2.new(0, 0, 0, 0)
         topBarContainer.BackgroundTransparency = 1
         topBarContainer.Parent = topBar
-
+    
         local topBarLayout = Instance.new('UIListLayout')
         topBarLayout.FillDirection = Enum.FillDirection.Horizontal
         topBarLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
         topBarLayout.VerticalAlignment = Enum.VerticalAlignment.Center
         topBarLayout.SortOrder = Enum.SortOrder.LayoutOrder
-        topBarLayout.Padding = UDim.new(0, 0)
         topBarLayout.Parent = topBarContainer
-
+    
         local titleContainer = Instance.new('Frame')
         titleContainer.Name = 'TitleContainer'
         titleContainer.Size = UDim2.new(1, -70, 1, 0)
         titleContainer.BackgroundTransparency = 1
         titleContainer.LayoutOrder = 1
         titleContainer.Parent = topBarContainer
-
+    
         local titleLabel = Instance.new('TextLabel')
         titleLabel.Name = 'Title'
         titleLabel.Text = Settings.Title or 'UI Library'
         titleLabel.Font = Enum.Font.GothamSemibold
         titleLabel.TextSize = 14
-        titleLabel.TextColor3 = Color3.fromRGB(0, 0, 0) -- SKYBOY PATCH: chữ đen
+        titleLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
         titleLabel.Size = UDim2.new(1, -10, 1, 0)
-        titleLabel.Position = UDim2.new(0, 10, 0, 0)
         titleLabel.BackgroundTransparency = 1
         titleLabel.TextXAlignment = Enum.TextXAlignment.Left
         titleLabel.TextScaled = true
         titleLabel.TextWrapped = true
         titleLabel.Parent = titleContainer
-
+    
         local buttonContainer = Instance.new('Frame')
         buttonContainer.Name = 'ButtonContainer'
         buttonContainer.Size = UDim2.new(0, 60, 1, 0)
         buttonContainer.BackgroundTransparency = 1
         buttonContainer.LayoutOrder = 2
         buttonContainer.Parent = topBarContainer
-
+    
         local buttonLayout = Instance.new('UIListLayout')
         buttonLayout.FillDirection = Enum.FillDirection.Horizontal
         buttonLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
@@ -471,19 +467,18 @@ function Library:CreateWindow(Settings: {
         buttonLayout.SortOrder = Enum.SortOrder.LayoutOrder
         buttonLayout.Padding = UDim.new(0, 5)
         buttonLayout.Parent = buttonContainer
-
-        for _, button in ipairs(Sidebar.Top.Buttons:GetChildren()) do
-            if
-                button:IsA('TextButton')
-                and button.Name ~= 'Minimize'
-                and button.Name ~= 'Close'
-            then
-                button.Parent = buttonContainer
-                Animations:Component(button, true)
+    
+        if Sidebar:FindFirstChild("Top")
+            and Sidebar.Top:FindFirstChild("Buttons") then
+            for _, button in ipairs(Sidebar.Top.Buttons:GetChildren()) do
+                if button:IsA('TextButton') and button.Name ~= 'Minimize' and button.Name ~= 'Close' then
+                    button.Parent = buttonContainer
+                    Animations:Component(button, true)
+                end
             end
+            Sidebar.Top.Buttons:Destroy()
         end
-        Sidebar.Top.Buttons:Destroy()
-
+    
         local function adjustTitleSize()
             local availableWidth = titleContainer.AbsoluteSize.X - 10
             local textWidth = titleLabel.TextBounds.X
@@ -494,13 +489,12 @@ function Library:CreateWindow(Settings: {
                 titleLabel.TextSize = 14
             end
         end
-        local resizeConnection
-        resizeConnection = Window:GetPropertyChangedSignal('Size')
-            :Connect(function()
-                adjustTitleSize()
-            end)
+        Window:GetPropertyChangedSignal('Size'):Connect(adjustTitleSize)
         adjustTitleSize()
+    else
+        -- Không có Sidebar.Top → bỏ qua bước “restructure topbar” để tránh crash
     end
+
 
     --// UI Blur & More
     Drag(Window)
