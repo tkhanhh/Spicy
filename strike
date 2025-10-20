@@ -1,9 +1,10 @@
 
 
+
 local MacLib = {
     Options = {},
     -- store any configuration in a folder named after SkyBoy rather than the original name
-    Folder = "by SkyBoy",
+    Folder = "by SkyBoty",
     GetService = function(service)
         return cloneref and cloneref(game:GetService(service)) or game:GetService(service)
     end
@@ -1843,7 +1844,8 @@ function MacLib:Window(Settings)
 				buttonStroke.Name = "ButtonStroke"
 				buttonStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 				buttonStroke.Color = Color3.fromRGB(255, 255, 255)
-				buttonStroke.Transparency = 0.9
+                -- increase transparency on the button stroke for a more subtle divider between controls
+                buttonStroke.Transparency = 0.95
 				buttonStroke.Parent = button
 
 				local buttonInteract = Instance.new("TextButton")
@@ -1869,19 +1871,45 @@ function MacLib:Window(Settings)
 				buttonUICorner.CornerRadius = UDim.new(0, 4)
 				buttonUICorner.Parent = buttonInteract
 
-					local buttonImage = Instance.new("ImageLabel")
-					buttonImage.Name = "ButtonImage"
-                    -- stripped out button image; no longer loads any rbxassetid
+                local buttonImage = Instance.new("ImageLabel")
+                    buttonImage.Name = "ButtonImage"
+                    -- stripped out button image; hide completely since no external asset should be used
                     buttonImage.Image = ""
-					buttonImage.ImageTransparency = 0.5
-					buttonImage.AnchorPoint = Vector2.new(1, 0.5)
-					buttonImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					buttonImage.BackgroundTransparency = 1
-					buttonImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					buttonImage.BorderSizePixel = 0
-					buttonImage.Position = UDim2.fromScale(1, 0.5)
-					buttonImage.Size = UDim2.fromOffset(15, 15)
-					buttonImage.Parent = button
+                    buttonImage.ImageTransparency = 1
+                    buttonImage.AnchorPoint = Vector2.new(1, 0.5)
+                    buttonImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                    buttonImage.BackgroundTransparency = 1
+                    buttonImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    buttonImage.BorderSizePixel = 0
+                    buttonImage.Position = UDim2.fromScale(1, 0.5)
+                    buttonImage.Size = UDim2.fromOffset(15, 15)
+                    buttonImage.Parent = button
+
+                -- add a custom indicator on the right to clearly denote this is a button
+                local buttonIndicator = Instance.new("Frame")
+                buttonIndicator.Name = "ButtonIndicator"
+                buttonIndicator.AnchorPoint = Vector2.new(1, 0.5)
+                buttonIndicator.Position = UDim2.new(1, 0, 0.5, 0)
+                buttonIndicator.Size = UDim2.fromOffset(41, 21)
+                buttonIndicator.BackgroundColor3 = Color3.fromRGB(40, 60, 75)
+                buttonIndicator.BackgroundTransparency = 0
+                buttonIndicator.BorderSizePixel = 0
+                local buttonIndicatorCorner = Instance.new("UICorner")
+                buttonIndicatorCorner.CornerRadius = UDim.new(0.5, 0)
+                buttonIndicatorCorner.Parent = buttonIndicator
+                local buttonIndicatorLabel = Instance.new("TextLabel")
+                buttonIndicatorLabel.Name = "IndicatorLabel"
+                buttonIndicatorLabel.FontFace = Font.new(assets.interFont)
+                buttonIndicatorLabel.Text = "►"
+                buttonIndicatorLabel.TextSize = 14
+                buttonIndicatorLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+                buttonIndicatorLabel.TextTransparency = 0.5
+                buttonIndicatorLabel.BackgroundTransparency = 1
+                buttonIndicatorLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+                buttonIndicatorLabel.Position = UDim2.fromScale(0.5, 0.5)
+                buttonIndicatorLabel.Size = UDim2.fromScale(1, 1)
+                buttonIndicatorLabel.Parent = buttonIndicator
+                buttonIndicator.Parent = button
 
 				local TweenSettings = {
 					-- default and hover transparencies for the text and button visuals
@@ -1956,7 +1984,8 @@ function MacLib:Window(Settings)
 				toggleContainerStroke.Name = "ToggleContainerStroke"
 				toggleContainerStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 				toggleContainerStroke.Color = Color3.fromRGB(255, 255, 255)
-				toggleContainerStroke.Transparency = 0.9
+                -- increase transparency on the container stroke for a more subtle divider between controls
+                toggleContainerStroke.Transparency = 0.95
 				toggleContainerStroke.Parent = toggle
 
 					local toggleName = Instance.new("TextLabel")
@@ -2049,13 +2078,14 @@ function MacLib:Window(Settings)
 					Disabled = Color3.fromRGB(255, 255, 255)
 				}
 
-				local TweenSettings = {
-					Info = TweenInfo.new(0.15, Enum.EasingStyle.Quad),
-					-- when enabled the knob moves to the left of the track
-					EnabledPosition = UDim2.new(0, 2, 0.5, 0),
-					-- when disabled the knob rests on the right of the track
-					DisabledPosition = UDim2.new(1, -17, 0.5, 0),
-				}
+                local TweenSettings = {
+                    Info = TweenInfo.new(0.15, Enum.EasingStyle.Quad),
+                    -- when enabled the knob moves to the right of the track
+                    -- swap the enabled/disabled positions so the knob starts on the left when off
+                    EnabledPosition = UDim2.new(1, -17, 0.5, 0),
+                    -- when disabled the knob rests on the left of the track
+                    DisabledPosition = UDim2.new(0, 2, 0.5, 0),
+                }
 
 					local togglebool = ToggleFunctions.Settings.Default
 
@@ -2130,7 +2160,8 @@ function MacLib:Window(Settings)
 				sliderStroke.Name = "SliderStroke"
 				sliderStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 				sliderStroke.Color = Color3.fromRGB(255, 255, 255)
-				sliderStroke.Transparency = 0.9
+                -- increase transparency on the slider stroke for a more subtle divider between controls
+                sliderStroke.Transparency = 0.95
 				sliderStroke.Parent = slider
 
 					local sliderName = Instance.new("TextLabel")
@@ -2771,7 +2802,8 @@ function MacLib:Window(Settings)
 				dropdownStroke.Name = "DropdownStroke"
 				dropdownStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 				dropdownStroke.Color = Color3.fromRGB(255, 255, 255)
-				dropdownStroke.Transparency = 0.9
+                -- increase transparency on the dropdown stroke for a more subtle divider between controls
+                dropdownStroke.Transparency = 0.95
 				dropdownStroke.Parent = dropdown
 					dropdown.ClipsDescendants = true
 
@@ -2824,18 +2856,48 @@ function MacLib:Window(Settings)
 					dropdownUICorner.CornerRadius = UDim.new(0, 6)
 					dropdownUICorner.Parent = dropdown
 
-					local dropdownImage = Instance.new("ImageLabel")
-					dropdownImage.Name = "DropdownImage"
-					dropdownImage.Image = assets.dropdown
-					dropdownImage.ImageTransparency = 0.5
-					dropdownImage.AnchorPoint = Vector2.new(1, 0)
-					dropdownImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					dropdownImage.BackgroundTransparency = 1
-					dropdownImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					dropdownImage.BorderSizePixel = 0
-					dropdownImage.Position = UDim2.new(1, 0, 0, 12)
-					dropdownImage.Size = UDim2.fromOffset(14, 14)
-					dropdownImage.Parent = dropdown
+                    local dropdownImage = Instance.new("ImageLabel")
+                    dropdownImage.Name = "DropdownImage"
+                    -- no external asset; keep image empty to avoid assetid usage
+                    dropdownImage.Image = ""
+                    dropdownImage.ImageTransparency = 1
+                    dropdownImage.AnchorPoint = Vector2.new(1, 0)
+                    dropdownImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                    dropdownImage.BackgroundTransparency = 1
+                    dropdownImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    dropdownImage.BorderSizePixel = 0
+                    dropdownImage.Position = UDim2.new(1, 0, 0, 12)
+                    dropdownImage.Size = UDim2.fromOffset(14, 14)
+                    dropdownImage.Parent = dropdown
+
+                    -- add a custom indicator on the right to clearly denote this is a dropdown
+                    local dropdownIndicator = Instance.new("Frame")
+                    dropdownIndicator.Name = "DropdownIndicator"
+                    dropdownIndicator.AnchorPoint = Vector2.new(1, 0.5)
+                    -- match the toggle track dimensions for visual consistency
+                    dropdownIndicator.Position = UDim2.new(1, 0, 0.5, 0)
+                    dropdownIndicator.Size = UDim2.fromOffset(41, 21)
+                    dropdownIndicator.BackgroundColor3 = Color3.fromRGB(40, 60, 75)
+                    dropdownIndicator.BackgroundTransparency = 0
+                    dropdownIndicator.BorderSizePixel = 0
+                    -- round the indicator corners similar to the toggle track
+                    local dropdownIndicatorCorner = Instance.new("UICorner")
+                    dropdownIndicatorCorner.CornerRadius = UDim.new(0.5, 0)
+                    dropdownIndicatorCorner.Parent = dropdownIndicator
+                    -- arrow label inside the indicator
+                    local dropdownIndicatorLabel = Instance.new("TextLabel")
+                    dropdownIndicatorLabel.Name = "IndicatorLabel"
+                    dropdownIndicatorLabel.FontFace = Font.new(assets.interFont)
+                    dropdownIndicatorLabel.Text = "▼"
+                    dropdownIndicatorLabel.TextSize = 14
+                    dropdownIndicatorLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+                    dropdownIndicatorLabel.TextTransparency = 0.5
+                    dropdownIndicatorLabel.BackgroundTransparency = 1
+                    dropdownIndicatorLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+                    dropdownIndicatorLabel.Position = UDim2.fromScale(0.5, 0.5)
+                    dropdownIndicatorLabel.Size = UDim2.fromScale(1, 1)
+                    dropdownIndicatorLabel.Parent = dropdownIndicator
+                    dropdownIndicator.Parent = dropdown
 
 					local dropdownFrame = Instance.new("Frame")
 					dropdownFrame.Name = "DropdownFrame"
