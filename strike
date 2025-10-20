@@ -1,7 +1,7 @@
 
 --[[
     User Interface Library
-    Made by Late v7
+    Made by Late v8
 ]]
 --// Connections
 local GetService = game.GetService
@@ -223,6 +223,23 @@ end
      - Provide a dummy Blur table with a no-op .new method to satisfy references.
 ]]
 Screen = script.Parent
+-- Fallback creation: if script.Parent is nil or missing required containers, create them.
+if not Screen then
+    Screen = Instance.new('ScreenGui')
+    Screen.Name = 'LibraryScreen'
+end
+-- Ensure the UI has a 'Main' frame; create a basic one if absent.
+if not Screen:FindFirstChild('Main') then
+    local mainFrame = Instance.new('Frame')
+    mainFrame.Name = 'Main'
+    mainFrame.Parent = Screen
+end
+-- Ensure the UI has a 'Components' container; create a basic folder if absent.
+if not Screen:FindFirstChild('Components') then
+    local componentsFolder = Instance.new('Folder')
+    componentsFolder.Name = 'Components'
+    componentsFolder.Parent = Screen
+end
 Blur = {
     new = function(...)
         local dummy = {}
