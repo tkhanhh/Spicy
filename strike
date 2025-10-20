@@ -1,7 +1,7 @@
 
 --[[
     User Interface Library
-    Made by Late v5
+    Made by Late v6
 ]]
 --// Connections
 local GetService = game.GetService
@@ -218,15 +218,18 @@ Resizeable = function(Tab, Minimum, Maximum)
     end)
 end
 --// Setup [UI]
---[[ SKYBOY PATCH: remove blur functionality and external asset loading
-     - Always use the current script's parent as the root screen.
+--[[ SKYBOY PATCH: remove blur functionality but retain UI asset loading
+     - Use the original UI asset via InsertService when identifyexecutor is available; otherwise fall back to script.Parent.
      - Provide a dummy Blur table with a no‑op .new method to avoid errors where Blur.new is referenced.
 ]]
-Screen = script.Parent
--- Create a dummy Blur with a .new method that returns an object containing
--- a 'root' instance. This prevents errors when the existing code invokes
--- Blur.new(Window, 5). The returned object includes a root folder which can
--- safely be parented or removed without visual impact.
+if identifyexecutor then
+    Screen = Services.Insert:LoadLocalAsset('rbxassetid://18490507748')
+else
+    Screen = script.Parent
+end
+-- Provide a dummy Blur implementation. The .new method returns a table with a
+-- 'root' field so that later code can parent/unparent it without error. No
+-- actual blurring effect will be applied.
 Blur = {
     new = function(...)
         local dummy = {}
@@ -234,7 +237,10 @@ Blur = {
         return dummy
     end,
 }
-Screen.Main.Visible = false
+-- Guard against nil 'Main' in case Screen lacks the expected hierarchy
+if Screen and Screen:FindFirstChild('Main') then
+    Screen.Main.Visible = false
+end
 xpcall(function()
     Screen.Parent = game.CoreGui
 end, function()
