@@ -7,7 +7,7 @@ local MacLib = {
 	end
 }
 
---// Servicesse
+--// Services
 local TweenService = MacLib.GetService("TweenService")
 local RunService = MacLib.GetService("RunService")
 local HttpService = MacLib.GetService("HttpService")
@@ -30,28 +30,20 @@ local tabIndex = 0
 local unloaded = false
 
 local assets = {
-    -- Use built‑in fonts instead of external asset IDs.  The Inter font was
-    -- previously referenced via a numeric asset id.  To avoid loading any
-    -- external resources we instead point to a built‑in font family that
-    -- ships with the client.  SourceSansPro is available by default in
-    -- Roblox under the rbxasset scheme and provides a similar look.
-    interFont = "rbxasset://fonts/families/SourceSansPro.json",
-    -- All other graphical assets are cleared out to prevent any external
-    -- image loading.  The library will still function correctly; icons
-    -- simply won't display any image when these are blank strings.
-    userInfoBlurred = "",
-    toggleBackground = "",
-    togglerHead = "",
-    buttonImage = "",
-    searchIcon = "",
-    colorWheel = "",
-    colorTarget = "",
-    grid = "",
-    globe = "",
-    transform = "",
-    dropdown = "",
-    sliderbar = "",
-    sliderhead = "",
+	interFont = "rbxassetid://12187365364",
+	userInfoBlurred = "rbxassetid://18824089198",
+	toggleBackground = "rbxassetid://18772190202",
+	togglerHead = "rbxassetid://18772309008",
+	buttonImage = "rbxassetid://10709791437",
+	searchIcon = "rbxassetid://86737463322606",
+	colorWheel = "rbxassetid://2849458409",
+	colorTarget = "rbxassetid://73265255323268",
+	grid = "rbxassetid://121484455191370",
+	globe = "rbxassetid://108952102602834",
+	transform = "rbxassetid://90336395745819",
+	dropdown = "rbxassetid://18865373378",
+	sliderbar = "rbxassetid://18772615246",
+	sliderhead = "rbxassetid://18772834246",
 }
 
 --// Functions
@@ -500,14 +492,14 @@ function MacLib:Window(Settings)
 	local thumbSize = Enum.ThumbnailSize.Size48x48
 	local headshotImage, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
 
-local headshot = Instance.new("ImageLabel")
+	local headshot = Instance.new("ImageLabel")
 	headshot.Name = "Headshot"
 	headshot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	headshot.BackgroundTransparency = 1
 	headshot.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	headshot.BorderSizePixel = 0
 	headshot.Size = UDim2.fromOffset(32, 32)
-headshot.Image = (isReady and headshotImage) or ""
+	headshot.Image = (isReady and headshotImage) or "rbxassetid://0"
 
 	local uICorner3 = Instance.new("UICorner")
 	uICorner3.Name = "UICorner"
@@ -721,6 +713,8 @@ headshot.Image = (isReady and headshotImage) or ""
 	topbar.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	topbar.BorderSizePixel = 0
 	topbar.Size = UDim2.new(1, 0, 0, 63)
+    -- make topbar interactive so it can receive input events for dragging
+    topbar.Active = true
 
 	local divider4 = Instance.new("Frame")
 	divider4.Name = "Divider"
@@ -825,26 +819,29 @@ headshot.Image = (isReady and headshotImage) or ""
 		end
 	end
 
-	if not Settings.DragStyle or Settings.DragStyle == 1 then
-		interact.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				onDragStart(input)
-			end
-		end)
+    if not Settings.DragStyle or Settings.DragStyle == 1 then
+        -- Enable dragging on the entire topbar instead of just the small icon.  With
+        -- Active set to true on the topbar, input events fire when the user
+        -- interacts anywhere on the topbar.
+        topbar.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                onDragStart(input)
+            end
+        end)
 
-		interact.InputChanged:Connect(onDragUpdate)
+        topbar.InputChanged:Connect(onDragUpdate)
 
-		UserInputService.InputChanged:Connect(function(input)
-			if input == dragInput and dragging_ then
-				update(input)
-			end
-		end)
+        UserInputService.InputChanged:Connect(function(input)
+            if input == dragInput and dragging_ then
+                update(input)
+            end
+        end)
 
-		interact.InputEnded:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				dragging_ = false
-			end
-		end)
+        topbar.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                dragging_ = false
+            end
+        end)
 	elseif Settings.DragStyle == 2 then
 		base.InputBegan:Connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
@@ -3827,11 +3824,11 @@ headshot.Image = (isReady and headshotImage) or ""
 
 					local confirm = Instance.new("TextButton")
 					confirm.Name = "Confirm"
-                    confirm.FontFace = Font.new(
-                        assets.interFont,
-                        Enum.FontWeight.Medium,
-                        Enum.FontStyle.Normal
-                    )
+					confirm.FontFace = Font.new(
+						"rbxassetid://12187365364",
+						Enum.FontWeight.Medium,
+						Enum.FontStyle.Normal
+					)
 					confirm.Text = "Confirm"
 					confirm.TextColor3 = Color3.fromRGB(255, 255, 255)
 					confirm.TextSize = 15
@@ -3861,11 +3858,11 @@ headshot.Image = (isReady and headshotImage) or ""
 
 					local cancel = Instance.new("TextButton")
 					cancel.Name = "Cancel"
-                    cancel.FontFace = Font.new(
-                        assets.interFont,
-                        Enum.FontWeight.Medium,
-                        Enum.FontStyle.Normal
-                    )
+					cancel.FontFace = Font.new(
+						"rbxassetid://12187365364",
+						Enum.FontWeight.Medium,
+						Enum.FontStyle.Normal
+					)
 					cancel.Text = "Cancel"
 					cancel.TextColor3 = Color3.fromRGB(255, 255, 255)
 					cancel.TextSize = 15
@@ -3919,11 +3916,11 @@ headshot.Image = (isReady and headshotImage) or ""
 
 					local paragraphHeader = Instance.new("TextLabel")
 					paragraphHeader.Name = "ParagraphHeader"
-                    paragraphHeader.FontFace = Font.new(
-                        assets.interFont,
-                        Enum.FontWeight.SemiBold,
-                        Enum.FontStyle.Normal
-                    )
+					paragraphHeader.FontFace = Font.new(
+						"rbxassetid://12187365364",
+						Enum.FontWeight.SemiBold,
+						Enum.FontStyle.Normal
+					)
 					paragraphHeader.RichText = true
 					paragraphHeader.Text = ColorpickerFunctions.Settings.Name
 					paragraphHeader.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -5285,9 +5282,7 @@ headshot.Image = (isReady and headshotImage) or ""
 		onUnloadCallback = callback
 	end
 
--- Default keybind changed from RightControl to LeftControl to avoid using
--- the right control key.  Users can still override this via Settings.Keybind.
-local MenuKeybind = Settings.Keybind or Enum.KeyCode.LeftControl
+	local MenuKeybind = Settings.Keybind or Enum.KeyCode.RightControl
 
 	local function ToggleMenu()
 		local state = not WindowFunctions:GetState()
@@ -5338,21 +5333,19 @@ local MenuKeybind = Settings.Keybind or Enum.KeyCode.LeftControl
 		return acrylicBlur
 	end
 
-    local function _SetUserInfoState(State)
-        if State then
-            -- show the player's headshot if ready; otherwise fall back to no image
-            headshot.Image = (isReady and headshotImage) or ""
-            username.Text = "@" .. LocalPlayer.Name
-            displayName.Text = LocalPlayer.DisplayName
-        else
-            -- when hiding user info, use the blurred placeholder (which may be empty)
-            headshot.Image = assets.userInfoBlurred
-            local nameLength = #LocalPlayer.Name
-            local displayNameLength = #LocalPlayer.DisplayName
-            username.Text = "@" .. string.rep(".", nameLength)
-            displayName.Text = string.rep(".", displayNameLength)
-        end
-    end
+	local function _SetUserInfoState(State)
+		if State then
+			headshot.Image = (isReady and headshotImage) or "rbxassetid://0"
+			username.Text = "@" .. LocalPlayer.Name
+			displayName.Text = LocalPlayer.DisplayName
+		else
+			headshot.Image = assets.userInfoBlurred
+			local nameLength = #LocalPlayer.Name
+			local displayNameLength = #LocalPlayer.DisplayName
+			username.Text = "@" .. string.rep(".", nameLength)
+			displayName.Text = string.rep(".", displayNameLength)
+		end
+	end
 
 	local showUserInfo
 	if Settings.ShowUserInfo ~= nil then
@@ -5615,22 +5608,14 @@ local MenuKeybind = Settings.Keybind or Enum.KeyCode.LeftControl
 
 	macLib.Enabled = false
 
-    local assetList = {}
-    for _, assetId in pairs(assets) do
-        -- only queue non‑empty assets for preloading to avoid attempting to
-        -- fetch blank identifiers.  empty strings are intentionally ignored.
-        if assetId and assetId ~= "" then
-            table.insert(assetList, assetId)
-        end
-    end
+	local assetList = {}
+	for _, assetId in pairs(assets) do
+		table.insert(assetList, assetId)
+	end
 
-    -- Preload any assets that remain.  If the list is empty this call is
-    -- skipped entirely to prevent unnecessary remote fetches.
-    if #assetList > 0 then
-        ContentProvider:PreloadAsync(assetList)
-    end
-    macLib.Enabled = true
-    windowState = true
+	ContentProvider:PreloadAsync(assetList)
+	macLib.Enabled = true
+	windowState = true
 
 	return WindowFunctions
 end
@@ -5643,7 +5628,7 @@ function MacLib:Demo()
 		DragStyle = 1,
 		DisabledWindowControls = {},
 		ShowUserInfo = true,
-        Keybind = Enum.KeyCode.LeftControl,
+		Keybind = Enum.KeyCode.RightControl,
 		AcrylicBlur = true,
 	})
 
@@ -5690,12 +5675,10 @@ function MacLib:Demo()
 		TabGroup1 = Window:TabGroup()
 	}
 
-    local tabs = {
-        -- Images were removed to avoid loading any external asset ids.  Tabs
-        -- still accept a Name property; the Image field is omitted.
-        Main = tabGroups.TabGroup1:Tab({ Name = "Demo" }),
-        Settings = tabGroups.TabGroup1:Tab({ Name = "Settings" })
-    }
+	local tabs = {
+		Main = tabGroups.TabGroup1:Tab({ Name = "Demo", Image = "rbxassetid://18821914323" }),
+		Settings = tabGroups.TabGroup1:Tab({ Name = "Settings", Image = "rbxassetid://10734950309" })
+	}
 
 	local sections = {
 		MainSection1 = tabs.Main:Section({ Side = "Left" }),
