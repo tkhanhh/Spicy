@@ -1,6 +1,7 @@
+
 --[[
     User Interface Library
-    Made by Late
+    Made by Lateez
 ]]
 --// Connections
 local GetService = game.GetService
@@ -216,23 +217,37 @@ Resizeable = function(Tab, Minimum, Maximum)
         end)
     end)
 end
---// Setup [UI]
-if identifyexecutor then
-    Screen = Services.Insert:LoadLocalAsset('rbxassetid://18490507748')
-    Blur = loadstring(
-        game:HttpGet(
-            'https://gist.githubusercontent.com/MjContiga1/95d2f96ab1afc978cb33d9ef824def05/raw/07f17c2aeac7b647c416b982ea31adacf999be56/Ui%2520blur%2520code.lua'
-        )
-    )()
-else
-    Screen = script.Parent
-    Blur = require(script.Blur)
+-- Always use the local Screen contained within this script to avoid loading external assets.
+Screen = script.Parent
+-- Try to require a local blur module; if unavailable, fall back to a no‑op blur implementation
+do
+    local ok, blurModule = pcall(function()
+        return require(script:FindFirstChild('Blur') or script.Blur)
+    end)
+    if ok and blurModule then
+        Blur = blurModule
+    else
+        -- Provide a simple fallback blur object that does nothing but conforms to the expected API
+        Blur = {}
+        function Blur.new(...)
+            local fake = {}
+            fake.root = Instance.new('Folder')
+            function fake:Destroy()
+                if self.root then
+                    self.root:Destroy()
+                end
+            end
+            return fake
+        end
+    end
 end
-Screen.Main.Visible = false
-xpcall(function()
-    Screen.Parent = game.CoreGui
-end, function()
-    Screen.Parent = Player.GUI
+-- Hide the main UI until it is opened
+if Screen:FindFirstChild('Main') then
+    Screen.Main.Visible = false
+end
+-- Parent the UI to CoreGui; do not fall back to PlayerGui
+pcall(function()
+    Screen.Parent = game:GetService('CoreGui')
 end)
 --// Tables for Data
 local Animations = {}
@@ -348,18 +363,25 @@ function Library:CreateWindow(Settings: {
     layout.Padding = UDim.new(0, 5)
     layout.Parent = windowControls
 
-    local minimizeBtn = Instance.new('ImageButton')
+    -- Replace image buttons with text buttons to avoid external asset usage
+    local minimizeBtn = Instance.new('TextButton')
     minimizeBtn.Name = 'MinimizeButton'
-    minimizeBtn.Image = 'rbxassetid://7734000129'
+    minimizeBtn.Text = '-'
+    minimizeBtn.TextScaled = true
+    minimizeBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+    minimizeBtn.Font = Enum.Font.GothamSemibold
     minimizeBtn.Size = UDim2.new(0, 20, 0, 20)
     minimizeBtn.BackgroundTransparency = 1
     minimizeBtn.LayoutOrder = 1
     minimizeBtn.ZIndex = 11
     minimizeBtn.Parent = windowControls
 
-    local exitBtn = Instance.new('ImageButton')
+    local exitBtn = Instance.new('TextButton')
     exitBtn.Name = 'ExitButton'
-    exitBtn.Image = 'rbxassetid://7755372427'
+    exitBtn.Text = 'X'
+    exitBtn.TextScaled = true
+    exitBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+    exitBtn.Font = Enum.Font.GothamSemibold
     exitBtn.Size = UDim2.new(0, 20, 0, 20)
     exitBtn.BackgroundTransparency = 1
     exitBtn.LayoutOrder = 2
@@ -748,13 +770,16 @@ function Library:CreateWindow(Settings: {
         local Button = Clone(Components['Button'])
         local Title, Description = Options:GetLabels(Button)
 
-        local RightImage = Instance.new('ImageLabel')
+        -- Use a text label as an arrow indicator instead of an image
+        local RightImage = Instance.new('TextLabel')
         RightImage.Name = 'RightImage'
         RightImage.Size = UDim2.new(0, 22, 0, 22)
         RightImage.Position = UDim2.new(1, -41, 0.5, -10)
-        RightImage.Image = 'rbxassetid://7734010488'
         RightImage.BackgroundTransparency = 1
-        RightImage.ImageColor3 = Color3.fromRGB(0, 0, 0)
+        RightImage.Text = '>'
+        RightImage.TextColor3 = Color3.fromRGB(0, 0, 0)
+        RightImage.Font = Enum.Font.GothamSemibold
+        RightImage.TextScaled = true
         RightImage.Parent = Button
 
         Connect(Button.MouseButton1Click, Settings.Callback)
@@ -1163,12 +1188,15 @@ function Library:CreateWindow(Settings: {
                 BtnTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
 
                 local Checkmark = Button:FindFirstChild('Checkmark')
-                    or Instance.new('ImageLabel')
+                    or Instance.new('TextLabel')
                 Checkmark.Name = 'Checkmark'
                 Checkmark.Size = UDim2.new(0, 16, 0, 16)
                 Checkmark.Position = UDim2.new(1, -20, 0.5, -8)
-                Checkmark.Image = 'rbxassetid://6031068421'
                 Checkmark.BackgroundTransparency = 1
+                Checkmark.Text = '✔'
+                Checkmark.TextColor3 = Color3.fromRGB(0, 0, 0)
+                Checkmark.Font = Enum.Font.GothamSemibold
+                Checkmark.TextScaled = true
                 Checkmark.Visible = isSelected and true or false
                 Checkmark.Parent = Button
 
@@ -1535,7 +1563,8 @@ function Library:CreateWindow(Settings: {
 
         Classes = {
             ['ImageLabel'] = function(Label)
-                if Label.Image ~= 'rbxassetid://6644618143' then
+                -- Apply theme color to any image label
+                if Label.Image and Label.Image ~= '' then
                     Label.ImageColor3 = Theme.Icon
                 end
             end,
