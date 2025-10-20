@@ -1,6 +1,7 @@
+
 --[[
     User Interface Library
-    Made by Lates
+    Made by Late
 ]]
 --// Connections
 local GetService = game.GetService
@@ -217,22 +218,26 @@ Resizeable = function(Tab, Minimum, Maximum)
     end)
 end
 --// Setup [UI]
-if identifyexecutor then
-    Screen = Services.Insert:LoadLocalAsset('')
-    Blur = loadstring(
-        game:HttpGet(
-            'https://gist.githubusercontent.com/MjContiga1/95d2f96ab1afc978cb33d9ef824def05/raw/07f17c2aeac7b647c416b982ea31adacf999be56/Ui%2520blur%2520code.lua'
-        )
-    )()
+-- We avoid using InsertService or loading remote assets to ensure that no
+-- external image assets are required. Instead, we rely on the script’s
+-- parent (which should contain a ScreenGui with all the components)
+-- and the local Blur module if present. We also explicitly parent to
+-- game.CoreGui and drop the fallback to PlayerGui as per the user’s request.
+Screen = script.Parent
+-- If a Blur module exists under this script then require it; otherwise
+-- set Blur to nil. The blur script should be bundled alongside the library.
+local success, blurModule = pcall(function()
+    return require(script:FindFirstChild('Blur'))
+end)
+if success then
+    Blur = blurModule
 else
-    Screen = script.Parent
-    Blur = require(script.Blur)
+    Blur = nil
 end
 Screen.Main.Visible = false
-xpcall(function()
+-- Parent the screen exclusively to CoreGui. No fallback to PlayerGui.
+pcall(function()
     Screen.Parent = game.CoreGui
-end, function()
-    Screen.Parent = Player.GUI
 end)
 --// Tables for Data
 local Animations = {}
@@ -348,23 +353,34 @@ function Library:CreateWindow(Settings: {
     layout.Padding = UDim.new(0, 5)
     layout.Parent = windowControls
 
-    local minimizeBtn = Instance.new('ImageButton')
-    minimizeBtn.Name = 'MinimizeButton'
-    minimizeBtn.Image = ''
-    minimizeBtn.Size = UDim2.new(0, 20, 0, 20)
-    minimizeBtn.BackgroundTransparency = 1
-    minimizeBtn.LayoutOrder = 1
-    minimizeBtn.ZIndex = 11
-    minimizeBtn.Parent = windowControls
+    -- Create textual buttons instead of ImageButtons for minimize and exit.
+    -- This avoids any reliance on external image assets. Each button
+    -- uses unicode characters (minus and X) to convey its function. We also
+    -- provide a simple UIStroke to differentiate the button from the
+    -- background.
+    local function createWindowButton(name, symbol, order)
+        local btn = Instance.new('TextButton')
+        btn.Name = name
+        btn.Text = symbol
+        btn.TextSize = 14
+        btn.Font = Enum.Font.GothamBold
+        btn.TextColor3 = Color3.fromRGB(0, 0, 0)
+        btn.Size = UDim2.new(0, 20, 0, 20)
+        btn.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
+        btn.BackgroundTransparency = 0
+        btn.LayoutOrder = order
+        btn.ZIndex = 11
+        local stroke = Instance.new('UIStroke')
+        stroke.Thickness = 1
+        stroke.Color = Color3.fromRGB(0, 0, 0)
+        stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+        stroke.Parent = btn
+        btn.Parent = windowControls
+        return btn
+    end
 
-    local exitBtn = Instance.new('ImageButton')
-    exitBtn.Name = 'ExitButton'
-    exitBtn.Image = ''
-    exitBtn.Size = UDim2.new(0, 20, 0, 20)
-    exitBtn.BackgroundTransparency = 1
-    exitBtn.LayoutOrder = 2
-    exitBtn.ZIndex = 11
-    exitBtn.Parent = windowControls
+    local minimizeBtn = createWindowButton('MinimizeButton', '-', 1)
+    local exitBtn = createWindowButton('ExitButton', 'X', 2)
 
     -- Add button animations (đã no-op)
     Animations:Component(minimizeBtn, true)
@@ -659,10 +675,11 @@ function Library:CreateWindow(Settings: {
 
         local TabsHolder = self:EnsureTabsHolder(Example)
 
-        if not Settings.Icon then
+        -- Remove the default icon entirely to avoid any image usage. Tabs can be
+        -- distinguished by their titles alone. If a custom icon was provided,
+        -- it is ignored in favour of a clean, text‑based tab.
+        if Tab:FindFirstChild('ICO') then
             Destroy(Tab['ICO'])
-        else
-            SetProperty(Tab['ICO'], { Image = Settings.Icon })
         end
 
         StoredInfo['Tabs'][Settings.Title] = { Tab }
@@ -748,13 +765,16 @@ function Library:CreateWindow(Settings: {
         local Button = Clone(Components['Button'])
         local Title, Description = Options:GetLabels(Button)
 
-        local RightImage = Instance.new('ImageLabel')
-        RightImage.Name = 'RightImage'
+        -- Replace the image indicator with a text label to avoid external image assets.
+        local RightImage = Instance.new('TextLabel')
+        RightImage.Name = 'RightIndicator'
         RightImage.Size = UDim2.new(0, 22, 0, 22)
-        RightImage.Position = UDim2.new(1, -41, 0.5, -10)
-        RightImage.Image = ''
+        RightImage.Position = UDim2.new(1, -41, 0.5, -11)
         RightImage.BackgroundTransparency = 1
-        RightImage.ImageColor3 = Color3.fromRGB(0, 0, 0)
+        RightImage.Text = '▶' -- Unicode character for a right-pointing triangle
+        RightImage.TextScaled = true
+        RightImage.TextColor3 = Color3.fromRGB(0, 0, 0)
+        RightImage.Font = Enum.Font.GothamBold
         RightImage.Parent = Button
 
         Connect(Button.MouseButton1Click, Settings.Callback)
@@ -1162,13 +1182,19 @@ function Library:CreateWindow(Settings: {
                     or Color3.fromRGB(255, 255, 255)
                 BtnTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
 
+                -- Replace the image checkmark with a textual check mark. This
+                -- avoids any external image dependency. The character '✔'
+                -- clearly indicates selection.
                 local Checkmark = Button:FindFirstChild('Checkmark')
-                    or Instance.new('ImageLabel')
+                    or Instance.new('TextLabel')
                 Checkmark.Name = 'Checkmark'
                 Checkmark.Size = UDim2.new(0, 16, 0, 16)
                 Checkmark.Position = UDim2.new(1, -20, 0.5, -8)
-                Checkmark.Image = ''
                 Checkmark.BackgroundTransparency = 1
+                Checkmark.Text = '✔'
+                Checkmark.TextScaled = true
+                Checkmark.TextColor3 = Color3.fromRGB(0, 0, 0)
+                Checkmark.Font = Enum.Font.GothamBold
                 Checkmark.Visible = isSelected and true or false
                 Checkmark.Parent = Button
 
