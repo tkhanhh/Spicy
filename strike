@@ -7,7 +7,7 @@ local MacLib = {
 	end
 }
 
---// Services
+--// Servicesee
 local TweenService = MacLib.GetService("TweenService")
 local RunService = MacLib.GetService("RunService")
 local HttpService = MacLib.GetService("HttpService")
@@ -30,20 +30,20 @@ local tabIndex = 0
 local unloaded = false
 
 local assets = {
-	interFont = "rbxassetid://12187365364",
-	userInfoBlurred = "rbxassetid://18824089198",
-	toggleBackground = "rbxassetid://18772190202",
-	togglerHead = "rbxassetid://18772309008",
-	buttonImage = "rbxassetid://10709791437",
-	searchIcon = "rbxassetid://86737463322606",
-	colorWheel = "rbxassetid://2849458409",
-	colorTarget = "rbxassetid://73265255323268",
-	grid = "rbxassetid://121484455191370",
-	globe = "rbxassetid://108952102602834",
-	transform = "rbxassetid://90336395745819",
-	dropdown = "rbxassetid://18865373378",
-	sliderbar = "rbxassetid://18772615246",
-	sliderhead = "rbxassetid://18772834246",
+	interFont = "",
+	userInfoBlurred = "",
+	toggleBackground = "",
+	togglerHead = "",
+	buttonImage = "",
+	searchIcon = "",
+	colorWheel = "",
+	colorTarget = "",
+	grid = "",
+	globe = """,
+	transform = "",
+	dropdown = "",
+	sliderbar = "",
+	sliderhead = "",
 }
 
 --// Functions
@@ -3825,7 +3825,7 @@ function MacLib:Window(Settings)
 					local confirm = Instance.new("TextButton")
 					confirm.Name = "Confirm"
 					confirm.FontFace = Font.new(
-						"rbxassetid://12187365364",
+						"",
 						Enum.FontWeight.Medium,
 						Enum.FontStyle.Normal
 					)
@@ -3859,7 +3859,7 @@ function MacLib:Window(Settings)
 					local cancel = Instance.new("TextButton")
 					cancel.Name = "Cancel"
 					cancel.FontFace = Font.new(
-						"rbxassetid://12187365364",
+						"",
 						Enum.FontWeight.Medium,
 						Enum.FontStyle.Normal
 					)
@@ -3917,7 +3917,7 @@ function MacLib:Window(Settings)
 					local paragraphHeader = Instance.new("TextLabel")
 					paragraphHeader.Name = "ParagraphHeader"
 					paragraphHeader.FontFace = Font.new(
-						"rbxassetid://12187365364",
+						"",
 						Enum.FontWeight.SemiBold,
 						Enum.FontStyle.Normal
 					)
@@ -5282,7 +5282,7 @@ function MacLib:Window(Settings)
 		onUnloadCallback = callback
 	end
 
-	local MenuKeybind = Settings.Keybind or Enum.KeyCode.RightControl
+	local MenuKeybind = Settings.Keybind or Enum.KeyCode.LeftControl
 
 	local function ToggleMenu()
 		local state = not WindowFunctions:GetState()
@@ -5628,7 +5628,7 @@ function MacLib:Demo()
 		DragStyle = 1,
 		DisabledWindowControls = {},
 		ShowUserInfo = true,
-		Keybind = Enum.KeyCode.RightControl,
+		Keybind = Enum.KeyCode.LeftControl,
 		AcrylicBlur = true,
 	})
 
@@ -5676,8 +5676,8 @@ function MacLib:Demo()
 	}
 
 	local tabs = {
-		Main = tabGroups.TabGroup1:Tab({ Name = "Demo", Image = "rbxassetid://18821914323" }),
-		Settings = tabGroups.TabGroup1:Tab({ Name = "Settings", Image = "rbxassetid://10734950309" })
+		Main = tabGroups.TabGroup1:Tab({ Name = "Demo", Image = "" }),
+		Settings = tabGroups.TabGroup1:Tab({ Name = "Settings", Image = "" })
 	}
 
 	local sections = {
