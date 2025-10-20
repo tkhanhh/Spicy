@@ -1,3 +1,4 @@
+
 local MacLib = { 
 	Options = {}, 
 	Folder = "Maclib", 
@@ -6,7 +7,7 @@ local MacLib = {
 	end
 }
 
---// Services
+--// Servicesse
 local TweenService = MacLib.GetService("TweenService")
 local RunService = MacLib.GetService("RunService")
 local HttpService = MacLib.GetService("HttpService")
@@ -29,20 +30,28 @@ local tabIndex = 0
 local unloaded = false
 
 local assets = {
-	interFont = "",
-	userInfoBlurred = "",
-	toggleBackground = "",
-	togglerHead = "",
-	buttonImage = "",
-	searchIcon = "",
-	colorWheel = "",
-	colorTarget = "",
-	grid = "",
-	globe = "",
-	transform = "",
-	dropdown = "",
-	sliderbar = "",
-	sliderhead = "",
+    -- Use built‑in fonts instead of external asset IDs.  The Inter font was
+    -- previously referenced via a numeric asset id.  To avoid loading any
+    -- external resources we instead point to a built‑in font family that
+    -- ships with the client.  SourceSansPro is available by default in
+    -- Roblox under the rbxasset scheme and provides a similar look.
+    interFont = "rbxasset://fonts/families/SourceSansPro.json",
+    -- All other graphical assets are cleared out to prevent any external
+    -- image loading.  The library will still function correctly; icons
+    -- simply won't display any image when these are blank strings.
+    userInfoBlurred = "",
+    toggleBackground = "",
+    togglerHead = "",
+    buttonImage = "",
+    searchIcon = "",
+    colorWheel = "",
+    colorTarget = "",
+    grid = "",
+    globe = "",
+    transform = "",
+    dropdown = "",
+    sliderbar = "",
+    sliderhead = "",
 }
 
 --// Functions
@@ -491,14 +500,14 @@ function MacLib:Window(Settings)
 	local thumbSize = Enum.ThumbnailSize.Size48x48
 	local headshotImage, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
 
-	local headshot = Instance.new("ImageLabel")
+local headshot = Instance.new("ImageLabel")
 	headshot.Name = "Headshot"
 	headshot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	headshot.BackgroundTransparency = 1
 	headshot.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	headshot.BorderSizePixel = 0
 	headshot.Size = UDim2.fromOffset(32, 32)
-	headshot.Image = (isReady and headshotImage) or "rbxassetid://0"
+headshot.Image = (isReady and headshotImage) or ""
 
 	local uICorner3 = Instance.new("UICorner")
 	uICorner3.Name = "UICorner"
@@ -3818,11 +3827,11 @@ function MacLib:Window(Settings)
 
 					local confirm = Instance.new("TextButton")
 					confirm.Name = "Confirm"
-					confirm.FontFace = Font.new(
-						"",
-						Enum.FontWeight.Medium,
-						Enum.FontStyle.Normal
-					)
+                    confirm.FontFace = Font.new(
+                        assets.interFont,
+                        Enum.FontWeight.Medium,
+                        Enum.FontStyle.Normal
+                    )
 					confirm.Text = "Confirm"
 					confirm.TextColor3 = Color3.fromRGB(255, 255, 255)
 					confirm.TextSize = 15
@@ -3852,11 +3861,11 @@ function MacLib:Window(Settings)
 
 					local cancel = Instance.new("TextButton")
 					cancel.Name = "Cancel"
-					cancel.FontFace = Font.new(
-						"",
-						Enum.FontWeight.Medium,
-						Enum.FontStyle.Normal
-					)
+                    cancel.FontFace = Font.new(
+                        assets.interFont,
+                        Enum.FontWeight.Medium,
+                        Enum.FontStyle.Normal
+                    )
 					cancel.Text = "Cancel"
 					cancel.TextColor3 = Color3.fromRGB(255, 255, 255)
 					cancel.TextSize = 15
@@ -3910,11 +3919,11 @@ function MacLib:Window(Settings)
 
 					local paragraphHeader = Instance.new("TextLabel")
 					paragraphHeader.Name = "ParagraphHeader"
-					paragraphHeader.FontFace = Font.new(
-						"",
-						Enum.FontWeight.SemiBold,
-						Enum.FontStyle.Normal
-					)
+                    paragraphHeader.FontFace = Font.new(
+                        assets.interFont,
+                        Enum.FontWeight.SemiBold,
+                        Enum.FontStyle.Normal
+                    )
 					paragraphHeader.RichText = true
 					paragraphHeader.Text = ColorpickerFunctions.Settings.Name
 					paragraphHeader.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -5276,7 +5285,9 @@ function MacLib:Window(Settings)
 		onUnloadCallback = callback
 	end
 
-	local MenuKeybind = Settings.Keybind or Enum.KeyCode.RightControl
+-- Default keybind changed from RightControl to LeftControl to avoid using
+-- the right control key.  Users can still override this via Settings.Keybind.
+local MenuKeybind = Settings.Keybind or Enum.KeyCode.LeftControl
 
 	local function ToggleMenu()
 		local state = not WindowFunctions:GetState()
@@ -5327,19 +5338,21 @@ function MacLib:Window(Settings)
 		return acrylicBlur
 	end
 
-	local function _SetUserInfoState(State)
-		if State then
-			headshot.Image = (isReady and headshotImage) or "rbxassetid://0"
-			username.Text = "@" .. LocalPlayer.Name
-			displayName.Text = LocalPlayer.DisplayName
-		else
-			headshot.Image = assets.userInfoBlurred
-			local nameLength = #LocalPlayer.Name
-			local displayNameLength = #LocalPlayer.DisplayName
-			username.Text = "@" .. string.rep(".", nameLength)
-			displayName.Text = string.rep(".", displayNameLength)
-		end
-	end
+    local function _SetUserInfoState(State)
+        if State then
+            -- show the player's headshot if ready; otherwise fall back to no image
+            headshot.Image = (isReady and headshotImage) or ""
+            username.Text = "@" .. LocalPlayer.Name
+            displayName.Text = LocalPlayer.DisplayName
+        else
+            -- when hiding user info, use the blurred placeholder (which may be empty)
+            headshot.Image = assets.userInfoBlurred
+            local nameLength = #LocalPlayer.Name
+            local displayNameLength = #LocalPlayer.DisplayName
+            username.Text = "@" .. string.rep(".", nameLength)
+            displayName.Text = string.rep(".", displayNameLength)
+        end
+    end
 
 	local showUserInfo
 	if Settings.ShowUserInfo ~= nil then
@@ -5602,14 +5615,22 @@ function MacLib:Window(Settings)
 
 	macLib.Enabled = false
 
-	local assetList = {}
-	for _, assetId in pairs(assets) do
-		table.insert(assetList, assetId)
-	end
+    local assetList = {}
+    for _, assetId in pairs(assets) do
+        -- only queue non‑empty assets for preloading to avoid attempting to
+        -- fetch blank identifiers.  empty strings are intentionally ignored.
+        if assetId and assetId ~= "" then
+            table.insert(assetList, assetId)
+        end
+    end
 
-	ContentProvider:PreloadAsync(assetList)
-	macLib.Enabled = true
-	windowState = true
+    -- Preload any assets that remain.  If the list is empty this call is
+    -- skipped entirely to prevent unnecessary remote fetches.
+    if #assetList > 0 then
+        ContentProvider:PreloadAsync(assetList)
+    end
+    macLib.Enabled = true
+    windowState = true
 
 	return WindowFunctions
 end
@@ -5622,7 +5643,7 @@ function MacLib:Demo()
 		DragStyle = 1,
 		DisabledWindowControls = {},
 		ShowUserInfo = true,
-		Keybind = Enum.KeyCode.RightControl,
+        Keybind = Enum.KeyCode.LeftControl,
 		AcrylicBlur = true,
 	})
 
@@ -5669,10 +5690,12 @@ function MacLib:Demo()
 		TabGroup1 = Window:TabGroup()
 	}
 
-	local tabs = {
-		Main = tabGroups.TabGroup1:Tab({ Name = "Demo", Image = "" }),
-		Settings = tabGroups.TabGroup1:Tab({ Name = "Settings", Image = "" })
-	}
+    local tabs = {
+        -- Images were removed to avoid loading any external asset ids.  Tabs
+        -- still accept a Name property; the Image field is omitted.
+        Main = tabGroups.TabGroup1:Tab({ Name = "Demo" }),
+        Settings = tabGroups.TabGroup1:Tab({ Name = "Settings" })
+    }
 
 	local sections = {
 		MainSection1 = tabs.Main:Section({ Side = "Left" }),
