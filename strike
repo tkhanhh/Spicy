@@ -1,8 +1,7 @@
-
 local MacLib = {
     Options = {},
     -- store any configuration in a folder named after SkyBoy rather than the original name
-    Folder = "by SkyBoy",
+    Folder = "by SkyBoi",
     GetService = function(service)
         return cloneref and cloneref(game:GetService(service)) or game:GetService(service)
     end
@@ -1826,17 +1825,26 @@ function MacLib:Window(Settings)
 
 				function SectionFunctions:Button(Settings, Flag)
 					local ButtonFunctions = {Settings = Settings}
-					local button = Instance.new("Frame")
+				local button = Instance.new("Frame")
 					button.Name = "Button"
 					button.AutomaticSize = Enum.AutomaticSize.Y
 					button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-					button.BackgroundTransparency = 1
+				-- give each control its own subtle border so there is space between controls
+				button.BackgroundTransparency = 1
 					button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					button.BorderSizePixel = 0
 					button.Size = UDim2.new(1, 0, 0, 38)
-					button.Parent = sectionContent 
+				button.Parent = sectionContent 
 
-					local buttonInteract = Instance.new("TextButton")
+				-- add a thin border around the button container to help distinguish it from other controls
+				local buttonStroke = Instance.new("UIStroke")
+				buttonStroke.Name = "ButtonStroke"
+				buttonStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+				buttonStroke.Color = Color3.fromRGB(255, 255, 255)
+				buttonStroke.Transparency = 0.9
+				buttonStroke.Parent = button
+
+				local buttonInteract = Instance.new("TextButton")
 					buttonInteract.Name = "ButtonInteract"
 					buttonInteract.FontFace = Font.new(assets.interFont)
 					buttonInteract.RichText = true
@@ -1845,13 +1853,19 @@ function MacLib:Window(Settings)
 					buttonInteract.TextTransparency = 0.5
 					buttonInteract.TextTruncate = Enum.TextTruncate.AtEnd
 					buttonInteract.TextXAlignment = Enum.TextXAlignment.Left
-					buttonInteract.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					buttonInteract.BackgroundTransparency = 1
-					buttonInteract.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					buttonInteract.BorderSizePixel = 0
+				-- give the button a subtle background so the user recognises it is clickable
+				buttonInteract.BackgroundColor3 = Color3.fromRGB(40, 60, 75)
+				buttonInteract.BackgroundTransparency = 0.95
+				buttonInteract.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				buttonInteract.BorderSizePixel = 0
 					buttonInteract.Size = UDim2.fromScale(1, 1)
 					buttonInteract.Parent = button
-					buttonInteract.Text = ButtonFunctions.Settings.Title or ButtonFunctions.Settings.Name
+				buttonInteract.Text = ButtonFunctions.Settings.Title or ButtonFunctions.Settings.Name
+
+				-- add a corner radius to match the modern rounded look
+				local buttonUICorner = Instance.new("UICorner")
+				buttonUICorner.CornerRadius = UDim.new(0, 4)
+				buttonUICorner.Parent = buttonInteract
 
 					local buttonImage = Instance.new("ImageLabel")
 					buttonImage.Name = "ButtonImage"
@@ -1867,29 +1881,34 @@ function MacLib:Window(Settings)
 					buttonImage.Size = UDim2.fromOffset(15, 15)
 					buttonImage.Parent = button
 
-					local TweenSettings = {
-						DefaultTransparency = 0.5,
-						HoverTransparency = 0.3,
+				local TweenSettings = {
+					-- default and hover transparencies for the text and button visuals
+					DefaultTransparency = 0.5,
+					HoverTransparency = 0.3,
+					DefaultBackgroundTransparency = 0.95,
+					HoverBackgroundTransparency = 0.8,
 
-						EasingStyle = Enum.EasingStyle.Sine
-					}
+					EasingStyle = Enum.EasingStyle.Sine
+				}
 
 					local function ChangeState(State)
-						if State == "Idle" then
-							Tween(buttonInteract, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
-								TextTransparency = TweenSettings.DefaultTransparency
-							}):Play()
-							Tween(buttonImage, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
-								ImageTransparency = TweenSettings.DefaultTransparency
-							}):Play()
-						elseif State == "Hover" then
-							Tween(buttonInteract, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
-								TextTransparency = TweenSettings.HoverTransparency
-							}):Play()
-							Tween(buttonImage, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
-								ImageTransparency = TweenSettings.HoverTransparency
-							}):Play()
-						end
+					if State == "Idle" then
+						Tween(buttonInteract, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
+							TextTransparency = TweenSettings.DefaultTransparency,
+							BackgroundTransparency = TweenSettings.DefaultBackgroundTransparency
+						}):Play()
+						Tween(buttonImage, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
+							ImageTransparency = TweenSettings.DefaultTransparency
+						}):Play()
+					elseif State == "Hover" then
+						Tween(buttonInteract, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
+							TextTransparency = TweenSettings.HoverTransparency,
+							BackgroundTransparency = TweenSettings.HoverBackgroundTransparency
+						}):Play()
+						Tween(buttonImage, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
+							ImageTransparency = TweenSettings.HoverTransparency
+						}):Play()
+					end
 					end
 
 					local function Callback()
@@ -1921,7 +1940,7 @@ function MacLib:Window(Settings)
 
 				function SectionFunctions:Toggle(Settings, Flag)
 					local ToggleFunctions = { Settings = Settings, IgnoreConfig = false, Class = "Toggle" }
-					local toggle = Instance.new("Frame")
+				local toggle = Instance.new("Frame")
 					toggle.Name = "Toggle"
 					toggle.AutomaticSize = Enum.AutomaticSize.Y
 					toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -1929,7 +1948,14 @@ function MacLib:Window(Settings)
 					toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					toggle.BorderSizePixel = 0
 					toggle.Size = UDim2.new(1, 0, 0, 38)
-					toggle.Parent = sectionContent 
+				toggle.Parent = sectionContent 
+				-- add a subtle border around the toggle container for spacing between controls
+				local toggleContainerStroke = Instance.new("UIStroke")
+				toggleContainerStroke.Name = "ToggleContainerStroke"
+				toggleContainerStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+				toggleContainerStroke.Color = Color3.fromRGB(255, 255, 255)
+				toggleContainerStroke.Transparency = 0.9
+				toggleContainerStroke.Parent = toggle
 
 					local toggleName = Instance.new("TextLabel")
 					toggleName.Name = "ToggleName"
@@ -1952,19 +1978,34 @@ function MacLib:Window(Settings)
 					toggleName.Size = UDim2.new(1, -50, 0, 0)
 					toggleName.Parent = toggle
 
-					local toggle1 = Instance.new("ImageButton")
-					toggle1.Name = "Toggle"
-					toggle1.Image = assets.toggleBackground
-					toggle1.ImageColor3 = Color3.fromRGB(40, 60, 75)
-					toggle1.AutoButtonColor = false
-					toggle1.AnchorPoint = Vector2.new(1, 0.5)
-					toggle1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					toggle1.BackgroundTransparency = 1
-					toggle1.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					toggle1.BorderSizePixel = 0
-					toggle1.Position = UDim2.fromScale(1, 0.5)
-					toggle1.Size = UDim2.fromOffset(41, 21)
-					toggle1.ImageTransparency = 0.5
+				-- create the toggle track as an ImageButton so it can receive input but without using any image assets
+				local toggle1 = Instance.new("ImageButton")
+				toggle1.Name = "Toggle"
+				toggle1.AutoButtonColor = false
+				toggle1.AnchorPoint = Vector2.new(1, 0.5)
+				-- the toggle uses a background colour to indicate its state instead of an image
+				toggle1.BackgroundColor3 = Color3.fromRGB(40, 60, 75)
+				toggle1.BackgroundTransparency = 0
+				toggle1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				toggle1.BorderSizePixel = 0
+				toggle1.Position = UDim2.fromScale(1, 0.5)
+				toggle1.Size = UDim2.fromOffset(41, 21)
+				-- remove any image usage by clearing Image and setting its transparency
+				toggle1.Image = ""
+				toggle1.ImageTransparency = 1
+
+				-- round the edges of the track
+				local toggleUICorner = Instance.new("UICorner")
+				toggleUICorner.CornerRadius = UDim.new(0.5, 0)
+				toggleUICorner.Parent = toggle1
+
+				-- add a subtle border to the track
+				local toggleStroke = Instance.new("UIStroke")
+				toggleStroke.Name = "ToggleStroke"
+				toggleStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+				toggleStroke.Color = Color3.fromRGB(255, 255, 255)
+				toggleStroke.Transparency = 0.8
+				toggleStroke.Parent = toggle1
 
 					local toggleUIPadding = Instance.new("UIPadding")
 					toggleUIPadding.Name = "ToggleUIPadding"
@@ -1974,57 +2015,70 @@ function MacLib:Window(Settings)
 					toggleUIPadding.PaddingTop = UDim.new(0, 1)
 					toggleUIPadding.Parent = toggle1
 
-					local togglerHead = Instance.new("ImageLabel")
-					togglerHead.Name = "TogglerHead"
-					togglerHead.Image = assets.togglerHead
-					togglerHead.ImageColor3 = Color3.fromRGB(255, 255, 255)
-					togglerHead.AnchorPoint = Vector2.new(1, 0.5)
-					togglerHead.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					togglerHead.BackgroundTransparency = 1
-					togglerHead.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					togglerHead.BorderSizePixel = 0
-					togglerHead.Position = UDim2.fromScale(0.5, 0.5)
-					togglerHead.Size = UDim2.fromOffset(15, 15)
-					togglerHead.ZIndex = 2
-					togglerHead.Parent = toggle1
-					togglerHead.ImageTransparency = 0.8
+				-- knob for the toggle; implemented as a frame with rounded corners
+				local togglerHead = Instance.new("Frame")
+				togglerHead.Name = "TogglerHead"
+				-- knob starts at the right by default; anchor point 0 to allow left/right movement inside the track
+				togglerHead.AnchorPoint = Vector2.new(0, 0.5)
+				togglerHead.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				togglerHead.BackgroundTransparency = 0
+				togglerHead.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				togglerHead.BorderSizePixel = 0
+				-- initial position will be set later based on state
+				togglerHead.Position = UDim2.fromScale(0, 0.5)
+				togglerHead.Size = UDim2.fromOffset(15, 15)
+				togglerHead.ZIndex = 2
+				togglerHead.Parent = toggle1
+
+				-- round the knob into a circle
+				local togglerHeadCorner = Instance.new("UICorner")
+				togglerHeadCorner.CornerRadius = UDim.new(0.5, 0)
+				togglerHeadCorner.Parent = togglerHead
 
 					toggle1.Parent = toggle
 
-					local toggle1Transparency = {Enabled = 0, Disabled = 0.5}
-					local togglerHeadTransparency = {Enabled = 0, Disabled = 0.85}
+				-- colours for the toggle track and knob in on/off states
+				local trackColors = {
+					Enabled = Color3.fromRGB(95, 165, 95),
+					Disabled = Color3.fromRGB(40, 60, 75)
+				}
+				local knobColors = {
+					Enabled = Color3.fromRGB(255, 255, 255),
+					Disabled = Color3.fromRGB(255, 255, 255)
+				}
 
-					local TweenSettings = {
-						Info = TweenInfo.new(0.15, Enum.EasingStyle.Quad),
-
-						EnabledPosition = UDim2.new(1, 0, 0.5, 0),
-						DisabledPosition = UDim2.new(0.5, 0, 0.5, 0),
-					}
+				local TweenSettings = {
+					Info = TweenInfo.new(0.15, Enum.EasingStyle.Quad),
+					-- when enabled the knob moves to the left of the track
+					EnabledPosition = UDim2.new(0, 2, 0.5, 0),
+					-- when disabled the knob rests on the right of the track
+					DisabledPosition = UDim2.new(1, -17, 0.5, 0),
+				}
 
 					local togglebool = ToggleFunctions.Settings.Default
 
-					local function NewState(State, callback)
-						local transparencyValues = State and {toggle1Transparency.Enabled, togglerHeadTransparency.Enabled}
-							or {toggle1Transparency.Disabled, togglerHeadTransparency.Disabled}
-						local position = State and TweenSettings.EnabledPosition or TweenSettings.DisabledPosition
+				local function NewState(State, callback)
+					-- determine colours and knob position based on state
+					local trackColour = State and trackColors.Enabled or trackColors.Disabled
+					local knobColour = State and knobColors.Enabled or knobColors.Disabled
+					local position = State and TweenSettings.EnabledPosition or TweenSettings.DisabledPosition
 
-						Tween(toggle1, TweenSettings.Info, {
-							ImageTransparency = transparencyValues[1]
-						}):Play()
+					-- tween the track colour
+					Tween(toggle1, TweenSettings.Info, {
+						BackgroundColor3 = trackColour
+					}):Play()
 
-						Tween(togglerHead, TweenSettings.Info, {
-							ImageTransparency = transparencyValues[2]
-						}):Play()
+					-- tween the knob colour and position
+					Tween(togglerHead, TweenSettings.Info, {
+						BackgroundColor3 = knobColour,
+						Position = position
+					}):Play()
 
-						Tween(togglerHead, TweenSettings.Info, {
-							Position = position
-						}):Play()
-
-						ToggleFunctions.State = State
-						if callback then
-							callback(togglebool)
-						end
+					ToggleFunctions.State = State
+					if callback then
+						callback(togglebool)
 					end
+				end
 
 					NewState(togglebool)
 
@@ -2060,7 +2114,7 @@ function MacLib:Window(Settings)
 
 				function SectionFunctions:Slider(Settings, Flag)
 					local SliderFunctions = { Settings = Settings, IgnoreConfig = false, Class = "Slider" }
-					local slider = Instance.new("Frame")
+				local slider = Instance.new("Frame")
 					slider.Name = "Slider"
 					slider.AutomaticSize = Enum.AutomaticSize.Y
 					slider.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -2068,7 +2122,14 @@ function MacLib:Window(Settings)
 					slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					slider.BorderSizePixel = 0
 					slider.Size = UDim2.new(1, 0, 0, 38)
-					slider.Parent = sectionContent 
+				slider.Parent = sectionContent 
+				-- add a subtle border around the slider container for spacing
+				local sliderStroke = Instance.new("UIStroke")
+				sliderStroke.Name = "SliderStroke"
+				sliderStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+				sliderStroke.Color = Color3.fromRGB(255, 255, 255)
+				sliderStroke.Transparency = 0.9
+				sliderStroke.Parent = slider
 
 					local sliderName = Instance.new("TextLabel")
 					sliderName.Name = "SliderName"
@@ -2321,7 +2382,7 @@ function MacLib:Window(Settings)
 
 				function SectionFunctions:Input(Settings, Flag)
 					local InputFunctions = { Settings = Settings, IgnoreConfig = false, Class = "Input" }
-					local input = Instance.new("Frame")
+				local input = Instance.new("Frame")
 					input.Name = "Input"
 					input.AutomaticSize = Enum.AutomaticSize.Y
 					input.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -2329,7 +2390,14 @@ function MacLib:Window(Settings)
 					input.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					input.BorderSizePixel = 0
 					input.Size = UDim2.new(1, 0, 0, 38)
-					input.Parent = sectionContent 
+				input.Parent = sectionContent 
+				-- add a border to distinguish this input from other controls
+				local inputStroke = Instance.new("UIStroke")
+				inputStroke.Name = "InputStroke"
+				inputStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+				inputStroke.Color = Color3.fromRGB(255, 255, 255)
+				inputStroke.Transparency = 0.9
+				inputStroke.Parent = input
 
 					local inputName = Instance.new("TextLabel")
 					inputName.Name = "InputName"
@@ -2498,7 +2566,7 @@ function MacLib:Window(Settings)
 
 				function SectionFunctions:Keybind(Settings, Flag)
 					local KeybindFunctions = { Settings = Settings, IgnoreConfig = false, Class = "Keybind" }
-					local keybind = Instance.new("Frame")
+				local keybind = Instance.new("Frame")
 					keybind.Name = "Keybind"
 					keybind.AutomaticSize = Enum.AutomaticSize.Y
 					keybind.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -2506,7 +2574,14 @@ function MacLib:Window(Settings)
 					keybind.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					keybind.BorderSizePixel = 0
 					keybind.Size = UDim2.new(1, 0, 0, 38)
-					keybind.Parent = sectionContent 
+				keybind.Parent = sectionContent 
+				-- add a border around the keybind container for spacing
+				local keybindStroke = Instance.new("UIStroke")
+				keybindStroke.Name = "KeybindStroke"
+				keybindStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+				keybindStroke.Color = Color3.fromRGB(255, 255, 255)
+				keybindStroke.Transparency = 0.9
+				keybindStroke.Parent = keybind
 
 					local keybindName = Instance.new("TextLabel")
 					keybindName.Name = "KeybindName"
@@ -2681,14 +2756,21 @@ function MacLib:Window(Settings)
 					local Selected = {}
 					local OptionObjs = {}
 
-					local dropdown = Instance.new("Frame")
+				local dropdown = Instance.new("Frame")
 					dropdown.Name = "Dropdown"
 					dropdown.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 					dropdown.BackgroundTransparency = 0.985
 					dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					dropdown.BorderSizePixel = 0
 					dropdown.Size = UDim2.new(1, 0, 0, 38)
-					dropdown.Parent = sectionContent 
+				dropdown.Parent = sectionContent 
+				-- add a border around the dropdown container for spacing
+				local dropdownStroke = Instance.new("UIStroke")
+				dropdownStroke.Name = "DropdownStroke"
+				dropdownStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+				dropdownStroke.Color = Color3.fromRGB(255, 255, 255)
+				dropdownStroke.Transparency = 0.9
+				dropdownStroke.Parent = dropdown
 					dropdown.ClipsDescendants = true
 
 					local dropdownUIPadding = Instance.new("UIPadding")
@@ -5503,7 +5585,7 @@ function MacLib:Window(Settings)
 		onUnloadCallback = callback
 	end
 
-	local MenuKeybind = Settings.Keybind or Enum.KeyCode.RightControl
+local MenuKeybind = Settings.Keybind or Enum.KeyCode.LeftControl
 
 	local function ToggleMenu()
 		local state = not WindowFunctions:GetState()
@@ -5856,7 +5938,7 @@ function MacLib:Demo()
 		DragStyle = 1,
 		DisabledWindowControls = {},
 		ShowUserInfo = true,
-		Keybind = Enum.KeyCode.RightControl,
+		Keybind = Enum.KeyCode.LeftControl,
 		AcrylicBlur = true,
 	})
 
