@@ -1,8 +1,9 @@
 
 
+
 --[[
     User Interface Library
-    Made by Late v9
+    Made by Late v10
 ]]
 --// Connections
 local GetService = game.GetService
@@ -369,6 +370,20 @@ function Library:CreateWindow(Settings: {
         Tab.Name = 'Tab'
         Tab.Parent = Sidebar
     end
+
+    -- Ensure the Sidebar has a 'Top' frame and a 'Buttons' container to prevent nil indexing later on.
+    local topFrame = Sidebar:FindFirstChild('Top')
+    if not topFrame then
+        topFrame = Instance.new('Frame')
+        topFrame.Name = 'Top'
+        topFrame.Parent = Sidebar
+    end
+    local buttonsFrame = topFrame:FindFirstChild('Buttons')
+    if not buttonsFrame then
+        buttonsFrame = Instance.new('Frame')
+        buttonsFrame.Name = 'Buttons'
+        buttonsFrame.Parent = topFrame
+    end
     local Options = {}
     local Examples = {}
     local Opened = true
@@ -576,8 +591,14 @@ function Library:CreateWindow(Settings: {
         end
     end
 
-    local maximizeButton = Sidebar:FindFirstChild('Top', true)
-        :FindFirstChild('Maximize')
+    -- Safely fetch the maximize button if present
+    local maximizeButton = nil
+    do
+        local topFrame = Sidebar:FindFirstChild('Top', true)
+        if topFrame then
+            maximizeButton = topFrame:FindFirstChild('Maximize')
+        end
+    end
     if maximizeButton then
         maximizeButton.MouseButton1Click:Connect(handleMaximizeButton)
     end
