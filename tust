@@ -463,7 +463,7 @@ end
 
 function m.NewRoundFrame(p,r,u,v,A,B)
 local function getImageForType(C)
-return C=="Squircle"and"5"
+return C=="Squircle"and"rbxassetid://80999662900595"
 or C=="SquircleOutline"and"rbxassetid://117788349049947"
 or C=="SquircleOutline2"and"rbxassetid://117817408534198"
 or C=="Squircle-Outline"and"rbxassetid://117817408534198"
