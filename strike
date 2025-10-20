@@ -1,7 +1,6 @@
-
 --[[
     User Interface Library
-    Made by Late
+    Made by Lii
 ]]
 --// Connections
 local GetService = game.GetService
@@ -217,11 +216,16 @@ Resizeable = function(Tab, Minimum, Maximum)
         end)
     end)
 end
--- Always rely on the local UI components packaged with the script.
--- We avoid loading any external assets or code and instead assume the caller
--- places this module under a ScreenGui with the appropriate children.
+--// Setup [UI]
 Screen = script.Parent
-Blur = require(script.Blur)
+Blur = {
+    new = function(frame, intensity)
+        local effect = Instance.new("BlurEffect")
+        effect.Size = intensity or 5
+        effect.Parent = workspace.CurrentCamera
+        return {root = effect}
+    end
+}
 Screen.Main.Visible = false
 xpcall(function()
     Screen.Parent = game.CoreGui
@@ -342,20 +346,20 @@ function Library:CreateWindow(Settings: {
     layout.Padding = UDim.new(0, 5)
     layout.Parent = windowControls
 
-    local minimizeBtn = Instance.new('ImageButton')
+    local minimizeBtn = Instance.new('TextButton')
     minimizeBtn.Name = 'MinimizeButton'
-    -- Remove external image; leave blank so the button uses its default appearance.
-    minimizeBtn.Image = ''
+    minimizeBtn.Text = '-'
+    minimizeBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
     minimizeBtn.Size = UDim2.new(0, 20, 0, 20)
     minimizeBtn.BackgroundTransparency = 1
     minimizeBtn.LayoutOrder = 1
     minimizeBtn.ZIndex = 11
     minimizeBtn.Parent = windowControls
 
-    local exitBtn = Instance.new('ImageButton')
+    local exitBtn = Instance.new('TextButton')
     exitBtn.Name = 'ExitButton'
-    -- Remove external image; leave blank so the button uses its default appearance.
-    exitBtn.Image = ''
+    exitBtn.Text = 'X'
+    exitBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
     exitBtn.Size = UDim2.new(0, 20, 0, 20)
     exitBtn.BackgroundTransparency = 1
     exitBtn.LayoutOrder = 2
@@ -655,11 +659,7 @@ function Library:CreateWindow(Settings: {
 
         local TabsHolder = self:EnsureTabsHolder(Example)
 
-        if not Settings.Icon then
-            Destroy(Tab['ICO'])
-        else
-            SetProperty(Tab['ICO'], { Image = Settings.Icon })
-        end
+        Destroy(Tab['ICO']) -- Always destroy ICO since no external images
 
         StoredInfo['Tabs'][Settings.Title] = { Tab }
         SetProperty(Tab['TextLabel'], { Text = Settings.Title })
@@ -744,14 +744,13 @@ function Library:CreateWindow(Settings: {
         local Button = Clone(Components['Button'])
         local Title, Description = Options:GetLabels(Button)
 
-        local RightImage = Instance.new('ImageLabel')
+        local RightImage = Instance.new('TextLabel')
         RightImage.Name = 'RightImage'
         RightImage.Size = UDim2.new(0, 22, 0, 22)
         RightImage.Position = UDim2.new(1, -41, 0.5, -10)
-        -- No external arrow icon; leave blank to avoid pulling remote assets.
-        RightImage.Image = ''
+        RightImage.Text = '>'
         RightImage.BackgroundTransparency = 1
-        RightImage.ImageColor3 = Color3.fromRGB(0, 0, 0)
+        RightImage.TextColor3 = Color3.fromRGB(0, 0, 0)
         RightImage.Parent = Button
 
         Connect(Button.MouseButton1Click, Settings.Callback)
@@ -1160,13 +1159,13 @@ function Library:CreateWindow(Settings: {
                 BtnTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
 
                 local Checkmark = Button:FindFirstChild('Checkmark')
-                    or Instance.new('ImageLabel')
+                    or Instance.new('TextLabel')
                 Checkmark.Name = 'Checkmark'
                 Checkmark.Size = UDim2.new(0, 16, 0, 16)
                 Checkmark.Position = UDim2.new(1, -20, 0.5, -8)
-                -- Remove external checkmark image; leave blank to disable external dependency.
-                Checkmark.Image = ''
+                Checkmark.Text = '✓'
                 Checkmark.BackgroundTransparency = 1
+                Checkmark.TextColor3 = Color3.fromRGB(0, 0, 0)
                 Checkmark.Visible = isSelected and true or false
                 Checkmark.Parent = Button
 
@@ -1533,8 +1532,6 @@ function Library:CreateWindow(Settings: {
 
         Classes = {
             ['ImageLabel'] = function(Label)
-                -- Always tint image labels using the current theme icon colour.  We no longer
-                -- check for specific external asset IDs since external images have been removed.
                 Label.ImageColor3 = Theme.Icon
             end,
 
