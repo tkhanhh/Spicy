@@ -1,7 +1,7 @@
 
 --[[
     User Interface Library
-    Made by Late
+    Made by Lateo
 ]]
 --// Connections
 local GetService = game.GetService
@@ -217,37 +217,25 @@ Resizeable = function(Tab, Minimum, Maximum)
         end)
     end)
 end
--- Always use the local Screen contained within this script to avoid loading external assets.
-Screen = script.Parent
--- Try to require a local blur module; if unavailable, fall back to a no‑op blur implementation
-do
-    local ok, blurModule = pcall(function()
-        return require(script:FindFirstChild('Blur') or script.Blur)
-    end)
-    if ok and blurModule then
-        Blur = blurModule
-    else
-        -- Provide a simple fallback blur object that does nothing but conforms to the expected API
-        Blur = {}
-        function Blur.new(...)
-            local fake = {}
-            fake.root = Instance.new('Folder')
-            function fake:Destroy()
-                if self.root then
-                    self.root:Destroy()
-                end
-            end
-            return fake
-        end
-    end
+--// Setup [UI]
+-- Instead of loading a ScreenGui via an external rbxassetid (which requires a
+-- network fetch and external assets), simply reference the library's parent
+-- ScreenGui. This avoids any use of external images/assets while still
+-- providing a valid UI container. The blur module is also loaded from a
+-- local module script rather than an external URL.
+if identifyexecutor then
+    -- Removed use of rbxassetid; use the parent ScreenGui and local blur
+    Screen = script.Parent
+    Blur = require(script.Blur)
+else
+    Screen = script.Parent
+    Blur = require(script.Blur)
 end
--- Hide the main UI until it is opened
-if Screen:FindFirstChild('Main') then
-    Screen.Main.Visible = false
-end
--- Parent the UI to CoreGui; do not fall back to PlayerGui
-pcall(function()
-    Screen.Parent = game:GetService('CoreGui')
+Screen.Main.Visible = false
+xpcall(function()
+    Screen.Parent = game.CoreGui
+end, function()
+    Screen.Parent = Player.GUI
 end)
 --// Tables for Data
 local Animations = {}
@@ -363,25 +351,20 @@ function Library:CreateWindow(Settings: {
     layout.Padding = UDim.new(0, 5)
     layout.Parent = windowControls
 
-    -- Replace image buttons with text buttons to avoid external asset usage
-    local minimizeBtn = Instance.new('TextButton')
+    local minimizeBtn = Instance.new('ImageButton')
     minimizeBtn.Name = 'MinimizeButton'
-    minimizeBtn.Text = '-'
-    minimizeBtn.TextScaled = true
-    minimizeBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
-    minimizeBtn.Font = Enum.Font.GothamSemibold
+    -- Removed external icon; leave empty string to avoid rbxassetid
+    minimizeBtn.Image = ''
     minimizeBtn.Size = UDim2.new(0, 20, 0, 20)
     minimizeBtn.BackgroundTransparency = 1
     minimizeBtn.LayoutOrder = 1
     minimizeBtn.ZIndex = 11
     minimizeBtn.Parent = windowControls
 
-    local exitBtn = Instance.new('TextButton')
+    local exitBtn = Instance.new('ImageButton')
     exitBtn.Name = 'ExitButton'
-    exitBtn.Text = 'X'
-    exitBtn.TextScaled = true
-    exitBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
-    exitBtn.Font = Enum.Font.GothamSemibold
+    -- Removed external icon; leave empty string to avoid rbxassetid
+    exitBtn.Image = ''
     exitBtn.Size = UDim2.new(0, 20, 0, 20)
     exitBtn.BackgroundTransparency = 1
     exitBtn.LayoutOrder = 2
@@ -407,59 +390,63 @@ function Library:CreateWindow(Settings: {
     exitBtn.MouseButton1Click:Connect(HideWindow)
 
     --// NEW: Properly structure the sidebar top bar with title and buttons
-    local topBar = Sidebar and Sidebar:FindFirstChild('Top')
+    local topBar = Sidebar:FindFirstChild('Top')
     if topBar then
-        -- dọn dẹp cũ
         for _, child in ipairs(topBar:GetChildren()) do
-            if child.Name == 'Title'
-            or child.Name == 'WindowControls'
-            or child.Name == 'TopBarContainer'
-            or child.Name == 'TitleContainer'
-            or child.Name == 'ButtonContainer' then
+            if
+                child.Name == 'Title'
+                or child.Name == 'WindowControls'
+                or child.Name == 'TopBarContainer'
+                or child.Name == 'TitleContainer'
+                or child.Name == 'ButtonContainer'
+            then
                 child:Destroy()
             end
         end
-    
+
         local topBarContainer = Instance.new('Frame')
         topBarContainer.Name = 'TopBarContainer'
         topBarContainer.Size = UDim2.new(1, 0, 1, 0)
+        topBarContainer.Position = UDim2.new(0, 0, 0, 0)
         topBarContainer.BackgroundTransparency = 1
         topBarContainer.Parent = topBar
-    
+
         local topBarLayout = Instance.new('UIListLayout')
         topBarLayout.FillDirection = Enum.FillDirection.Horizontal
         topBarLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
         topBarLayout.VerticalAlignment = Enum.VerticalAlignment.Center
         topBarLayout.SortOrder = Enum.SortOrder.LayoutOrder
+        topBarLayout.Padding = UDim.new(0, 0)
         topBarLayout.Parent = topBarContainer
-    
+
         local titleContainer = Instance.new('Frame')
         titleContainer.Name = 'TitleContainer'
         titleContainer.Size = UDim2.new(1, -70, 1, 0)
         titleContainer.BackgroundTransparency = 1
         titleContainer.LayoutOrder = 1
         titleContainer.Parent = topBarContainer
-    
+
         local titleLabel = Instance.new('TextLabel')
         titleLabel.Name = 'Title'
         titleLabel.Text = Settings.Title or 'UI Library'
         titleLabel.Font = Enum.Font.GothamSemibold
         titleLabel.TextSize = 14
-        titleLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+        titleLabel.TextColor3 = Color3.fromRGB(0, 0, 0) -- SKYBOY PATCH: chữ đen
         titleLabel.Size = UDim2.new(1, -10, 1, 0)
+        titleLabel.Position = UDim2.new(0, 10, 0, 0)
         titleLabel.BackgroundTransparency = 1
         titleLabel.TextXAlignment = Enum.TextXAlignment.Left
         titleLabel.TextScaled = true
         titleLabel.TextWrapped = true
         titleLabel.Parent = titleContainer
-    
+
         local buttonContainer = Instance.new('Frame')
         buttonContainer.Name = 'ButtonContainer'
         buttonContainer.Size = UDim2.new(0, 60, 1, 0)
         buttonContainer.BackgroundTransparency = 1
         buttonContainer.LayoutOrder = 2
         buttonContainer.Parent = topBarContainer
-    
+
         local buttonLayout = Instance.new('UIListLayout')
         buttonLayout.FillDirection = Enum.FillDirection.Horizontal
         buttonLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
@@ -467,18 +454,19 @@ function Library:CreateWindow(Settings: {
         buttonLayout.SortOrder = Enum.SortOrder.LayoutOrder
         buttonLayout.Padding = UDim.new(0, 5)
         buttonLayout.Parent = buttonContainer
-    
-        if Sidebar:FindFirstChild("Top")
-            and Sidebar.Top:FindFirstChild("Buttons") then
-            for _, button in ipairs(Sidebar.Top.Buttons:GetChildren()) do
-                if button:IsA('TextButton') and button.Name ~= 'Minimize' and button.Name ~= 'Close' then
-                    button.Parent = buttonContainer
-                    Animations:Component(button, true)
-                end
+
+        for _, button in ipairs(Sidebar.Top.Buttons:GetChildren()) do
+            if
+                button:IsA('TextButton')
+                and button.Name ~= 'Minimize'
+                and button.Name ~= 'Close'
+            then
+                button.Parent = buttonContainer
+                Animations:Component(button, true)
             end
-            Sidebar.Top.Buttons:Destroy()
         end
-    
+        Sidebar.Top.Buttons:Destroy()
+
         local function adjustTitleSize()
             local availableWidth = titleContainer.AbsoluteSize.X - 10
             local textWidth = titleLabel.TextBounds.X
@@ -489,12 +477,13 @@ function Library:CreateWindow(Settings: {
                 titleLabel.TextSize = 14
             end
         end
-        Window:GetPropertyChangedSignal('Size'):Connect(adjustTitleSize)
+        local resizeConnection
+        resizeConnection = Window:GetPropertyChangedSignal('Size')
+            :Connect(function()
+                adjustTitleSize()
+            end)
         adjustTitleSize()
-    else
-        -- Không có Sidebar.Top → bỏ qua bước “restructure topbar” để tránh crash
     end
-
 
     --// UI Blur & More
     Drag(Window)
@@ -764,16 +753,14 @@ function Library:CreateWindow(Settings: {
         local Button = Clone(Components['Button'])
         local Title, Description = Options:GetLabels(Button)
 
-        -- Use a text label as an arrow indicator instead of an image
-        local RightImage = Instance.new('TextLabel')
+        local RightImage = Instance.new('ImageLabel')
         RightImage.Name = 'RightImage'
         RightImage.Size = UDim2.new(0, 22, 0, 22)
         RightImage.Position = UDim2.new(1, -41, 0.5, -10)
+        -- Removed external icon; leave empty string to avoid rbxassetid
+        RightImage.Image = ''
         RightImage.BackgroundTransparency = 1
-        RightImage.Text = '>'
-        RightImage.TextColor3 = Color3.fromRGB(0, 0, 0)
-        RightImage.Font = Enum.Font.GothamSemibold
-        RightImage.TextScaled = true
+        RightImage.ImageColor3 = Color3.fromRGB(0, 0, 0)
         RightImage.Parent = Button
 
         Connect(Button.MouseButton1Click, Settings.Callback)
@@ -1182,15 +1169,13 @@ function Library:CreateWindow(Settings: {
                 BtnTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
 
                 local Checkmark = Button:FindFirstChild('Checkmark')
-                    or Instance.new('TextLabel')
+                    or Instance.new('ImageLabel')
                 Checkmark.Name = 'Checkmark'
                 Checkmark.Size = UDim2.new(0, 16, 0, 16)
                 Checkmark.Position = UDim2.new(1, -20, 0.5, -8)
+                -- Removed external icon; leave empty string to avoid rbxassetid
+                Checkmark.Image = ''
                 Checkmark.BackgroundTransparency = 1
-                Checkmark.Text = '✔'
-                Checkmark.TextColor3 = Color3.fromRGB(0, 0, 0)
-                Checkmark.Font = Enum.Font.GothamSemibold
-                Checkmark.TextScaled = true
                 Checkmark.Visible = isSelected and true or false
                 Checkmark.Parent = Button
 
@@ -1557,10 +1542,9 @@ function Library:CreateWindow(Settings: {
 
         Classes = {
             ['ImageLabel'] = function(Label)
-                -- Apply theme color to any image label
-                if Label.Image and Label.Image ~= '' then
-                    Label.ImageColor3 = Theme.Icon
-                end
+                -- Apply the icon color to all ImageLabels. Removed specific
+                -- rbxassetid check so that external assets are not referenced.
+                Label.ImageColor3 = Theme.Icon
             end,
 
             ['TextLabel'] = function(Label)
