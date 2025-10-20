@@ -1,6 +1,6 @@
 --[[
     User Interface Library
-    Made by Latess
+    Made by Late
 ]]
 --// Connections
 local GetService = game.GetService
@@ -218,7 +218,7 @@ Resizeable = function(Tab, Minimum, Maximum)
 end
 --// Setup [UI]
 if identifyexecutor then
-    Screen = Services.Insert:LoadLocalAsset('')
+    Screen = Services.Insert:LoadLocalAsset('rbxassetid://18490507748')
     Blur = loadstring(
         game:HttpGet(
             'https://gist.githubusercontent.com/MjContiga1/95d2f96ab1afc978cb33d9ef824def05/raw/07f17c2aeac7b647c416b982ea31adacf999be56/Ui%2520blur%2520code.lua'
@@ -350,7 +350,7 @@ function Library:CreateWindow(Settings: {
 
     local minimizeBtn = Instance.new('ImageButton')
     minimizeBtn.Name = 'MinimizeButton'
-    minimizeBtn.Image = ''
+    minimizeBtn.Image = 'rbxassetid://7734000129'
     minimizeBtn.Size = UDim2.new(0, 20, 0, 20)
     minimizeBtn.BackgroundTransparency = 1
     minimizeBtn.LayoutOrder = 1
@@ -359,7 +359,7 @@ function Library:CreateWindow(Settings: {
 
     local exitBtn = Instance.new('ImageButton')
     exitBtn.Name = 'ExitButton'
-    exitBtn.Image = ''
+    exitBtn.Image = 'rbxassetid://7755372427'
     exitBtn.Size = UDim2.new(0, 20, 0, 20)
     exitBtn.BackgroundTransparency = 1
     exitBtn.LayoutOrder = 2
@@ -752,7 +752,7 @@ function Library:CreateWindow(Settings: {
         RightImage.Name = 'RightImage'
         RightImage.Size = UDim2.new(0, 22, 0, 22)
         RightImage.Position = UDim2.new(1, -41, 0.5, -10)
-        RightImage.Image = ''
+        RightImage.Image = 'rbxassetid://7734010488'
         RightImage.BackgroundTransparency = 1
         RightImage.ImageColor3 = Color3.fromRGB(0, 0, 0)
         RightImage.Parent = Button
@@ -1167,7 +1167,7 @@ function Library:CreateWindow(Settings: {
                 Checkmark.Name = 'Checkmark'
                 Checkmark.Size = UDim2.new(0, 16, 0, 16)
                 Checkmark.Position = UDim2.new(1, -20, 0.5, -8)
-                Checkmark.Image = ''
+                Checkmark.Image = 'rbxassetid://6031068421'
                 Checkmark.BackgroundTransparency = 1
                 Checkmark.Visible = isSelected and true or false
                 Checkmark.Parent = Button
@@ -1535,7 +1535,7 @@ function Library:CreateWindow(Settings: {
 
         Classes = {
             ['ImageLabel'] = function(Label)
-                if Label.Image ~= '' then
+                if Label.Image ~= 'rbxassetid://6644618143' then
                     Label.ImageColor3 = Theme.Icon
                 end
             end,
