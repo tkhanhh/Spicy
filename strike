@@ -1,7 +1,7 @@
 
 --[[
     User Interface Library
-    Made by Late v6
+    Made by Late v7
 ]]
 --// Connections
 local GetService = game.GetService
@@ -218,18 +218,11 @@ Resizeable = function(Tab, Minimum, Maximum)
     end)
 end
 --// Setup [UI]
---[[ SKYBOY PATCH: remove blur functionality but retain UI asset loading
-     - Use the original UI asset via InsertService when identifyexecutor is available; otherwise fall back to script.Parent.
-     - Provide a dummy Blur table with a no‑op .new method to avoid errors where Blur.new is referenced.
+--[[ SKYBOY PATCH: remove loading of external UI asset (rbxassetid://18490507748) and blur functionality.
+     - Always use script.Parent for the screen.
+     - Provide a dummy Blur table with a no-op .new method to satisfy references.
 ]]
-if identifyexecutor then
-    Screen = Services.Insert:LoadLocalAsset('rbxassetid://18490507748')
-else
-    Screen = script.Parent
-end
--- Provide a dummy Blur implementation. The .new method returns a table with a
--- 'root' field so that later code can parent/unparent it without error. No
--- actual blurring effect will be applied.
+Screen = script.Parent
 Blur = {
     new = function(...)
         local dummy = {}
@@ -237,7 +230,7 @@ Blur = {
         return dummy
     end,
 }
--- Guard against nil 'Main' in case Screen lacks the expected hierarchy
+-- Safely hide the main UI container if it exists
 if Screen and Screen:FindFirstChild('Main') then
     Screen.Main.Visible = false
 end
@@ -362,7 +355,7 @@ function Library:CreateWindow(Settings: {
 
     local minimizeBtn = Instance.new('ImageButton')
     minimizeBtn.Name = 'MinimizeButton'
-    minimizeBtn.Image = 'rbxassetid://7734000129'
+    minimizeBtn.Image = 'rbxassetid://104552287479823'
     minimizeBtn.Size = UDim2.new(0, 20, 0, 20)
     minimizeBtn.BackgroundTransparency = 1
     minimizeBtn.LayoutOrder = 1
@@ -371,7 +364,7 @@ function Library:CreateWindow(Settings: {
 
     local exitBtn = Instance.new('ImageButton')
     exitBtn.Name = 'ExitButton'
-    exitBtn.Image = 'rbxassetid://7755372427'
+    exitBtn.Image = 'rbxassetid://104552287479823'
     exitBtn.Size = UDim2.new(0, 20, 0, 20)
     exitBtn.BackgroundTransparency = 1
     exitBtn.LayoutOrder = 2
@@ -764,7 +757,7 @@ function Library:CreateWindow(Settings: {
         RightImage.Name = 'RightImage'
         RightImage.Size = UDim2.new(0, 22, 0, 22)
         RightImage.Position = UDim2.new(1, -41, 0.5, -10)
-        RightImage.Image = 'rbxassetid://7734010488'
+        RightImage.Image = 'rbxassetid://104552287479823'
         RightImage.BackgroundTransparency = 1
         RightImage.ImageColor3 = Color3.fromRGB(0, 0, 0)
         RightImage.Parent = Button
@@ -1179,7 +1172,7 @@ function Library:CreateWindow(Settings: {
                 Checkmark.Name = 'Checkmark'
                 Checkmark.Size = UDim2.new(0, 16, 0, 16)
                 Checkmark.Position = UDim2.new(1, -20, 0.5, -8)
-                Checkmark.Image = 'rbxassetid://6031068421'
+                Checkmark.Image = 'rbxassetid://104552287479823'
                 Checkmark.BackgroundTransparency = 1
                 Checkmark.Visible = isSelected and true or false
                 Checkmark.Parent = Button
@@ -1547,7 +1540,7 @@ function Library:CreateWindow(Settings: {
 
         Classes = {
             ['ImageLabel'] = function(Label)
-                if Label.Image ~= 'rbxassetid://6644618143' then
+                if Label.Image ~= 'rbxassetid://104552287479823' then
                     Label.ImageColor3 = Theme.Icon
                 end
             end,
