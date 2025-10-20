@@ -1,6 +1,7 @@
 
 
 
+
 local MacLib = {
     Options = {},
     -- store any configuration in a folder named after SkyBoy rather than the original name
@@ -127,10 +128,9 @@ function MacLib:Window(Settings)
     base.Name = "Base"
     base.AnchorPoint = Vector2.new(0.5, 0.5)
     -- modern dark background for the main window
-    -- use a light background for the window
-    -- set the main window background to pure white for a clean, modern look
+    -- switch to a clean white background for a more modern aesthetic
     base.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    -- keep a solid background for the light theme
+    -- maintain full opacity on the base frame
     base.BackgroundTransparency = 0
     base.BorderColor3 = Color3.fromRGB(0, 0, 0)
     base.BorderSizePixel = 0
@@ -143,20 +143,16 @@ function MacLib:Window(Settings)
 
     local baseUICorner = Instance.new("UICorner")
     baseUICorner.Name = "BaseUICorner"
-    -- softer radius for a more modern aesthetic
-    -- increase corner radius for a softer look
-    -- larger corner radius to soften the window edges
-    baseUICorner.CornerRadius = UDim.new(0, 16)
+    -- increase the corner radius for a softer, more rounded appearance
+    baseUICorner.CornerRadius = UDim.new(0, 12)
     baseUICorner.Parent = base
 
     local baseUIStroke = Instance.new("UIStroke")
     baseUIStroke.Name = "BaseUIStroke"
     baseUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    -- subtle stroke with high transparency
-    -- subtle stroke colour in light theme
-    -- lighten the stroke to delineate the window on a white canvas
-    baseUIStroke.Color = Color3.fromRGB(230, 230, 230)
-    baseUIStroke.Transparency = 0.6
+    -- use a dark stroke on the light window to subtly define the edges
+    baseUIStroke.Color = Color3.fromRGB(0, 0, 0)
+    baseUIStroke.Transparency = 0.8
     baseUIStroke.Parent = base
 
 	local sidebar = Instance.new("Frame")
@@ -171,7 +167,8 @@ function MacLib:Window(Settings)
 	local divider = Instance.new("Frame")
 	divider.Name = "Divider"
 	divider.AnchorPoint = Vector2.new(1, 0)
-	divider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    -- use a dark divider on the light sidebar
+    divider.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 	divider.BackgroundTransparency = 0.9
 	divider.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	divider.BorderSizePixel = 0
@@ -337,7 +334,8 @@ function MacLib:Window(Settings)
 	local divider1 = Instance.new("Frame")
 	divider1.Name = "Divider"
 	divider1.AnchorPoint = Vector2.new(0, 1)
-	divider1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    -- draw the divider line in dark tone to contrast with the white background
+    divider1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 	divider1.BackgroundTransparency = 0.9
 	divider1.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	divider1.BorderSizePixel = 0
@@ -360,7 +358,7 @@ function MacLib:Window(Settings)
 	local divider2 = Instance.new("Frame")
 	divider2.Name = "Divider"
 	divider2.AnchorPoint = Vector2.new(0, 1)
-	divider2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    divider2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 	divider2.BackgroundTransparency = 0.9
 	divider2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	divider2.BorderSizePixel = 0
@@ -433,10 +431,11 @@ function MacLib:Window(Settings)
 		Enum.FontStyle.Normal
 	)
 	title.Text = Settings.Title
-	title.TextColor3 = Color3.fromRGB(255, 255, 255)
+    title.TextColor3 = Color3.fromRGB(0, 0, 0)
 	title.RichText = true
 	title.TextSize = 15
-	title.TextTransparency = 0.1
+    -- remove text transparency on the title for readability on white background
+    title.TextTransparency = 0
 	title.TextTruncate = Enum.TextTruncate.SplitWord
 	title.TextXAlignment = Enum.TextXAlignment.Left
 	title.TextYAlignment = Enum.TextYAlignment.Top
@@ -458,9 +457,10 @@ function MacLib:Window(Settings)
 	subtitle.RichText = true
 	subtitle.Text = Settings.Subtitle
 	subtitle.RichText = true
-	subtitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+    subtitle.TextColor3 = Color3.fromRGB(0, 0, 0)
 	subtitle.TextSize = 12
-	subtitle.TextTransparency = 0.7
+    -- slightly transparent subtitle for hierarchy
+    subtitle.TextTransparency = 0.4
 	subtitle.TextTruncate = Enum.TextTruncate.SplitWord
 	subtitle.TextXAlignment = Enum.TextXAlignment.Left
 	subtitle.TextYAlignment = Enum.TextYAlignment.Top
@@ -574,9 +574,10 @@ function MacLib:Window(Settings)
 		Enum.FontStyle.Normal
 	)
 	displayName.Text = LocalPlayer.DisplayName
-	displayName.TextColor3 = Color3.fromRGB(255, 255, 255)
-	displayName.TextSize = 14
-	displayName.TextTransparency = 0.1
+    displayName.TextColor3 = Color3.fromRGB(0, 0, 0)
+    displayName.TextSize = 14
+    -- remove transparency on the user's display name
+    displayName.TextTransparency = 0
 	displayName.TextTruncate = Enum.TextTruncate.SplitWord
 	displayName.TextXAlignment = Enum.TextXAlignment.Left
 	displayName.TextYAlignment = Enum.TextYAlignment.Top
@@ -608,9 +609,9 @@ function MacLib:Window(Settings)
 		Enum.FontStyle.Normal
 	)
 	username.Text = "@" .. LocalPlayer.Name
-	username.TextColor3 = Color3.fromRGB(255, 255, 255)
-	username.TextSize = 12
-	username.TextTransparency = 0.7
+    username.TextColor3 = Color3.fromRGB(0, 0, 0)
+    username.TextSize = 12
+    username.TextTransparency = 0.5
 	username.TextTruncate = Enum.TextTruncate.SplitWord
 	username.TextXAlignment = Enum.TextXAlignment.Left
 	username.TextYAlignment = Enum.TextYAlignment.Top
@@ -666,7 +667,7 @@ function MacLib:Window(Settings)
 
 	local tabSwitchersScrollingFrameUIListLayout = Instance.new("UIListLayout")
 	tabSwitchersScrollingFrameUIListLayout.Name = "TabSwitchersScrollingFrameUIListLayout"
-	tabSwitchersScrollingFrameUIListLayout.Padding = UDim.new(0, 8)
+    tabSwitchersScrollingFrameUIListLayout.Padding = UDim.new(0, 10)
 	tabSwitchersScrollingFrameUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	tabSwitchersScrollingFrameUIListLayout.Parent = tabSwitchersScrollingFrame
 
@@ -759,7 +760,7 @@ function MacLib:Window(Settings)
 	local divider4 = Instance.new("Frame")
 	divider4.Name = "Divider"
 	divider4.AnchorPoint = Vector2.new(0, 1)
-	divider4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    divider4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 	divider4.BackgroundTransparency = 0.9
 	divider4.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	divider4.BorderSizePixel = 0
@@ -802,7 +803,7 @@ function MacLib:Window(Settings)
 	minimize.Name = "Minimize"
 	minimize.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Bold)
 	minimize.Text = "-"
-	minimize.TextColor3 = Color3.fromRGB(255, 255, 255)
+    minimize.TextColor3 = Color3.fromRGB(0, 0, 0)
 	minimize.TextTransparency = 0
 	minimize.TextScaled = true
 	minimize.AutoButtonColor = false
@@ -818,7 +819,7 @@ function MacLib:Window(Settings)
 	exit.Name = "Exit"
 	exit.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Bold)
 	exit.Text = "X"
-	exit.TextColor3 = Color3.fromRGB(255, 255, 255)
+    exit.TextColor3 = Color3.fromRGB(0, 0, 0)
 	exit.TextTransparency = 0
 	exit.TextScaled = true
 	exit.AutoButtonColor = false
@@ -981,7 +982,7 @@ function MacLib:Window(Settings)
 	currentTab.RichText = true
 	currentTab.Text = ""
 	currentTab.RichText = true
-	currentTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+    currentTab.TextColor3 = Color3.fromRGB(0, 0, 0)
 	currentTab.TextSize = 15
 	currentTab.TextTransparency = 0.5
 	currentTab.TextTruncate = Enum.TextTruncate.SplitWord
@@ -1719,8 +1720,8 @@ function MacLib:Window(Settings)
 
 				local sectionUIListLayout = Instance.new("UIListLayout")
 				sectionUIListLayout.Name = "SectionUIListLayout"
-				-- increase padding between controls for better separation
-				sectionUIListLayout.Padding = UDim.new(0, 10)
+                -- increase spacing between controls for better readability
+                sectionUIListLayout.Padding = UDim.new(0, 8)
 				sectionUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 				sectionUIListLayout.Parent = sectionContent
 
@@ -1847,30 +1848,32 @@ function MacLib:Window(Settings)
 				button.BackgroundTransparency = 1
 					button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					button.BorderSizePixel = 0
-                    -- make the button row taller for better spacing
-                    button.Size = UDim2.new(1, 0, 0, 50)
+                    -- increase height for additional breathing room
+                    button.Size = UDim2.new(1, 0, 0, 44)
 				button.Parent = sectionContent 
 
 				-- add a thin border around the button container to help distinguish it from other controls
 				local buttonStroke = Instance.new("UIStroke")
 				buttonStroke.Name = "ButtonStroke"
 				buttonStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-                buttonStroke.Color = Color3.fromRGB(225, 225, 225)
-                buttonStroke.Transparency = 0.8
+                -- use a dark stroke on the button container to separate it on the light background
+                buttonStroke.Color = Color3.fromRGB(0, 0, 0)
+                -- slightly reduce transparency for better visibility
+                buttonStroke.Transparency = 0.9
 				buttonStroke.Parent = button
 
 				local buttonInteract = Instance.new("TextButton")
 					buttonInteract.Name = "ButtonInteract"
 					buttonInteract.FontFace = Font.new(assets.interFont)
 					buttonInteract.RichText = true
-                    buttonInteract.TextColor3 = Color3.fromRGB(30, 30, 30)
+                    buttonInteract.TextColor3 = Color3.fromRGB(0, 0, 0)
                     buttonInteract.TextSize = 14
-                    -- slightly less transparent text for readability
-                    buttonInteract.TextTransparency = 0.2
+                    -- remove heavy text transparency on buttons
+                    buttonInteract.TextTransparency = 0
 					buttonInteract.TextTruncate = Enum.TextTruncate.AtEnd
 					buttonInteract.TextXAlignment = Enum.TextXAlignment.Left
-                -- give the button a light background so the user recognises it is clickable
-                buttonInteract.BackgroundColor3 = Color3.fromRGB(250, 250, 250)
+                -- light background for buttons to contrast with the white backdrop
+                buttonInteract.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
                 buttonInteract.BackgroundTransparency = 0
 				buttonInteract.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				buttonInteract.BorderSizePixel = 0
@@ -1880,8 +1883,8 @@ function MacLib:Window(Settings)
 
 				-- add a corner radius to match the modern rounded look
                 local buttonUICorner = Instance.new("UICorner")
-                -- increase corner radius for softer appearance
-                buttonUICorner.CornerRadius = UDim.new(0, 8)
+                -- increase rounding on buttons
+                buttonUICorner.CornerRadius = UDim.new(0, 6)
                 buttonUICorner.Parent = buttonInteract
 
                 local buttonImage = Instance.new("ImageLabel")
@@ -1903,8 +1906,9 @@ function MacLib:Window(Settings)
                 buttonIndicator.Name = "ButtonIndicator"
                 buttonIndicator.AnchorPoint = Vector2.new(1, 0.5)
                 buttonIndicator.Position = UDim2.new(1, 0, 0.5, 0)
-                buttonIndicator.Size = UDim2.fromOffset(30, 20)
-                buttonIndicator.BackgroundColor3 = Color3.fromRGB(235, 245, 255)
+                buttonIndicator.Size = UDim2.fromOffset(41, 21)
+                -- light indicator background to align with the overall bright theme
+                buttonIndicator.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
                 buttonIndicator.BackgroundTransparency = 0
                 buttonIndicator.BorderSizePixel = 0
                 local buttonIndicatorCorner = Instance.new("UICorner")
@@ -1915,8 +1919,8 @@ function MacLib:Window(Settings)
                 buttonIndicatorLabel.FontFace = Font.new(assets.interFont)
                 buttonIndicatorLabel.Text = "►"
                 buttonIndicatorLabel.TextSize = 14
-                buttonIndicatorLabel.TextColor3 = Color3.fromRGB(0, 122, 255)
-                buttonIndicatorLabel.TextTransparency = 0
+                buttonIndicatorLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+                buttonIndicatorLabel.TextTransparency = 0.4
                 buttonIndicatorLabel.BackgroundTransparency = 1
                 buttonIndicatorLabel.AnchorPoint = Vector2.new(0.5, 0.5)
                 buttonIndicatorLabel.Position = UDim2.fromScale(0.5, 0.5)
@@ -1925,47 +1929,33 @@ function MacLib:Window(Settings)
                 buttonIndicator.Parent = button
 
                 local TweenSettings = {
-                    -- default and hover values for text and background in light theme
-                    DefaultTransparency = 0.2,
-                    HoverTransparency = 0.0,
-                    DefaultBackgroundTransparency = 0.0,
-                    HoverBackgroundTransparency = 0.0,
+                    -- default and hover values for text and background
+                    DefaultTransparency = 0.5,
+                    HoverTransparency = 0.2,
+                    DefaultBackgroundTransparency = 0.6,
+                    -- slightly brighten background on hover and tint it with the accent colour
+                    HoverBackgroundTransparency = 0.4,
                     EasingStyle = Enum.EasingStyle.Sine
                 }
 
 					local function ChangeState(State)
                     if State == "Idle" then
-                        -- idle state: neutral background and accent‑coloured indicator
                         Tween(buttonInteract, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
                             TextTransparency = TweenSettings.DefaultTransparency,
                             BackgroundTransparency = TweenSettings.DefaultBackgroundTransparency,
-                            BackgroundColor3 = Color3.fromRGB(250, 250, 250)
+                            BackgroundColor3 = Color3.fromRGB(50, 60, 75)
                         }):Play()
                         Tween(buttonImage, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
                             ImageTransparency = TweenSettings.DefaultTransparency
                         }):Play()
-                        -- update indicator colours for idle state
-                        Tween(buttonIndicator, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
-                            BackgroundColor3 = Color3.fromRGB(235, 245, 255)
-                        }):Play()
-                        Tween(buttonIndicatorLabel, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
-                            TextColor3 = Color3.fromRGB(0, 122, 255)
-                        }):Play()
                     elseif State == "Hover" then
-                        -- hover state: fill with accent colour and invert indicator colours
                         Tween(buttonInteract, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
                             TextTransparency = TweenSettings.HoverTransparency,
                             BackgroundTransparency = TweenSettings.HoverBackgroundTransparency,
-                            BackgroundColor3 = Color3.fromRGB(0, 122, 255)
+                            BackgroundColor3 = Color3.fromRGB(0, 132, 255)
                         }):Play()
                         Tween(buttonImage, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
                             ImageTransparency = TweenSettings.HoverTransparency
-                        }):Play()
-                        Tween(buttonIndicator, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
-                            BackgroundColor3 = Color3.fromRGB(0, 122, 255)
-                        }):Play()
-                        Tween(buttonIndicatorLabel, TweenInfo.new(0.2, TweenSettings.EasingStyle), {
-                            TextColor3 = Color3.fromRGB(255, 255, 255)
                         }):Play()
                     end
 					end
@@ -2006,17 +1996,15 @@ function MacLib:Window(Settings)
 					toggle.BackgroundTransparency = 1
 					toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					toggle.BorderSizePixel = 0
-                    -- increase height for breathing space
-                    toggle.Size = UDim2.new(1, 0, 0, 50)
+                    toggle.Size = UDim2.new(1, 0, 0, 44)
 				toggle.Parent = sectionContent 
 				-- add a subtle border around the toggle container for spacing between controls
-				local toggleContainerStroke = Instance.new("UIStroke")
+                local toggleContainerStroke = Instance.new("UIStroke")
 				toggleContainerStroke.Name = "ToggleContainerStroke"
 				toggleContainerStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-                -- subtle divider colour in light theme
-                -- light divider colour for the container
-                toggleContainerStroke.Color = Color3.fromRGB(225, 225, 225)
-                toggleContainerStroke.Transparency = 0.8
+                -- dark stroke for subtle separation on a light background
+                toggleContainerStroke.Color = Color3.fromRGB(0, 0, 0)
+                toggleContainerStroke.Transparency = 0.9
 				toggleContainerStroke.Parent = toggle
 
 					local toggleName = Instance.new("TextLabel")
@@ -2024,9 +2012,10 @@ function MacLib:Window(Settings)
 					toggleName.FontFace = Font.new(assets.interFont)
 					toggleName.Text = ToggleFunctions.Settings.Title or ToggleFunctions.Settings.Name
 					toggleName.RichText = true
-                    toggleName.TextColor3 = Color3.fromRGB(30, 30, 30)
-					toggleName.TextSize = 14
-                    toggleName.TextTransparency = 0.2
+                    -- dark text to stand out on light background
+                    toggleName.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    toggleName.TextSize = 14
+                    toggleName.TextTransparency = 0.3
 					toggleName.TextTruncate = Enum.TextTruncate.AtEnd
 					toggleName.TextXAlignment = Enum.TextXAlignment.Left
 					toggleName.TextYAlignment = Enum.TextYAlignment.Top
@@ -2046,7 +2035,7 @@ function MacLib:Window(Settings)
 				toggle1.AutoButtonColor = false
 				toggle1.AnchorPoint = Vector2.new(1, 0.5)
 				-- the toggle uses a background colour to indicate its state instead of an image
-                -- subtle neutral track colour when disabled
+                -- light track colour when toggled off
                 toggle1.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
 				toggle1.BackgroundTransparency = 0
 				toggle1.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -2063,11 +2052,11 @@ function MacLib:Window(Settings)
 				toggleUICorner.Parent = toggle1
 
 				-- add a subtle border to the track
-				local toggleStroke = Instance.new("UIStroke")
+                local toggleStroke = Instance.new("UIStroke")
 				toggleStroke.Name = "ToggleStroke"
 				toggleStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-                toggleStroke.Color = Color3.fromRGB(215, 215, 215)
-                toggleStroke.Transparency = 0.6
+                toggleStroke.Color = Color3.fromRGB(0, 0, 0)
+                toggleStroke.Transparency = 0.8
 				toggleStroke.Parent = toggle1
 
 					local toggleUIPadding = Instance.new("UIPadding")
@@ -2103,15 +2092,14 @@ function MacLib:Window(Settings)
 				-- colours for the toggle track and knob in on/off states
                 -- define a modern accent colour for active states
                 local trackColors = {
-                    -- unified accent colour for the on state
+                    -- accent colour for enabled state and light grey when disabled
                     Enabled = Color3.fromRGB(0, 122, 255),
-                    -- neutral colour when off
                     Disabled = Color3.fromRGB(230, 230, 230)
                 }
-				local knobColors = {
-					Enabled = Color3.fromRGB(255, 255, 255),
-					Disabled = Color3.fromRGB(255, 255, 255)
-				}
+                local knobColors = {
+                    Enabled = Color3.fromRGB(255, 255, 255),
+                    Disabled = Color3.fromRGB(0, 0, 0)
+                }
 
                 local TweenSettings = {
                     Info = TweenInfo.new(0.15, Enum.EasingStyle.Quad),
@@ -2184,21 +2172,23 @@ function MacLib:Window(Settings)
 				local slider = Instance.new("Frame")
 					slider.Name = "Slider"
 					slider.AutomaticSize = Enum.AutomaticSize.Y
-                    -- light background for slider container
-                    -- light background for slider container in the white theme
-                    slider.BackgroundColor3 = Color3.fromRGB(250, 250, 250)
-                    slider.BackgroundTransparency = 0
-					slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					slider.BorderSizePixel = 0
-                    -- increase height to provide more breathing room
-                    slider.Size = UDim2.new(1, 0, 0, 50)
+                -- use a light background for the slider container to match the overall white theme
+                    slider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                    -- leave a slight transparency so the slider sits softly on the white base
+                    slider.BackgroundTransparency = 0.95
+                    slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    slider.BorderSizePixel = 0
+                    -- increase control height for better spacing
+                    slider.Size = UDim2.new(1, 0, 0, 44)
 				slider.Parent = sectionContent 
 				-- add a subtle border around the slider container for spacing
 				local sliderStroke = Instance.new("UIStroke")
 				sliderStroke.Name = "SliderStroke"
 				sliderStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-                sliderStroke.Color = Color3.fromRGB(225, 225, 225)
-                sliderStroke.Transparency = 0.8
+                -- use a dark stroke on the light slider for a subtle divider
+                sliderStroke.Color = Color3.fromRGB(0, 0, 0)
+                -- keep a high transparency so the stroke does not dominate
+                sliderStroke.Transparency = 0.9
 				sliderStroke.Parent = slider
 
 					local sliderName = Instance.new("TextLabel")
@@ -2206,9 +2196,11 @@ function MacLib:Window(Settings)
 					sliderName.FontFace = Font.new(assets.interFont)
 					sliderName.Text = SliderFunctions.Settings.Title or SliderFunctions.Settings.Name
 					sliderName.RichText = true
-                    sliderName.TextColor3 = Color3.fromRGB(30, 30, 30)
+                    -- dark text on a light background
+                    sliderName.TextColor3 = Color3.fromRGB(0, 0, 0)
                     sliderName.TextSize = 14
-                    sliderName.TextTransparency = 0.2
+                    -- slightly increase transparency on the subtitle for a softer look
+                    sliderName.TextTransparency = 0.4
 					sliderName.TextTruncate = Enum.TextTruncate.AtEnd
 					sliderName.TextXAlignment = Enum.TextXAlignment.Left
 					sliderName.TextYAlignment = Enum.TextYAlignment.Top
@@ -2234,30 +2226,33 @@ function MacLib:Window(Settings)
 					local sliderValue = Instance.new("TextBox")
 					sliderValue.Name = "SliderValue"
 					sliderValue.FontFace = Font.new(assets.interFont)
-                    sliderValue.TextColor3 = Color3.fromRGB(30, 30, 30)
+                    -- value text should be dark on light input
+                    sliderValue.TextColor3 = Color3.fromRGB(0, 0, 0)
                     sliderValue.TextSize = 12
-                    sliderValue.TextTransparency = 0.0
-                    -- light background for value entry in white theme
-                    sliderValue.BackgroundColor3 = Color3.fromRGB(250, 250, 250)
+                    sliderValue.TextTransparency = 0.1
+                    -- modern light input background for value entry
+                    sliderValue.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
                     sliderValue.BackgroundTransparency = 0
-					sliderValue.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					sliderValue.BorderSizePixel = 0
-					sliderValue.LayoutOrder = 1
-					sliderValue.Position = UDim2.fromScale(-0.0789, 0.171)
-					sliderValue.Size = UDim2.fromOffset(41, 21)
-					sliderValue.ClipsDescendants = true
+                    sliderValue.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    sliderValue.BorderSizePixel = 0
+                    sliderValue.LayoutOrder = 1
+                    -- align input with increased control height
+                    sliderValue.Position = UDim2.fromScale(-0.0789, 0.171)
+                    -- widen and increase the height of the value box
+                    sliderValue.Size = UDim2.fromOffset(50, 26)
+                    sliderValue.ClipsDescendants = true
 
 					local sliderValueUICorner = Instance.new("UICorner")
 					sliderValueUICorner.Name = "SliderValueUICorner"
-                    -- slightly larger corner radius for the value box
+                    -- soften the corners of the value box
                     sliderValueUICorner.CornerRadius = UDim.new(0, 6)
 					sliderValueUICorner.Parent = sliderValue
 
 					local sliderValueUIStroke = Instance.new("UIStroke")
 					sliderValueUIStroke.Name = "SliderValueUIStroke"
 					sliderValueUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-                    -- subtle stroke for value box
-                    sliderValueUIStroke.Color = Color3.fromRGB(225, 225, 225)
+                    -- subtle dark stroke for value box on a light background
+                    sliderValueUIStroke.Color = Color3.fromRGB(0, 0, 0)
                     sliderValueUIStroke.Transparency = 0.8
 					sliderValueUIStroke.Parent = sliderValue
 
@@ -2283,6 +2278,7 @@ function MacLib:Window(Settings)
                     -- remove external asset; use a plain coloured bar instead
                     sliderBar.Image = ""
                     sliderBar.ImageTransparency = 1
+                    -- light background for the slider bar
                     sliderBar.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
                     sliderBar.BackgroundTransparency = 0
                     sliderBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -2292,8 +2288,9 @@ function MacLib:Window(Settings)
                     -- add a subtle accent stroke to the bar for better visibility
                     local sliderBarStroke = Instance.new("UIStroke")
                     sliderBarStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+                    -- accent colour for the slider bar stroke
                     sliderBarStroke.Color = Color3.fromRGB(0, 122, 255)
-                    sliderBarStroke.Transparency = 0.5
+                    sliderBarStroke.Transparency = 0.7
                     sliderBarStroke.Parent = sliderBar
 
                     local sliderHead = Instance.new("ImageButton")
@@ -2302,12 +2299,14 @@ function MacLib:Window(Settings)
                     sliderHead.Image = ""
                     sliderHead.ImageTransparency = 1
                     sliderHead.AnchorPoint = Vector2.new(0.5, 0.5)
+                    -- accent colour for the knob with dark border
                     sliderHead.BackgroundColor3 = Color3.fromRGB(0, 122, 255)
                     sliderHead.BackgroundTransparency = 0
                     sliderHead.BorderColor3 = Color3.fromRGB(0, 0, 0)
                     sliderHead.BorderSizePixel = 0
                     sliderHead.Position = UDim2.fromScale(1, 0.5)
-                    sliderHead.Size = UDim2.fromOffset(14, 14)
+                    -- slightly enlarge the knob for better grip
+                    sliderHead.Size = UDim2.fromOffset(16, 16)
                     -- round the knob into a circle
                     local sliderHeadCorner = Instance.new("UICorner")
                     sliderHeadCorner.CornerRadius = UDim.new(0.5, 0)
@@ -2471,18 +2470,22 @@ function MacLib:Window(Settings)
 				local input = Instance.new("Frame")
 					input.Name = "Input"
 					input.AutomaticSize = Enum.AutomaticSize.Y
-					input.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-					input.BackgroundTransparency = 1
-					input.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					input.BorderSizePixel = 0
-					input.Size = UDim2.new(1, 0, 0, 38)
+                -- light background for the input container
+                    input.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                    -- slight transparency to separate from the base
+                    input.BackgroundTransparency = 0.95
+                    input.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    input.BorderSizePixel = 0
+                    -- increase height for consistent control spacing
+                    input.Size = UDim2.new(1, 0, 0, 44)
 				input.Parent = sectionContent 
 				-- add a border to distinguish this input from other controls
 				local inputStroke = Instance.new("UIStroke")
 				inputStroke.Name = "InputStroke"
 				inputStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-				inputStroke.Color = Color3.fromRGB(255, 255, 255)
-				inputStroke.Transparency = 0.9
+                -- dark stroke on light container
+                inputStroke.Color = Color3.fromRGB(0, 0, 0)
+                inputStroke.Transparency = 0.9
 				inputStroke.Parent = input
 
 					local inputName = Instance.new("TextLabel")
@@ -2490,9 +2493,10 @@ function MacLib:Window(Settings)
 					inputName.FontFace = Font.new(assets.interFont)
 					inputName.Text = InputFunctions.Settings.Title or InputFunctions.Settings.Name
 					inputName.RichText = true
-					inputName.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputName.TextSize = 14
-					inputName.TextTransparency = 0.5
+                    -- dark label text on light background
+                    inputName.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    inputName.TextSize = 14
+                    inputName.TextTransparency = 0.4
 					inputName.TextTruncate = Enum.TextTruncate.AtEnd
 					inputName.TextXAlignment = Enum.TextXAlignment.Left
 					inputName.TextYAlignment = Enum.TextYAlignment.Top
@@ -2508,33 +2512,39 @@ function MacLib:Window(Settings)
 					local inputBox = Instance.new("TextBox")
 					inputBox.Name = "InputBox"
 					inputBox.FontFace = Font.new(assets.interFont)
-					inputBox.Text = "Hello world!"
-					inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox.TextSize = 12
-					inputBox.TextTransparency = 0.1
-					inputBox.TextTruncate = Enum.TextTruncate.AtEnd
-					inputBox.AnchorPoint = Vector2.new(1, 0.5)
-					inputBox.AutomaticSize = Enum.AutomaticSize.X
-					inputBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox.BackgroundTransparency = 0.95
-					inputBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					inputBox.BorderSizePixel = 0
-					inputBox.ClipsDescendants = true
-					inputBox.LayoutOrder = 1
-					inputBox.Position = UDim2.fromScale(1, 0.5)
-					inputBox.Size = UDim2.fromOffset(21, 21)
-					inputBox.TextXAlignment = Enum.TextXAlignment.Right
+                    -- start with default text if provided
+                    inputBox.Text = "Hello world!"
+                    -- dark text for input
+                    inputBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    inputBox.TextSize = 12
+                    inputBox.TextTransparency = 0.1
+                    inputBox.TextTruncate = Enum.TextTruncate.AtEnd
+                    inputBox.AnchorPoint = Vector2.new(1, 0.5)
+                    inputBox.AutomaticSize = Enum.AutomaticSize.X
+                    -- light background for the input box
+                    inputBox.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
+                    inputBox.BackgroundTransparency = 0
+                    inputBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    inputBox.BorderSizePixel = 0
+                    inputBox.ClipsDescendants = true
+                    inputBox.LayoutOrder = 1
+                    inputBox.Position = UDim2.fromScale(1, 0.5)
+                    -- enlarge the box for readability
+                    inputBox.Size = UDim2.fromOffset(50, 26)
+                    inputBox.TextXAlignment = Enum.TextXAlignment.Right
 
 					local inputBoxUICorner = Instance.new("UICorner")
 					inputBoxUICorner.Name = "InputBoxUICorner"
-					inputBoxUICorner.CornerRadius = UDim.new(0, 4)
+                    -- round the corners more generously
+                    inputBoxUICorner.CornerRadius = UDim.new(0, 6)
 					inputBoxUICorner.Parent = inputBox
 
 					local inputBoxUIStroke = Instance.new("UIStroke")
 					inputBoxUIStroke.Name = "InputBoxUIStroke"
 					inputBoxUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-					inputBoxUIStroke.Color = Color3.fromRGB(255, 255, 255)
-					inputBoxUIStroke.Transparency = 0.9
+                    -- dark stroke on light input box
+                    inputBoxUIStroke.Color = Color3.fromRGB(0, 0, 0)
+                    inputBoxUIStroke.Transparency = 0.8
 					inputBoxUIStroke.Parent = inputBox
 
 					local inputBoxUIPadding = Instance.new("UIPadding")
@@ -2655,19 +2665,22 @@ function MacLib:Window(Settings)
 				local keybind = Instance.new("Frame")
 					keybind.Name = "Keybind"
 					keybind.AutomaticSize = Enum.AutomaticSize.Y
-					keybind.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-					keybind.BackgroundTransparency = 1
-					keybind.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					keybind.BorderSizePixel = 0
-                    -- increase height for better spacing in the keybind row
-                    keybind.Size = UDim2.new(1, 0, 0, 50)
+                -- light background for keybind container
+                    keybind.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                    -- slight transparency to soften the look
+                    keybind.BackgroundTransparency = 0.95
+                    keybind.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    keybind.BorderSizePixel = 0
+                    -- increase height for improved spacing
+                    keybind.Size = UDim2.new(1, 0, 0, 44)
 				keybind.Parent = sectionContent 
 				-- add a border around the keybind container for spacing
 				local keybindStroke = Instance.new("UIStroke")
 				keybindStroke.Name = "KeybindStroke"
 				keybindStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-                keybindStroke.Color = Color3.fromRGB(225, 225, 225)
-                keybindStroke.Transparency = 0.8
+                -- dark stroke on light container
+                keybindStroke.Color = Color3.fromRGB(0, 0, 0)
+                keybindStroke.Transparency = 0.9
 				keybindStroke.Parent = keybind
 
 					local keybindName = Instance.new("TextLabel")
@@ -2675,10 +2688,10 @@ function MacLib:Window(Settings)
 					keybindName.FontFace = Font.new(assets.interFont)
 					keybindName.Text = KeybindFunctions.Settings.Title or KeybindFunctions.Settings.Name
 					keybindName.RichText = true
-                    keybindName.TextColor3 = Color3.fromRGB(30, 30, 30)
+                    -- dark text for the keybind name
+                    keybindName.TextColor3 = Color3.fromRGB(0, 0, 0)
                     keybindName.TextSize = 14
-                    -- reduce transparency for readability
-                    keybindName.TextTransparency = 0.2
+                    keybindName.TextTransparency = 0.4
 					keybindName.TextTruncate = Enum.TextTruncate.AtEnd
 					keybindName.TextXAlignment = Enum.TextXAlignment.Left
 					keybindName.TextYAlignment = Enum.TextYAlignment.Top
@@ -2693,36 +2706,38 @@ function MacLib:Window(Settings)
 
 					local binderBox = Instance.new("TextBox")
 					binderBox.Name = "BinderBox"
-					binderBox.CursorPosition = -1
-					binderBox.FontFace = Font.new(assets.interFont)
+                    binderBox.CursorPosition = -1
+                    binderBox.FontFace = Font.new(assets.interFont)
                     binderBox.PlaceholderText = "..."
                     binderBox.Text = ""
-                    binderBox.TextColor3 = Color3.fromRGB(30, 30, 30)
+                    -- dark text on light input
+                    binderBox.TextColor3 = Color3.fromRGB(0, 0, 0)
                     binderBox.TextSize = 12
-                    -- ensure the bound key is always visible
-                    binderBox.TextTransparency = 0.0
+                    binderBox.TextTransparency = 0.1
                     binderBox.AnchorPoint = Vector2.new(1, 0.5)
                     binderBox.AutomaticSize = Enum.AutomaticSize.X
-                    binderBox.BackgroundColor3 = Color3.fromRGB(250, 250, 250)
+                    -- light background for keybind box
+                    binderBox.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
                     binderBox.BackgroundTransparency = 0
                     binderBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
                     binderBox.BorderSizePixel = 0
                     binderBox.ClipsDescendants = true
                     binderBox.LayoutOrder = 1
                     binderBox.Position = UDim2.fromScale(1, 0.5)
-                    -- wider box to fit the text of the bound key (e.g. "Left Ctrl")
-                    binderBox.Size = UDim2.fromOffset(60, 26)
+                    -- enlarge binder box for better readability
+                    binderBox.Size = UDim2.fromOffset(50, 26)
 
 					local binderBoxUICorner = Instance.new("UICorner")
 					binderBoxUICorner.Name = "BinderBoxUICorner"
-                    -- round the binder box corners slightly more
+                    -- round the corners more generously
                     binderBoxUICorner.CornerRadius = UDim.new(0, 6)
 					binderBoxUICorner.Parent = binderBox
 
 					local binderBoxUIStroke = Instance.new("UIStroke")
 					binderBoxUIStroke.Name = "BinderBoxUIStroke"
 					binderBoxUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-                    binderBoxUIStroke.Color = Color3.fromRGB(225, 225, 225)
+                    -- dark stroke on light binder box
+                    binderBoxUIStroke.Color = Color3.fromRGB(0, 0, 0)
                     binderBoxUIStroke.Transparency = 0.8
 					binderBoxUIStroke.Parent = binderBox
 
@@ -2741,8 +2756,7 @@ function MacLib:Window(Settings)
 					local focused
 					local isBinding = false
 					local reset = false
-                    -- default the keybind to LeftControl if none is specified
-                    local binded = KeybindFunctions.Settings.Default or Enum.KeyCode.LeftControl
+					local binded = KeybindFunctions.Settings.Default
 
 					local function resetFocusState()
 						focused = false
@@ -2750,12 +2764,9 @@ function MacLib:Window(Settings)
 						binderBox:ReleaseFocus()
 					end
 
-                    if binded then
-                        local name = binded.Name
-                        -- replace "Control" with the common abbreviation "Ctrl" for readability
-                        name = name:gsub("Control", "Ctrl")
-                        binderBox.Text = name
-                    end
+					if binded then
+						binderBox.Text = binded.Name
+					end
 
 					binderBox.Focused:Connect(function()
 						focused = true
@@ -2853,21 +2864,21 @@ function MacLib:Window(Settings)
 
 				local dropdown = Instance.new("Frame")
 					dropdown.Name = "Dropdown"
-                    -- light background for the dropdown control
-                    -- light background for the dropdown control
-                    dropdown.BackgroundColor3 = Color3.fromRGB(250, 250, 250)
+                    -- light background for the dropdown control to match the overall theme
+                    dropdown.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
                     dropdown.BackgroundTransparency = 0
-					dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					dropdown.BorderSizePixel = 0
-                    -- taller height for breathing space
-                    dropdown.Size = UDim2.new(1, 0, 0, 50)
+                    dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    dropdown.BorderSizePixel = 0
+                    -- increase height for better spacing
+                    dropdown.Size = UDim2.new(1, 0, 0, 44)
 				dropdown.Parent = sectionContent 
 				-- add a border around the dropdown container for spacing
 				local dropdownStroke = Instance.new("UIStroke")
 				dropdownStroke.Name = "DropdownStroke"
 				dropdownStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-                dropdownStroke.Color = Color3.fromRGB(225, 225, 225)
-                dropdownStroke.Transparency = 0.8
+                -- use a dark stroke on the light dropdown for a subtle divider
+                dropdownStroke.Color = Color3.fromRGB(0, 0, 0)
+                dropdownStroke.Transparency = 0.9
 				dropdownStroke.Parent = dropdown
 					dropdown.ClipsDescendants = true
 
@@ -2895,9 +2906,10 @@ function MacLib:Window(Settings)
 					dropdownName.FontFace = Font.new(assets.interFont)
 					dropdownName.Text = Settings.Default and (DropdownFunctions.Settings.Title .. " • " .. table.concat(Selected, ", ")) or (DropdownFunctions.Settings.Title .. "...")
 					dropdownName.RichText = true
-                    dropdownName.TextColor3 = Color3.fromRGB(30, 30, 30)
-					dropdownName.TextSize = 14
-                    dropdownName.TextTransparency = 0.2
+                    -- dark text on light background
+                    dropdownName.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    dropdownName.TextSize = 14
+                    dropdownName.TextTransparency = 0.4
 					dropdownName.TextTruncate = Enum.TextTruncate.SplitWord
 					dropdownName.TextXAlignment = Enum.TextXAlignment.Left
 					dropdownName.AutomaticSize = Enum.AutomaticSize.Y
@@ -2911,12 +2923,14 @@ function MacLib:Window(Settings)
 					local dropdownUIStroke = Instance.new("UIStroke")
 					dropdownUIStroke.Name = "DropdownUIStroke"
 					dropdownUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-					dropdownUIStroke.Color = Color3.fromRGB(255, 255, 255)
-					dropdownUIStroke.Transparency = 0.95
+                    -- dark stroke on the dropdown for definition
+                    dropdownUIStroke.Color = Color3.fromRGB(0, 0, 0)
+                    dropdownUIStroke.Transparency = 0.9
 					dropdownUIStroke.Parent = dropdown
 
 					local dropdownUICorner = Instance.new("UICorner")
 					dropdownUICorner.Name = "DropdownUICorner"
+                    -- round the dropdown corners more for a modern look
                     dropdownUICorner.CornerRadius = UDim.new(0, 8)
 					dropdownUICorner.Parent = dropdown
 
@@ -2940,8 +2954,9 @@ function MacLib:Window(Settings)
                     dropdownIndicator.AnchorPoint = Vector2.new(1, 0.5)
                     -- match the toggle track dimensions for visual consistency
                     dropdownIndicator.Position = UDim2.new(1, 0, 0.5, 0)
-                    dropdownIndicator.Size = UDim2.fromOffset(30, 20)
-                    dropdownIndicator.BackgroundColor3 = Color3.fromRGB(235, 245, 255)
+                    dropdownIndicator.Size = UDim2.fromOffset(41, 21)
+                    -- lighter indicator on the right to denote the dropdown
+                    dropdownIndicator.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
                     dropdownIndicator.BackgroundTransparency = 0
                     dropdownIndicator.BorderSizePixel = 0
                     -- round the indicator corners similar to the toggle track
@@ -2954,8 +2969,9 @@ function MacLib:Window(Settings)
                     dropdownIndicatorLabel.FontFace = Font.new(assets.interFont)
                     dropdownIndicatorLabel.Text = "▼"
                     dropdownIndicatorLabel.TextSize = 14
-                    dropdownIndicatorLabel.TextColor3 = Color3.fromRGB(0, 122, 255)
-                    dropdownIndicatorLabel.TextTransparency = 0
+                    -- dark arrow for contrast on light indicator
+                    dropdownIndicatorLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    dropdownIndicatorLabel.TextTransparency = 0.4
                     dropdownIndicatorLabel.BackgroundTransparency = 1
                     dropdownIndicatorLabel.AnchorPoint = Vector2.new(0.5, 0.5)
                     dropdownIndicatorLabel.Position = UDim2.fromScale(0.5, 0.5)
@@ -2976,7 +2992,8 @@ function MacLib:Window(Settings)
 
 					local dropdownFrameUIPadding = Instance.new("UIPadding")
 					dropdownFrameUIPadding.Name = "DropdownFrameUIPadding"
-					dropdownFrameUIPadding.PaddingTop = UDim.new(0, 38)
+                    -- adjust the top padding to match the new control height
+                    dropdownFrameUIPadding.PaddingTop = UDim.new(0, 44)
 					dropdownFrameUIPadding.PaddingBottom = UDim.new(0, 10)
 					dropdownFrameUIPadding.Parent = dropdownFrame
 
@@ -2988,8 +3005,8 @@ function MacLib:Window(Settings)
 
 					local search = Instance.new("Frame")
 					search.Name = "Search"
-                    -- dark background for the search bar inside the dropdown
-                    search.BackgroundColor3 = Color3.fromRGB(250, 250, 250)
+                    -- light background for the search bar inside the dropdown
+                    search.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
                     search.BackgroundTransparency = 0
 					search.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					search.BorderSizePixel = 0
@@ -3032,18 +3049,19 @@ function MacLib:Window(Settings)
 						Enum.FontWeight.Medium,
 						Enum.FontStyle.Normal
 					)
-                    searchBox.PlaceholderColor3 = Color3.fromRGB(180, 180, 180)
-					searchBox.PlaceholderText = "Search..."
-					searchBox.Text = ""
-                    searchBox.TextColor3 = Color3.fromRGB(30, 30, 30)
-					searchBox.TextSize = 14
-					searchBox.TextXAlignment = Enum.TextXAlignment.Left
-                    -- light background for search textbox in white theme
+                    searchBox.PlaceholderColor3 = Color3.fromRGB(120, 120, 120)
+                    searchBox.PlaceholderText = "Search..."
+                    searchBox.Text = ""
+                    -- dark text for search input
+                    searchBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    searchBox.TextSize = 14
+                    searchBox.TextXAlignment = Enum.TextXAlignment.Left
+                    -- subtle light background for search textbox to delineate it from the bar
                     searchBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                     searchBox.BackgroundTransparency = 0
-					searchBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					searchBox.BorderSizePixel = 0
-					searchBox.Size = UDim2.fromScale(1, 1)
+                    searchBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    searchBox.BorderSizePixel = 0
+                    searchBox.Size = UDim2.fromScale(1, 1)
 
 					local function CalculateDropdownSize()
 						local totalHeight = 0
@@ -3167,7 +3185,8 @@ function MacLib:Window(Settings)
 					local function ToggleDropdown()
 						if db then return end
 						db = true
-						local defaultDropdownSize = 38
+                        -- update default collapsed height to match the new control height
+                        local defaultDropdownSize = 44
 						local isDropdownOpen = not dropped
 						local targetSize = isDropdownOpen and UDim2.new(1, 0, 0, CalculateDropdownSize()) or UDim2.new(1, 0, 0, defaultDropdownSize)
 
@@ -3205,12 +3224,12 @@ function MacLib:Window(Settings)
 						option.Text = ""
 						option.TextColor3 = Color3.fromRGB(0, 0, 0)
 						option.TextSize = 14
-                        -- light row background for dropdown options
-                        option.BackgroundColor3 = Color3.fromRGB(250, 250, 250)
-                        option.BackgroundTransparency = 0
+                        -- dark row background for dropdown options
+                        option.BackgroundColor3 = Color3.fromRGB(50, 60, 75)
+                        option.BackgroundTransparency = 0.4
 						option.BorderColor3 = Color3.fromRGB(0, 0, 0)
 						option.BorderSizePixel = 0
-                        option.Size = UDim2.new(1, 0, 0, 38)
+						option.Size = UDim2.new(1, 0, 0, 30)
 
 						local optionUIPadding = Instance.new("UIPadding")
 						optionUIPadding.Name = "OptionUIPadding"
@@ -3222,10 +3241,10 @@ function MacLib:Window(Settings)
 						optionName.FontFace = Font.new(assets.interFont)
 						optionName.Text = v
 						optionName.RichText = true
-						optionName.TextColor3 = Color3.fromRGB(255, 255, 255)
-						optionName.TextSize = 14
-                        optionName.TextTransparency = 0.2
-                        optionName.TextColor3 = Color3.fromRGB(30, 30, 30)
+                        -- dark text for option names
+                        optionName.TextColor3 = Color3.fromRGB(0, 0, 0)
+                        optionName.TextSize = 14
+                        optionName.TextTransparency = 0.4
 						optionName.TextTruncate = Enum.TextTruncate.AtEnd
 						optionName.TextXAlignment = Enum.TextXAlignment.Left
 						optionName.TextYAlignment = Enum.TextYAlignment.Top
@@ -3250,10 +3269,10 @@ function MacLib:Window(Settings)
 						checkmark.Name = "Checkmark"
 						checkmark.FontFace = Font.new(assets.interFont)
 						checkmark.Text = "✓"
-                        -- use the accent colour for the checkmark
+                        -- accent colour for checkmark (hidden by default)
                         checkmark.TextColor3 = Color3.fromRGB(0, 122, 255)
-						checkmark.TextSize = 14
-						checkmark.TextTransparency = 1
+                        checkmark.TextSize = 14
+                        checkmark.TextTransparency = 1
 						checkmark.TextXAlignment = Enum.TextXAlignment.Left
 						checkmark.TextYAlignment = Enum.TextYAlignment.Top
 						checkmark.AnchorPoint = Vector2.new(0, 0.5)
@@ -3557,12 +3576,13 @@ function MacLib:Window(Settings)
 
 					local colorPicker = Instance.new("Frame")
 					colorPicker.Name = "ColorPicker"
-					colorPicker.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-					colorPicker.BackgroundTransparency = 0.5
-					colorPicker.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					colorPicker.BorderSizePixel = 0
-					colorPicker.Size = UDim2.fromScale(1, 1)
-					colorPicker.Visible = false
+                    -- semi‑transparent light overlay when the colour picker is open
+                    colorPicker.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                    colorPicker.BackgroundTransparency = 0.3
+                    colorPicker.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    colorPicker.BorderSizePixel = 0
+                    colorPicker.Size = UDim2.fromScale(1, 1)
+                    colorPicker.Visible = false
 
 					local baseUICorner = Instance.new("UICorner")
 					baseUICorner.Name = "BaseUICorner"
@@ -3573,9 +3593,10 @@ function MacLib:Window(Settings)
 					prompt.Name = "Prompt"
 					prompt.AnchorPoint = Vector2.new(0.5, 0.5)
 					prompt.AutomaticSize = Enum.AutomaticSize.Y
-					prompt.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-					prompt.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					prompt.BorderSizePixel = 0
+                    -- light background for the colour picker prompt
+                    prompt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                    prompt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    prompt.BorderSizePixel = 0
 					prompt.Position = UDim2.fromScale(0.5, 0.5)
 					prompt.Size = UDim2.fromOffset(420, 0)
 
@@ -3587,13 +3608,15 @@ function MacLib:Window(Settings)
 					local globalSettingsUIStroke = Instance.new("UIStroke")
 					globalSettingsUIStroke.Name = "GlobalSettingsUIStroke"
 					globalSettingsUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-					globalSettingsUIStroke.Color = Color3.fromRGB(255, 255, 255)
-					globalSettingsUIStroke.Transparency = 0.9
+                    -- dark stroke around the colour picker prompt
+                    globalSettingsUIStroke.Color = Color3.fromRGB(0, 0, 0)
+                    globalSettingsUIStroke.Transparency = 0.9
 					globalSettingsUIStroke.Parent = prompt
 
 					local globalSettingsUICorner = Instance.new("UICorner")
 					globalSettingsUICorner.Name = "GlobalSettingsUICorner"
-					globalSettingsUICorner.CornerRadius = UDim.new(0, 10)
+                    -- slightly rounder corners for the prompt
+                    globalSettingsUICorner.CornerRadius = UDim.new(0, 12)
 					globalSettingsUICorner.Parent = prompt
 
 					local uIListLayout = Instance.new("UIListLayout")
@@ -3639,7 +3662,8 @@ function MacLib:Window(Settings)
 					slide.Name = "Slide"
 					slide.AnchorPoint = Vector2.new(0, 0.5)
 					slide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					slide.BorderColor3 = Color3.fromRGB(27, 42, 53)
+                    -- dark border for the slider knob backdrop
+                    slide.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					slide.BorderSizePixel = 0
 					slide.Position = UDim2.fromScale(0, 0.5)
 					slide.Size = UDim2.new(0, 13, 1, 8)
@@ -3652,7 +3676,8 @@ function MacLib:Window(Settings)
 					local uIStroke = Instance.new("UIStroke")
 					uIStroke.Name = "UIStroke"
 					uIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-					uIStroke.Transparency = 0.5
+                    uIStroke.Color = Color3.fromRGB(0, 0, 0)
+                    uIStroke.Transparency = 0.8
 					uIStroke.Parent = slide
 
 					slide.Parent = value
@@ -3665,8 +3690,9 @@ function MacLib:Window(Settings)
 					local uIStroke1 = Instance.new("UIStroke")
 					uIStroke1.Name = "UIStroke"
 					uIStroke1.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-					uIStroke1.Color = Color3.fromRGB(255, 255, 255)
-					uIStroke1.Transparency = 0.9
+                    -- dark stroke around the value bar
+                    uIStroke1.Color = Color3.fromRGB(0, 0, 0)
+                    uIStroke1.Transparency = 0.8
 
 					local uIGradient1 = Instance.new("UIGradient")
 					uIGradient1.Name = "UIGradient"
@@ -3754,9 +3780,10 @@ function MacLib:Window(Settings)
 					inputName.Name = "InputName"
 					inputName.FontFace = Font.new(assets.interFont)
 					inputName.Text = "Red"
-					inputName.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputName.TextSize = 14
-					inputName.TextTransparency = 0.5
+                    -- dark label text for colour component names
+                    inputName.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    inputName.TextSize = 14
+                    inputName.TextTransparency = 0.4
 					inputName.TextTruncate = Enum.TextTruncate.AtEnd
 					inputName.TextXAlignment = Enum.TextXAlignment.Left
 					inputName.TextYAlignment = Enum.TextYAlignment.Top
@@ -3784,30 +3811,34 @@ function MacLib:Window(Settings)
 					inputBox.CursorPosition = -1
 					inputBox.FontFace = Font.new(assets.interFont)
 					inputBox.Text = "255"
-					inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox.TextSize = 12
-					inputBox.TextTransparency = 0.1
-					inputBox.TextXAlignment = Enum.TextXAlignment.Left
-					inputBox.AnchorPoint = Vector2.new(1, 0.5)
-					inputBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox.BackgroundTransparency = 0.95
-					inputBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					inputBox.BorderSizePixel = 0
-					inputBox.ClipsDescendants = true
-					inputBox.LayoutOrder = 1
-					inputBox.Position = UDim2.fromScale(1, 0.5)
-					inputBox.Size = UDim2.fromOffset(75, 25)
+                    -- dark text for RGB input box
+                    inputBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    inputBox.TextSize = 12
+                    inputBox.TextTransparency = 0.1
+                    inputBox.TextXAlignment = Enum.TextXAlignment.Left
+                    inputBox.AnchorPoint = Vector2.new(1, 0.5)
+                    -- light background to match the modern aesthetic
+                    inputBox.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
+                    inputBox.BackgroundTransparency = 0
+                    inputBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    inputBox.BorderSizePixel = 0
+                    inputBox.ClipsDescendants = true
+                    inputBox.LayoutOrder = 1
+                    inputBox.Position = UDim2.fromScale(1, 0.5)
+                    inputBox.Size = UDim2.fromOffset(75, 25)
 
 					local inputBoxUICorner = Instance.new("UICorner")
 					inputBoxUICorner.Name = "InputBoxUICorner"
-					inputBoxUICorner.CornerRadius = UDim.new(0, 4)
+                    -- increase the corner radius for a softer shape
+                    inputBoxUICorner.CornerRadius = UDim.new(0, 6)
 					inputBoxUICorner.Parent = inputBox
 
 					local inputBoxUIStroke = Instance.new("UIStroke")
 					inputBoxUIStroke.Name = "InputBoxUIStroke"
 					inputBoxUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-					inputBoxUIStroke.Color = Color3.fromRGB(255, 255, 255)
-					inputBoxUIStroke.Transparency = 0.9
+                    -- dark stroke around the RGB input box
+                    inputBoxUIStroke.Color = Color3.fromRGB(0, 0, 0)
+                    inputBoxUIStroke.Transparency = 0.8
 					inputBoxUIStroke.Parent = inputBox
 
 					local inputBoxUISizeConstraint = Instance.new("UISizeConstraint")
@@ -3838,9 +3869,10 @@ function MacLib:Window(Settings)
 					inputName1.Name = "InputName"
 					inputName1.FontFace = Font.new(assets.interFont)
 					inputName1.Text = "Green"
-					inputName1.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputName1.TextSize = 14
-					inputName1.TextTransparency = 0.5
+                    -- dark label text for colour component names
+                    inputName1.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    inputName1.TextSize = 14
+                    inputName1.TextTransparency = 0.4
 					inputName1.TextTruncate = Enum.TextTruncate.AtEnd
 					inputName1.TextXAlignment = Enum.TextXAlignment.Left
 					inputName1.TextYAlignment = Enum.TextYAlignment.Top
@@ -3867,30 +3899,34 @@ function MacLib:Window(Settings)
 					inputBox1.ClearTextOnFocus = false
 					inputBox1.FontFace = Font.new(assets.interFont)
 					inputBox1.Text = "255"
-					inputBox1.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox1.TextSize = 12
-					inputBox1.TextTransparency = 0.1
-					inputBox1.TextXAlignment = Enum.TextXAlignment.Left
-					inputBox1.AnchorPoint = Vector2.new(1, 0.5)
-					inputBox1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox1.BackgroundTransparency = 0.95
-					inputBox1.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					inputBox1.BorderSizePixel = 0
-					inputBox1.ClipsDescendants = true
-					inputBox1.LayoutOrder = 1
-					inputBox1.Position = UDim2.fromScale(1, 0.5)
-					inputBox1.Size = UDim2.fromOffset(75, 25)
+                    -- dark text for RGB input box
+                    inputBox1.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    inputBox1.TextSize = 12
+                    inputBox1.TextTransparency = 0.1
+                    inputBox1.TextXAlignment = Enum.TextXAlignment.Left
+                    inputBox1.AnchorPoint = Vector2.new(1, 0.5)
+                    -- light background for the input box
+                    inputBox1.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
+                    inputBox1.BackgroundTransparency = 0
+                    inputBox1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    inputBox1.BorderSizePixel = 0
+                    inputBox1.ClipsDescendants = true
+                    inputBox1.LayoutOrder = 1
+                    inputBox1.Position = UDim2.fromScale(1, 0.5)
+                    inputBox1.Size = UDim2.fromOffset(75, 25)
 
 					local inputBoxUICorner1 = Instance.new("UICorner")
 					inputBoxUICorner1.Name = "InputBoxUICorner"
-					inputBoxUICorner1.CornerRadius = UDim.new(0, 4)
+                    -- round corners more generously
+                    inputBoxUICorner1.CornerRadius = UDim.new(0, 6)
 					inputBoxUICorner1.Parent = inputBox1
 
 					local inputBoxUIStroke1 = Instance.new("UIStroke")
 					inputBoxUIStroke1.Name = "InputBoxUIStroke"
 					inputBoxUIStroke1.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-					inputBoxUIStroke1.Color = Color3.fromRGB(255, 255, 255)
-					inputBoxUIStroke1.Transparency = 0.9
+                    -- dark stroke around the input box
+                    inputBoxUIStroke1.Color = Color3.fromRGB(0, 0, 0)
+                    inputBoxUIStroke1.Transparency = 0.8
 					inputBoxUIStroke1.Parent = inputBox1
 
 					local inputBoxUISizeConstraint1 = Instance.new("UISizeConstraint")
@@ -3921,9 +3957,10 @@ function MacLib:Window(Settings)
 					inputName2.Name = "InputName"
 					inputName2.FontFace = Font.new(assets.interFont)
 					inputName2.Text = "Blue"
-					inputName2.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputName2.TextSize = 14
-					inputName2.TextTransparency = 0.5
+                    -- dark label text for colour component names
+                    inputName2.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    inputName2.TextSize = 14
+                    inputName2.TextTransparency = 0.4
 					inputName2.TextTruncate = Enum.TextTruncate.AtEnd
 					inputName2.TextXAlignment = Enum.TextXAlignment.Left
 					inputName2.TextYAlignment = Enum.TextYAlignment.Top
@@ -3950,30 +3987,34 @@ function MacLib:Window(Settings)
 					inputBox2.ClearTextOnFocus = false
 					inputBox2.FontFace = Font.new(assets.interFont)
 					inputBox2.Text = "255"
-					inputBox2.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox2.TextSize = 12
-					inputBox2.TextTransparency = 0.1
-					inputBox2.TextXAlignment = Enum.TextXAlignment.Left
-					inputBox2.AnchorPoint = Vector2.new(1, 0.5)
-					inputBox2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox2.BackgroundTransparency = 0.95
-					inputBox2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					inputBox2.BorderSizePixel = 0
-					inputBox2.ClipsDescendants = true
-					inputBox2.LayoutOrder = 1
-					inputBox2.Position = UDim2.fromScale(1, 0.5)
-					inputBox2.Size = UDim2.fromOffset(75, 25)
+                    -- dark text for RGB input box
+                    inputBox2.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    inputBox2.TextSize = 12
+                    inputBox2.TextTransparency = 0.1
+                    inputBox2.TextXAlignment = Enum.TextXAlignment.Left
+                    inputBox2.AnchorPoint = Vector2.new(1, 0.5)
+                    -- light background for the input box
+                    inputBox2.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
+                    inputBox2.BackgroundTransparency = 0
+                    inputBox2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    inputBox2.BorderSizePixel = 0
+                    inputBox2.ClipsDescendants = true
+                    inputBox2.LayoutOrder = 1
+                    inputBox2.Position = UDim2.fromScale(1, 0.5)
+                    inputBox2.Size = UDim2.fromOffset(75, 25)
 
 					local inputBoxUICorner2 = Instance.new("UICorner")
 					inputBoxUICorner2.Name = "InputBoxUICorner"
-					inputBoxUICorner2.CornerRadius = UDim.new(0, 4)
+                    -- round corners more generously
+                    inputBoxUICorner2.CornerRadius = UDim.new(0, 6)
 					inputBoxUICorner2.Parent = inputBox2
 
 					local inputBoxUIStroke2 = Instance.new("UIStroke")
 					inputBoxUIStroke2.Name = "InputBoxUIStroke"
 					inputBoxUIStroke2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-					inputBoxUIStroke2.Color = Color3.fromRGB(255, 255, 255)
-					inputBoxUIStroke2.Transparency = 0.9
+                    -- dark stroke around the input box
+                    inputBoxUIStroke2.Color = Color3.fromRGB(0, 0, 0)
+                    inputBoxUIStroke2.Transparency = 0.8
 					inputBoxUIStroke2.Parent = inputBox2
 
 					local inputBoxUISizeConstraint2 = Instance.new("UISizeConstraint")
@@ -4005,9 +4046,10 @@ function MacLib:Window(Settings)
 					inputName3.Name = "InputName"
 					inputName3.FontFace = Font.new(assets.interFont)
 					inputName3.Text = "Alpha"
-					inputName3.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputName3.TextSize = 14
-					inputName3.TextTransparency = 0.5
+                    -- dark label text for colour component names
+                    inputName3.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    inputName3.TextSize = 14
+                    inputName3.TextTransparency = 0.4
 					inputName3.TextTruncate = Enum.TextTruncate.AtEnd
 					inputName3.TextXAlignment = Enum.TextXAlignment.Left
 					inputName3.TextYAlignment = Enum.TextYAlignment.Top
@@ -4034,30 +4076,34 @@ function MacLib:Window(Settings)
 					inputBox3.ClearTextOnFocus = false
 					inputBox3.FontFace = Font.new(assets.interFont)
 					inputBox3.Text = "0"
-					inputBox3.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox3.TextSize = 12
-					inputBox3.TextTransparency = 0.1
-					inputBox3.TextXAlignment = Enum.TextXAlignment.Left
-					inputBox3.AnchorPoint = Vector2.new(1, 0.5)
-					inputBox3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox3.BackgroundTransparency = 0.95
-					inputBox3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					inputBox3.BorderSizePixel = 0
-					inputBox3.ClipsDescendants = true
-					inputBox3.LayoutOrder = 1
-					inputBox3.Position = UDim2.fromScale(1, 0.5)
-					inputBox3.Size = UDim2.fromOffset(75, 25)
+                    -- dark text for Alpha input box
+                    inputBox3.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    inputBox3.TextSize = 12
+                    inputBox3.TextTransparency = 0.1
+                    inputBox3.TextXAlignment = Enum.TextXAlignment.Left
+                    inputBox3.AnchorPoint = Vector2.new(1, 0.5)
+                    -- light background for the input box
+                    inputBox3.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
+                    inputBox3.BackgroundTransparency = 0
+                    inputBox3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    inputBox3.BorderSizePixel = 0
+                    inputBox3.ClipsDescendants = true
+                    inputBox3.LayoutOrder = 1
+                    inputBox3.Position = UDim2.fromScale(1, 0.5)
+                    inputBox3.Size = UDim2.fromOffset(75, 25)
 
 					local inputBoxUICorner3 = Instance.new("UICorner")
 					inputBoxUICorner3.Name = "InputBoxUICorner"
-					inputBoxUICorner3.CornerRadius = UDim.new(0, 4)
+                    -- round corners more generously
+                    inputBoxUICorner3.CornerRadius = UDim.new(0, 6)
 					inputBoxUICorner3.Parent = inputBox3
 
 					local inputBoxUIStroke3 = Instance.new("UIStroke")
 					inputBoxUIStroke3.Name = "InputBoxUIStroke"
 					inputBoxUIStroke3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-					inputBoxUIStroke3.Color = Color3.fromRGB(255, 255, 255)
-					inputBoxUIStroke3.Transparency = 0.9
+                    -- dark stroke around the input box
+                    inputBoxUIStroke3.Color = Color3.fromRGB(0, 0, 0)
+                    inputBoxUIStroke3.Transparency = 0.8
 					inputBoxUIStroke3.Parent = inputBox3
 
 					local inputBoxUISizeConstraint3 = Instance.new("UISizeConstraint")
@@ -4087,9 +4133,10 @@ function MacLib:Window(Settings)
 					inputName4.Name = "InputName"
 					inputName4.FontFace = Font.new(assets.interFont)
 					inputName4.Text = "Hex"
-					inputName4.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputName4.TextSize = 14
-					inputName4.TextTransparency = 0.5
+                    -- dark label text for the hex value
+                    inputName4.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    inputName4.TextSize = 14
+                    inputName4.TextTransparency = 0.4
 					inputName4.TextTruncate = Enum.TextTruncate.AtEnd
 					inputName4.TextXAlignment = Enum.TextXAlignment.Left
 					inputName4.TextYAlignment = Enum.TextYAlignment.Top
@@ -4117,30 +4164,34 @@ function MacLib:Window(Settings)
 					inputBox4.CursorPosition = -1
 					inputBox4.FontFace = Font.new(assets.interFont)
 					inputBox4.Text = "255"
-					inputBox4.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox4.TextSize = 12
-					inputBox4.TextTransparency = 0.1
-					inputBox4.TextXAlignment = Enum.TextXAlignment.Left
-					inputBox4.AnchorPoint = Vector2.new(1, 0.5)
-					inputBox4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox4.BackgroundTransparency = 0.95
-					inputBox4.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					inputBox4.BorderSizePixel = 0
-					inputBox4.ClipsDescendants = true
-					inputBox4.LayoutOrder = 1
-					inputBox4.Position = UDim2.fromScale(1, 0.5)
-					inputBox4.Size = UDim2.fromOffset(75, 25)
+                    -- dark text for hex input
+                    inputBox4.TextColor3 = Color3.fromRGB(0, 0, 0)
+                    inputBox4.TextSize = 12
+                    inputBox4.TextTransparency = 0.1
+                    inputBox4.TextXAlignment = Enum.TextXAlignment.Left
+                    inputBox4.AnchorPoint = Vector2.new(1, 0.5)
+                    -- light background for the hex input box
+                    inputBox4.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
+                    inputBox4.BackgroundTransparency = 0
+                    inputBox4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    inputBox4.BorderSizePixel = 0
+                    inputBox4.ClipsDescendants = true
+                    inputBox4.LayoutOrder = 1
+                    inputBox4.Position = UDim2.fromScale(1, 0.5)
+                    inputBox4.Size = UDim2.fromOffset(75, 25)
 
 					local inputBoxUICorner4 = Instance.new("UICorner")
 					inputBoxUICorner4.Name = "InputBoxUICorner"
-					inputBoxUICorner4.CornerRadius = UDim.new(0, 4)
+                    -- round the corners more generously
+                    inputBoxUICorner4.CornerRadius = UDim.new(0, 6)
 					inputBoxUICorner4.Parent = inputBox4
 
 					local inputBoxUIStroke4 = Instance.new("UIStroke")
 					inputBoxUIStroke4.Name = "InputBoxUIStroke"
 					inputBoxUIStroke4.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-					inputBoxUIStroke4.Color = Color3.fromRGB(255, 255, 255)
-					inputBoxUIStroke4.Transparency = 0.9
+                    -- dark stroke around the input box
+                    inputBoxUIStroke4.Color = Color3.fromRGB(0, 0, 0)
+                    inputBoxUIStroke4.Transparency = 0.8
 					inputBoxUIStroke4.Parent = inputBox4
 
 					local inputBoxUISizeConstraint4 = Instance.new("UISizeConstraint")
