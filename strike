@@ -1,7 +1,7 @@
 
 --[[
     User Interface Library
-    Made by Lateo
+    Made by Late
 ]]
 --// Connections
 local GetService = game.GetService
@@ -217,20 +217,11 @@ Resizeable = function(Tab, Minimum, Maximum)
         end)
     end)
 end
---// Setup [UI]
--- Instead of loading a ScreenGui via an external rbxassetid (which requires a
--- network fetch and external assets), simply reference the library's parent
--- ScreenGui. This avoids any use of external images/assets while still
--- providing a valid UI container. The blur module is also loaded from a
--- local module script rather than an external URL.
-if identifyexecutor then
-    -- Removed use of rbxassetid; use the parent ScreenGui and local blur
-    Screen = script.Parent
-    Blur = require(script.Blur)
-else
-    Screen = script.Parent
-    Blur = require(script.Blur)
-end
+-- Always rely on the local UI components packaged with the script.
+-- We avoid loading any external assets or code and instead assume the caller
+-- places this module under a ScreenGui with the appropriate children.
+Screen = script.Parent
+Blur = require(script.Blur)
 Screen.Main.Visible = false
 xpcall(function()
     Screen.Parent = game.CoreGui
@@ -353,7 +344,7 @@ function Library:CreateWindow(Settings: {
 
     local minimizeBtn = Instance.new('ImageButton')
     minimizeBtn.Name = 'MinimizeButton'
-    -- Removed external icon; leave empty string to avoid rbxassetid
+    -- Remove external image; leave blank so the button uses its default appearance.
     minimizeBtn.Image = ''
     minimizeBtn.Size = UDim2.new(0, 20, 0, 20)
     minimizeBtn.BackgroundTransparency = 1
@@ -363,7 +354,7 @@ function Library:CreateWindow(Settings: {
 
     local exitBtn = Instance.new('ImageButton')
     exitBtn.Name = 'ExitButton'
-    -- Removed external icon; leave empty string to avoid rbxassetid
+    -- Remove external image; leave blank so the button uses its default appearance.
     exitBtn.Image = ''
     exitBtn.Size = UDim2.new(0, 20, 0, 20)
     exitBtn.BackgroundTransparency = 1
@@ -757,7 +748,7 @@ function Library:CreateWindow(Settings: {
         RightImage.Name = 'RightImage'
         RightImage.Size = UDim2.new(0, 22, 0, 22)
         RightImage.Position = UDim2.new(1, -41, 0.5, -10)
-        -- Removed external icon; leave empty string to avoid rbxassetid
+        -- No external arrow icon; leave blank to avoid pulling remote assets.
         RightImage.Image = ''
         RightImage.BackgroundTransparency = 1
         RightImage.ImageColor3 = Color3.fromRGB(0, 0, 0)
@@ -1173,7 +1164,7 @@ function Library:CreateWindow(Settings: {
                 Checkmark.Name = 'Checkmark'
                 Checkmark.Size = UDim2.new(0, 16, 0, 16)
                 Checkmark.Position = UDim2.new(1, -20, 0.5, -8)
-                -- Removed external icon; leave empty string to avoid rbxassetid
+                -- Remove external checkmark image; leave blank to disable external dependency.
                 Checkmark.Image = ''
                 Checkmark.BackgroundTransparency = 1
                 Checkmark.Visible = isSelected and true or false
@@ -1542,8 +1533,8 @@ function Library:CreateWindow(Settings: {
 
         Classes = {
             ['ImageLabel'] = function(Label)
-                -- Apply the icon color to all ImageLabels. Removed specific
-                -- rbxassetid check so that external assets are not referenced.
+                -- Always tint image labels using the current theme icon colour.  We no longer
+                -- check for specific external asset IDs since external images have been removed.
                 Label.ImageColor3 = Theme.Icon
             end,
 
