@@ -4,7 +4,7 @@
 local MacLib = {
     Options = {},
     -- store any configuration in a folder named after SkyBoy rather than the original name
-    Folder = "by SkyBoty",
+    Folder = "by SkyBoys",
     GetService = function(service)
         return cloneref and cloneref(game:GetService(service)) or game:GetService(service)
     end
