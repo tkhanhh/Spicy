@@ -1,6 +1,6 @@
 --[[
     User Interface Library
-    Made by Late
+    Made by Latev2
 ]]
 --// Connections
 local GetService = game.GetService
@@ -217,655 +217,23 @@ Resizeable = function(Tab, Minimum, Maximum)
     end)
 end
 --// Setup [UI]
-local Screen = Instance.new("ScreenGui")
-Screen.Name = "UILibrary"
+if identifyexecutor then
+    Screen = Services.Insert:LoadLocalAsset('rbxassetid://13479354099')
+    Blur = loadstring(
+        game:HttpGet(
+            'https://gist.githubusercontent.com/MjContiga1/95d2f96ab1afc978cb33d9ef824def05/raw/07f17c2aeac7b647c416b982ea31adacf999be56/Ui%2520blur%2520code.lua'
+        )
+    )()
+else
+    Screen = script.Parent
+    Blur = require(script.Blur)
+end
+Screen.Main.Visible = false
 xpcall(function()
     Screen.Parent = game.CoreGui
 end, function()
     Screen.Parent = Player.GUI
 end)
-
-local Components = Instance.new("Folder")
-Components.Name = "Components"
-Components.Parent = Screen
-
--- Create Notification Holder
-local NotificationHolder = Instance.new("Frame")
-NotificationHolder.Name = "Frame"
-NotificationHolder.Size = UDim2.new(0, 300, 1, 0)
-NotificationHolder.Position = UDim2.new(1, 0, 0, 0)
-NotificationHolder.BackgroundTransparency = 1
-NotificationHolder.Parent = Screen
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.FillDirection = Enum.FillDirection.Vertical
-UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
-UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Padding = UDim.new(0, 5)
-UIListLayout.Parent = NotificationHolder
-
--- Create Main Template
-local MainTemplate = Instance.new("CanvasGroup")
-MainTemplate.Name = "Main"
-MainTemplate.Position = UDim2.new(0.5, 0, 0.5, 0)
-MainTemplate.AnchorPoint = Vector2.new(0.5, 0.5)
-MainTemplate.BackgroundColor3 = Theme.Primary
-MainTemplate.Size = UDim2.new(0, 680, 0, 440) -- Default size
-MainTemplate.Visible = false
-MainTemplate.Parent = Screen
-
-local Shadow = Instance.new("UIStroke")
-Shadow.Name = "UIStroke"
-Shadow.Transparency = 0.5
-Shadow.Color = Theme.Shadow
-Shadow.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Shadow.Parent = MainTemplate
-
-local BackgroundShadow = Instance.new("Frame")
-BackgroundShadow.Name = "BackgroundShadow"
-BackgroundShadow.Size = UDim2.new(1, 0, 1, 0)
-BackgroundShadow.BackgroundColor3 = Theme.Shadow
-BackgroundShadow.BackgroundTransparency = 1
-BackgroundShadow.Parent = MainTemplate
-
-local Sidebar = Instance.new("Frame")
-Sidebar.Name = "Sidebar"
-Sidebar.Size = UDim2.new(0, 150, 1, 0)
-Sidebar.BackgroundColor3 = Theme.Secondary
-Sidebar.Parent = MainTemplate
-
-local Top = Instance.new("Frame")
-Top.Name = "Top"
-Top.Size = UDim2.new(1, 0, 0, 30)
-Top.BackgroundTransparency = 1
-Top.Parent = Sidebar
-
-local Buttons = Instance.new("Frame")
-Buttons.Name = "Buttons"
-Buttons.Size = UDim2.new(0, 60, 1, 0)
-Buttons.Position = UDim2.new(1, -60, 0, 0)
-Buttons.BackgroundTransparency = 1
-Buttons.Parent = Top
-
-local Maximize = Instance.new("TextButton")
-Maximize.Name = "Maximize"
-Maximize.Size = UDim2.new(0, 20, 0, 20)
-Maximize.BackgroundTransparency = 1
-Maximize.Text = "+"
-Maximize.TextColor3 = Color3.fromRGB(0, 0, 0)
-Maximize.Parent = Buttons
-
-local Tab = Instance.new("Frame")
-Tab.Name = "Tab"
-Tab.Size = UDim2.new(1, 0, 0, 30)
-Tab.BackgroundTransparency = 1
-Tab.Parent = Sidebar
-
-local Holder = Instance.new("Frame")
-Holder.Name = "Main"
-Holder.Size = UDim2.new(1, -150, 1, 0)
-Holder.Position = UDim2.new(0, 150, 0, 0)
-Holder.BackgroundColor3 = Theme.Secondary
-Holder.Parent = MainTemplate
-
-local Resize = Instance.new("Frame")
-Resize.Name = "Resize"
-Resize.Size = UDim2.new(1, 0, 1, 0)
-Resize.BackgroundTransparency = 1
-Resize.Parent = MainTemplate
-
-local TopLeft = Instance.new("Frame")
-TopLeft.Name = "TopLeft"
-TopLeft.Size = UDim2.new(0, 10, 0, 10)
-TopLeft.Position = UDim2.new(0, 0, 0, 0)
-TopLeft.BackgroundTransparency = 1
-TopLeft.Parent = Resize
-
-local TopRight = Instance.new("Frame")
-TopRight.Name = "TopRight"
-TopRight.Size = UDim2.new(0, 10, 0, 10)
-TopRight.Position = UDim2.new(1, -10, 0, 0)
-TopRight.BackgroundTransparency = 1
-TopRight.Parent = Resize
-
-local BottomLeft = Instance.new("Frame")
-BottomLeft.Name = "BottomLeft"
-BottomLeft.Size = UDim2.new(0, 10, 0, 10)
-BottomLeft.Position = UDim2.new(0, 0, 1, -10)
-BottomLeft.BackgroundTransparency = 1
-BottomLeft.Parent = Resize
-
-local BottomRight = Instance.new("Frame")
-BottomRight.Name = "BottomRight"
-BottomRight.Size = UDim2.new(0, 10, 0, 10)
-BottomRight.Position = UDim2.new(1, -10, 1, -10)
-BottomRight.BackgroundTransparency = 1
-BottomRight.Parent = Resize
-
--- Create MainExample
-local MainExample = Instance.new("CanvasGroup")
-MainExample.Name = "MainExample"
-MainExample.Size = UDim2.new(1, 0, 1, 0)
-MainExample.BackgroundTransparency = 1
-MainExample.GroupTransparency = 1
-MainExample.Visible = false
-MainExample.Parent = MainTemplate
-
-local ScrollingFrame = Instance.new("ScrollingFrame")
-ScrollingFrame.Name = "ScrollingFrame"
-ScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
-ScrollingFrame.BackgroundTransparency = 1
-ScrollingFrame.ScrollBarThickness = 6
-ScrollingFrame.Parent = MainExample
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingTop = UDim.new(0, 15)
-UIPadding.Parent = ScrollingFrame
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = ScrollingFrame
-
-ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
-
--- Create TabButtonExample
-local TabButtonExample = Instance.new("TextButton")
-TabButtonExample.Name = "TabButtonExample"
-TabButtonExample.Size = UDim2.new(1, 0, 0, 30)
-TabButtonExample.BackgroundTransparency = 1
-TabButtonExample.Text = ""
-TabButtonExample.Visible = false
-TabButtonExample.Parent = MainTemplate
-
-local TextLabel = Instance.new("TextLabel")
-TextLabel.Size = UDim2.new(1, 0, 1, 0)
-TextLabel.BackgroundTransparency = 1
-TextLabel.TextColor3 = Theme.Tab
-TextLabel.Parent = TabButtonExample
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingLeft = UDim.new(0, 20)
-UIPadding.Parent = TabButtonExample
-
-local Value = Instance.new("BoolValue")
-Value.Value = false
-Value.Parent = TabButtonExample
-
--- Create SectionExample
-local SectionExample = Instance.new("TextLabel")
-SectionExample.Name = "SectionExample"
-SectionExample.Size = UDim2.new(1, 0, 0, 30)
-BackgroundTransparency = 1
-TextColor3 = Theme.Title
-TextXAlignment = Enum.TextXAlignment.Left
-SectionExample.Visible = false
-SectionExample.Parent = MainTemplate
-
--- Create DropdownExample
-local DropdownExample = Instance.new("CanvasGroup")
-DropdownExample.Name = "DropdownExample"
-DropdownExample.Size = UDim2.new(0, 300, 0, 200)
-DropdownExample.Position = UDim2.new(0.5, 0, 0.5, 0)
-DropdownExample.AnchorPoint = Vector2.new(0.5, 0.5)
-DropdownExample.BackgroundColor3 = Theme.Secondary
-DropdownExample.Visible = false
-DropdownExample.Parent = MainTemplate
-
-local Top = Instance.new("Frame")
-Top.Name = "Top"
-Top.Size = UDim2.new(1, 0, 0, 30)
-Top.BackgroundTransparency = 1
-Top.Parent = DropdownExample
-
-local Buttons = Instance.new("Frame")
-Buttons.Name = "Buttons"
-Buttons.Size = UDim2.new(0, 60, 1, 0)
-Buttons.Position = UDim2.new(1, 0, 0, 0)
-Buttons.BackgroundTransparency = 1
-Buttons.Parent = Top
-
-local ScrollingFrame = Instance.new("ScrollingFrame")
-ScrollingFrame.Name = "ScrollingFrame"
-ScrollingFrame.Size = UDim2.new(1, 0, 1, -30)
-ScrollingFrame.Position = UDim2.new(0, 0, 0, 30)
-ScrollingFrame.BackgroundTransparency = 1
-ScrollingFrame.ScrollBarThickness = 6
-ScrollingFrame.Parent = DropdownExample
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = ScrollingFrame
-
--- Create DropdownButtonExample
-local DropdownButtonExample = Instance.new("TextButton")
-DropdownButtonExample.Name = "DropdownButtonExample"
-DropdownButtonExample.Size = UDim2.new(1, 0, 0, 30)
-DropdownButtonExample.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DropdownButtonExample.Text = ""
-DropdownButtonExample.Visible = false
-DropdownButtonExample.Parent = MainTemplate
-
-local Labels = Instance.new("Frame")
-Labels.Name = "Labels"
-Labels.Size = UDim2.new(1, 0, 1, 0)
-Labels.BackgroundTransparency = 1
-Labels.Parent = DropdownButtonExample
-
-local Title = Instance.new("TextLabel")
-Title.Name = "Title"
-Title.Text = "Option"
-Title.TextColor3 = Color3.fromRGB(0, 0, 0)
-Title.Size = UDim2.new(1, 0, 1, 0)
-Title.BackgroundTransparency = 1
-Title.Parent = Labels
-
--- Create Components
--- Section
-local Section = Instance.new("TextLabel")
-Section.Name = "Section"
-Section.Text = "Section"
-Section.TextColor3 = Theme.Title
-Section.BackgroundTransparency = 1
-Section.Size = UDim2.new(1, 0, 0, 30)
-Section.TextXAlignment = Enum.TextXAlignment.Left
-Section.Parent = Components
-
--- Button
-local Button = Instance.new("TextButton")
-Button.Name = "Button"
-Button.Size = UDim2.new(1, 0, 0, 50)
-Button.BackgroundColor3 = Theme.Component
-Button.Text = ""
-Button.Parent = Components
-
-local Labels = Instance.new("Frame")
-Labels.Name = "Labels"
-Labels.Size = UDim2.new(1, 0, 1, 0)
-Labels.BackgroundTransparency = 1
-Labels.Parent = Button
-
-local Title = Instance.new("TextLabel")
-Title.Name = "Title"
-Title.Text = "Button"
-Title.TextColor3 = Theme.Title
-Title.Size = UDim2.new(1, 0, 0.5, 0)
-Title.BackgroundTransparency = 1
-Title.Parent = Labels
-
-local Description = Instance.new("TextLabel")
-Description.Name = "Description"
-Description.Text = "Description"
-Description.TextColor3 = Theme.Description
-Description.Size = UDim2.new(1, 0, 0.5, 0)
-Description.Position = UDim2.new(0, 0, 0.5, 0)
-Description.BackgroundTransparency = 1
-Description.Parent = Labels
-
--- Input
-local Input = Instance.new("Frame")
-Input.Name = "Input"
-Input.Size = UDim2.new(1, 0, 0, 50)
-Input.BackgroundColor3 = Theme.Component
-Input.Parent = Components
-
-local Labels = Instance.new("Frame")
-Labels.Name = "Labels"
-Labels.Size = UDim2.new(1, 0, 0.5, 0)
-Labels.BackgroundTransparency = 1
-Labels.Parent = Input
-
-local Title = Instance.new("TextLabel")
-Title.Name = "Title"
-Title.Text = "Input"
-Title.TextColor3 = Theme.Title
-Title.Size = UDim2.new(1, 0, 1, 0)
-Title.BackgroundTransparency = 1
-Title.Parent = Labels
-
-local Description = Instance.new("TextLabel")
-Description.Name = "Description"
-Description.Text = "Description"
-Description.TextColor3 = Theme.Description
-Description.Size = UDim2.new(1, 0, 1, 0)
-Description.BackgroundTransparency = 1
-Description.Parent = Labels
-
-local Main = Instance.new("Frame")
-Main.Name = "Main"
-Main.Size = UDim2.new(1, 0, 0.5, 0)
-Main.Position = UDim2.new(0, 0, 0.5, 0)
-Main.BackgroundColor3 = Theme.Interactables
-Main.Parent = Input
-
-local InputText = Instance.new("TextBox")
-InputText.Name = "Input"
-InputText.Size = UDim2.new(1, 0, 1, 0)
-InputText.BackgroundTransparency = 1
-InputText.TextColor3 = Theme.Title
-InputText.Parent = Main
-
--- Toggle
-local Toggle = Instance.new("Frame")
-Toggle.Name = "Toggle"
-Toggle.Size = UDim2.new(1, 0, 0, 50)
-Toggle.BackgroundColor3 = Theme.Component
-Toggle.Parent = Components
-
-local Labels = Instance.new("Frame")
-Labels.Name = "Labels"
-Labels.Size = UDim2.new(1, -60, 1, 0)
-Labels.BackgroundTransparency = 1
-Labels.Parent = Toggle
-
-local Title = Instance.new("TextLabel")
-Title.Name = "Title"
-Title.Text = "Toggle"
-Title.TextColor3 = Theme.Title
-Title.Size = UDim2.new(1, 0, 0.5, 0)
-Title.BackgroundTransparency = 1
-Title.Parent = Labels
-
-local Description = Instance.new("TextLabel")
-Description.Name = "Description"
-Description.Text = "Description"
-Description.TextColor3 = Theme.Description
-Description.Size = UDim2.new(1, 0, 0.5, 0)
-Description.Position = UDim2.new(0, 0, 0.5, 0)
-Description.BackgroundTransparency = 1
-Description.Parent = Labels
-
-local Value = Instance.new("BoolValue")
-Value.Name = "Value"
-Value.Value = false
-Value.Parent = Toggle
-
-local Main = Instance.new("Frame")
-Main.Name = "Main"
-Main.Size = UDim2.new(0, 40, 0, 20)
-Main.Position = UDim2.new(1, -50, 0.5, -10)
-Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Main.Parent = Toggle
-
-local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(1, 0)
-UICorner.Parent = Main
-
-local Circle = Instance.new("Frame")
-Circle.Name = "Circle"
-Circle.Size = UDim2.new(0, 14, 0, 14)
-Circle.Position = UDim2.new(0, 3, 0.5, 0)
-Circle.AnchorPoint = Vector2.new(0, 0.5)
-Circle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Circle.Parent = Main
-
-local UICorner2 = Instance.new("UICorner")
-UICorner2.CornerRadius = UDim.new(1, 0)
-UICorner2.Parent = Circle
-
--- Keybind
-local Keybind = Instance.new("Frame")
-Keybind.Name = "Keybind"
-Keybind.Size = UDim2.new(1, 0, 0, 50)
-Keybind.BackgroundColor3 = Theme.Component
-Keybind.Parent = Components
-
-local Labels = Instance.new("Frame")
-Labels.Name = "Labels"
-Labels.Size = UDim2.new(1, -70, 1, 0)
-Labels.BackgroundTransparency = 1
-Labels.Parent = Keybind
-
-local Title = Instance.new("TextLabel")
-Title.Name = "Title"
-Title.Text = "Keybind"
-Title.TextColor3 = Theme.Title
-Title.Size = UDim2.new(1, 0, 0.5, 0)
-Title.BackgroundTransparency = 1
-Title.Parent = Labels
-
-local Description = Instance.new("TextLabel")
-Description.Name = "Description"
-Description.Text = "Description"
-Description.TextColor3 = Theme.Description
-Description.Size = UDim2.new(1, 0, 0.5, 0)
-Description.Position = UDim2.new(0, 0, 0.5, 0)
-Description.BackgroundTransparency = 1
-Description.Parent = Labels
-
-local Main = Instance.new("Frame")
-Main.Name = "Main"
-Main.Size = UDim2.new(0, 60, 0, 30)
-Main.Position = UDim2.new(1, -70, 0.5, -15)
-Main.BackgroundColor3 = Theme.Interactables
-Main.Parent = Keybind
-
-local Options = Instance.new("TextLabel")
-Options.Name = "Options"
-Options.Size = UDim2.new(1, 0, 1, 0)
-Options.BackgroundTransparency = 1
-Options.Text = "Key"
-Options.TextColor3 = Theme.Title
-Options.Parent = Main
-
--- Dropdown
-local Dropdown = Instance.new("Frame")
-Dropdown.Name = "Dropdown"
-Dropdown.Size = UDim2.new(1, 0, 0, 50)
-Dropdown.BackgroundColor3 = Theme.Component
-Dropdown.Parent = Components
-
-local Labels = Instance.new("Frame")
-Labels.Name = "Labels"
-Labels.Size = UDim2.new(1, 0, 0.5, 0)
-Labels.BackgroundTransparency = 1
-Labels.Parent = Dropdown
-
-local Title = Instance.new("TextLabel")
-Title.Name = "Title"
-Title.Text = "Dropdown"
-Title.TextColor3 = Theme.Title
-Title.Size = UDim2.new(1, 0, 1, 0)
-Title.BackgroundTransparency = 1
-Title.Parent = Labels
-
-local Description = Instance.new("TextLabel")
-Description.Name = "Description"
-Description.Text = "Description"
-Description.TextColor3 = Theme.Description
-Description.Size = UDim2.new(1, 0, 1, 0)
-Description.BackgroundTransparency = 1
-Description.Parent = Labels
-
-local Main = Instance.new("Frame")
-Main.Name = "Main"
-Main.Size = UDim2.new(1, 0, 0.5, 0)
-Main.Position = UDim2.new(0, 0, 0.5, 0)
-Main.BackgroundColor3 = Theme.Interactables
-Main.Parent = Dropdown
-
-local Options = Instance.new("TextLabel")
-Options.Name = "Options"
-Options.Size = UDim2.new(1, 0, 1, 0)
-Options.BackgroundTransparency = 1
-Options.Text = "Select..."
-Options.TextColor3 = Theme.Title
-Options.Parent = Main
-
--- Slider
-local Slider = Instance.new("Frame")
-Slider.Name = "Slider"
-Slider.Size = UDim2.new(1, 0, 0, 50)
-Slider.BackgroundColor3 = Theme.Component
-Slider.Parent = Components
-
-local Labels = Instance.new("Frame")
-Labels.Name = "Labels"
-Labels.Size = UDim2.new(1, 0, 0.5, 0)
-Labels.BackgroundTransparency = 1
-Labels.Parent = Slider
-
-local Title = Instance.new("TextLabel")
-Title.Name = "Title"
-Title.Text = "Slider"
-Title.TextColor3 = Theme.Title
-Title.Size = UDim2.new(1, 0, 1, 0)
-Title.BackgroundTransparency = 1
-Title.Parent = Labels
-
-local Description = Instance.new("TextLabel")
-Description.Name = "Description"
-Description.Text = "Description"
-Description.TextColor3 = Theme.Description
-Description.Size = UDim2.new(1, 0, 1, 0)
-Description.BackgroundTransparency = 1
-Description.Parent = Labels
-
-local SliderMain = Instance.new("Frame")
-SliderMain.Name = "Slider"
-SliderMain.Size = UDim2.new(1, 0, 0.5, 0)
-SliderMain.Position = UDim2.new(0, 0, 0.5, 0)
-SliderMain.BackgroundTransparency = 1
-SliderMain.Parent = Slider
-
-local Main = Instance.new("Frame")
-Main.Name = "Main"
-Main.Size = UDim2.new(0, 50, 1, 0)
-Main.Position = UDim2.new(1, -60, 0, 0)
-Main.BackgroundTransparency = 1
-Main.Parent = SliderMain
-
-local Input = Instance.new("TextLabel")
-Input.Name = "Input"
-Input.Size = UDim2.new(1, 0, 1, 0)
-Input.BackgroundTransparency = 1
-Input.Text = "0"
-Input.TextColor3 = Theme.Title
-Input.Parent = Main
-
-local Slide = Instance.new("Frame")
-Slide.Name = "Slide"
-Slide.Size = UDim2.new(1, -70, 0, 10)
-Slide.Position = UDim2.new(0, 0, 0.5, -5)
-Slide.BackgroundColor3 = Theme.Interactables
-Slide.Parent = SliderMain
-
-local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(1, 0)
-UICorner.Parent = Slide
-
-local Fire = Instance.new("TextButton")
-Fire.Name = "Fire"
-Fire.Size = UDim2.new(1, 0, 1, 0)
-Fire.BackgroundTransparency = 1
-Fire.Text = ""
-Fire.Parent = Slide
-
-local Highlight = Instance.new("Frame")
-Highlight.Name = "Highlight"
-Highlight.Size = UDim2.new(0, 0, 1, 0)
-Highlight.BackgroundColor3 = Color3.fromRGB(153, 155, 255)
-Highlight.Parent = Slide
-
-local UICorner2 = Instance.new("UICorner")
-UICorner2.CornerRadius = UDim.new(1, 0)
-UICorner2.Parent = Highlight
-
-local Circle = Instance.new("Frame")
-Circle.Name = "Circle"
-Circle.Size = UDim2.new(0, 10, 0, 10)
-Circle.Position = UDim2.new(1, -5, 0.5, -5)
-Circle.AnchorPoint = Vector2.new(0.5, 0.5)
-Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Circle.Parent = Highlight
-
-local UICorner3 = Instance.new("UICorner")
-UICorner3.CornerRadius = UDim.new(1, 0)
-UICorner3.Parent = Circle
-
--- Paragraph
-local Paragraph = Instance.new("Frame")
-Paragraph.Name = "Paragraph"
-Paragraph.Size = UDim2.new(1, 0, 0, 60)
-Paragraph.BackgroundColor3 = Theme.Component
-Paragraph.Parent = Components
-
-local Labels = Instance.new("Frame")
-Labels.Name = "Labels"
-Labels.Size = UDim2.new(1, 0, 1, 0)
-Labels.BackgroundTransparency = 1
-Labels.Parent = Paragraph
-
-local TitleLabel = Instance.new("TextLabel")
-TitleLabel.Name = "Title"
-TitleLabel.Text = "Paragraph"
-TitleLabel.TextColor3 = Theme.Title
-TitleLabel.Size = UDim2.new(1, 0, 0.5, 0)
-TitleLabel.BackgroundTransparency = 1
-TitleLabel.Parent = Labels
-
-local DescriptionLabel = Instance.new("TextLabel")
-DescriptionLabel.Name = "Description"
-DescriptionLabel.Text = "Description"
-DescriptionLabel.TextColor3 = Theme.Description
-DescriptionLabel.Size = UDim2.new(1, 0, 0.5, 0)
-DescriptionLabel.Position = UDim2.new(0, 0, 0.5, 0)
-DescriptionLabel.BackgroundTransparency = 1
-DescriptionLabel.TextWrapped = true
-DescriptionLabel.Parent = Labels
-
--- Notification
-local Notification = Instance.new("CanvasGroup")
-Notification.Name = "Notification"
-Notification.Size = UDim2.new(0, 300, 0, 100)
-Notification.BackgroundColor3 = Theme.Primary
-Notification.GroupTransparency = 1
-Notification.Visible = false
-Notification.Parent = Components
-
-local Labels = Instance.new("Frame")
-Labels.Name = "Labels"
-Labels.Size = UDim2.new(1, 0, 1, 0)
-Labels.BackgroundTransparency = 1
-Labels.Parent = Notification
-
-local Title = Instance.new("TextLabel")
-Title.Name = "Title"
-Title.Text = "Notification"
-Title.TextColor3 = Theme.Title
-Title.Size = UDim2.new(1, 0, 0.5, 0)
-Title.BackgroundTransparency = 1
-Title.Parent = Labels
-
-local Description = Instance.new("TextLabel")
-Description.Name = "Description"
-Description.Text = "Description"
-Description.TextColor3 = Theme.Description
-Description.Size = UDim2.new(1, 0, 0.5, 0)
-Description.Position = UDim2.new(0, 0, 0.5, 0)
-Description.BackgroundTransparency = 1
-Description.Parent = Labels
-
-local Timer = Instance.new("Frame")
-Timer.Name = "Timer"
-Timer.Size = UDim2.new(1, 0, 0, 4)
-Timer.Position = UDim2.new(0, 0, 1, -4)
-Timer.BackgroundColor3 = Theme.Outline
-Timer.Parent = Notification
-
-local UIStroke = Instance.new("UIStroke")
-UIStroke.Color = Theme.Outline
-UIStroke.Parent = Notification
-
-Blur = {
-    new = function(frame, intensity)
-        local effect = Instance.new("BlurEffect")
-        effect.Size = intensity or 5
-        effect.Parent = workspace.CurrentCamera
-        return {root = effect}
-    end
-}
-
 --// Tables for Data
 local Animations = {}
 local Blurs = {}
@@ -980,20 +348,18 @@ function Library:CreateWindow(Settings: {
     layout.Padding = UDim.new(0, 5)
     layout.Parent = windowControls
 
-    local minimizeBtn = Instance.new('TextButton')
+    local minimizeBtn = Instance.new('ImageButton')
     minimizeBtn.Name = 'MinimizeButton'
-    minimizeBtn.Text = '-'
-    minimizeBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+    minimizeBtn.Image = 'rbxassetid://13479354099'
     minimizeBtn.Size = UDim2.new(0, 20, 0, 20)
     minimizeBtn.BackgroundTransparency = 1
     minimizeBtn.LayoutOrder = 1
     minimizeBtn.ZIndex = 11
     minimizeBtn.Parent = windowControls
 
-    local exitBtn = Instance.new('TextButton')
+    local exitBtn = Instance.new('ImageButton')
     exitBtn.Name = 'ExitButton'
-    exitBtn.Text = 'X'
-    exitBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+    exitBtn.Image = 'rbxassetid://13479354099'
     exitBtn.Size = UDim2.new(0, 20, 0, 20)
     exitBtn.BackgroundTransparency = 1
     exitBtn.LayoutOrder = 2
@@ -1168,7 +534,7 @@ function Library:CreateWindow(Settings: {
 
     Services.Input.InputBegan:Connect(function(Input, Focused)
         if
-            (Input == Setup.Keybind or Input.KeyCode = Setup.Keybind)
+            (Input == Setup.Keybind or Input.KeyCode == Setup.Keybind)
             and not Focused
         then
             Close()
@@ -1293,7 +659,11 @@ function Library:CreateWindow(Settings: {
 
         local TabsHolder = self:EnsureTabsHolder(Example)
 
-        Destroy(Tab['ICO']) -- Always destroy ICO since no external images
+        if not Settings.Icon then
+            Destroy(Tab['ICO'])
+        else
+            SetProperty(Tab['ICO'], { Image = Settings.Icon })
+        end
 
         StoredInfo['Tabs'][Settings.Title] = { Tab }
         SetProperty(Tab['TextLabel'], { Text = Settings.Title })
@@ -1378,13 +748,13 @@ function Library:CreateWindow(Settings: {
         local Button = Clone(Components['Button'])
         local Title, Description = Options:GetLabels(Button)
 
-        local RightImage = Instance.new('TextLabel')
+        local RightImage = Instance.new('ImageLabel')
         RightImage.Name = 'RightImage'
         RightImage.Size = UDim2.new(0, 22, 0, 22)
         RightImage.Position = UDim2.new(1, -41, 0.5, -10)
-        RightImage.Text = '>'
+        RightImage.Image = 'rbxassetid://13479354099'
         RightImage.BackgroundTransparency = 1
-        RightImage.TextColor3 = Color3.fromRGB(0, 0, 0)
+        RightImage.ImageColor3 = Color3.fromRGB(0, 0, 0)
         RightImage.Parent = Button
 
         Connect(Button.MouseButton1Click, Settings.Callback)
@@ -1793,13 +1163,12 @@ function Library:CreateWindow(Settings: {
                 BtnTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
 
                 local Checkmark = Button:FindFirstChild('Checkmark')
-                    or Instance.new('TextLabel')
+                    or Instance.new('ImageLabel')
                 Checkmark.Name = 'Checkmark'
                 Checkmark.Size = UDim2.new(0, 16, 0, 16)
                 Checkmark.Position = UDim2.new(1, -20, 0.5, -8)
-                Checkmark.Text = '✓'
+                Checkmark.Image = 'rbxassetid://13479354099'
                 Checkmark.BackgroundTransparency = 1
-                Checkmark.TextColor3 = Color3.fromRGB(0, 0, 0)
                 Checkmark.Visible = isSelected and true or false
                 Checkmark.Parent = Button
 
@@ -2166,7 +1535,9 @@ function Library:CreateWindow(Settings: {
 
         Classes = {
             ['ImageLabel'] = function(Label)
-                Label.ImageColor3 = Theme.Icon
+                if Label.Image ~= 'rbxassetid://13479354099' then
+                    Label.ImageColor3 = Theme.Icon
+                end
             end,
 
             ['TextLabel'] = function(Label)
