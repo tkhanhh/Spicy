@@ -1,7 +1,8 @@
 
+
 --[[
     User Interface Library
-    Made by Late v8
+    Made by Late v9
 ]]
 --// Connections
 local GetService = game.GetService
@@ -336,11 +337,38 @@ function Library:CreateWindow(Settings: {
     Blurring: boolean,
     Theme: string,
 })
-    local Window = Clone(Screen:WaitForChild('Main'))
+    -- Obtain the base window template from Screen. If missing, create a minimal structure.
+    local Window = Clone(Screen:FindFirstChild('Main'))
+    if not Window then
+        Window = Instance.new('Frame')
+        Window.Name = 'Main'
+        Window.Parent = Screen
+    end
+    -- Ensure required child containers exist to prevent nil indexing.
     local Sidebar = Window:FindFirstChild('Sidebar')
+    if not Sidebar then
+        Sidebar = Instance.new('Frame')
+        Sidebar.Name = 'Sidebar'
+        Sidebar.Parent = Window
+    end
     local Holder = Window:FindFirstChild('Main')
+    if not Holder then
+        Holder = Instance.new('Frame')
+        Holder.Name = 'Main'
+        Holder.Parent = Window
+    end
     local BG = Window:FindFirstChild('BackgroundShadow')
+    if not BG then
+        BG = Instance.new('Frame')
+        BG.Name = 'BackgroundShadow'
+        BG.Parent = Window
+    end
     local Tab = Sidebar:FindFirstChild('Tab')
+    if not Tab then
+        Tab = Instance.new('Frame')
+        Tab.Name = 'Tab'
+        Tab.Parent = Sidebar
+    end
     local Options = {}
     local Examples = {}
     local Opened = true
