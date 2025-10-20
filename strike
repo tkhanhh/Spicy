@@ -3,7 +3,7 @@
 
 --[[
     User Interface Library
-    Made by Late v10
+    Made by Late v11
 ]]
 --// Connections
 local GetService = game.GetService
@@ -68,6 +68,11 @@ local Tween = function(
         :Play()
 end
 local SetProperty = function(Object: Instance, Properties: {})
+    -- Safely assign properties only if the target object exists. This prevents
+    -- attempts to index nil values (e.g. when a UIStroke or other element is missing).
+    if not Object then
+        return nil
+    end
     for Index, Property in next, Properties do
         Object[Index] = Property
     end
@@ -276,13 +281,18 @@ function Animations:Open(
     local Original = (UseCurrentSize and Window.Size) or Setup.Size
     local Multiplied = Multiply(Original, 1.1)
     local Shadow = Window:FindFirstChildOfClass('UIStroke')
-    SetProperty(Shadow, { Transparency = 1 })
+    -- Only set properties and tween the shadow if it exists
+    if Shadow then
+        SetProperty(Shadow, { Transparency = 1 })
+    end
     SetProperty(Window, {
         Size = Multiplied,
         GroupTransparency = 1,
         Visible = true,
     })
-    Tween(Shadow, 0.25, { Transparency = 0.5 })
+    if Shadow then
+        Tween(Shadow, 0.25, { Transparency = 0.5 })
+    end
     Tween(Window, 0.25, {
         Size = Original,
         GroupTransparency = Transparency or 0,
@@ -295,7 +305,10 @@ function Animations:Close(Window: CanvasGroup)
     SetProperty(Window, {
         Size = Original,
     })
-    Tween(Shadow, 0.25, { Transparency = 1 })
+    -- Only tween the shadow if it exists
+    if Shadow then
+        Tween(Shadow, 0.25, { Transparency = 1 })
+    end
     Tween(Window, 0.25, {
         Size = Multiplied,
         GroupTransparency = 1,
