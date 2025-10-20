@@ -3,7 +3,7 @@
 
 --[[
     User Interface Library
-    Made by Late v11
+    Made by Late v12
 ]]
 --// Connections
 local GetService = game.GetService
@@ -235,12 +235,12 @@ if not Screen then
     Screen = Instance.new('ScreenGui')
     Screen.Name = 'LibraryScreen'
 end
--- Ensure the UI has a 'Main' frame; create a basic one if absent.
-if not Screen:FindFirstChild('Main') then
-    local mainFrame = Instance.new('Frame')
-    mainFrame.Name = 'Main'
-    mainFrame.Parent = Screen
-end
+    -- Ensure the UI has a 'Main' container; create a basic CanvasGroup one if absent.
+    if not Screen:FindFirstChild('Main') then
+        local mainFrame = Instance.new('CanvasGroup')
+        mainFrame.Name = 'Main'
+        mainFrame.Parent = Screen
+    end
 -- Ensure the UI has a 'Components' container; create a basic folder if absent.
 if not Screen:FindFirstChild('Components') then
     local componentsFolder = Instance.new('Folder')
@@ -354,7 +354,8 @@ function Library:CreateWindow(Settings: {
     -- Obtain the base window template from Screen. If missing, create a minimal structure.
     local Window = Clone(Screen:FindFirstChild('Main'))
     if not Window then
-        Window = Instance.new('Frame')
+        -- Create a CanvasGroup instead of a Frame so that GroupTransparency and related properties are available.
+        Window = Instance.new('CanvasGroup')
         Window.Name = 'Main'
         Window.Parent = Screen
     end
@@ -367,7 +368,8 @@ function Library:CreateWindow(Settings: {
     end
     local Holder = Window:FindFirstChild('Main')
     if not Holder then
-        Holder = Instance.new('Frame')
+        -- Use a CanvasGroup for Holder to support GroupTransparency
+        Holder = Instance.new('CanvasGroup')
         Holder.Name = 'Main'
         Holder.Parent = Window
     end
