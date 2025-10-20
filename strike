@@ -1,5 +1,6 @@
 
 
+
 local MacLib = { 
 	Options = {}, 
 	Folder = "Maclib", 
@@ -8,7 +9,7 @@ local MacLib = {
 	end
 }
 
---// Services
+--// Serviceszz
 local TweenService = MacLib.GetService("TweenService")
 local RunService = MacLib.GetService("RunService")
 local HttpService = MacLib.GetService("HttpService")
@@ -722,6 +723,8 @@ headshot.Image = (isReady and headshotImage) or ""
 	topbar.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	topbar.BorderSizePixel = 0
 	topbar.Size = UDim2.new(1, 0, 0, 63)
+    -- make the entire topbar interactive so it can act as the drag area
+    topbar.Active = true
 
 	local divider4 = Instance.new("Frame")
 	divider4.Name = "Divider"
@@ -826,26 +829,29 @@ headshot.Image = (isReady and headshotImage) or ""
 		end
 	end
 
-	if not Settings.DragStyle or Settings.DragStyle == 1 then
-		interact.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				onDragStart(input)
-			end
-		end)
+    if not Settings.DragStyle or Settings.DragStyle == 1 then
+        -- Enable dragging on the entire topbar instead of only a small corner.  With
+        -- Active set to true on the topbar, input events fire when the user
+        -- interacts anywhere on the topbar.
+        topbar.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                onDragStart(input)
+            end
+        end)
 
-		interact.InputChanged:Connect(onDragUpdate)
+        topbar.InputChanged:Connect(onDragUpdate)
 
-		UserInputService.InputChanged:Connect(function(input)
-			if input == dragInput and dragging_ then
-				update(input)
-			end
-		end)
+        UserInputService.InputChanged:Connect(function(input)
+            if input == dragInput and dragging_ then
+                update(input)
+            end
+        end)
 
-		interact.InputEnded:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				dragging_ = false
-			end
-		end)
+        topbar.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                dragging_ = false
+            end
+        end)
 	elseif Settings.DragStyle == 2 then
 		base.InputBegan:Connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
