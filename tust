@@ -4,7 +4,7 @@
     | |/ |/ / / _ \/ _  / /_/ // /  
     |__/|__/_/_//_/\_,_/\____/___/
     
-    v1.6.56  |  2025-10-20  |  Roblox UI Library for scripts
+    v1.6.56  |  2025-10-20  |  Roblox UI Library for scriptszzz
     
     This script is NOT intended to be modified.
     To view the source code, see the `src/` folder on the official GitHub repository.
@@ -44,18 +44,31 @@ local f=game:GetService"TweenService"
 local g=game:GetService"LocalizationService"
 local h=game:GetService"HttpService"
 
-local i="https://raw.githubusercontent.com/Footagesus/Icons/main/Main-v2.lua"
-
-local j=loadstring(
-game.HttpGetAsync and game:HttpGetAsync(i)
-or h:GetAsync(i)
-)()
-j.SetIconsType"lucide"
+-- Disable external icons library; provide a dummy icons table to avoid external dependencies
+-- The original implementation fetched a remote Lua script containing icon data and
+-- set up icon types. To remove any reliance on external assets, we replace
+-- this mechanism with a simple table. The `Icon` function returns an empty
+-- image string and a dummy rectangle for compatibility, while other
+-- functions become no-ops.
+local j = {
+    -- Return a tuple consisting of an empty image string and a dummy
+    -- `ImageRectPosition`/`ImageRectSize` table. This ensures that code
+    -- calling `Icon(name)` will still receive a valid structure without
+    -- referencing any Roblox asset IDs.
+    Icon = function(name)
+        return {"", {ImageRectPosition = Vector2.new(0, 0), ImageRectSize = Vector2.new(0, 0)}}
+    end,
+    -- `SetIconsType` does nothing in this dummy implementation.
+    SetIconsType = function() end,
+    -- Additional icon definitions can be registered here; they will have no effect.
+    AddIcons = function() end
+}
 
 local l
 
 local m={
-Font="rbxassetid://12187365364",
+-- Use a built‑in font enumeration instead of an asset ID to avoid external dependencies.
+Font = Enum.Font.SourceSans,
 Localization=nil,
 CanDraggable=true,
 Theme=nil,
@@ -462,85 +475,101 @@ return f:Create(p,TweenInfo.new(r,...),u)
 end
 
 function m.NewRoundFrame(p,r,u,v,A,B)
-local function getImageForType(C)
-return C=="Squircle"and"rbxassetid://126787265954256"
-or C=="SquircleOutline"and""
-or C=="SquircleOutline2"and""
-or C=="Squircle-Outline"and"" --
-or C=="Shadow-sm"and""
-or C=="Squircle-TL-TR"and"" --
-or C=="Squircle-BL-BR"and"" --
-or C=="Squircle-TL-TR-Outline"and"" --
-or C=="Squircle-BL-BR-Outline"and""
-or C=="Square"and"" --
-or C=="Square-Outline"and"" --
-end
+    -- Provide a simple wrapper around ImageLabel to avoid external asset IDs.
+    -- Instead of mapping different shape names to asset IDs, we return an empty
+    -- image string. The UI element still exposes properties such as
+    -- ImageTransparency and ImageColor3 for compatibility with existing code,
+    -- while a UICorner is applied to control rounding based on the radius.
+    local function getImageForType(_)
+        -- Always return an empty string to avoid loading any Roblox assets
+        return ""
+    end
 
-local function getSliceCenterForType(C)
-return C~="Shadow-sm"and Rect.new(256
-,256
-,256
-,256
+    local function getSliceCenterForType(_)
+        -- Provide a default Rect; with an empty image this value is not used
+        return Rect.new(0,0,0,0)
+    end
 
-)or Rect.new(512,512,512,512)
-end
+    -- Create an ImageLabel (or ImageButton if A is truthy) using the supplied
+    -- properties. The image is always an empty string, so no asset is loaded.
+    local obj = m.New(A and "ImageButton" or "ImageLabel",{
+        Image = getImageForType(r),
+        ScaleType = "Slice",
+        SliceCenter = getSliceCenterForType(r),
+        SliceScale = 1,
+        BackgroundTransparency = 1,
+        ThemeTag = u and u.ThemeTag or nil
+    },v)
 
-local C=m.New(A and"ImageButton"or"ImageLabel",{
-Image=getImageForType(r),
-ScaleType="Slice",
-SliceCenter=getSliceCenterForType(r),
-SliceScale=1,
-BackgroundTransparency=1,
-ThemeTag=u.ThemeTag and u.ThemeTag
-},v)
+    -- Apply provided properties to the new object (except ThemeTag which is handled above)
+    for key, value in pairs(u or {}) do
+        if key ~= "ThemeTag" then
+            obj[key] = value
+        end
+    end
 
-for F,G in pairs(u or{})do
-if F~="ThemeTag"then
-C[F]=G
-end
-end
+    -- If ImageColor3 or ImageTransparency were supplied on the properties table,
+    -- map them onto the BackgroundColor3 and BackgroundTransparency of the
+    -- resulting ImageLabel. This allows color and transparency settings to
+    -- continue to affect the UI element even though the `Image` itself is
+    -- empty.
+    if u and u.ImageColor3 then
+        obj.BackgroundColor3 = u.ImageColor3
+    end
+    if u and u.ImageTransparency then
+        obj.BackgroundTransparency = u.ImageTransparency
+    end
 
-local function UpdateSliceScale(H)
-local J=r~="Shadow-sm"and(H/(256))or(H/512)
-C.SliceScale=math.max(J,0.0001)
-end
+    -- Apply a UICorner to provide rounded corners using the radius
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, p)
+    corner.Parent = obj
 
-local H={}
+    -- The helper provides methods to manipulate the corner radius and type
+    local helper = {}
 
-function H.SetRadius(J,L)
-UpdateSliceScale(L)
-end
+    local function UpdateSliceScale(_)
+        -- SliceScale is kept for compatibility; the value is arbitrary when no image is used
+        local J = r ~= "Shadow-sm" and (p/256) or (p/512)
+        obj.SliceScale = math.max(J, 0.0001)
+    end
 
-function H.SetType(J,L)
-r=L
-C.Image=getImageForType(L)
-C.SliceCenter=getSliceCenterForType(L)
-UpdateSliceScale(p)
-end
-
-function H.UpdateShape(J,L,M)
-if M then
-r=M
-C.Image=getImageForType(M)
-C.SliceCenter=getSliceCenterForType(M)
-end
-if L then
-p=L
-end
-UpdateSliceScale(p)
-end
-
-function H.GetRadius(J)
-return p
-end
-
-function H.GetType(J)
-return r
-end
-
-UpdateSliceScale(p)
-
-return C,B and H or nil
+    function helper.SetRadius(_, L)
+        p = L
+        corner.CornerRadius = UDim.new(0, L)
+        UpdateSliceScale(L)
+    end
+    function helper.SetType(_, L)
+        -- Update the stored type; since we always return an empty image, no asset is loaded
+        r = L
+        obj.Image = getImageForType(L)
+        obj.SliceCenter = getSliceCenterForType(L)
+        UpdateSliceScale(p)
+    end
+    function helper.UpdateShape(_, L, M)
+        if M then
+            r = M
+            obj.Image = getImageForType(M)
+            obj.SliceCenter = getSliceCenterForType(M)
+        end
+        if L then
+            p = L
+            corner.CornerRadius = UDim.new(0, L)
+        end
+        UpdateSliceScale(p)
+    end
+    function helper.GetRadius(_)
+        return p
+    end
+    function helper.GetType(_)
+        return r
+    end
+    UpdateSliceScale(p)
+    if B then
+        return obj, helper
+    else
+        return obj
+    end
 end
 
 local p=m.New local r=
@@ -1424,7 +1453,7 @@ return aa end function a.h()
 return{
 platoboost={
 Name="Platoboost",
-Icon="",
+    Icon="",
 Args={"ServiceId","Secret"},
 
 
@@ -1432,7 +1461,7 @@ New=a.load'e'.New
 },
 pandadevelopment={
 Name="Panda Development",
-Icon="panda",
+    Icon="",
 Args={"ServiceId"},
 
 
@@ -1440,7 +1469,7 @@ New=a.load'f'.New
 },
 luarmor={
 Name="Luarmor",
-Icon="",
+    Icon="",
 Args={"ScriptId","Discord"},
 
 
@@ -2644,7 +2673,7 @@ CornerRadius=UDim.new(0,8),
 }),
 
 ac("ImageLabel",{
-Image="rbxassetid://9968344227",
+Image="",
 ImageTransparency=0.9,
 ScaleType=Enum.ScaleType.Tile,
 TileSize=UDim2.new(0,128,0,128),
@@ -5236,6 +5265,95 @@ end
 return al,ai
 end
 
+    -- Override the toggle constructor to remove external assets.  This override
+    -- defines a new implementation of aa.New within the a.C module.  It
+    -- creates a toggle using simple frames, rounding corners with UICorner,
+    -- and animates the knob movement and track colour using the Tween
+    -- function.  External icon names are ignored.
+    aa.New = function(ae, af, ag, ah)
+        local ai = {}
+        -- Dimensions for the toggle
+        local trackWidth, trackHeight = 42, 26
+        local knobSize = 18
+        -- Create the track frame
+        local al = ac("Frame", {
+            Parent = ag,
+            Size = UDim2.new(0, trackWidth, 0, trackHeight),
+            BackgroundColor3 = Color3.fromRGB(32, 32, 32),
+            BackgroundTransparency = 0,
+            BorderSizePixel = 0,
+            Name = "ToggleTrack",
+        }, {
+            ac("UICorner", {
+                CornerRadius = UDim.new(1, 0),
+            }),
+        })
+        -- Create the knob
+        local knob = ac("Frame", {
+            Parent = al,
+            Size = UDim2.new(0, knobSize, 0, knobSize),
+            AnchorPoint = Vector2.new(0, 0.5),
+            Position = UDim2.new(0, 3, 0.5, 0),
+            BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+            BackgroundTransparency = 0,
+            BorderSizePixel = 0,
+            Name = "Knob",
+        }, {
+            ac("UICorner", {
+                CornerRadius = UDim.new(1, 0),
+            }),
+        })
+        -- Save initial state as a boolean
+        ai.value = not not ae
+        -- Define setter to update visuals and optionally invoke callback
+        function ai:Set(state, callbackFlag)
+            local newState = not not state
+            -- Determine knob target position
+            local targetPosition
+            if newState then
+                targetPosition = UDim2.new(1, -(knobSize + 4), 0.5, 0)
+            else
+                targetPosition = UDim2.new(0, 3, 0.5, 0)
+            end
+            -- Animate knob movement
+            ad(knob, 0.15, {
+                Position = targetPosition,
+            }, Enum.EasingStyle.Quint, Enum.EasingDirection.Out):Play()
+            -- Determine track colour based on state
+            local targetColour
+            if newState then
+                targetColour = Color3.fromRGB(0, 170, 255)
+            else
+                targetColour = Color3.fromRGB(32, 32, 32)
+            end
+            -- Animate track colour change
+            ad(al, 0.15, {
+                BackgroundColor3 = targetColour,
+            }, Enum.EasingStyle.Quint, Enum.EasingDirection.Out):Play()
+            -- Store new state
+            ai.value = newState
+            -- Handle callback invocation
+            local shouldCallback = callbackFlag
+            if shouldCallback == nil then
+                shouldCallback = true
+            end
+            if shouldCallback and ah then
+                task.spawn(function()
+                    ab.SafeCallback(ah, newState)
+                end)
+            end
+        end
+        -- Connect user interaction
+        al.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                ai:Set(not ai.value, true)
+            end
+        end)
+        -- Initialise without invoking callback
+        ai:Set(ai.value, false)
+        return al, ai
+    end
+
 
 return aa end function a.D()
 local aa={}
@@ -6852,7 +6970,7 @@ Visible=al and true or false
 ag("ImageLabel",{
 Size=UDim2.new(0,18,0,18),
 BackgroundTransparency=1,
-Image="rbxassetid://132464694294269",
+    Image="",
 
 
 
@@ -7095,7 +7213,7 @@ CornerRadius=UDim.new(1,0),
 aw.UIElements.SatVibMap=ae("ImageLabel",{
 Size=UDim2.fromOffset(160,158),
 Position=UDim2.fromOffset(0,40+aw.TextPadding),
-Image="rbxassetid://4155801252",
+Image="",
 BackgroundColor3=Color3.fromHSV(az,1,1),
 BackgroundTransparency=0,
 Parent=ay.UIElements.Main,
@@ -7454,7 +7572,7 @@ ae("UICorner",{
 CornerRadius=UDim.new(1,0),
 }),
 ae("ImageLabel",{
-Image="rbxassetid://14204231522",
+Image="",
 ImageTransparency=0.45,
 ScaleType=Enum.ScaleType.Tile,
 TileSize=UDim2.fromOffset(40,40),
@@ -9556,7 +9674,7 @@ Active=true
 aj("ImageLabel",{
 Size=UDim2.new(0,96,0,96),
 BackgroundTransparency=1,
-Image="rbxassetid://120997033468887",
+Image="",
 Position=UDim2.new(0.5,-16,0.5,-16),
 AnchorPoint=Vector2.new(0.5,0.5),
 ImageTransparency=1,
@@ -9691,7 +9809,7 @@ PaddingBottom=UDim.new(0,ar.UIPadding/2),
 })
 
 local ay=aj("ImageLabel",{
-Image="rbxassetid://8992230677",
+Image="",
 ImageColor3=Color3.new(0,0,0),
 ImageTransparency=1,
 Size=UDim2.new(1,120,1,116),
