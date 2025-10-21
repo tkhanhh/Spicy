@@ -4,7 +4,7 @@
     | |/ |/ / / _ \/ _  / /_/ // /  
     |__/|__/_/_//_/\_,_/\____/___/
     
-    v1.6.56  |  2025-10-20  |  Roblox UI Library for scripts
+    v1.6.56  |  2025-10-20  |  Roblox UI Library for scriptzzzs
     
     This script is NOT intended to be modified.
     To view the source code, see the `src/` folder on the official GitHub repository.
@@ -18,7 +18,8 @@
 local a a={cache={}, load=function(b)if not a.cache[b]then a.cache[b]={c=a[b]()}end return a.cache[b].c end}do function a.a()return{
 Dialog="Accent",
 
-Background="Accent",
+-- Use the dedicated black colour for all backgrounds instead of Accent
+Background="Black",
 Hover="Text",
 
 WindowBackground="Background",
@@ -55,7 +56,8 @@ j.SetIconsType"lucide"
 local l
 
 local m={
-Font="rbxassetid://12187365364",
+    -- Use a built‑in font instead of an external asset ID.
+    Font="Gotham",
 Localization=nil,
 CanDraggable=true,
 Theme=nil,
@@ -131,6 +133,8 @@ Green="#43a047",
 Blue="#039be5",
 White="#ffffff",
 Grey="#484848",
+    -- Added a dedicated black colour for UI backgrounds
+    Black="#000000",
 },
 ThemeFallbacks=a.load'a'
 }
@@ -463,35 +467,24 @@ end
 
 function m.NewRoundFrame(p,r,u,v,A,B)
 local function getImageForType(C)
-return C=="Squircle"and"rbxassetid://74101811151958"
-or C=="SquircleOutline"and""
-or C=="SquircleOutline2"and""
-or C=="Squircle-Outline"and"" --
-or C=="Shadow-sm"and""
-or C=="Squircle-TL-TR"and"" --
-or C=="Squircle-BL-BR"and"" --
-or C=="Squircle-TL-TR-Outline"and"" --
-or C=="Squircle-BL-BR-Outline"and""
-or C=="Square"and"" --
-or C=="Square-Outline"and"" --
+    -- Remove all assetId usage; return an empty string for every shape. The UI uses Frames and UIStroke
+    -- objects to approximate rounded rectangles instead of external images.
+    return ""
 end
 
 local function getSliceCenterForType(C)
-return C~="Shadow-sm"and Rect.new(256
-,256
-,256
-,256
-
-)or Rect.new(512,512,512,512)
+    -- Without an image, slice centres are no longer used.
+    return nil
 end
 
-local C=m.New(A and"ImageButton"or"ImageLabel",{
-Image=getImageForType(r),
-ScaleType="Slice",
-SliceCenter=getSliceCenterForType(r),
-SliceScale=1,
-BackgroundTransparency=1,
-ThemeTag=u.ThemeTag and u.ThemeTag
+local C=m.New(A and "ImageButton" or "ImageLabel",{
+    -- Do not assign an image; the object colour/transparency will be controlled via BackgroundColor3.
+    Image="",
+    ScaleType=nil,
+    SliceCenter=nil,
+    SliceScale=nil,
+    BackgroundTransparency=1,
+    ThemeTag=u and u.ThemeTag or nil
 },v)
 
 for F,G in pairs(u or{})do
@@ -499,6 +492,36 @@ if F~="ThemeTag"then
 C[F]=G
 end
 end
+
+    -- When no external image is used, mimic the rounded or square shapes using UICorner and UIStroke
+    -- Instead of using ImageColor3/ImageTransparency on an image asset, assign them to the Frame itself.
+    local fillColor = nil
+    local fillTransparency = nil
+    if u then
+        fillColor = u.ImageColor3
+        fillTransparency = u.ImageTransparency
+    end
+    -- Apply fill colour and transparency to the background
+    if fillColor then
+        C.BackgroundColor3 = fillColor
+    end
+    if fillTransparency ~= nil then
+        C.BackgroundTransparency = fillTransparency
+    else
+        C.BackgroundTransparency = C.BackgroundTransparency or 0
+    end
+    -- Apply corner radius based on the provided radius argument
+    m.New("UICorner",{CornerRadius=UDim.new(0,p)},C)
+    -- If the type includes "Outline" then create a UIStroke and make the fill transparent
+    if type(r)=="string" and string.find(r,"Outline") then
+        C.BackgroundTransparency = 1
+        local strokeColor = fillColor or Color3.new(1,1,1)
+        local strokeTransparency = fillTransparency ~= nil and fillTransparency or 0
+        m.New("UIStroke",{Color=strokeColor,Transparency=strokeTransparency,Thickness=1},C)
+    end
+    -- Remove unused slice properties
+    C.SliceCenter = nil
+    C.SliceScale = nil
 
 local function UpdateSliceScale(H)
 local J=r~="Shadow-sm"and(H/(256))or(H/512)
@@ -513,16 +536,19 @@ end
 
 function H.SetType(J,L)
 r=L
-C.Image=getImageForType(L)
-C.SliceCenter=getSliceCenterForType(L)
-UpdateSliceScale(p)
+    -- images have been removed; ensure no slicing values remain
+    C.Image=""
+    C.SliceCenter=nil
+    C.SliceScale=nil
+    UpdateSliceScale(p)
 end
 
 function H.UpdateShape(J,L,M)
 if M then
-r=M
-C.Image=getImageForType(M)
-C.SliceCenter=getSliceCenterForType(M)
+    r=M
+    -- images have been removed; ensure no slicing values remain
+    C.Image=""
+    C.SliceCenter=nil
 end
 if L then
 p=L
@@ -1422,9 +1448,10 @@ end
 
 return aa end function a.h()
 return{
-platoboost={
+    platoboost={
 Name="Platoboost",
-Icon="",
+        -- remove external icon asset
+        Icon="",
 Args={"ServiceId","Secret"},
 
 
@@ -1440,7 +1467,8 @@ New=a.load'f'.New
 },
 luarmor={
 Name="Luarmor",
-Icon="",
+        -- remove external icon asset
+        Icon="",
 Args={"ScriptId","Discord"},
 
 
@@ -2614,8 +2642,9 @@ CornerRadius=UDim.new(0,8),
 }),
 
 ac("Frame",{
-BackgroundColor3=Color3.fromRGB(255,255,255),
-BackgroundTransparency=1,
+        -- Use a solid black background now that acrylic textures have been removed
+        BackgroundColor3=Color3.new(0,0,0),
+        BackgroundTransparency=0,
 Size=UDim2.fromScale(1,1),
 },{
 
@@ -2631,8 +2660,9 @@ Size=UDim2.fromScale(1,1),
 }),
 
 ac("ImageLabel",{
-Image="",
-ImageTransparency=0.98,
+        -- Removed acrylic texture
+        Image="",
+        ImageTransparency=1,
 ScaleType=Enum.ScaleType.Tile,
 TileSize=UDim2.new(0,128,0,128),
 Size=UDim2.fromScale(1,1),
@@ -2644,8 +2674,9 @@ CornerRadius=UDim.new(0,8),
 }),
 
 ac("ImageLabel",{
-Image="rbxassetid://9968344227",
-ImageTransparency=0.9,
+        -- Removed secondary acrylic noise texture
+        Image="",
+        ImageTransparency=1,
 ScaleType=Enum.ScaleType.Tile,
 TileSize=UDim2.new(0,128,0,128),
 Size=UDim2.fromScale(1,1),
@@ -4215,7 +4246,8 @@ ac("ImageLabel",{
 Size=UDim2.new(0,ag.ToolTipSize,0,ag.ToolTipSize/2),
 BackgroundTransparency=1,
 Rotation=180,
-Image="",
+        -- Removed tooltip arrow image
+        Image="",
 ThemeTag={
 ImageColor3="Accent",
 },
@@ -4225,7 +4257,8 @@ Size=UDim2.new(0,ag.ToolTipSize,0,ag.ToolTipSize/2),
 BackgroundTransparency=1,
 LayoutOrder=99,
 ImageTransparency=.9,
-Image="",
+        -- Removed tooltip arrow image
+        Image="",
 ThemeTag={
 ImageColor3="Text",
 },
@@ -6852,7 +6885,8 @@ Visible=al and true or false
 ag("ImageLabel",{
 Size=UDim2.new(0,18,0,18),
 BackgroundTransparency=1,
-Image="rbxassetid://132464694294269",
+                -- Removed built‑in icon asset
+                Image="",
 
 
 
@@ -7095,7 +7129,8 @@ CornerRadius=UDim.new(1,0),
 aw.UIElements.SatVibMap=ae("ImageLabel",{
 Size=UDim2.fromOffset(160,158),
 Position=UDim2.fromOffset(0,40+aw.TextPadding),
-Image="rbxassetid://4155801252",
+        -- Removed colour picker gradient asset; gradient will be handled via UIGradients and overlays
+        Image="",
 BackgroundColor3=Color3.fromHSV(az,1,1),
 BackgroundTransparency=0,
 Parent=ay.UIElements.Main,
@@ -7157,7 +7192,8 @@ CornerRadius=UDim.new(0,8),
 })
 
 ae("ImageLabel",{
-Image="http://www.roblox.com/asset/?id=14204231522",
+            -- Removed gradient texture for slider background
+            Image="",
 ImageTransparency=0.45,
 ScaleType=Enum.ScaleType.Tile,
 TileSize=UDim2.fromOffset(40,40),
@@ -7213,7 +7249,8 @@ CornerRadius=UDim.new(0,8),
 })
 
 ae("ImageLabel",{
-Image="http://www.roblox.com/asset/?id=14204231522",
+            -- Removed gradient texture for slider background
+            Image="",
 ImageTransparency=0.45,
 ScaleType=Enum.ScaleType.Tile,
 TileSize=UDim2.fromOffset(40,40),
@@ -7454,7 +7491,8 @@ ae("UICorner",{
 CornerRadius=UDim.new(1,0),
 }),
 ae("ImageLabel",{
-Image="rbxassetid://14204231522",
+                -- Removed gradient texture for slider background
+                Image="",
 ImageTransparency=0.45,
 ScaleType=Enum.ScaleType.Tile,
 TileSize=UDim2.fromOffset(40,40),
@@ -9556,7 +9594,8 @@ Active=true
 aj("ImageLabel",{
 Size=UDim2.new(0,96,0,96),
 BackgroundTransparency=1,
-Image="rbxassetid://120997033468887",
+            -- Removed expand/collapse icon asset
+            Image="",
 Position=UDim2.new(0.5,-16,0.5,-16),
 AnchorPoint=Vector2.new(0.5,0.5),
 ImageTransparency=1,
@@ -9691,7 +9730,8 @@ PaddingBottom=UDim.new(0,ar.UIPadding/2),
 })
 
 local ay=aj("ImageLabel",{
-Image="rbxassetid://8992230677",
+    -- Removed window blur texture
+    Image="",
 ImageColor3=Color3.new(0,0,0),
 ImageTransparency=1,
 Size=UDim2.new(1,120,1,116),
