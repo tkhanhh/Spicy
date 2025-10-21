@@ -1,4 +1,5 @@
 
+
 local MacLib = { 
 	Options = {}, 
 	Folder = "Maclib", 
@@ -30,20 +31,21 @@ local tabIndex = 0
 local unloaded = false
 
 local assets = {
-	interFont = "rbxassetid://12187365364",
-	userInfoBlurred = "rbxassetid://18824089198",
-	toggleBackground = "rbxassetid://18772190202",
-	togglerHead = "rbxassetid://18772309008",
-	buttonImage = "rbxassetid://10709791437",
-	searchIcon = "rbxassetid://86737463322606",
-	colorWheel = "rbxassetid://2849458409",
-	colorTarget = "rbxassetid://73265255323268",
-	grid = "rbxassetid://121484455191370",
-	globe = "rbxassetid://73541658194744",
-	transform = "rbxassetid://90336395745819",
-	dropdown = "rbxassetid://18865373378",
-	sliderbar = "rbxassetid://18772615246",
-	sliderhead = "rbxassetid://18772834246",
+        -- remove rbxassetid prefixes; leave only the numeric identifiers
+        interFont = "12187365364",
+        userInfoBlurred = "18824089198",
+        toggleBackground = "18772190202",
+        togglerHead = "18772309008",
+        buttonImage = "10709791437",
+        searchIcon = "86737463322606",
+        colorWheel = "2849458409",
+        colorTarget = "73265255323268",
+        grid = "121484455191370",
+        globe = "73541658194744",
+        transform = "90336395745819",
+        dropdown = "18865373378",
+        sliderbar = "18772615246",
+        sliderhead = "18772834246",
 }
 
 local IconList
@@ -95,25 +97,26 @@ local function gl(i)
 		end
 	end
 
-	if type(i) == 'string' and not i:find('rbxassetid://') then
-		return {
-			Image = "rbxassetid://".. i,
-			ImageRectSize = Vector2.new(0, 0),
-			ImageRectPosition = Vector2.new(0, 0),
-		}
-	elseif type(i) == 'number' then
-		return {
-			Image = "rbxassetid://".. i,
-			ImageRectSize = Vector2.new(0, 0),
-			ImageRectPosition = Vector2.new(0, 0),
-		}
-	else
-		return {
-			Image = i,
-			ImageRectSize = Vector2.new(0, 0),
-			ImageRectPosition = Vector2.new(0, 0),
-		}
-	end
+    -- return simple image references without prefixing rbxassetid
+    if type(i) == 'string' then
+        return {
+            Image = i,
+            ImageRectSize = Vector2.new(0, 0),
+            ImageRectPosition = Vector2.new(0, 0),
+        }
+    elseif type(i) == 'number' then
+        return {
+            Image = tostring(i),
+            ImageRectSize = Vector2.new(0, 0),
+            ImageRectPosition = Vector2.new(0, 0),
+        }
+    else
+        return {
+            Image = i,
+            ImageRectSize = Vector2.new(0, 0),
+            ImageRectPosition = Vector2.new(0, 0),
+        }
+    end
 end
 
 --// Library Functions
@@ -560,7 +563,7 @@ function MacLib:Window(Settings)
 	headshot.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	headshot.BorderSizePixel = 0
 	headshot.Size = UDim2.fromOffset(32, 32)
-	headshot.Image = (isReady and headshotImage) or "rbxassetid://0"
+    headshot.Image = (isReady and headshotImage) or "0"
 
 	local uICorner3 = Instance.new("UICorner")
 	uICorner3.Name = "UICorner"
@@ -1886,7 +1889,7 @@ function MacLib:Window(Settings)
 
 					local buttonImage = Instance.new("ImageLabel")
 					buttonImage.Name = "ButtonImage"
-					buttonImage.Image = "rbxassetid://14923748517"
+                    buttonImage.Image = "14923748517"
 					buttonImage.ImageTransparency = 0.5
 					buttonImage.AnchorPoint = Vector2.new(1, 0.5)
 					buttonImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -4077,11 +4080,11 @@ function MacLib:Window(Settings)
 
 					local confirm = Instance.new("TextButton")
 					confirm.Name = "Confirm"
-					confirm.FontFace = Font.new(
-						"rbxassetid://12187365364",
-						Enum.FontWeight.Medium,
-						Enum.FontStyle.Normal
-					)
+						confirm.FontFace = Font.new(
+							"12187365364",
+							Enum.FontWeight.Medium,
+							Enum.FontStyle.Normal
+						)
 					confirm.Text = "Confirm"
 					confirm.TextColor3 = Color3.fromRGB(255, 255, 255)
 					confirm.TextSize = 15
@@ -4111,11 +4114,11 @@ function MacLib:Window(Settings)
 
 					local cancel = Instance.new("TextButton")
 					cancel.Name = "Cancel"
-					cancel.FontFace = Font.new(
-						"rbxassetid://12187365364",
-						Enum.FontWeight.Medium,
-						Enum.FontStyle.Normal
-					)
+						cancel.FontFace = Font.new(
+							"12187365364",
+							Enum.FontWeight.Medium,
+							Enum.FontStyle.Normal
+						)
 					cancel.Text = "Cancel"
 					cancel.TextColor3 = Color3.fromRGB(255, 255, 255)
 					cancel.TextSize = 15
@@ -4169,11 +4172,11 @@ function MacLib:Window(Settings)
 
 					local paragraphHeader = Instance.new("TextLabel")
 					paragraphHeader.Name = "ParagraphHeader"
-					paragraphHeader.FontFace = Font.new(
-						"rbxassetid://12187365364",
-						Enum.FontWeight.SemiBold,
-						Enum.FontStyle.Normal
-					)
+						paragraphHeader.FontFace = Font.new(
+							"12187365364",
+							Enum.FontWeight.SemiBold,
+							Enum.FontStyle.Normal
+						)
 					paragraphHeader.RichText = true
 					paragraphHeader.Text = ColorpickerFunctions.Settings.Title or ColorpickerFunctions.Settings.Name
 					paragraphHeader.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -5585,7 +5588,7 @@ function MacLib:Window(Settings)
 
 	local function _SetUserInfoState(State)
 		if State then
-			headshot.Image = (isReady and headshotImage) or "rbxassetid://0"
+			headshot.Image = (isReady and headshotImage) or "0"
 			username.Text = "@" .. LocalPlayer.Name
 			displayName.Text = LocalPlayer.DisplayName
 		else
@@ -5926,8 +5929,8 @@ function MacLib:Demo()
 	}
 
 	local tabs = {
-		Main = tabGroups.TabGroup1:Tab({ Title = "Demo", Image = "rbxassetid://18821914323" }),
-		Settings = tabGroups.TabGroup1:Tab({ Title = "Settings", Image = "rbxassetid://10734950309" })
+			Main = tabGroups.TabGroup1:Tab({ Title = "Demo", Image = "18821914323" }),
+			Settings = tabGroups.TabGroup1:Tab({ Title = "Settings", Image = "10734950309" })
 	}
 
 	local sections = {
