@@ -1,89 +1,61 @@
---== Load Mac Library thay cho Ash-Libs ==--
--- Đã thay thế MacLib gốc bằng một thư viện UI tuỳ chỉnh mô phỏng phong cách Chilli Finder.
--- Thư viện này dựng một cửa sổ chính với thanh tab bên trái và khu vực điều khiển bên phải.
--- Các hàm Window, TabGroup, Tab, Section và các control (Toggle, Dropdown, Input, Button, Paragraph) được xây dựng lại
--- để sử dụng giao diện tối, hiện đại, tối giản dựa trên bảng màu của Chilli Finder.
+-- MacLib UI Library (modern, minimal design)
+-- Không bao gồm chức năng cụ thể – chỉ dùng để tạo giao diện.
+-- Thư viện giữ nguyên API như MacLib cũ: Window → TabGroup → Tab → Section → control.
 local MacLib = {}
-do
-    --==========================
-    -- Palette & Helpers
-    --==========================
-    local COLOR_BASE_BG      = Color3.fromRGB(16, 24, 39)
-    local COLOR_CARD_GRAD_1  = Color3.fromRGB(12, 18, 32)
-    local COLOR_CARD_GRAD_2  = Color3.fromRGB(21, 30, 47)
-    local COLOR_CARD_GRAD_3  = Color3.fromRGB(10, 82, 120)
-    local COLOR_SURFACE      = Color3.fromRGB(30, 41, 59)
-    local COLOR_SURFACE_DARK = Color3.fromRGB(25, 32, 48)
-    local COLOR_TEAL_ON      = Color3.fromRGB(52, 180, 230)
-    local COLOR_STROKE_GLOW  = Color3.fromRGB(56, 189, 248)
-    local COLOR_STROKE_MAIN  = Color3.fromRGB(56, 189, 248)
-    local COLOR_TEXT         = Color3.fromRGB(241, 245, 249)
-    local COLOR_TEXT_MUTED   = Color3.fromRGB(148, 163, 184)
 
-    local function makeCard(parent, sizeUDim2)
-        -- Tạo thẻ có nền gradient và stroke mờ
-        local frame = Instance.new('Frame')
-        frame.BackgroundColor3 = COLOR_BASE_BG
+do
+    local TweenService = game:GetService("TweenService")
+    local UIS          = game:GetService("UserInputService")
+
+    -- Bảng màu: tone tối hiện đại với accent xanh dịu
+    local COLOR_BG_CARD        = Color3.fromRGB(30, 34, 43)
+    local COLOR_BG_PANEL       = Color3.fromRGB(36, 40, 50)
+    local COLOR_BG_CONTROL     = Color3.fromRGB(42, 46, 56)
+    local COLOR_BG_CONTROL_ALT = Color3.fromRGB(50, 56, 70)
+    local COLOR_ACCENT         = Color3.fromRGB(94, 161, 255)
+    local COLOR_TEXT_PRIMARY   = Color3.fromRGB(235, 238, 245)
+    local COLOR_TEXT_SECONDARY = Color3.fromRGB(170, 180, 192)
+    local COLOR_BORDER         = Color3.fromRGB(60, 68, 82)
+
+    -- Thẻ nền chính
+    local function createCard(parent, size)
+        local frame = Instance.new("Frame")
+        frame.BackgroundColor3 = COLOR_BG_CARD
         frame.BorderSizePixel  = 0
-        frame.Size             = sizeUDim2
+        frame.Size             = size
         frame.Parent           = parent
-        Instance.new('UICorner', frame).CornerRadius = UDim.new(0, 20)
-        -- gradient nền
-        local g = Instance.new('UIGradient', frame)
-        g.Rotation = 35
-        g.Color    = ColorSequence.new({
-            ColorSequenceKeypoint.new(0.00, COLOR_CARD_GRAD_1),
-            ColorSequenceKeypoint.new(0.55, COLOR_CARD_GRAD_2),
-            ColorSequenceKeypoint.new(1.00, COLOR_CARD_GRAD_3),
-        })
-        -- vệt sáng mờ bên ngoài
-        local s1 = Instance.new('UIStroke', frame)
-        s1.Thickness     = 8
-        s1.Transparency  = 0.9
-        s1.LineJoinMode  = Enum.LineJoinMode.Round
-        s1.Color         = COLOR_STROKE_GLOW
-        -- viền chính
-        local s2 = Instance.new('UIStroke', frame)
-        s2.Thickness     = 2
-        s2.Transparency  = 0.15
-        s2.LineJoinMode  = Enum.LineJoinMode.Round
-        s2.Color         = COLOR_STROKE_MAIN
+        local corner = Instance.new("UICorner", frame)
+        corner.CornerRadius = UDim.new(0, 12)
+        local stroke = Instance.new("UIStroke", frame)
+        stroke.Thickness     = 1.5
+        stroke.Color         = COLOR_BORDER
+        stroke.Transparency  = 0.4
         return frame
     end
 
-    local function makeTopBar(parent, title)
-        -- Tạo thanh tiêu đề ở trên
-        local bar = Instance.new('Frame')
-        bar.Name                   = 'TopBar'
-        bar.Parent                 = parent
-        bar.BackgroundColor3       = Color3.fromRGB(18, 26, 42)
-        bar.BackgroundTransparency = 0.15
-        bar.BorderSizePixel        = 0
-        bar.Size                   = UDim2.new(1, 0, 0, 46)
-        Instance.new('UICorner', bar).CornerRadius = UDim.new(0, 20)
-        local lbl = Instance.new('TextLabel')
-        lbl.Name            = 'Title'
+    -- Thanh tiêu đề
+    local function createTopBar(parent, title)
+        local bar = Instance.new("Frame")
+        bar.BackgroundColor3 = COLOR_BG_PANEL
+        bar.BorderSizePixel  = 0
+        bar.Size             = UDim2.new(1, 0, 0, 46)
+        bar.Parent           = parent
+        local corner = Instance.new("UICorner", bar)
+        corner.CornerRadius = UDim.new(0, 12)
+        local lbl = Instance.new("TextLabel")
         lbl.BackgroundTransparency = 1
-        lbl.Position        = UDim2.new(0, 16, 0, 0)
-        lbl.Size            = UDim2.new(1, -160, 1, 0)
-        lbl.Font            = Enum.Font.GothamBold
-        lbl.Text            = title or ''
-        lbl.TextXAlignment  = Enum.TextXAlignment.Left
-        lbl.TextSize        = 16
-        lbl.TextColor3      = COLOR_TEXT
-        lbl.AutoLocalize    = false
-        lbl.Parent          = bar
-        -- gradient màu tiêu đề
-        local grad = Instance.new('UIGradient', lbl)
-        grad.Color = ColorSequence.new({
-            ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 211, 238)),
-            ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 255)),
-            ColorSequenceKeypoint.new(1.00, Color3.fromRGB(99, 102, 241)),
-        })
+        lbl.Text               = tostring(title or "")
+        lbl.Font               = Enum.Font.GothamBold
+        lbl.TextSize           = 18
+        lbl.TextColor3         = COLOR_TEXT_PRIMARY
+        lbl.Position           = UDim2.new(0, 16, 0, 0)
+        lbl.Size               = UDim2.new(1, -32, 1, 0)
+        lbl.TextXAlignment     = Enum.TextXAlignment.Left
+        lbl.Parent             = bar
         return bar, lbl
     end
 
-    -- Nhóm kéo cho cửa sổ (DragGroup): hỗ trợ kéo toàn bộ cửa sổ
+    -- Hỗ trợ kéo cửa sổ
     local DragGroup = { frames = {}, dragging = false, dragStart = nil, groupStart = {} }
     function DragGroup:register(frame, topbar)
         table.insert(self.frames, { frame = frame, top = topbar })
@@ -118,556 +90,559 @@ do
         end)
     end
 
-    --==========================
-    -- MacLib.Window Implementation
-    --==========================
+    --== Window ==
     function MacLib:Window(opts)
         opts = opts or {}
-        local window = {}
-        local UIS = game:GetService("UserInputService")
-        -- Create ScreenGui for the window
-        local sg = Instance.new('ScreenGui')
-        sg.Name            = 'ChilliMacUI'
+        local win  = {}
+        local sg   = Instance.new("ScreenGui")
+        sg.Name            = "MacLibUI"
         sg.IgnoreGuiInset  = true
         sg.ResetOnSpawn    = false
         sg.ZIndexBehavior  = Enum.ZIndexBehavior.Global
-        sg.Parent          = game:GetService('CoreGui')
-        -- main card
-        local size = opts.Size or UDim2.fromOffset(860, 560)
-        local card = makeCard(sg, size)
-        -- centering by default
-        card.Position      = UDim2.new(0.5, -size.X.Offset/2, 0.5, -size.Y.Offset/2)
-        -- top bar
-        local topBar, titleLbl = makeTopBar(card, opts.Title or '')
-        -- container for sidebar and content
-        local container = Instance.new('Frame')
-        container.Name = 'Container'
+        sg.Parent          = game:GetService("CoreGui")
+
+        local size = opts.Size or UDim2.fromOffset(600, 420)
+        local card = createCard(sg, size)
+        card.Position = UDim2.new(0.5, -size.X.Offset/2, 0.5, -size.Y.Offset/2)
+
+        local topBar, _ = createTopBar(card, opts.Title or "")
+
+        -- khung chứa tabs và nội dung
+        local container = Instance.new("Frame")
         container.BackgroundTransparency = 1
-        container.Size = UDim2.new(1, -20, 1, -60)
-        container.Position = UDim2.new(0, 10, 0, 50)
-        container.Parent = card
-        -- left panel for tabs
-        local tabsFrame = Instance.new('Frame')
-        tabsFrame.Name = 'TabsFrame'
-        tabsFrame.BackgroundColor3 = COLOR_SURFACE_DARK
+        container.Size       = UDim2.new(1, -20, 1, -60)
+        container.Position   = UDim2.new(0, 10, 0, 50)
+        container.Parent     = card
+
+        -- khung tabs
+        local tabsFrame = Instance.new("Frame")
+        tabsFrame.BackgroundColor3 = COLOR_BG_PANEL
         tabsFrame.BorderSizePixel  = 0
-        tabsFrame.Size = UDim2.new(0, 140, 1, 0)
-        tabsFrame.Parent = container
-        Instance.new('UICorner', tabsFrame).CornerRadius = UDim.new(0, 14)
-        local tabsLayout = Instance.new('UIListLayout', tabsFrame)
+        tabsFrame.Size             = UDim2.new(0, 150, 1, 0)
+        tabsFrame.Parent           = container
+        local cornerTabs = Instance.new("UICorner", tabsFrame)
+        cornerTabs.CornerRadius = UDim.new(0, 12)
+        -- viền dọc phân chia tabs và nội dung
+        local vertLine = Instance.new("Frame")
+        vertLine.Size = UDim2.new(0, 1, 1, 0)
+        vertLine.Position = UDim2.new(1, 0, 0, 0)
+        vertLine.BackgroundColor3 = COLOR_BORDER
+        vertLine.BackgroundTransparency = 0.5
+        vertLine.Parent = tabsFrame
+
+        local tabsLayout = Instance.new("UIListLayout", tabsFrame)
         tabsLayout.FillDirection = Enum.FillDirection.Vertical
         tabsLayout.SortOrder     = Enum.SortOrder.LayoutOrder
         tabsLayout.Padding       = UDim.new(0, 4)
-        -- right panel for content
-        local contentFrame = Instance.new('Frame')
-        contentFrame.Name = 'ContentFrame'
-        contentFrame.BackgroundColor3 = COLOR_SURFACE
+
+        -- khung nội dung
+        local contentFrame = Instance.new("Frame")
+        contentFrame.BackgroundColor3 = COLOR_BG_PANEL
         contentFrame.BorderSizePixel  = 0
-        contentFrame.Size = UDim2.new(1, -160, 1, 0)
-        contentFrame.Position = UDim2.new(0, 150, 0, 0)
-        contentFrame.Parent = container
-        Instance.new('UICorner', contentFrame).CornerRadius = UDim.new(0, 14)
-        -- hold current tab
-        window._tabs = {}
-        window._selectedTab = nil
-        window._sg = sg
-        window._card = card
-        window._tabsFrame = tabsFrame
-        window._contentFrame = contentFrame
-        window._open = true
-        -- Toggling methods
-        function window:Toggle()
+        contentFrame.Size             = UDim2.new(1, -170, 1, 0)
+        contentFrame.Position         = UDim2.new(0, 160, 0, 0)
+        contentFrame.Parent           = container
+        local cornerContent = Instance.new("UICorner", contentFrame)
+        cornerContent.CornerRadius = UDim.new(0, 12)
+        local strokeContent = Instance.new("UIStroke", contentFrame)
+        strokeContent.Thickness    = 1
+        strokeContent.Color        = COLOR_BORDER
+        strokeContent.Transparency = 0.4
+
+        win._tabs      = {}
+        win._selected  = nil
+        win._sg        = sg
+        win._open      = true
+
+        function win:Toggle()
             self._open = not self._open
             sg.Enabled = self._open
         end
-        function window:GetOpen()
-            return self._open
-        end
-        function window:SetOpen(b)
-            self._open = b
-            sg.Enabled = b
-        end
-        function window:ToggleUI()
-            self:Toggle()
-        end
-        function window:ToggleMain()
-            self:Toggle()
-        end
-        -- Drag support
-        DragGroup:register(card, topBar)
-        -- Keybind support
-        if opts.Keybind and typeof(opts.Keybind) == 'EnumItem' then
-            UIS.InputBegan:Connect(function(input, gpe)
-                if not gpe and input.KeyCode == opts.Keybind then
-                    window:Toggle()
+        function win:GetOpen() return self._open end
+        function win:SetOpen(b) self._open = b; sg.Enabled = b end
+        function win:ToggleUI() self:Toggle() end
+        function win:ToggleMain() self:Toggle() end
+
+        -- keybind
+        if opts.Keybind and typeof(opts.Keybind) == "EnumItem" then
+            UIS.InputBegan:Connect(function(input, gp)
+                if not gp and input.KeyCode == opts.Keybind then
+                    win:Toggle()
                 end
             end)
         end
-        -- TabGroup object
+
+        DragGroup:register(card, topBar)
+
+        -- TabGroup
         local TabGroup = {}
         function TabGroup:Tab(info)
             info = info or {}
             local tab = {}
             tab._sections = {}
-            tab._title = info.Title or 'Tab'
-            -- create tab button in sidebar
-            local btn = Instance.new('TextButton')
-            btn.Name               = 'TabButton_' .. tab._title
-            btn.Text               = tab._title
-            btn.Font               = Enum.Font.GothamBold
-            btn.TextSize           = 14
-            btn.TextColor3         = COLOR_TEXT
-            btn.AutoButtonColor    = false
-            btn.BackgroundColor3   = COLOR_SURFACE
-            btn.Size               = UDim2.new(1, -8, 0, 36)
-            btn.Position           = UDim2.new(0, 4, 0, 0)
-            Instance.new('UICorner', btn).CornerRadius = UDim.new(0, 10)
-            -- highlight line
-            local highlight = Instance.new('Frame')
-            highlight.Name             = 'Highlight'
-            highlight.Parent           = btn
-            highlight.BackgroundColor3 = COLOR_TEAL_ON
-            highlight.BorderSizePixel  = 0
-            highlight.Size             = UDim2.new(0, 4, 1, 0)
-            highlight.Position         = UDim2.new(0, 0, 0, 0)
-            highlight.Visible          = false
-            highlight.ZIndex           = btn.ZIndex + 1
-            btn.Parent = tabsFrame
-            -- create content container for this tab
-            local tabContent = Instance.new('ScrollingFrame')
-            tabContent.Name               = 'TabContent_' .. tab._title
-            tabContent.BackgroundTransparency = 1
-            tabContent.BorderSizePixel    = 0
-            tabContent.Position           = UDim2.new(0, 10, 0, 10)
-            tabContent.Size               = UDim2.new(1, -20, 1, -20)
-            tabContent.CanvasSize         = UDim2.new(0, 0, 0, 0)
-            tabContent.ScrollBarThickness = 4
-            tabContent.ScrollingDirection = Enum.ScrollingDirection.Y
-            tabContent.AutomaticCanvasSize = Enum.AutomaticSize.Y
-            tabContent.Visible            = false
-            tabContent.Parent             = contentFrame
-            local listLayout = Instance.new('UIListLayout', tabContent)
-            listLayout.Padding   = UDim.new(0, 6)
-            listLayout.SortOrder = Enum.SortOrder.LayoutOrder
-            -- show/hide logic
-            local function selectTab()
-                -- hide previous
-                if window._selectedTab and window._selectedTab._content then
-                    window._selectedTab._content.Visible = false
-                    window._selectedTab._btn.BackgroundColor3 = COLOR_SURFACE
-                    window._selectedTab._btn.Highlight.Visible = false
+            tab._title    = info.Title or "Tab"
+            -- nút tab
+            local btn = Instance.new("TextButton")
+            btn.Text             = tab._title
+            btn.Font             = Enum.Font.GothamSemibold
+            btn.TextSize         = 14
+            btn.TextColor3       = COLOR_TEXT_PRIMARY
+            btn.AutoButtonColor  = false
+            btn.BackgroundColor3 = COLOR_BG_CONTROL
+            btn.Size             = UDim2.new(1, -8, 0, 36)
+            btn.Position         = UDim2.new(0, 4, 0, 0)
+            btn.Parent           = tabsFrame
+            local cornerBtn = Instance.new("UICorner", btn)
+            cornerBtn.CornerRadius = UDim.new(0, 8)
+            -- viền dưới mỗi tab
+            local bottomLine = Instance.new("Frame")
+            bottomLine.Size = UDim2.new(1, 0, 0, 1)
+            bottomLine.Position = UDim2.new(0, 0, 1, -1)
+            bottomLine.BackgroundColor3 = COLOR_BORDER
+            bottomLine.BackgroundTransparency = 0.6
+            bottomLine.Parent = btn
+
+            -- nội dung tab
+            local tabContent = Instance.new("ScrollingFrame")
+            tabContent.BackgroundTransparency  = 1
+            tabContent.BorderSizePixel         = 0
+            tabContent.Position                = UDim2.new(0, 10, 0, 10)
+            tabContent.Size                    = UDim2.new(1, -20, 1, -20)
+            tabContent.CanvasSize              = UDim2.new(0, 0, 0, 0)
+            tabContent.ScrollBarThickness      = 4
+            tabContent.ScrollingDirection      = Enum.ScrollingDirection.Y
+            tabContent.AutomaticCanvasSize     = Enum.AutomaticSize.Y
+            tabContent.Visible                 = false
+            tabContent.Parent                  = contentFrame
+            local listLayout = Instance.new("UIListLayout", tabContent)
+            listLayout.FillDirection = Enum.FillDirection.Vertical
+            listLayout.SortOrder     = Enum.SortOrder.LayoutOrder
+            listLayout.Padding       = UDim.new(0, 8)
+
+            local function selectThis()
+                if win._selected and win._selected._content then
+                    win._selected._content.Visible        = false
+                    win._selected._button.BackgroundColor3 = COLOR_BG_CONTROL
                 end
-                -- set this
-                window._selectedTab = tab
-                tabContent.Visible  = true
-                btn.BackgroundColor3= COLOR_SURFACE_DARK
-                highlight.Visible   = true
+                win._selected = tab
+                tabContent.Visible        = true
+                btn.BackgroundColor3      = COLOR_BG_CONTROL_ALT
             end
-            btn.MouseButton1Click:Connect(function()
-                selectTab()
-            end)
-            -- if first tab, select by default
-            table.insert(window._tabs, tab)
-            if #window._tabs == 1 then
-                selectTab()
-            end
-            -- store references on tab object
-            tab._btn     = btn
+            btn.MouseButton1Click:Connect(selectThis)
+            table.insert(win._tabs, tab)
+            if #win._tabs == 1 then selectThis() end
+
+            tab._button = btn
             tab._content = tabContent
-            -- Section creation
+
             function tab:Section(secInfo)
                 secInfo = secInfo or {}
                 local section = {}
                 section._controls = {}
-                -- section frame
-                local sFrame = Instance.new('Frame')
-                sFrame.Name       = 'Section_' .. (secInfo.Title or '')
-                sFrame.BackgroundColor3 = COLOR_SURFACE_DARK
+                -- khung section
+                local sFrame = Instance.new("Frame")
+                sFrame.BackgroundColor3 = COLOR_BG_CONTROL_ALT
                 sFrame.BorderSizePixel  = 0
-                sFrame.Size       = UDim2.new(1, 0, 0, 0)
-                sFrame.AutomaticSize = Enum.AutomaticSize.Y
-                sFrame.Parent     = tabContent
-                Instance.new('UICorner', sFrame).CornerRadius = UDim.new(0, 12)
-                local sLayout = Instance.new('UIListLayout', sFrame)
-                sLayout.FillDirection = Enum.FillDirection.Vertical
-                sLayout.SortOrder     = Enum.SortOrder.LayoutOrder
-                sLayout.Padding       = UDim.new(0, 4)
-                -- title label
-                if secInfo.Title and secInfo.Title ~= '' then
-                    local titleLbl = Instance.new('TextLabel')
-                    titleLbl.Name               = 'SectionTitle'
-                    titleLbl.Text               = tostring(secInfo.Title)
-                    titleLbl.Font               = Enum.Font.GothamSemibold
-                    titleLbl.TextSize           = 16
-                    titleLbl.TextColor3         = COLOR_TEAL_ON
-                    titleLbl.BackgroundTransparency = 1
-                    titleLbl.Position           = UDim2.new(0, 8, 0, 6)
-                    titleLbl.Size               = UDim2.new(1, -16, 0, 20)
-                    titleLbl.TextXAlignment     = Enum.TextXAlignment.Left
-                    titleLbl.Parent             = sFrame
+                sFrame.Size             = UDim2.new(1, 0, 0, 0)
+                sFrame.AutomaticSize    = Enum.AutomaticSize.Y
+                sFrame.Parent           = tabContent
+                local cornerS = Instance.new("UICorner", sFrame)
+                cornerS.CornerRadius = UDim.new(0, 10)
+                local strokeS = Instance.new("UIStroke", sFrame)
+                strokeS.Thickness    = 1
+                strokeS.Color        = COLOR_BORDER
+                strokeS.Transparency = 0.5
+
+                local layout = Instance.new("UIListLayout", sFrame)
+                layout.FillDirection = Enum.FillDirection.Vertical
+                layout.SortOrder     = Enum.SortOrder.LayoutOrder
+                layout.Padding       = UDim.new(0, 6)
+
+                if secInfo.Title and secInfo.Title ~= "" then
+                    local tLbl = Instance.new("TextLabel")
+                    tLbl.BackgroundTransparency = 1
+                    tLbl.Text               = tostring(secInfo.Title)
+                    tLbl.Font               = Enum.Font.GothamBold
+                    tLbl.TextSize           = 16
+                    tLbl.TextColor3         = COLOR_ACCENT
+                    tLbl.Position           = UDim2.new(0, 8, 0, 6)
+                    tLbl.Size               = UDim2.new(1, -16, 0, 20)
+                    tLbl.TextXAlignment     = Enum.TextXAlignment.Left
+                    tLbl.Parent             = sFrame
                 end
-                -- controls container
-                local cFrame = Instance.new('Frame')
-                cFrame.Name           = 'Controls'
+
+                -- khung chứa controls
+                local cFrame = Instance.new("Frame")
                 cFrame.BackgroundTransparency = 1
-                cFrame.Size           = UDim2.new(1, -16, 0, 0)
-                cFrame.Position       = UDim2.new(0, 8, 0, 0)
-                cFrame.AutomaticSize  = Enum.AutomaticSize.Y
-                cFrame.Parent         = sFrame
-                local cLayout = Instance.new('UIListLayout', cFrame)
-                cLayout.FillDirection = Enum.FillDirection.Vertical
-                cLayout.SortOrder     = Enum.SortOrder.LayoutOrder
-                cLayout.Padding       = UDim.new(0, 6)
-                -- Control creators
+                cFrame.Size             = UDim2.new(1, -16, 0, 0)
+                cFrame.Position         = UDim2.new(0, 8, 0, 0)
+                cFrame.AutomaticSize    = Enum.AutomaticSize.Y
+                cFrame.Parent           = sFrame
+                local cLayout = Instance.new("UIListLayout", cFrame)
+                cLayout.FillDirection   = Enum.FillDirection.Vertical
+                cLayout.SortOrder       = Enum.SortOrder.LayoutOrder
+                cLayout.Padding         = UDim.new(0, 4)
+
+                -- Paragraph
                 function section:Paragraph(info)
                     info = info or {}
-                    local row = Instance.new('Frame')
-                    row.BackgroundColor3 = COLOR_SURFACE
+                    local row = Instance.new("Frame")
+                    row.BackgroundColor3 = COLOR_BG_PANEL
                     row.BorderSizePixel  = 0
                     row.Size             = UDim2.new(1, 0, 0, 0)
                     row.AutomaticSize    = Enum.AutomaticSize.Y
-                    Instance.new('UICorner', row).CornerRadius = UDim.new(0, 10)
                     row.Parent           = cFrame
-                    local txt = Instance.new('TextLabel')
+                    local corner = Instance.new("UICorner", row)
+                    corner.CornerRadius = UDim.new(0, 8)
+                    local stroke = Instance.new("UIStroke", row)
+                    stroke.Thickness    = 1
+                    stroke.Color        = COLOR_BORDER
+                    stroke.Transparency = 0.6
+                    local txt = Instance.new("TextLabel")
                     txt.BackgroundTransparency = 1
                     txt.Font               = Enum.Font.Gotham
                     txt.TextWrapped        = true
-                    txt.TextColor3         = COLOR_TEXT_MUTED
+                    txt.TextColor3         = COLOR_TEXT_SECONDARY
                     txt.TextSize           = 14
                     txt.TextXAlignment     = Enum.TextXAlignment.Left
                     txt.TextYAlignment     = Enum.TextYAlignment.Top
                     txt.Position           = UDim2.new(0, 8, 0, 6)
                     txt.Size               = UDim2.new(1, -16, 0, 0)
                     txt.AutomaticSize      = Enum.AutomaticSize.Y
-                    local fullText = ''
-                    if info.Title and info.Title ~= '' then
-                        fullText = info.Title
-                    end
-                    if info.Desc and info.Desc ~= '' then
-                        if fullText ~= '' then fullText = fullText .. '\n' .. info.Desc else fullText = info.Desc end
+                    local fullText = ""
+                    if info.Title and info.Title ~= "" then fullText = info.Title end
+                    if info.Desc and info.Desc ~= "" then
+                        if fullText ~= "" then fullText = fullText .. "\\n" .. info.Desc else fullText = info.Desc end
                     end
                     txt.Text = fullText
                     txt.Parent = row
                     return {}
                 end
+
+                -- Button
                 function section:Button(info)
                     info = info or {}
-                    local row = Instance.new('TextButton')
-                    row.BackgroundColor3 = COLOR_SURFACE
+                    local row = Instance.new("TextButton")
+                    row.BackgroundColor3 = COLOR_BG_CONTROL
                     row.BorderSizePixel  = 0
                     row.Size             = UDim2.new(1, 0, 0, 36)
                     row.AutoButtonColor  = true
-                    row.Text             = ''
-                    Instance.new('UICorner', row).CornerRadius = UDim.new(0, 10)
+                    row.Text             = ""
                     row.Parent           = cFrame
-                    local lbl = Instance.new('TextLabel')
+                    local corner = Instance.new("UICorner", row)
+                    corner.CornerRadius = UDim.new(0, 8)
+                    local stroke = Instance.new("UIStroke", row)
+                    stroke.Thickness    = 1
+                    stroke.Color        = COLOR_BORDER
+                    stroke.Transparency = 0.6
+                    local lbl = Instance.new("TextLabel")
                     lbl.BackgroundTransparency = 1
-                    lbl.Text               = tostring(info.Title or 'Button')
+                    lbl.Text               = tostring(info.Title or "Button")
                     lbl.Font               = Enum.Font.GothamSemibold
                     lbl.TextSize           = 14
-                    lbl.TextColor3         = COLOR_TEXT
-                    lbl.Size               = UDim2.new(1, -16, 1, 0)
+                    lbl.TextColor3         = COLOR_TEXT_PRIMARY
                     lbl.Position           = UDim2.new(0, 8, 0, 0)
+                    lbl.Size               = UDim2.new(1, -16, 1, 0)
                     lbl.TextXAlignment     = Enum.TextXAlignment.Left
-                    lbl.Parent = row
+                    lbl.Parent             = row
                     row.MouseButton1Click:Connect(function()
-                        if type(info.Callback) == 'function' then
-                            task.spawn(function()
-                                info.Callback()
-                            end)
+                        if type(info.Callback) == "function" then
+                            task.spawn(info.Callback)
                         end
                     end)
                     return {}
                 end
+
+                -- Toggle (có animation)
                 function section:Toggle(info)
                     info = info or {}
-                    local row = Instance.new('Frame')
-                    row.BackgroundColor3 = COLOR_SURFACE
+                    local row = Instance.new("Frame")
+                    row.BackgroundColor3 = COLOR_BG_CONTROL
                     row.BorderSizePixel  = 0
                     row.Size             = UDim2.new(1, 0, 0, 36)
-                    Instance.new('UICorner', row).CornerRadius = UDim.new(0, 10)
                     row.Parent           = cFrame
-                    local lbl = Instance.new('TextLabel')
+                    local corner = Instance.new("UICorner", row)
+                    corner.CornerRadius = UDim.new(0, 8)
+                    local stroke = Instance.new("UIStroke", row)
+                    stroke.Thickness    = 1
+                    stroke.Color        = COLOR_BORDER
+                    stroke.Transparency = 0.6
+                    local lbl = Instance.new("TextLabel")
                     lbl.BackgroundTransparency = 1
-                    lbl.Text               = tostring(info.Title or 'Toggle')
+                    lbl.Text               = tostring(info.Title or "Toggle")
                     lbl.Font               = Enum.Font.GothamSemibold
                     lbl.TextSize           = 14
-                    lbl.TextColor3         = COLOR_TEXT
-                    lbl.Size               = UDim2.new(1, -60, 1, 0)
-                    lbl.Position           = UDim2.new(0, 8, 0, 0)
-                    lbl.TextXAlignment     = Enum.TextXAlignment.Left
-                    lbl.Parent = row
-                    -- toggle button
-                    local tgBtn = Instance.new('Frame')
-                    tgBtn.Name               = 'Switch'
-                    tgBtn.Size               = UDim2.fromOffset(40, 20)
-                    tgBtn.Position           = UDim2.new(1, -48, 0.5, -10)
-                    tgBtn.BackgroundColor3   = COLOR_SURFACE_DARK
-                    tgBtn.BorderSizePixel    = 0
-                    Instance.new('UICorner', tgBtn).CornerRadius = UDim.new(0, 10)
-                    local knob = Instance.new('Frame')
-                    knob.Name                 = 'Knob'
-                    knob.Size                 = UDim2.fromOffset(18, 18)
-                    knob.Position             = UDim2.new(0, 1, 0, 1)
-                    knob.BackgroundColor3     = COLOR_TEXT_MUTED
-                    knob.BorderSizePixel      = 0
-                    Instance.new('UICorner', knob).CornerRadius = UDim.new(1, 0)
-                    knob.Parent = tgBtn
-                    tgBtn.Parent = row
-                    local state = (info.Default == true)
-                    local function updateVisual()
-                        if state then
-                            tgBtn.BackgroundColor3 = COLOR_TEAL_ON
-                            knob.Position = UDim2.new(1, -19, 0, 1)
-                            knob.BackgroundColor3 = COLOR_SURFACE
-                        else
-                            tgBtn.BackgroundColor3 = COLOR_SURFACE_DARK
-                            knob.Position = UDim2.new(0, 1, 0, 1)
-                            knob.BackgroundColor3 = COLOR_TEXT_MUTED
-                        end
-                    end
-                    updateVisual()
-                    row.InputBegan:Connect(function(input)
-                        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-                            state = not state
-                            updateVisual()
-                            if type(info.Callback) == 'function' then
-                                task.spawn(function()
-                                    info.Callback(state)
-                                end)
-                            end
-                        end
-                    end)
-                    return {}
-                end
-                function section:Dropdown(info)
-                    info = info or {}
-                    local row = Instance.new('Frame')
-                    row.BackgroundColor3 = COLOR_SURFACE
-                    row.BorderSizePixel  = 0
-                    row.Size             = UDim2.new(1, 0, 0, 36)
-                    Instance.new('UICorner', row).CornerRadius = UDim.new(0, 10)
-                    row.Parent           = cFrame
-                    local lbl = Instance.new('TextLabel')
-                    lbl.BackgroundTransparency = 1
-                    lbl.Text               = tostring(info.Title or 'Select')
-                    lbl.Font               = Enum.Font.GothamSemibold
-                    lbl.TextSize           = 14
-                    lbl.TextColor3         = COLOR_TEXT
-                    lbl.Size               = UDim2.new(1, -60, 1, 0)
+                    lbl.TextColor3         = COLOR_TEXT_PRIMARY
+                    lbl.Size               = UDim2.new(1, -70, 1, 0)
                     lbl.Position           = UDim2.new(0, 8, 0, 0)
                     lbl.TextXAlignment     = Enum.TextXAlignment.Left
                     lbl.Parent             = row
-                    -- selected display
-                    local selLbl = Instance.new('TextLabel')
-                    selLbl.BackgroundTransparency = 1
-                    selLbl.Text               = ''
-                    selLbl.Font               = Enum.Font.Gotham
-                    selLbl.TextSize           = 13
-                    selLbl.TextColor3         = COLOR_TEXT_MUTED
-                    selLbl.Size               = UDim2.new(1, -60, 1, 0)
-                    selLbl.Position           = UDim2.new(0, 8, 0, 0)
-                    selLbl.TextXAlignment     = Enum.TextXAlignment.Right
-                    selLbl.Parent             = row
-                    -- dropdown container
-                    local listFrame = Instance.new('Frame')
-                    listFrame.Name            = 'DropList'
-                    listFrame.Parent          = cFrame
-                    listFrame.BackgroundColor3= COLOR_SURFACE_DARK
-                    listFrame.BorderSizePixel = 0
-                    listFrame.Size            = UDim2.new(1, -16, 0, 0)
-                    listFrame.Position        = UDim2.new(0, 8, 0, 0)
-                    listFrame.Visible         = false
-                    Instance.new('UICorner', listFrame).CornerRadius = UDim.new(0, 8)
-                    local listLayout = Instance.new('UIListLayout', listFrame)
-                    listLayout.FillDirection = Enum.FillDirection.Vertical
-                    listLayout.SortOrder     = Enum.SortOrder.LayoutOrder
-                    listLayout.Padding       = UDim.new(0, 4)
-                    -- scroll for list if too long
-                    local scroller = Instance.new('ScrollingFrame')
-                    scroller.Parent           = listFrame
-                    scroller.BackgroundTransparency = 1
-                    scroller.BorderSizePixel  = 0
-                    scroller.Size             = UDim2.new(1, 0, 0, 0)
-                    scroller.Position         = UDim2.new(0, 0, 0, 0)
-                    scroller.AutomaticSize    = Enum.AutomaticSize.Y
-                    scroller.ScrollBarThickness = 4
-                    scroller.ScrollingDirection = Enum.ScrollingDirection.Y
-                    scroller.CanvasSize       = UDim2.new(0, 0, 0, 0)
-                    local scLayout = Instance.new('UIListLayout', scroller)
-                    scLayout.FillDirection   = Enum.FillDirection.Vertical
-                    scLayout.SortOrder       = Enum.SortOrder.LayoutOrder
-                    scLayout.Padding         = UDim.new(0, 2)
-                    -- selection state
-                    local selected = {}
-                    local function updateSelectedLabel()
-                        if info.Multi then
-                            local names = {}
-                            for _, v in ipairs(selected) do
-                                table.insert(names, tostring(v))
-                            end
-                            selLbl.Text = table.concat(names, ', ')
+                    -- nền của switch
+                    local base = Instance.new("Frame")
+                    base.Size               = UDim2.fromOffset(48, 22)
+                    base.Position           = UDim2.new(1, -60, 0.5, -11)
+                    base.BackgroundColor3   = COLOR_BG_PANEL
+                    base.BorderSizePixel    = 0
+                    base.Parent             = row
+                    local baseCorner = Instance.new("UICorner", base)
+                    baseCorner.CornerRadius = UDim.new(0, 11)
+                    local baseStroke = Instance.new("UIStroke", base)
+                    baseStroke.Thickness    = 1
+                    baseStroke.Color        = COLOR_BORDER
+                    baseStroke.Transparency = 0.5
+                    -- nút
+                    local knob = Instance.new("Frame")
+                    knob.Size               = UDim2.fromOffset(20, 20)
+                    knob.Position           = UDim2.new(0, 1, 0, 1)
+                    knob.BackgroundColor3   = COLOR_TEXT_SECONDARY
+                    knob.BorderSizePixel    = 0
+                    knob.Parent             = base
+                    local knobCorner = Instance.new("UICorner", knob)
+                    knobCorner.CornerRadius = UDim.new(1, 0)
+                    local state = (info.Default == true)
+                    local function updateVisual(animated)
+                        local targetPos, targetBaseCol, targetKnobCol
+                        if state then
+                            targetPos    = UDim2.new(1, -21, 0, 1)
+                            targetBaseCol= COLOR_ACCENT
+                            targetKnobCol= COLOR_BG_PANEL
                         else
-                            selLbl.Text = tostring(selected[1] or '')
+                            targetPos    = UDim2.new(0, 1, 0, 1)
+                            targetBaseCol= COLOR_BG_PANEL
+                            targetKnobCol= COLOR_TEXT_SECONDARY
+                        end
+                        if animated then
+                            TweenService:Create(knob, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = targetPos, BackgroundColor3 = targetKnobCol}):Play()
+                            TweenService:Create(base, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = targetBaseCol}):Play()
+                        else
+                            knob.Position        = targetPos
+                            knob.BackgroundColor3= targetKnobCol
+                            base.BackgroundColor3= targetBaseCol
                         end
                     end
-                    -- populate options
+                    updateVisual(false)
+                    row.InputBegan:Connect(function(input)
+                        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                            state = not state
+                            updateVisual(true)
+                            if type(info.Callback) == "function" then
+                                task.spawn(function() info.Callback(state) end)
+                            end
+                        end
+                    end)
+                    return {}
+                end
+
+                -- Dropdown
+                function section:Dropdown(info)
+                    info = info or {}
+                    local row = Instance.new("Frame")
+                    row.BackgroundColor3 = COLOR_BG_CONTROL
+                    row.BorderSizePixel  = 0
+                    row.Size             = UDim2.new(1, 0, 0, 36)
+                    row.Parent           = cFrame
+                    local corner = Instance.new("UICorner", row)
+                    corner.CornerRadius = UDim.new(0, 8)
+                    local stroke = Instance.new("UIStroke", row)
+                    stroke.Thickness    = 1
+                    stroke.Color        = COLOR_BORDER
+                    stroke.Transparency = 0.6
+                    local lbl = Instance.new("TextLabel")
+                    lbl.BackgroundTransparency = 1
+                    lbl.Text               = tostring(info.Title or "Select")
+                    lbl.Font               = Enum.Font.GothamSemibold
+                    lbl.TextSize           = 14
+                    lbl.TextColor3         = COLOR_TEXT_PRIMARY
+                    lbl.Size               = UDim2.new(1, -80, 1, 0)
+                    lbl.Position           = UDim2.new(0, 8, 0, 0)
+                    lbl.TextXAlignment     = Enum.TextXAlignment.Left
+                    lbl.Parent             = row
+                    local valueLbl = Instance.new("TextLabel")
+                    valueLbl.BackgroundTransparency = 1
+                    valueLbl.Text               = ""
+                    valueLbl.Font               = Enum.Font.Gotham
+                    valueLbl.TextSize           = 13
+                    valueLbl.TextColor3         = COLOR_TEXT_SECONDARY
+                    valueLbl.Size               = UDim2.new(1, -80, 1, 0)
+                    valueLbl.Position           = UDim2.new(0, 8, 0, 0)
+                    valueLbl.TextXAlignment     = Enum.TextXAlignment.Right
+                    valueLbl.Parent             = row
+                    -- danh sách
+                    local listFrame = Instance.new("Frame")
+                    listFrame.BackgroundColor3 = COLOR_BG_PANEL
+                    listFrame.BorderSizePixel  = 0
+                    listFrame.Size             = UDim2.new(1, -16, 0, 0)
+                    listFrame.Position         = UDim2.new(0, 8, 0, 0)
+                    listFrame.Visible          = false
+                    listFrame.Parent           = cFrame
+                    local cornerLF = Instance.new("UICorner", listFrame)
+                    cornerLF.CornerRadius = UDim.new(0, 8)
+                    local strokeLF = Instance.new("UIStroke", listFrame)
+                    strokeLF.Thickness    = 1
+                    strokeLF.Color        = COLOR_BORDER
+                    strokeLF.Transparency = 0.6
+                    local scroller = Instance.new("ScrollingFrame", listFrame)
+                    scroller.BackgroundTransparency = 1
+                    scroller.BorderSizePixel        = 0
+                    scroller.Size                   = UDim2.new(1, 0, 0, 0)
+                    scroller.Position               = UDim2.new(0, 0, 0, 0)
+                    scroller.AutomaticSize          = Enum.AutomaticSize.Y
+                    scroller.ScrollBarThickness     = 4
+                    scroller.ScrollingDirection     = Enum.ScrollingDirection.Y
+                    local scLayout = Instance.new("UIListLayout", scroller)
+                    scLayout.FillDirection = Enum.FillDirection.Vertical
+                    scLayout.SortOrder     = Enum.SortOrder.LayoutOrder
+                    scLayout.Padding       = UDim.new(0, 2)
+                    local selected = {}
+                    local function updateLabel()
+                        if info.Multi then
+                            local names = {}
+                            for _, v in ipairs(selected) do table.insert(names, tostring(v)) end
+                            valueLbl.Text = table.concat(names, ", ")
+                        else
+                            valueLbl.Text = tostring(selected[1] or "")
+                        end
+                    end
                     local opts = info.Options or {}
-                    -- convert default to table
                     local defaults = {}
                     if info.Default then
-                        if type(info.Default) == 'table' then
+                        if type(info.Default) == "table" then
                             defaults = info.Default
                         else
                             defaults = { info.Default }
                         end
                     end
                     for _, opt in ipairs(opts) do
-                        local oBtn = Instance.new('TextButton')
-                        oBtn.Name              = 'Option_' .. tostring(opt)
+                        local oBtn = Instance.new("TextButton")
                         oBtn.Text              = tostring(opt)
                         oBtn.Font              = Enum.Font.Gotham
                         oBtn.TextSize          = 14
-                        oBtn.TextColor3        = COLOR_TEXT
+                        oBtn.TextColor3        = COLOR_TEXT_PRIMARY
                         oBtn.AutoButtonColor   = false
-                        oBtn.BackgroundColor3  = COLOR_SURFACE
+                        oBtn.BackgroundColor3  = COLOR_BG_CONTROL
                         oBtn.BorderSizePixel   = 0
                         oBtn.Size              = UDim2.new(1, -4, 0, 28)
-                        Instance.new('UICorner', oBtn).CornerRadius = UDim.new(0, 6)
                         oBtn.Parent            = scroller
-                        local selectedThis = false
+                        local cornerOB = Instance.new("UICorner", oBtn)
+                        cornerOB.CornerRadius = UDim.new(0, 6)
+                        local isDef = false
                         for _, d in ipairs(defaults) do
-                            if d == opt then
-                                selectedThis = true
-                                break
-                            end
+                            if d == opt then isDef = true break end
                         end
-                        if selectedThis then
+                        if isDef then
                             if info.Multi then
                                 table.insert(selected, opt)
                             else
                                 selected = { opt }
                             end
-                            oBtn.BackgroundColor3 = COLOR_TEAL_ON
+                            oBtn.BackgroundColor3 = COLOR_ACCENT
                         end
                         oBtn.MouseButton1Click:Connect(function()
                             if info.Multi then
                                 local found = false
                                 for i, v in ipairs(selected) do
-                                    if v == opt then
-                                        found = true
-                                        table.remove(selected, i)
-                                        break
-                                    end
+                                    if v == opt then table.remove(selected, i); found = true; break end
                                 end
-                                if not found then
-                                    table.insert(selected, opt)
-                                end
-                                -- update colors
+                                if not found then table.insert(selected, opt) end
                                 for _, child in ipairs(scroller:GetChildren()) do
-                                    if child:IsA('TextButton') then
+                                    if child:IsA("TextButton") then
                                         if table.find(selected, child.Text) then
-                                            child.BackgroundColor3 = COLOR_TEAL_ON
+                                            child.BackgroundColor3 = COLOR_ACCENT
                                         else
-                                            child.BackgroundColor3 = COLOR_SURFACE
+                                            child.BackgroundColor3 = COLOR_BG_CONTROL
                                         end
                                     end
                                 end
                             else
                                 selected = { opt }
-                                -- reset color
                                 for _, child in ipairs(scroller:GetChildren()) do
-                                    if child:IsA('TextButton') then
-                                        child.BackgroundColor3 = COLOR_SURFACE
-                                    end
+                                    if child:IsA("TextButton") then child.BackgroundColor3 = COLOR_BG_CONTROL end
                                 end
-                                oBtn.BackgroundColor3 = COLOR_TEAL_ON
+                                oBtn.BackgroundColor3 = COLOR_ACCENT
                                 listFrame.Visible = false
                             end
-                            updateSelectedLabel()
-                            if type(info.Callback) == 'function' then
-                                -- pass multi-state map or list similar to MacLib
+                            updateLabel()
+                            if type(info.Callback) == "function" then
                                 local out
                                 if info.Multi then
-                                    -- return map { opt=true, ... }
                                     out = {}
                                     for _, v in ipairs(selected) do out[v] = true end
                                 else
                                     out = selected[1]
                                 end
-                                task.spawn(function()
-                                    info.Callback(out)
-                                end)
+                                task.spawn(function() info.Callback(out) end)
                             end
                         end)
                     end
-                    updateSelectedLabel()
-                    -- open/close dropdown
+                    updateLabel()
                     row.InputBegan:Connect(function(input)
                         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
                             listFrame.Visible = not listFrame.Visible
-                            -- reposition dropdown under row
-                            listFrame.Parent = cFrame
                         end
                     end)
-                    -- adjust drop size after created options
                     task.defer(function()
                         scroller.Size = UDim2.new(1, 0, 0, math.min(#opts * 30, 120))
                         listFrame.Size = UDim2.new(1, 0, 0, scroller.Size.Y.Offset + 8)
                     end)
                     return {}
                 end
+
+                -- Input
                 function section:Input(info)
                     info = info or {}
-                    local row = Instance.new('Frame')
-                    row.BackgroundColor3 = COLOR_SURFACE
+                    local row = Instance.new("Frame")
+                    row.BackgroundColor3 = COLOR_BG_CONTROL
                     row.BorderSizePixel  = 0
                     row.Size             = UDim2.new(1, 0, 0, 36)
-                    Instance.new('UICorner', row).CornerRadius = UDim.new(0, 10)
                     row.Parent           = cFrame
-                    local lbl = Instance.new('TextLabel')
+                    local corner = Instance.new("UICorner", row)
+                    corner.CornerRadius = UDim.new(0, 8)
+                    local stroke = Instance.new("UIStroke", row)
+                    stroke.Thickness    = 1
+                    stroke.Color        = COLOR_BORDER
+                    stroke.Transparency = 0.6
+                    local lbl = Instance.new("TextLabel")
                     lbl.BackgroundTransparency = 1
-                    lbl.Text               = tostring(info.Title or 'Input')
+                    lbl.Text               = tostring(info.Title or "Input")
                     lbl.Font               = Enum.Font.GothamSemibold
                     lbl.TextSize           = 14
-                    lbl.TextColor3         = COLOR_TEXT
+                    lbl.TextColor3         = COLOR_TEXT_PRIMARY
                     lbl.Size               = UDim2.new(0.5, -8, 1, 0)
                     lbl.Position           = UDim2.new(0, 8, 0, 0)
                     lbl.TextXAlignment     = Enum.TextXAlignment.Left
                     lbl.Parent             = row
-                    local tb = Instance.new('TextBox')
-                    tb.BackgroundColor3    = COLOR_SURFACE_DARK
+                    local tb = Instance.new("TextBox")
+                    tb.BackgroundColor3    = COLOR_BG_PANEL
                     tb.BorderSizePixel     = 0
                     tb.Size                = UDim2.new(0.5, -12, 1, -10)
                     tb.Position            = UDim2.new(0.5, 4, 0, 5)
                     tb.Font                = Enum.Font.Gotham
                     tb.TextSize            = 14
-                    tb.TextColor3          = COLOR_TEXT
-                    tb.PlaceholderText     = tostring(info.Placeholder or '')
-                    tb.Text                = tostring(info.Default or '')
-                    Instance.new('UICorner', tb).CornerRadius = UDim.new(0, 6)
+                    tb.TextColor3          = COLOR_TEXT_PRIMARY
+                    tb.PlaceholderText     = tostring(info.Placeholder or "")
+                    tb.Text                = tostring(info.Default or "")
+                    local cornerTB = Instance.new("UICorner", tb)
+                    cornerTB.CornerRadius = UDim.new(0, 6)
                     tb.Parent             = row
-                    tb.FocusLost:Connect(function(enterPressed)
-                        local val = tb.Text
-                        if type(info.Callback) == 'function' then
-                            task.spawn(function()
-                                info.Callback(val)
-                            end)
+                    tb.FocusLost:Connect(function()
+                        if type(info.Callback) == "function" then
+                            task.spawn(function() info.Callback(tb.Text) end)
                         end
                     end)
                     return {}
                 end
+
                 return section
             end
+
             return tab
         end
-        window._tabGroup = TabGroup
-        function window:TabGroup()
-            return TabGroup
-        end
-        -- assign global for toggle detection
-        _G.__MAC_WINDOW = window
-        return window
+
+        win._tabGroup = TabGroup
+        function win:TabGroup() return TabGroup end
+
+        _G.__MAC_WINDOW = win
+        return win
     end
 end
 
