@@ -14,7 +14,7 @@ local UserInputService = MacLib.GetService("UserInputService")
 local Players = MacLib.GetService("Players")
 local CoreGui = MacLib.GetService("CoreGui")
 
---// Variables
+--// Variablesdsds
 local LocalPlayer = Players.LocalPlayer
 
 --// Chilli Finder Theme Palette
@@ -35,7 +35,7 @@ local THEME = {
     FontSemi      = Enum.Font.GothamMedium,
     FontNormal    = Enum.Font.Gotham,
 }
-
+local GLOBAL_FADE = 0.1   -- <== THIẾU DÒNG NÀY
 local IconList
 
 --// IO_SAVE stub
@@ -690,53 +690,74 @@ function MacLib:Window(Settings)
                 function SecFuncs:Toggle(TSettings, Flag)
                     local togCont = MakeElement(38)
                     AddTitle(togCont, TSettings.Title or TSettings.Name)
-
+                
                     local togBtn = Instance.new("TextButton", togCont)
                     togBtn.Size = UDim2.fromScale(1, 1)
                     togBtn.BackgroundTransparency = 1
                     togBtn.Text = ""
-
+                
+                    -- fallback: nếu GLOBAL_FADE nil thì dùng 0.1
+                    local FADE = (type(GLOBAL_FADE) == "number") and GLOBAL_FADE or 0.1
+                
                     local switchBg = Instance.new("Frame", togCont)
                     switchBg.Size = UDim2.fromOffset(40, 20)
                     switchBg.Position = UDim2.new(1, -50, 0.5, -10)
                     switchBg.BackgroundColor3 = THEME.Surface
+                    switchBg.BackgroundTransparency = FADE
                     Instance.new("UICorner", switchBg).CornerRadius = UDim.new(1, 0)
-
+                
                     local knob = Instance.new("Frame", switchBg)
                     knob.Size = UDim2.fromOffset(16, 16)
                     knob.Position = UDim2.new(0, 2, 0.5, -8)
                     knob.BackgroundColor3 = THEME.Text
                     Instance.new("UICorner", knob).CornerRadius = UDim.new(1, 0)
-
+                
                     local toggled = TSettings.Default or false
                     local Funcs = { Class = "Toggle", Value = toggled, State = toggled }
-
-                    local function Update(state)
+                
+                    local function applyVisual(state)
+                        if state then
+                            Tween(switchBg, TweenInfo.new(0.2), {
+                                BackgroundColor3 = THEME.Accent,
+                                BackgroundTransparency = 0
+                            })
+                            Tween(knob, TweenInfo.new(0.2), { Position = UDim2.new(1, -18, 0.5, -8) })
+                        else
+                            Tween(switchBg, TweenInfo.new(0.2), {
+                                BackgroundColor3 = THEME.Surface,
+                                BackgroundTransparency = FADE
+                            })
+                            Tween(knob, TweenInfo.new(0.2), { Position = UDim2.new(0, 2, 0.5, -8) })
+                        end
+                    end
+                
+                    -- không gọi callback khi set Default
+                    applyVisual(toggled)
+                
+                    local function setState(state, fireCallback)
+                        state = state and true or false
                         toggled = state
                         Funcs.Value = state
                         Funcs.State = state
-
-                        if toggled then
-                            Tween(switchBg, TweenInfo.new(0.2), { BackgroundColor3 = THEME.Accent })
-                            Tween(knob, TweenInfo.new(0.2), { Position = UDim2.new(1, -18, 0.5, -8) })
-                        else
-                            Tween(switchBg, TweenInfo.new(0.2), { BackgroundColor3 = THEME.Surface })
-                            Tween(knob, TweenInfo.new(0.2), { Position = UDim2.new(0, 2, 0.5, -8) })
+                        applyVisual(state)
+                        if fireCallback and TSettings.Callback then
+                            TSettings.Callback(state)
                         end
-                        if TSettings.Callback then TSettings.Callback(toggled) end
                     end
-
-                    Update(toggled)
+                
                     togBtn.MouseButton1Click:Connect(function()
-                        Update(not toggled)
+                        setState(not toggled, true)
                     end)
-
+                
                     function Funcs:Set(v)
-                        Update(v)
+                        setState(v, true)
                     end
+                    Funcs.UpdateState = Funcs.Set
+                
                     if Flag then MacLib.Options[Flag] = Funcs end
                     return Funcs
                 end
+
 
                 -- [SLIDER]
                 function SecFuncs:Slider(SSettings, Flag)
