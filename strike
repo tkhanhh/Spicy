@@ -36,9 +36,6 @@ local THEME = {
     FontNormal    = Enum.Font.Gotham,
 }
 
--- độ “mờ” chung cho nền UI (10%)
-local UI_FADE = 0.10
-
 local IconList
 
 --// IO_SAVE stub
@@ -77,7 +74,6 @@ end
 -- Gradient Card Style Helper
 local function AddCardStyle(frame, cornerRadius)
     frame.BackgroundColor3 = THEME.Background
-    frame.BackgroundTransparency = UI_FADE    -- nền card mờ 10%
     frame.BorderSizePixel = 0
 
     local corner = Instance.new("UICorner", frame)
@@ -307,7 +303,7 @@ function MacLib:Window(Settings)
     topBar.Name = "TopBar"
     topBar.Parent = base
     topBar.BackgroundColor3 = THEME.SurfaceDark
-    topBar.BackgroundTransparency = 0.3 + UI_FADE -- mờ thêm 10%
+    topBar.BackgroundTransparency = 0.3
     topBar.BorderSizePixel = 0
     topBar.Size = UDim2.new(1, -14, 0, topBarHeight)
     topBar.Position = UDim2.new(0, 7, 0, 7)
@@ -338,7 +334,6 @@ function MacLib:Window(Settings)
     closeBtn.Size = UDim2.fromOffset(24, 24)
     closeBtn.Position = UDim2.new(1, -30, 0.5, -12)
     closeBtn.BackgroundColor3 = THEME.Surface
-    closeBtn.BackgroundTransparency = UI_FADE
     closeBtn.Text = "X"
     closeBtn.Font = THEME.FontBold
     closeBtn.TextSize = 14
@@ -372,9 +367,9 @@ function MacLib:Window(Settings)
     contentArea.Position = UDim2.new(0, 10, 0, 7 + topBarHeight + 6)
     contentArea.Size = UDim2.new(1, -20, 1, -(topBarHeight + 18))
 
-    -- Sidebar (đã giảm 20%)
+    -- [EDITED] Sidebar width reduced by another 20% (130 -> 105)
     local sidebarWidth = 105
-
+    
     local sideBar = Instance.new("ScrollingFrame", contentArea)
     sideBar.Size = UDim2.new(0, sidebarWidth, 1, 0)
     sideBar.BackgroundTransparency = 1
@@ -394,6 +389,7 @@ function MacLib:Window(Settings)
     sep.BackgroundTransparency = 0.8
     sep.BorderSizePixel = 0
 
+    -- [AUTOMATIC] Pages area expands because it relies on sidebarWidth variable
     local pages = Instance.new("Frame", contentArea)
     pages.Size = UDim2.new(1, -(sidebarWidth + 20), 1, 0)
     pages.Position = UDim2.new(0, sidebarWidth + 20, 0, 0)
@@ -455,14 +451,14 @@ function MacLib:Window(Settings)
                 tabIcon.ImageRectSize = idata.ImageRectSize
             end
 
-            -- font tab giữ nguyên size 15
+            -- [KEPT] Font Size maintained (15) as requested
             local tabTitle = Instance.new("TextLabel", tabBtn)
             tabTitle.BackgroundTransparency = 1
             tabTitle.Position = UDim2.new(0, 30, 0, 0)
             tabTitle.Size = UDim2.new(1, -32, 1, 0)
             tabTitle.Font = THEME.FontBold
             tabTitle.Text = TabSettings.Title or "Tab"
-            tabTitle.TextSize = 15
+            tabTitle.TextSize = 15 
             tabTitle.TextColor3 = THEME.TextMuted
             tabTitle.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -483,7 +479,7 @@ function MacLib:Window(Settings)
             local pagePad = Instance.new("UIPadding", pageFrame)
             pagePad.PaddingLeft = UDim.new(0, 4)
             pagePad.PaddingRight = UDim.new(0, 4)
-            pagePad.PaddingTop = UDimnew(0, 4)
+            pagePad.PaddingTop = UDim.new(0, 4)
             pagePad.PaddingBottom = UDim.new(0, 10)
 
             local function Activate()
@@ -492,7 +488,7 @@ function MacLib:Window(Settings)
                 for btn, data in pairs(tabButtons) do
                     Tween(btn, TweenInfo.new(0.2), {
                         BackgroundColor3 = THEME.Surface,
-                        BackgroundTransparency = 1 -- tab khác: trong suốt
+                        BackgroundTransparency = 1
                     })
                     Tween(data.Stroke, TweenInfo.new(0.2), { Transparency = 1 })
                     Tween(data.Title, TweenInfo.new(0.2), { TextColor3 = THEME.TextMuted })
@@ -513,9 +509,8 @@ function MacLib:Window(Settings)
                     Position = UDim2.new(0, 0, 0, 0)
                 })
 
-                -- tab đang chọn: nền mờ 10%
                 Tween(tabBtn, TweenInfo.new(0.2), {
-                    BackgroundTransparency = UI_FADE
+                    BackgroundTransparency = 0
                 })
                 Tween(tabStroke, TweenInfo.new(0.2), { Transparency = 0.4 })
                 Tween(tabTitle, TweenInfo.new(0.2), { TextColor3 = THEME.Text })
@@ -549,7 +544,7 @@ function MacLib:Window(Settings)
                 local section = Instance.new("Frame", pageFrame)
                 section.Size = UDim2.new(1, -2, 0, 0)
                 section.AutomaticSize = Enum.AutomaticSize.Y
-                section.BackgroundTransparency = UI_FADE -- section cũng mờ 10%
+                section.BackgroundTransparency = 0
                 section.ClipsDescendants = true
 
                 AddCardStyle(section, 12)
@@ -575,20 +570,21 @@ function MacLib:Window(Settings)
                     headerBtn.BackgroundTransparency = 1
                     headerBtn.Text = ""
 
-                    -- Header Text lớn hơn + gradient xanh→trắng
+                    -- [EDITED] Header Text: Bigger + Gradient
                     headerLbl = Instance.new("TextLabel", headerBtn)
                     headerLbl.Text = SecSettings.Title
                     headerLbl.Font = THEME.FontBold
-                    headerLbl.TextSize = 16
-                    headerLbl.TextColor3 = Color3.fromRGB(255, 255, 255)
+                    headerLbl.TextSize = 16 -- Increased from 14
+                    headerLbl.TextColor3 = Color3.fromRGB(255, 255, 255) -- Base color white for gradient
                     headerLbl.Size = UDim2.new(1, -20, 1, 0)
                     headerLbl.BackgroundTransparency = 1
                     headerLbl.TextXAlignment = Enum.TextXAlignment.Left
 
+                    -- Added Gradient to Section Header
                     local secGrad = Instance.new("UIGradient", headerLbl)
                     secGrad.Color = ColorSequence.new({
-                        ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 211, 238)),
-                        ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 255)),
+                        ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 211, 238)), -- Blue
+                        ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 255)), -- White
                         ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255)),
                     })
 
@@ -641,7 +637,7 @@ function MacLib:Window(Settings)
                     local el = Instance.new("Frame", contentHolder)
                     el.Size = UDim2.new(1, 0, 0, height or 38)
                     el.BackgroundColor3 = Color3.fromRGB(15, 20, 30)
-                    el.BackgroundTransparency = 0.6  -- control mờ hơn (50%+10%)
+                    el.BackgroundTransparency = 0.5
 
                     local elCorn = Instance.new("UICorner", el)
                     elCorn.CornerRadius = UDim.new(0, 8)
@@ -694,7 +690,7 @@ function MacLib:Window(Settings)
                     return Funcs
                 end
 
-                -- [TOGGLE]  (thêm State, nền mờ)
+                -- [TOGGLE]
                 function SecFuncs:Toggle(TSettings, Flag)
                     local togCont = MakeElement(38)
                     AddTitle(togCont, TSettings.Title or TSettings.Name)
@@ -708,7 +704,6 @@ function MacLib:Window(Settings)
                     switchBg.Size = UDim2.fromOffset(40, 20)
                     switchBg.Position = UDim2.new(1, -50, 0.5, -10)
                     switchBg.BackgroundColor3 = THEME.Surface
-                    switchBg.BackgroundTransparency = UI_FADE
                     Instance.new("UICorner", switchBg).CornerRadius = UDim.new(1, 0)
 
                     local knob = Instance.new("Frame", switchBg)
@@ -718,32 +713,22 @@ function MacLib:Window(Settings)
                     Instance.new("UICorner", knob).CornerRadius = UDim.new(1, 0)
 
                     local toggled = TSettings.Default or false
-                    local Funcs = { Class = "Toggle", Value = toggled, State = toggled }
+                    local Funcs = { Class = "Toggle", Value = toggled }
 
                     local function Update(state)
                         toggled = state
                         Funcs.Value = state
-                        Funcs.State = state
                         if toggled then
-                            Tween(switchBg, TweenInfo.new(0.2), {
-                                BackgroundColor3 = THEME.Accent,
-                                BackgroundTransparency = UI_FADE
-                            })
+                            Tween(switchBg, TweenInfo.new(0.2), { BackgroundColor3 = THEME.Accent })
                             Tween(knob, TweenInfo.new(0.2), { Position = UDim2.new(1, -18, 0.5, -8) })
                         else
-                            Tween(switchBg, TweenInfo.new(0.2), {
-                                BackgroundColor3 = THEME.Surface,
-                                BackgroundTransparency = UI_FADE
-                            })
+                            Tween(switchBg, TweenInfo.new(0.2), { BackgroundColor3 = THEME.Surface })
                             Tween(knob, TweenInfo.new(0.2), { Position = UDim2.new(0, 2, 0.5, -8) })
                         end
-                        if TSettings.Callback then
-                            TSettings.Callback(toggled)
-                        end
+                        if TSettings.Callback then TSettings.Callback(toggled) end
                     end
 
                     Update(toggled)
-
                     togBtn.MouseButton1Click:Connect(function()
                         Update(not toggled)
                     end)
@@ -751,16 +736,11 @@ function MacLib:Window(Settings)
                     function Funcs:Set(v)
                         Update(v)
                     end
-
-                    function Funcs:Get()
-                        return toggled
-                    end
-
                     if Flag then MacLib.Options[Flag] = Funcs end
                     return Funcs
                 end
 
-                -- [SLIDER] (thanh mờ, chiều ngang đã giảm)
+                -- [SLIDER]
                 function SecFuncs:Slider(SSettings, Flag)
                     local slidCont = MakeElement(50)
                     local titleLbl = AddTitle(slidCont, SSettings.Title or SSettings.Name)
@@ -780,7 +760,6 @@ function MacLib:Window(Settings)
                     slideBg.Size = UDim2.new(0.85, -20, 0, 4)
                     slideBg.Position = UDim2.new(0, 10, 0, 32)
                     slideBg.BackgroundColor3 = THEME.Surface
-                    slideBg.BackgroundTransparency = UI_FADE + 0.05
                     Instance.new("UICorner", slideBg).CornerRadius = UDim.new(1, 0)
 
                     local fill = Instance.new("Frame", slideBg)
@@ -846,7 +825,7 @@ function MacLib:Window(Settings)
                     return Funcs
                 end
 
-                -- [DROPDOWN] - option tối, có viền, container mờ
+                -- [DROPDOWN] - Darker options & Stroke
                 function SecFuncs:Dropdown(DSettings, Flag)
                     local dropCont = MakeElement(44)
                     dropCont.ClipsDescendants = true
@@ -908,14 +887,15 @@ function MacLib:Window(Settings)
                         for _, opt in ipairs(opts) do
                             local optBtn = Instance.new("TextButton", listFrame)
                             optBtn.Size = UDim2.new(1, 0, 0, 26)
-                            optBtn.BackgroundColor3 = Color3.fromRGB(15, 20, 30)
-                            optBtn.BackgroundTransparency = UI_FADE
+                            -- [EDITED] Darker Option Color
+                            optBtn.BackgroundColor3 = Color3.fromRGB(15, 20, 30) 
                             optBtn.Text = opt
                             optBtn.Font = THEME.FontNormal
                             optBtn.TextColor3 = THEME.Text
                             optBtn.TextSize = 13
                             Instance.new("UICorner", optBtn).CornerRadius = UDim.new(0, 6)
 
+                            -- [EDITED] Added Stroke to Option
                             local optStr = Instance.new("UIStroke", optBtn)
                             optStr.Color = THEME.StrokeMain
                             optStr.Transparency = 0.7
@@ -973,16 +953,18 @@ function MacLib:Window(Settings)
                     return Funcs
                 end
 
-                -- [INPUT] - chữ đậm, box mờ, chiều ngang ngắn 60% và sát phải
+                -- [INPUT] - Reduced width 60% & Right Aligned
                 function SecFuncs:Input(ISettings, Flag)
                     local inpCont = MakeElement(38)
                     AddTitle(inpCont, ISettings.Title or ISettings.Name)
 
                     local boxBg = Instance.new("Frame", inpCont)
-                    boxBg.Size = UDim2.new(0, 60, 0, 26)       -- ngắn 60%
-                    boxBg.Position = UDim2.new(1, -70, 0.5, -13)
+                    -- [EDITED] Original was 140. Reduced 60% = ~56-60px.
+                    boxBg.Size = UDim2.new(0, 60, 0, 26) 
+                    -- [EDITED] Position adjusted to keep it right aligned with padding
+                    boxBg.Position = UDim2.new(1, -70, 0.5, -13) 
+                    
                     boxBg.BackgroundColor3 = THEME.Background
-                    boxBg.BackgroundTransparency = UI_FADE + 0.05
                     Instance.new("UICorner", boxBg).CornerRadius = UDim.new(0, 6)
                     local bStr = Instance.new("UIStroke", boxBg)
                     bStr.Color = THEME.StrokeMain
@@ -995,8 +977,8 @@ function MacLib:Window(Settings)
                     box.Text = ISettings.Default or ""
                     box.PlaceholderText = ISettings.Placeholder or "..."
                     box.TextColor3 = THEME.Text
-                    box.Font = THEME.FontBold      -- đậm, rõ
-                    box.TextSize = 14
+                    box.Font = THEME.FontNormal
+                    box.TextSize = 13
 
                     local Funcs = { Class = "Input", Value = box.Text }
 
@@ -1026,7 +1008,7 @@ function MacLib:Window(Settings)
                 -- [PARAGRAPH]
                 function SecFuncs:Paragraph(Settings)
                     local par = MakeElement(44)
-                    par.BackgroundTransparency = 0.25 + UI_FADE
+                    par.BackgroundTransparency = 0.25
                     local stroke = par:FindFirstChildOfClass("UIStroke")
                     if stroke then
                         stroke.Transparency = 0.5
@@ -1106,7 +1088,7 @@ function MacLib:Window(Settings)
 
         Tween(card, TweenInfo.new(0.35, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
             Position = UDim2.new(0, 0, 0, 0),
-            BackgroundTransparency = UI_FADE
+            BackgroundTransparency = 0
         })
 
         task.delay(NSettings.Duration or 3, function()
