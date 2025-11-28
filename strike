@@ -53,19 +53,19 @@ local IconList
 --// Style definitions inspired by the Chilli Finder interface
 -- Define a modern, minimal colour palette with dark surfaces and vibrant accents.
 local STYLE = {
-    -- Gradient colours for the main window background
-    baseGradient1 = Color3.fromRGB(12, 18, 32),
-    baseGradient2 = Color3.fromRGB(21, 30, 47),
+    -- Gradient colours for the main window background (deep violet palette)
+    baseGradient1 = Color3.fromRGB(31, 19, 49),
+    baseGradient2 = Color3.fromRGB(51, 33, 77),
     -- Gradient colours for secondary surfaces (sidebar, sections, tabs)
-    surface1      = Color3.fromRGB(30, 41, 59),
-    surface2      = Color3.fromRGB(25, 32, 48),
-    -- Accent colour used for strokes, highlights and active states
-    accent        = Color3.fromRGB(56, 189, 248),
-    -- Brighter accent for hover states (not all controls use this directly but it is available)
-    accentHover   = Color3.fromRGB(93, 230, 255),
+    surface1      = Color3.fromRGB(36, 24, 57),
+    surface2      = Color3.fromRGB(50, 35, 78),
+    -- Accent colour used for strokes, highlights and active states (purple)
+    accent        = Color3.fromRGB(181, 86, 255),
+    -- Brighter accent for hover states
+    accentHover   = Color3.fromRGB(206, 139, 255),
     -- Primary and muted text colours
-    text          = Color3.fromRGB(241, 245, 249),
-    textMuted     = Color3.fromRGB(148, 163, 184),
+    text          = Color3.fromRGB(245, 245, 250),
+    textMuted     = Color3.fromRGB(170, 150, 200),
 }
 
 -- Create a UIGradient on a frame with given colours and rotation
@@ -95,7 +95,8 @@ local function styleBaseFrame(frame)
     -- Increase corner radius for smoother edges
     local corner = frame:FindFirstChildWhichIsA("UICorner")
     if corner then
-        corner.CornerRadius = UDim.new(0, 14)
+        -- increase curvature for a more rounded appearance
+        corner.CornerRadius = UDim.new(0, 20)
     end
 end
 
@@ -125,11 +126,13 @@ local function styleSection(section, stroke, corner)
     applyGradient(section, STYLE.surface1, STYLE.surface2, 0)
     if stroke then
         stroke.Color = STYLE.accent
-        stroke.Transparency = 0.8
+        -- slightly more visible stroke on sections
+        stroke.Transparency = 0.6
         stroke.Thickness = 1
     end
     if corner then
-        corner.CornerRadius = UDim.new(0, 12)
+        -- increase rounding for sections
+        corner.CornerRadius = UDim.new(0, 18)
     end
 end
 
@@ -1681,16 +1684,13 @@ function MacLib:Window(Settings)
 
             local tabSwitcherName = Instance.new("TextLabel")
 			tabSwitcherName.Name = "TabSwitcherName"
-			tabSwitcherName.FontFace = Font.new(
-				assets.interFont,
-				Enum.FontWeight.Medium,
-				Enum.FontStyle.Normal
-			)
+            -- use a bold Gotham font for better readability and modern look
+            tabSwitcherName.Font = Enum.Font.GothamBold
 			tabSwitcherName.Text = Settings.Title or Settings.Name
 			tabSwitcherName.RichText = true
             -- use primary text colour and keep subtle transparency for unselected state
             tabSwitcherName.TextColor3 = STYLE.text
-            tabSwitcherName.TextSize = 15
+            tabSwitcherName.TextSize = 16
             tabSwitcherName.TextTransparency = 0.5
 			tabSwitcherName.TextTruncate = Enum.TextTruncate.SplitWord
 			tabSwitcherName.TextXAlignment = Enum.TextXAlignment.Left
@@ -1797,12 +1797,13 @@ function MacLib:Window(Settings)
 				-- HEADER UNTUK COLLAPSIBLE
 				local sectionHeader = Instance.new("TextButton")
 				sectionHeader.Name = "SectionHeader"
-				sectionHeader.FontFace = Font.new(assets.interFont, Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+				-- use a bold font and accent colour for section titles
+				sectionHeader.Font = Enum.Font.GothamBold
 				sectionHeader.Text = Settings.Title or "Section"
-                -- primary text colour for section headers
-                sectionHeader.TextColor3 = STYLE.text
+				sectionHeader.TextColor3 = STYLE.accent
 				sectionHeader.TextSize = 18
-				sectionHeader.TextTransparency = 0.3
+				-- less transparency for better legibility
+				sectionHeader.TextTransparency = 0.1
 				sectionHeader.TextXAlignment = Enum.TextXAlignment.Left
 				sectionHeader.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				sectionHeader.BackgroundTransparency = 1
@@ -1972,12 +1973,13 @@ function MacLib:Window(Settings)
 
 					local buttonInteract = Instance.new("TextButton")
 					buttonInteract.Name = "ButtonInteract"
-					buttonInteract.FontFace = Font.new(assets.interFont)
-					buttonInteract.RichText = true
+                    -- bold font and larger size for buttons
+                    buttonInteract.Font = Enum.Font.GothamBold
+                    buttonInteract.RichText = true
                     -- apply modern text styling
                     buttonInteract.TextColor3 = STYLE.text
-                    buttonInteract.TextSize = 14
-                    buttonInteract.TextTransparency = 0.3
+                    buttonInteract.TextSize = 16
+                    buttonInteract.TextTransparency = 0.2
 					buttonInteract.TextTruncate = Enum.TextTruncate.AtEnd
 					buttonInteract.TextXAlignment = Enum.TextXAlignment.Left
 					buttonInteract.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2065,15 +2067,16 @@ function MacLib:Window(Settings)
 					toggle.Size = UDim2.new(1, 0, 0, 38)
 					toggle.Parent = sectionContent 
 
-					local toggleName = Instance.new("TextLabel")
-					toggleName.Name = "ToggleName"
-					toggleName.FontFace = Font.new(assets.interFont)
-					toggleName.Text = ToggleFunctions.Settings.Title or ToggleFunctions.Settings.Name
-					toggleName.RichText = true
+                    local toggleName = Instance.new("TextLabel")
+                    toggleName.Name = "ToggleName"
+                    -- bold font and larger size for toggle labels
+                    toggleName.Font = Enum.Font.GothamBold
+                    toggleName.Text = ToggleFunctions.Settings.Title or ToggleFunctions.Settings.Name
+                    toggleName.RichText = true
                     -- use primary text colour with slightly reduced transparency for readability
                     toggleName.TextColor3 = STYLE.text
-                    toggleName.TextSize = 14
-                    toggleName.TextTransparency = 0.3
+                    toggleName.TextSize = 16
+                    toggleName.TextTransparency = 0.2
 					toggleName.TextTruncate = Enum.TextTruncate.AtEnd
 					toggleName.TextXAlignment = Enum.TextXAlignment.Left
 					toggleName.TextYAlignment = Enum.TextYAlignment.Top
@@ -2097,6 +2100,11 @@ function MacLib:Window(Settings)
                         -- initial background colours aligned with the global style palette
                         local offColour = STYLE.surface2
                         local onColour = STYLE.accent
+                        -- knob sizes and colours for on/off states
+                        local knobOffSize = UDim2.fromOffset(17, 17)
+                        local knobOnSize  = UDim2.fromOffset(21, 21)
+                        local knobOffColor= STYLE.text
+                        local knobOnColor= STYLE.accent
 						toggleButton.BackgroundColor3 = offColour
 						toggleButton.BackgroundTransparency = 0
 						toggleButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -2128,34 +2136,38 @@ function MacLib:Window(Settings)
 
 						toggleButton.Parent = toggle
 
-						-- tween settings for moving the knob and changing colours
-						local TweenSettings = {
-							Info = TweenInfo.new(0.15, Enum.EasingStyle.Quad),
-							-- knob positions for on/off states
-							EnabledPosition = UDim2.new(1, -19, 0.5, 0),
-							DisabledPosition = UDim2.new(0, 2, 0.5, 0),
-						}
+                        -- tween settings for moving the knob and changing colours
+                        local TweenSettings = {
+                            Info = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+                            -- knob positions for on/off states (adjusted for larger knob)
+                            EnabledPosition = UDim2.new(1, -23, 0.5, 0),
+                            DisabledPosition = UDim2.new(0, 2, 0.5, 0),
+                        }
 
 						local togglebool = ToggleFunctions.Settings.Default
 
-						local function NewState(State, callback)
-							-- pick colours and knob positions based on the state
-							local colour = State and onColour or offColour
-							local position = State and TweenSettings.EnabledPosition or TweenSettings.DisabledPosition
-							-- animate background colour
-							Tween(toggleButton, TweenSettings.Info, {
-								BackgroundColor3 = colour
-							}):Play()
-							-- animate knob position
-							Tween(knob, TweenSettings.Info, {
-								Position = position
-							}):Play()
+                        local function NewState(State, callback)
+                            -- pick colours, positions, sizes and knob colours based on the state
+                            local colour         = State and onColour  or offColour
+                            local position       = State and TweenSettings.EnabledPosition or TweenSettings.DisabledPosition
+                            local knobSize       = State and knobOnSize  or knobOffSize
+                            local knobColour     = State and knobOnColor or knobOffColor
+                            -- animate background colour
+                            Tween(toggleButton, TweenSettings.Info, {
+                                BackgroundColor3 = colour
+                            }):Play()
+                            -- animate knob: position, size and colour
+                            Tween(knob, TweenSettings.Info, {
+                                Position = position,
+                                Size     = knobSize,
+                                BackgroundColor3 = knobColour,
+                            }):Play()
 
-							ToggleFunctions.State = State
-							if callback then
-								callback(togglebool)
-							end
-						end
+                            ToggleFunctions.State = State
+                            if callback then
+                                callback(togglebool)
+                            end
+                        end
 
 						-- initialise the toggle to its default state
 						NewState(togglebool)
@@ -2205,13 +2217,13 @@ function MacLib:Window(Settings)
 
 					local sliderName = Instance.new("TextLabel")
 					sliderName.Name = "SliderName"
-					sliderName.FontFace = Font.new(assets.interFont)
-					sliderName.Text = SliderFunctions.Settings.Title or SliderFunctions.Settings.Name
-					sliderName.RichText = true
+                    sliderName.Font = Enum.Font.GothamBold
+                    sliderName.Text = SliderFunctions.Settings.Title or SliderFunctions.Settings.Name
+                    sliderName.RichText = true
                     -- unify slider label colour and transparency
                     sliderName.TextColor3 = STYLE.text
-                    sliderName.TextSize = 14
-                    sliderName.TextTransparency = 0.3
+                    sliderName.TextSize = 16
+                    sliderName.TextTransparency = 0.2
 					sliderName.TextTruncate = Enum.TextTruncate.AtEnd
 					sliderName.TextXAlignment = Enum.TextXAlignment.Left
 					sliderName.TextYAlignment = Enum.TextYAlignment.Top
@@ -5615,8 +5627,30 @@ function MacLib:Window(Settings)
 	end
 
 	function WindowFunctions:SetState(State)
-		windowState = State
-		base.Visible = State
+        windowState = State
+        -- smooth animation for opening/closing the GUI
+        if State then
+            -- show GUI: prepare initial state then animate in
+            base.Visible = true
+            openButton.Visible = false
+            -- start from slightly smaller scale and fully transparent
+            baseUIScale.Scale = 0.8
+            base.BackgroundTransparency = 1
+            -- animate to full scale and opaque
+            local tweenInScale = Tween(baseUIScale, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Scale = 1})
+            local tweenInAlpha = Tween(base, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0})
+            tweenInScale:Play()
+            tweenInAlpha:Play()
+        else
+            -- hide GUI: animate out then hide
+            openButton.Visible = true
+            local tweenOutScale = Tween(baseUIScale, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Scale = 0.8})
+            local tweenOutAlpha = Tween(base, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1})
+            tweenOutScale:Play()
+            tweenOutAlpha:Play()
+            tweenOutAlpha.Completed:Wait()
+            base.Visible = false
+        end
 	end
 
 	function WindowFunctions:GetState()
