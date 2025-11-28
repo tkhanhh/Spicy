@@ -367,7 +367,7 @@ function MacLib:Window(Settings)
     contentArea.Position = UDim2.new(0, 10, 0, 7 + topBarHeight + 6)
     contentArea.Size = UDim2.new(1, -20, 1, -(topBarHeight + 18))
 
-    -- [EDITED] Sidebar width reduced by another 20% (130 -> 105)
+    -- Sidebar width (đã giảm)
     local sidebarWidth = 105
     
     local sideBar = Instance.new("ScrollingFrame", contentArea)
@@ -389,7 +389,6 @@ function MacLib:Window(Settings)
     sep.BackgroundTransparency = 0.8
     sep.BorderSizePixel = 0
 
-    -- [AUTOMATIC] Pages area expands because it relies on sidebarWidth variable
     local pages = Instance.new("Frame", contentArea)
     pages.Size = UDim2.new(1, -(sidebarWidth + 20), 1, 0)
     pages.Position = UDim2.new(0, sidebarWidth + 20, 0, 0)
@@ -451,7 +450,6 @@ function MacLib:Window(Settings)
                 tabIcon.ImageRectSize = idata.ImageRectSize
             end
 
-            -- [KEPT] Font Size maintained (15) as requested
             local tabTitle = Instance.new("TextLabel", tabBtn)
             tabTitle.BackgroundTransparency = 1
             tabTitle.Position = UDim2.new(0, 30, 0, 0)
@@ -570,21 +568,19 @@ function MacLib:Window(Settings)
                     headerBtn.BackgroundTransparency = 1
                     headerBtn.Text = ""
 
-                    -- [EDITED] Header Text: Bigger + Gradient
                     headerLbl = Instance.new("TextLabel", headerBtn)
                     headerLbl.Text = SecSettings.Title
                     headerLbl.Font = THEME.FontBold
-                    headerLbl.TextSize = 16 -- Increased from 14
-                    headerLbl.TextColor3 = Color3.fromRGB(255, 255, 255) -- Base color white for gradient
+                    headerLbl.TextSize = 16
+                    headerLbl.TextColor3 = Color3.fromRGB(255, 255, 255)
                     headerLbl.Size = UDim2.new(1, -20, 1, 0)
                     headerLbl.BackgroundTransparency = 1
                     headerLbl.TextXAlignment = Enum.TextXAlignment.Left
 
-                    -- Added Gradient to Section Header
                     local secGrad = Instance.new("UIGradient", headerLbl)
                     secGrad.Color = ColorSequence.new({
-                        ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 211, 238)), -- Blue
-                        ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 255)), -- White
+                        ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 211, 238)),
+                        ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 255)),
                         ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255)),
                     })
 
@@ -690,7 +686,7 @@ function MacLib:Window(Settings)
                     return Funcs
                 end
 
-                -- [TOGGLE]
+                -- [TOGGLE] – thêm State để tương thích AntiRagdollToggle.State
                 function SecFuncs:Toggle(TSettings, Flag)
                     local togCont = MakeElement(38)
                     AddTitle(togCont, TSettings.Title or TSettings.Name)
@@ -713,11 +709,13 @@ function MacLib:Window(Settings)
                     Instance.new("UICorner", knob).CornerRadius = UDim.new(1, 0)
 
                     local toggled = TSettings.Default or false
-                    local Funcs = { Class = "Toggle", Value = toggled }
+                    local Funcs = { Class = "Toggle", Value = toggled, State = toggled }
 
                     local function Update(state)
                         toggled = state
                         Funcs.Value = state
+                        Funcs.State = state   -- quan trọng: field State cho code cũ
+
                         if toggled then
                             Tween(switchBg, TweenInfo.new(0.2), { BackgroundColor3 = THEME.Accent })
                             Tween(knob, TweenInfo.new(0.2), { Position = UDim2.new(1, -18, 0.5, -8) })
@@ -825,7 +823,7 @@ function MacLib:Window(Settings)
                     return Funcs
                 end
 
-                -- [DROPDOWN] - Darker options & Stroke
+                -- [DROPDOWN]
                 function SecFuncs:Dropdown(DSettings, Flag)
                     local dropCont = MakeElement(44)
                     dropCont.ClipsDescendants = true
@@ -887,15 +885,13 @@ function MacLib:Window(Settings)
                         for _, opt in ipairs(opts) do
                             local optBtn = Instance.new("TextButton", listFrame)
                             optBtn.Size = UDim2.new(1, 0, 0, 26)
-                            -- [EDITED] Darker Option Color
-                            optBtn.BackgroundColor3 = Color3.fromRGB(15, 20, 30) 
+                            optBtn.BackgroundColor3 = Color3.fromRGB(15, 20, 30)
                             optBtn.Text = opt
                             optBtn.Font = THEME.FontNormal
                             optBtn.TextColor3 = THEME.Text
                             optBtn.TextSize = 13
                             Instance.new("UICorner", optBtn).CornerRadius = UDim.new(0, 6)
 
-                            -- [EDITED] Added Stroke to Option
                             local optStr = Instance.new("UIStroke", optBtn)
                             optStr.Color = THEME.StrokeMain
                             optStr.Transparency = 0.7
@@ -953,17 +949,14 @@ function MacLib:Window(Settings)
                     return Funcs
                 end
 
-                -- [INPUT] - Reduced width 60% & Right Aligned
+                -- [INPUT]
                 function SecFuncs:Input(ISettings, Flag)
                     local inpCont = MakeElement(38)
                     AddTitle(inpCont, ISettings.Title or ISettings.Name)
 
                     local boxBg = Instance.new("Frame", inpCont)
-                    -- [EDITED] Original was 140. Reduced 60% = ~56-60px.
-                    boxBg.Size = UDim2.new(0, 60, 0, 26) 
-                    -- [EDITED] Position adjusted to keep it right aligned with padding
-                    boxBg.Position = UDim2.new(1, -70, 0.5, -13) 
-                    
+                    boxBg.Size = UDim2.new(0, 60, 0, 26)
+                    boxBg.Position = UDim2.new(1, -70, 0.5, -13)
                     boxBg.BackgroundColor3 = THEME.Background
                     Instance.new("UICorner", boxBg).CornerRadius = UDim.new(0, 6)
                     local bStr = Instance.new("UIStroke", boxBg)
