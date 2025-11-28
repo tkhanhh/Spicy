@@ -686,7 +686,7 @@ function MacLib:Window(Settings)
                     return Funcs
                 end
 
-                -- [TOGGLE] – thêm State để tương thích AntiRagdollToggle.State
+                -- [TOGGLE] – có State cho script cũ
                 function SecFuncs:Toggle(TSettings, Flag)
                     local togCont = MakeElement(38)
                     AddTitle(togCont, TSettings.Title or TSettings.Name)
@@ -714,7 +714,7 @@ function MacLib:Window(Settings)
                     local function Update(state)
                         toggled = state
                         Funcs.Value = state
-                        Funcs.State = state   -- quan trọng: field State cho code cũ
+                        Funcs.State = state
 
                         if toggled then
                             Tween(switchBg, TweenInfo.new(0.2), { BackgroundColor3 = THEME.Accent })
@@ -949,7 +949,7 @@ function MacLib:Window(Settings)
                     return Funcs
                 end
 
-                -- [INPUT]
+                -- [INPUT] – chữ đậm, font đẹp hơn
                 function SecFuncs:Input(ISettings, Flag)
                     local inpCont = MakeElement(38)
                     AddTitle(inpCont, ISettings.Title or ISettings.Name)
@@ -970,8 +970,10 @@ function MacLib:Window(Settings)
                     box.Text = ISettings.Default or ""
                     box.PlaceholderText = ISettings.Placeholder or "..."
                     box.TextColor3 = THEME.Text
-                    box.Font = THEME.FontNormal
-                    box.TextSize = 13
+                    box.Font = THEME.FontBold       -- Đậm, rõ
+                    box.TextSize = 14               -- To hơn 1 chút
+                    box.TextStrokeTransparency = 0.8
+                    box.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 
                     local Funcs = { Class = "Input", Value = box.Text }
 
