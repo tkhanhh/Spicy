@@ -18,7 +18,7 @@ local CoreGui = MacLib.GetService("CoreGui")
 local LocalPlayer = Players.LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 
---// Chilli Finder Theme Palette
+--// Chilli Finder Theme Palettes
 local THEME = {
     Background    = Color3.fromRGB(16, 24, 39),
     CardGrad1     = Color3.fromRGB(12, 18, 32),
@@ -32,12 +32,26 @@ local THEME = {
     Text          = Color3.fromRGB(241, 245, 249),
     TextMuted     = Color3.fromRGB(148, 163, 184),
     Error         = Color3.fromRGB(239, 68, 68),
+    -- Gradient for TopBar/Selected Elements
+    TopBarGrad1   = Color3.fromRGB(34, 211, 238), -- Cyan
+    TopBarGrad2   = Color3.fromRGB(99, 102, 241), -- Blue/Purple
     FontBold      = Enum.Font.GothamBold,
     FontSemi      = Enum.Font.GothamMedium,
     FontNormal    = Enum.Font.Gotham,
 }
 
 local IconList
+local MenuKeybind = Enum.KeyCode.LeftControl -- Keybind mặc định
+local WindowIsVisible = true
+local WindowBase
+
+-- HÀM GIẢ: IO_SAVE (Để Desync code không bị lỗi "attempt to call a nil value")
+local function IO_SAVE(tbl)
+    -- Bạn nên thay thế hàm này bằng logic lưu config thực tế của mình.
+    -- Đối với demo này, nó chỉ print ra để tránh lỗi.
+    print("[IO_SAVE]: Desync state saved:", tbl.Desync)
+end
+
 
 --// Helper Functions
 local function GetGui()
@@ -93,6 +107,31 @@ local function AddCardStyle(frame, cornerRadius)
     strokeMain.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
     
     return strokeMain
+end
+
+-- TopBar Gradient Text Helper
+local function ApplyTopBarGradient(label)
+    label.TextColor3 = THEME.Text
+    local titleGrad = Instance.new("UIGradient", label)
+    titleGrad.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0.00, THEME.TopBarGrad1),
+        ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 255)),
+        ColorSequenceKeypoint.new(1.00, THEME.TopBarGrad2),
+    })
+    return titleGrad
+end
+
+-- Tab/Section Background Gradient Helper (Cyan-Blue)
+local function ApplyAccentGradient(frame)
+    frame.BackgroundColor3 = THEME.Accent -- Fallback
+    frame.BackgroundTransparency = 0
+    local grad = Instance.new("UIGradient", frame)
+    grad.Rotation = 90
+    grad.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0.0, THEME.TopBarGrad1),
+        ColorSequenceKeypoint.new(1.0, THEME.TopBarGrad2),
+    })
+    return grad
 end
 
 -- Icon Loader
@@ -177,15 +216,21 @@ function MacLib:Window(Settings)
     notifLayout.SortOrder = Enum.SortOrder.LayoutOrder
     notifLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
     notifLayout.Parent = notifications
-
+    
+    -- Window size adjustments (15% reduction)
+    local originalSize = Settings.Size or UDim2.fromOffset(650, 400)
+    local newOffsetX = originalSize.X.Offset
+    local newOffsetY = originalSize.Y.Offset * 0.85 
+    
     -- Main Base
     local base = Instance.new("Frame")
     base.Name = "MainBase"
     base.AnchorPoint = Vector2.new(0.5, 0.5)
     base.Position = UDim2.fromScale(0.5, 0.5)
-    base.Size = Settings.Size or UDim2.fromOffset(700, 450)
+    base.Size = UDim2.fromOffset(newOffsetX, newOffsetY)
     base.Parent = macLib
     base.ClipsDescendants = false
+    WindowBase = base -- Set global reference for toggle
 
     AddCardStyle(base, 20)
 
@@ -214,18 +259,43 @@ function MacLib:Window(Settings)
     end)
 
     -- Opening Animation
-    base.Size = UDim2.new(0,0,0,0)
-    base.Visible = true
-    Tween(base, TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = Settings.Size or UDim2.fromOffset(700, 450)})
+    local initialPos = base.Position
+    base.Position = UDim2.fromScale(initialPos.X.Scale, initialPos.Y.Scale + 0.05)
+    base.Visible = false -- Start hidden for control toggle
+    WindowIsVisible = false
+    
+    local function ToggleVisibility(visible)
+        if visible then
+            base.Visible = true
+            Tween(base, TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+                Position = initialPos,
+                BackgroundTransparency = 0 -- Fade in
+            })
+        else
+            Tween(base, TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.In), {
+                Position = UDim2.fromScale(initialPos.X.Scale, initialPos.Y.Scale + 0.05),
+                BackgroundTransparency = 1 -- Fade out
+            })
+            task.delay(0.3, function() base.Visible = false end)
+        end
+        WindowIsVisible = visible
+    end
+    
+    -- Initial show (if needed, otherwise rely on keybind)
+    task.delay(0.1, function()
+        ToggleVisibility(true)
+    end)
 
-    -- TopBar
+
+    -- TopBar (Reduced height)
+    local topBarHeight = 46 * 0.85 -- 15% reduction
     local topBar = Instance.new("Frame")
     topBar.Name = "TopBar"
     topBar.Parent = base
     topBar.BackgroundColor3 = THEME.SurfaceDark
     topBar.BackgroundTransparency = 0.3
     topBar.BorderSizePixel = 0
-    topBar.Size = UDim2.new(1, -16, 0, 46)
+    topBar.Size = UDim2.new(1, -16, 0, topBarHeight)
     topBar.Position = UDim2.new(0, 8, 0, 8)
     
     local topBarCorner = Instance.new("UICorner", topBar)
@@ -240,16 +310,9 @@ function MacLib:Window(Settings)
     titleLbl.Text = Settings.Title or "Chilli Interface"
     titleLbl.TextXAlignment = Enum.TextXAlignment.Left
     titleLbl.TextSize = 20
-    titleLbl.TextColor3 = THEME.Text
-    
-    local titleGrad = Instance.new("UIGradient", titleLbl)
-    titleGrad.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 211, 238)),
-        ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 255)),
-        ColorSequenceKeypoint.new(1.00, Color3.fromRGB(99, 102, 241)),
-    })
+    ApplyTopBarGradient(titleLbl)
 
-    -- Close Button
+    -- Close Button (now Hide/Show)
     local closeBtn = Instance.new("TextButton", topBar)
     closeBtn.Size = UDim2.fromOffset(30, 30)
     closeBtn.Position = UDim2.new(1, -42, 0.5, -15)
@@ -268,22 +331,20 @@ function MacLib:Window(Settings)
     closeStroke.Thickness = 1
 
     closeBtn.MouseButton1Click:Connect(function()
-        Tween(base, TweenInfo.new(0.2), {Size = UDim2.new(0,0,0,0)})
-        task.wait(0.2)
-        macLib:Destroy()
-        if WindowFunctions.onUnloadCallback then WindowFunctions.onUnloadCallback() end
+        ToggleVisibility(false) -- Just hides the GUI
     end)
 
     -- Content Area
     local contentArea = Instance.new("Frame", base)
     contentArea.BackgroundColor3 = Color3.fromRGB(0,0,0)
     contentArea.BackgroundTransparency = 1
-    contentArea.Position = UDim2.new(0, 10, 0, 60)
-    contentArea.Size = UDim2.new(1, -20, 1, -70)
+    contentArea.Position = UDim2.new(0, 10, 0, 8 + topBarHeight + 8)
+    contentArea.Size = UDim2.new(1, -20, 1, -(8 + topBarHeight + 8 + 8)) -- Adjusted for reduced TopBar
 
-    -- Sidebar
+    -- Sidebar (Reduced width)
+    local sideBarWidth = 130 
     local sideBar = Instance.new("ScrollingFrame", contentArea)
-    sideBar.Size = UDim2.new(0, 160, 1, 0)
+    sideBar.Size = UDim2.new(0, sideBarWidth, 1, 0)
     sideBar.BackgroundTransparency = 1
     sideBar.ScrollBarThickness = 2
     sideBar.BorderSizePixel = 0
@@ -296,14 +357,14 @@ function MacLib:Window(Settings)
 
     local sep = Instance.new("Frame", contentArea)
     sep.Size = UDim2.new(0, 1, 1, 0)
-    sep.Position = UDim2.new(0, 170, 0, 0)
+    sep.Position = UDim2.new(0, sideBarWidth + 10, 0, 0) -- Adjusted separator position
     sep.BackgroundColor3 = THEME.StrokeMain
     sep.BackgroundTransparency = 0.8
     sep.BorderSizePixel = 0
 
     local pages = Instance.new("Frame", contentArea)
-    pages.Size = UDim2.new(1, -180, 1, 0)
-    pages.Position = UDim2.new(0, 180, 0, 0)
+    pages.Size = UDim2.new(1, -(sideBarWidth + 20), 1, 0) -- Adjusted pages position
+    pages.Position = UDim2.new(0, sideBarWidth + 20, 0, 0)
     pages.BackgroundTransparency = 1
     pages.ClipsDescendants = true
 
@@ -332,6 +393,15 @@ function MacLib:Window(Settings)
             tabStroke.Color = THEME.Accent
             tabStroke.Thickness = 1
             
+            -- Selected Indicator Bar
+            local indicator = Instance.new("Frame", tabBtn)
+            indicator.Size = UDim2.fromOffset(4, 30)
+            indicator.Position = UDim2.new(0, -6, 0.5, -15)
+            indicator.BackgroundTransparency = 1
+            indicator.Visible = false
+            ApplyAccentGradient(indicator)
+            Instance.new("UICorner", indicator).CornerRadius = UDim.new(0, 2)
+            
             local tabIcon = Instance.new("ImageLabel", tabBtn)
             tabIcon.Size = UDim2.fromOffset(20, 20)
             tabIcon.Position = UDim2.new(0, 8, 0.5, -10)
@@ -347,18 +417,18 @@ function MacLib:Window(Settings)
 
             local tabTitle = Instance.new("TextLabel", tabBtn)
             tabTitle.BackgroundTransparency = 1
-            tabTitle.Position = UDim2.new(0, 38, 0, 0)
-            tabTitle.Size = UDim2.new(1, -40, 1, 0)
-            tabTitle.Font = THEME.FontSemi
+            tabTitle.Position = UDim2.new(0, 8 + 20 + 4, 0, 0) -- Shifted left
+            tabTitle.Size = UDim2.new(1, -(8 + 20 + 4 + 4), 1, 0)
+            tabTitle.Font = THEME.FontBold
             tabTitle.Text = TabSettings.Title or "Tab"
-            tabTitle.TextSize = 14
+            tabTitle.TextSize = 15
             tabTitle.TextColor3 = THEME.TextMuted
             tabTitle.TextXAlignment = Enum.TextXAlignment.Left
 
             -- Page (ScrollingFrame)
             local pageFrame = Instance.new("ScrollingFrame", pages)
             pageFrame.Size = UDim2.fromScale(1,1)
-            pageFrame.BackgroundTransparency = 1 -- FIX: Keep background fully transparent
+            pageFrame.BackgroundTransparency = 1 
             pageFrame.Visible = false
             pageFrame.ScrollBarThickness = 2
             pageFrame.ScrollBarImageColor3 = THEME.Accent
@@ -379,28 +449,36 @@ function MacLib:Window(Settings)
                 
                 -- Deactivate old
                 for btn, data in pairs(tabButtons) do
-                    Tween(btn, TweenInfo.new(0.2), {BackgroundColor3 = THEME.Surface, BackgroundTransparency = 1})
+                    Tween(btn, TweenInfo.new(0.2), {BackgroundTransparency = 1})
+                    data.Indicator.Visible = false
                     Tween(data.Stroke, TweenInfo.new(0.2), {Transparency = 1})
                     Tween(data.Title, TweenInfo.new(0.2), {TextColor3 = THEME.TextMuted})
                     Tween(data.Icon, TweenInfo.new(0.2), {ImageColor3 = THEME.TextMuted})
                     data.Page.Visible = false
+                    data.Grad.Transparency = 1
                 end
                 
                 -- Activate new
                 currentTab = tabBtn
                 pageFrame.Visible = true
-                -- FIX: Use Position Only for animation, no ImageTransparency
+                
+                -- Animation
                 pageFrame.Position = UDim2.new(0, 10, 0, 0)
                 Tween(pageFrame, TweenInfo.new(0.3, Enum.EasingStyle.Quad), {Position = UDim2.new(0,0,0,0)})
 
-                Tween(tabBtn, TweenInfo.new(0.2), {BackgroundColor3 = THEME.Surface, BackgroundTransparency = 0})
-                Tween(tabStroke, TweenInfo.new(0.2), {Transparency = 0.5})
-                Tween(tabTitle, TweenInfo.new(0.2), {TextColor3 = THEME.Accent})
-                Tween(tabIcon, TweenInfo.new(0.2), {ImageColor3 = THEME.Accent})
+                Tween(tabBtn, TweenInfo.new(0.2), {BackgroundTransparency = 0})
+                tabTitle.TextColor3 = THEME.Text
+                tabIcon.ImageColor3 = THEME.Text
+                indicator.Visible = true
+                tabButtons[tabBtn].Grad.Transparency = 0
+                -- Apply Accent Gradient to Tab Background
             end
 
             tabBtn.MouseButton1Click:Connect(Activate)
-            tabButtons[tabBtn] = {Page = pageFrame, Title = tabTitle, Icon = tabIcon, Stroke = tabStroke}
+            local tabGrad = ApplyAccentGradient(tabBtn)
+            tabGrad.Transparency = 1 -- Start invisible
+            
+            tabButtons[tabBtn] = {Page = pageFrame, Title = tabTitle, Icon = tabIcon, Stroke = tabStroke, Indicator = indicator, Grad = tabGrad}
             
             if currentTab == nil then Activate() end
 
@@ -410,15 +488,20 @@ function MacLib:Window(Settings)
                 local SecFuncs = {}
                 
                 local section = Instance.new("Frame", pageFrame)
-                section.BackgroundColor3 = THEME.SurfaceDark
-                section.BackgroundTransparency = 0.5
+                section.BackgroundTransparency = 1
                 section.Size = UDim2.new(1, -2, 0, 0)
                 section.AutomaticSize = Enum.AutomaticSize.Y
                 
-                local secCorner = Instance.new("UICorner", section)
+                local sectionBg = Instance.new("Frame", section)
+                sectionBg.Size = UDim2.fromScale(1,1)
+                ApplyAccentGradient(sectionBg)
+                sectionBg.BackgroundTransparency = 0.8
+                sectionBg.ZIndex = -1
+                
+                local secCorner = Instance.new("UICorner", sectionBg)
                 secCorner.CornerRadius = UDim.new(0, 12)
                 
-                local secStroke = Instance.new("UIStroke", section)
+                local secStroke = Instance.new("UIStroke", sectionBg)
                 secStroke.Color = THEME.StrokeMain
                 secStroke.Transparency = 0.8
                 secStroke.Thickness = 1
@@ -434,47 +517,92 @@ function MacLib:Window(Settings)
                 secPad.PaddingLeft = UDim.new(0, 10)
                 secPad.PaddingRight = UDim.new(0, 10)
 
-                -- Section Header
-                if SecSettings.Title then
-                    local headerBtn = Instance.new("TextButton", section)
-                    headerBtn.Size = UDim2.new(1, 0, 0, 24)
-                    headerBtn.BackgroundTransparency = 1
-                    headerBtn.Text = ""
-                    headerBtn.LayoutOrder = -1
+                -- Section Header (for Collapsible/Scrolling)
+                local headerFrame = Instance.new("Frame", section)
+                headerFrame.BackgroundTransparency = 1
+                headerFrame.Size = UDim2.new(1, 0, 0, 24)
+                headerFrame.LayoutOrder = -1
 
-                    local headerLbl = Instance.new("TextLabel", headerBtn)
-                    headerLbl.Text = SecSettings.Title
-                    headerLbl.Font = THEME.FontBold
-                    headerLbl.TextSize = 14
-                    headerLbl.TextColor3 = THEME.Text
-                    headerLbl.Size = UDim2.new(1, -20, 1, 0)
-                    headerLbl.BackgroundTransparency = 1
-                    headerLbl.TextXAlignment = Enum.TextXAlignment.Left
+                local headerBtn = Instance.new("TextButton", headerFrame)
+                headerBtn.Size = UDim2.fromScale(1,1)
+                headerBtn.BackgroundTransparency = 1
+                headerBtn.Text = ""
+
+                local headerLbl = Instance.new("TextLabel", headerBtn)
+                headerLbl.Text = SecSettings.Title or "Section"
+                headerLbl.Font = THEME.FontBold
+                headerLbl.TextSize = 16
+                headerLbl.TextColor3 = THEME.Text
+                headerLbl.BackgroundTransparency = 1
+                headerLbl.TextXAlignment = Enum.TextXAlignment.Left
+                headerLbl.Size = UDim2.new(1, -20, 1, 0)
+                
+                local arrow = Instance.new("TextLabel", headerBtn)
+                arrow.Text = "▼"
+                arrow.TextColor3 = THEME.Text
+                arrow.BackgroundTransparency = 1
+                arrow.Size = UDim2.fromOffset(20, 24)
+                arrow.Position = UDim2.new(1, -20, 0, 0)
+                arrow.TextSize = 14
+                
+                local contentContainer = Instance.new("Frame", section)
+                contentContainer.BackgroundTransparency = 1
+                contentContainer.AutomaticSize = Enum.AutomaticSize.Y
+                contentContainer.Size = UDim2.new(1, 0, 0, 0)
+                
+                local contentLayout = Instance.new("UIListLayout", contentContainer)
+                contentLayout.Padding = UDim.new(0, 5)
+                contentLayout.SortOrder = Enum.SortOrder.LayoutOrder
+                contentLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+                
+                local contentPadding = Instance.new("UIPadding", contentContainer)
+                contentPadding.PaddingLeft = UDim.new(0, 10)
+                contentPadding.PaddingRight = UDim.new(0, 10)
+
+                local collapsed = SecSettings.Opened == false
+                local contentSize = 0
+
+                local function ToggleCollapse()
+                    local targetSize = collapsed and UDim2.new(1, 0, 0, contentSize) or UDim2.new(1, 0, 0, 0)
+                    local targetRotation = collapsed and 0 or -90
+
+                    if collapsed then
+                        contentContainer.Visible = true
+                        contentSize = contentContainer.AbsoluteSize.Y -- Capture size before collapsing
+                    end
                     
-                    local arrow = Instance.new("TextLabel", headerBtn)
-                    arrow.Text = "▼"
-                    arrow.TextColor3 = THEME.Accent
-                    arrow.BackgroundTransparency = 1
-                    arrow.Size = UDim2.new(0, 20, 1, 0)
-                    arrow.Position = UDim2.new(1, -20, 0, 0)
-                    arrow.TextSize = 12
+                    Tween(arrow, TweenInfo.new(0.2), {Rotation = targetRotation})
                     
-                    local collapsed = false
-                    headerBtn.MouseButton1Click:Connect(function()
-                        collapsed = not collapsed
-                        Tween(arrow, TweenInfo.new(0.2), {Rotation = collapsed and -90 or 0})
-                        for _, child in ipairs(section:GetChildren()) do
-                            if child:IsA("Frame") or child:IsA("TextButton") then
-                                if child ~= headerBtn then child.Visible = not collapsed end
-                            end
+                    local tween = Tween(contentContainer, TweenInfo.new(0.3, Enum.EasingStyle.Quad), {Size = targetSize})
+                    
+                    tween.Completed:Connect(function()
+                        if not collapsed then
+                            contentContainer.Visible = false
                         end
+                        collapsed = not collapsed
+                        contentContainer.Size = UDim2.new(1, 0, 0, collapsed and 0 or contentSize)
                     end)
                 end
 
-                local function MakeElement(height)
-                    local el = Instance.new("Frame", section)
+                if not collapsed then
+                    contentContainer.Size = UDim2.new(1, 0, 0, 0)
+                    contentContainer.Visible = true
+                    RunService.Heartbeat:Wait()
+                    contentSize = contentContainer.AbsoluteSize.Y
+                    contentContainer.Size = UDim2.new(1, 0, 0, contentSize)
+                else
+                    arrow.Rotation = -90
+                    contentContainer.Visible = false
+                    contentContainer.Size = UDim2.new(1, 0, 0, 0)
+                end
+
+                headerBtn.MouseButton1Click:Connect(ToggleCollapse)
+
+
+                local function MakeElement(parent, height)
+                    local el = Instance.new("Frame", parent)
                     el.Size = UDim2.new(1, 0, 0, height or 38)
-                    el.BackgroundColor3 = Color3.fromRGB(15, 20, 30)
+                    el.BackgroundColor3 = THEME.SurfaceDark
                     el.BackgroundTransparency = 0.5
                     local elCorn = Instance.new("UICorner", el)
                     elCorn.CornerRadius = UDim.new(0, 8)
@@ -490,7 +618,7 @@ function MacLib:Window(Settings)
                     lbl.Position = UDim2.new(0, 10, 0, 0)
                     lbl.BackgroundTransparency = 1
                     lbl.Text = text or "Element"
-                    lbl.Font = THEME.FontSemi
+                    lbl.Font = THEME.FontBold
                     lbl.TextSize = 14
                     lbl.TextColor3 = THEME.Text
                     lbl.TextXAlignment = Enum.TextXAlignment.Left
@@ -499,7 +627,7 @@ function MacLib:Window(Settings)
 
                 -- [BUTTON]
                 function SecFuncs:Button(BSettings, Flag)
-                    local btnCont = MakeElement(36)
+                    local btnCont = MakeElement(contentContainer, 36)
                     btnCont.BackgroundColor3 = THEME.Accent
                     btnCont.BackgroundTransparency = 0.9
                     
@@ -526,7 +654,7 @@ function MacLib:Window(Settings)
 
                 -- [TOGGLE]
                 function SecFuncs:Toggle(TSettings, Flag)
-                    local togCont = MakeElement(38)
+                    local togCont = MakeElement(contentContainer, 38)
                     AddTitle(togCont, TSettings.Title or TSettings.Name)
                     
                     local togBtn = Instance.new("TextButton", togCont)
@@ -572,7 +700,7 @@ function MacLib:Window(Settings)
 
                 -- [SLIDER]
                 function SecFuncs:Slider(SSettings, Flag)
-                    local slidCont = MakeElement(50)
+                    local slidCont = MakeElement(contentContainer, 50)
                     AddTitle(slidCont, SSettings.Title or SSettings.Name).Size = UDim2.new(1, -10, 0, 25)
                     
                     local valLbl = Instance.new("TextLabel", slidCont)
@@ -648,14 +776,26 @@ function MacLib:Window(Settings)
 
                 -- [DROPDOWN]
                 function SecFuncs:Dropdown(DSettings, Flag)
-                    local dropCont = MakeElement(38)
+                    local dropCont = MakeElement(contentContainer, 38)
                     dropCont.ClipsDescendants = true
-                    AddTitle(dropCont, DSettings.Title or DSettings.Name)
+                    
+                    local titleFrame = Instance.new("Frame", dropCont)
+                    titleFrame.Size = UDim2.fromScale(1, 0)
+                    titleFrame.AutomaticSize = Enum.AutomaticSize.Y
+                    titleFrame.BackgroundTransparency = 1
+                    
+                    local titleLayout = Instance.new("UIListLayout", titleFrame)
+                    titleLayout.Padding = UDim.new(0, 0)
+                    titleLayout.SortOrder = Enum.SortOrder.LayoutOrder
+                    
+                    local title = AddTitle(titleFrame, DSettings.Title or DSettings.Name)
+                    title.Size = UDim2.new(1, -100, 1, 0) -- Give space for selected text
+                    title.TextYAlignment = Enum.TextYAlignment.Center -- Center title
                     
                     local current = DSettings.Default or "..."
                     local Funcs = {Class = "Dropdown", Value = current}
                     
-                    local selectedLbl = Instance.new("TextLabel", dropCont)
+                    local selectedLbl = Instance.new("TextLabel", titleFrame)
                     selectedLbl.Size = UDim2.new(0, 100, 0, 38)
                     selectedLbl.Position = UDim2.new(1, -130, 0, 0)
                     selectedLbl.Text = current
@@ -664,7 +804,7 @@ function MacLib:Window(Settings)
                     selectedLbl.TextXAlignment = Enum.TextXAlignment.Right
                     selectedLbl.BackgroundTransparency = 1
                     
-                    local arrow = Instance.new("TextLabel", dropCont)
+                    local arrow = Instance.new("TextLabel", titleFrame)
                     arrow.Text = "▼"
                     arrow.Size = UDim2.new(0, 20, 0, 38)
                     arrow.Position = UDim2.new(1, -25, 0, 0)
@@ -735,7 +875,7 @@ function MacLib:Window(Settings)
 
                 -- [INPUT]
                 function SecFuncs:Input(ISettings, Flag)
-                    local inpCont = MakeElement(38)
+                    local inpCont = MakeElement(contentContainer, 38)
                     AddTitle(inpCont, ISettings.Title or ISettings.Name)
                     
                     local boxBg = Instance.new("Frame", inpCont)
@@ -774,7 +914,7 @@ function MacLib:Window(Settings)
 
                 -- [LABEL]
                 function SecFuncs:Label(Settings)
-                    local lbl = MakeElement(24)
+                    local lbl = MakeElement(contentContainer, 24)
                     lbl.BackgroundTransparency = 1
                     lbl.UIStroke:Destroy()
                     AddTitle(lbl, Settings.Title or Settings.Name).Font = THEME.FontNormal
@@ -782,24 +922,24 @@ function MacLib:Window(Settings)
 
                 -- [PARAGRAPH]
                 function SecFuncs:Paragraph(Settings)
-                    local par = MakeElement(60)
+                    local par = MakeElement(contentContainer, 60)
                     par.BackgroundTransparency = 1
-                    par.UIStroke:Destroy()
                     
                     local title = AddTitle(par, Settings.Title or Settings.Header)
                     title.Font = THEME.FontBold
-                    
+                    title.TextSize = 14
+
                     local desc = Instance.new("TextLabel", par)
                     desc.Size = UDim2.new(1, -10, 1, -20)
                     desc.Position = UDim2.new(0, 10, 0, 20)
                     desc.BackgroundTransparency = 1
                     desc.Text = Settings.Desc or Settings.Body
                     desc.TextColor3 = THEME.TextMuted
-                    desc.TextSize = 12
+                    desc.TextSize = 13
                     desc.TextWrapped = true
                     desc.TextXAlignment = Enum.TextXAlignment.Left
                     desc.TextYAlignment = Enum.TextYAlignment.Top
-                    desc.Font = THEME.FontNormal
+                    desc.Font = THEME.FontSemi -- Nét chữ đẹp hơn
                 end
 
                 -- [DIVIDER]
@@ -925,19 +1065,75 @@ function MacLib:RefreshConfigList()
     return out
 end
 
+--// Global Input Handling (LeftControl Toggle)
+UserInputService.InputBegan:Connect(function(input, gpe)
+    if gpe or input.KeyCode ~= MenuKeybind or not WindowBase then return end
+    
+    local newVisibility = not WindowIsVisible
+    ToggleVisibility(newVisibility)
+end)
+
+--// Toggle function (for internal use)
+function ToggleVisibility(visible)
+    if visible == WindowIsVisible or not WindowBase then return end
+    
+    local initialPos = UDim2.fromScale(WindowBase.Position.X.Scale, WindowBase.Position.Y.Scale)
+    local targetPos = visible and initialPos or UDim2.fromScale(initialPos.X.Scale, initialPos.Y.Scale + 0.05)
+    local targetTransparency = visible and 0 or 1
+    
+    if visible then
+        WindowBase.Visible = true
+    end
+    
+    Tween(WindowBase, TweenInfo.new(0.3, Enum.EasingStyle.Quart), {
+        Position = targetPos,
+        BackgroundTransparency = targetTransparency
+    })
+    
+    task.delay(0.3, function()
+        if not visible then
+            WindowBase.Visible = false
+        end
+    end)
+    WindowIsVisible = visible
+end
+
 --// Demo
 function MacLib:Demo()
-    local Window = MacLib:Window({Title = "Chilli Interface", Size = UDim2.fromOffset(650, 400)})
+    local Window = MacLib:Window({Title = "Steal a Brainrot - Chilli", Size = UDim2.fromOffset(650, 400)})
     local Group = Window:TabGroup()
-    local Tab = Group:Tab({Title = "Main", Image = "rbxassetid://10709791437"})
-    local Section = Tab:Section({Title = "Features"})
     
-    Section:Toggle({Title = "Auto Farm", Default = false, Callback = function(v) print("Farm:", v) end}, "AutoFarm")
-    Section:Slider({Title = "WalkSpeed", Default = 16, Minimum = 16, Maximum = 100, Callback = function(v) print("Speed:", v) end}, "WalkSpeed")
-    Section:Dropdown({Title = "Target Mode", Options = {"Nearest", "Random"}, Default = "Nearest"}, "TargetMode")
-    Section:Input({Title = "Webhook URL", Default = ""}, "Webhook")
-    Section:Button({Title = "Server Hop", Callback = function() Window:Notify({Title = "System", Desc = "Hopping..."}) end})
+    -- Tabs (using names from your screenshot)
+    local Main = Group:Tab({Title = "Main", Image = "rbxassetid://18821914323"})
+    local Stealer = Group:Tab({Title = "Stealer", Image = "rbxassetid://18821914323"})
+    local Helper = Group:Tab({Title = "Helper", Image = "rbxassetid://18821914323"})
+    local Player = Group:Tab({Title = "Player", Image = "rbxassetid://18821914323"})
+    local Finder = Group:Tab({Title = "Finder", Image = "rbxassetid://18821914323"})
+    local Server = Group:Tab({Title = "Server", Image = "rbxassetid://18821914323"})
+    local Discord = Group:Tab({Title = "Discord", Image = "rbxassetid://18821914323"})
+
+
+    local StealSec = Stealer:Section({Title = "Desync & Auto Steal"})
     
+    -- Desync Toggle
+    StealSec:Toggle({
+        Title = "Desync",
+        Default = false,
+        Callback = function(on)
+            local config = { Desync = on } -- Simplified config mock
+            IO_SAVE({ Desync = on }) -- FIX 1: Calls IO_SAVE (now a mock function)
+            if on then 
+                -- DS_start() -- Uncomment if DS_start is defined elsewhere
+                Window:Notify({Title = "Desync", Desc = "Enabled Desync. Waiting for respawn."})
+            else 
+                -- DS_stop() -- Uncomment if DS_stop is defined elsewhere
+                Window:Notify({Title = "Desync", Desc = "Disabled Desync."})
+            end
+        end
+    }, "DesyncToggle")
+
+    StealSec:Slider({Title = "Auto Steal Range", Default = 50, Minimum = 10, Maximum = 100, Callback = function(v) end}, "StealRange")
+
     MacLib:SetFolder("ChilliLib")
 end
 
